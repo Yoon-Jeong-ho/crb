@@ -1,23 +1,27 @@
 # CRB Next TODO
 
 ## Highest priority
-1. Run `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off.yaml`
-   - goal: get a clean GSM8K thinking off/on pair
-2. Add a Qwen3-specific post-think answer extraction fallback for GPQA thinking-on
-3. Revisit AIME parsing failure cases (`ambiguous_numeric_answer`)
+1. Add a parser/postprocessing fallback for Qwen3 GPQA thinking-on outputs
+2. Launch a first selective sweep subset from `configs/generated/qwen3_core_paper/`
+3. Run one thinking-on config on `CUDA_VISIBLE_DEVICES=6,7`
 
 ## Medium priority
-1. Increase GPQA thinking-off from smoke (`num_samples=8`) to a mini run
-2. Increase AIME thinking-off from smoke (`num_samples=8`) to a mini run
-3. Validate one thinking-on config on `CUDA_VISIBLE_DEVICES=6,7`
-4. Launch a small materialized sweep subset for `k in {0,2,4,8}`
+1. Expand the GSM8K off/on pair beyond `num_samples=8`
+2. Expand GPQA thinking-off beyond `num_samples=32` if useful
+3. Revisit AIME numeric ambiguity reduction
+4. Add regression tests for any new GPQA thinking-on parser fallback
 
 ## Lower priority
-1. Add more regression tests around GPQA deterministic choice shuffling
-2. Add targeted tests for the numeric ambiguity fallback
-3. Cleanly separate benchmark-result scoreboard rows from any future non-benchmark test artifacts
+1. Add more benchmark-result aggregate scripts for paper tables
+2. Generate k-sweep summaries from scoreboard automatically
+3. Add richer README links to `results/analysis/` artifacts
+
+## Current best next batch
+- GPQA thinking-on parser fallback implementation
+- generated subset: GPQA thinking-off, k={0,2,4,8}, oracle_history, same/cross_domain
+- generated subset: GSM8K off/on continuation
 
 ## Risks to track
-- GPQA thinking-on may require parser changes, not just prompt changes
-- AIME numeric ambiguity may inflate format failure if not handled explicitly
-- Smoke-scale results are preliminary and should not yet be summarized as benchmark conclusions
+- GPQA thinking-on may need generation-budget or parser changes, not just prompt changes
+- AIME numeric ambiguity may continue even when formatting succeeds
+- selective sweep batching is now the key operational step between mini-runs and broader paper coverage

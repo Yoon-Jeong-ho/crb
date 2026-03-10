@@ -1,0 +1,3 @@
+model_name,dataset,evaluation_mode,history_mode,dummy_type,off_run_id,on_run_id,off_accuracy,on_accuracy,off_format_failure_rate,on_format_failure_rate
+Qwen/Qwen3-1.7B,gpqa,multi_turn,oracle_history,same_domain,run-20260310T160758Z-28b8ad16,run-20260310T145730Z-345dde13,0.40625,0.125,0.0,0.875
+Qwen/Qwen3-1.7B,gsm8k,single_turn_flattened,self_history,cross_domain,run-20260310T160140Z-6e97f2ab,run-20260310T153509Z-c56d79e2,0.375,0.125,0.25,0.125

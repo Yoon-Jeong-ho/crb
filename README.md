@@ -264,6 +264,8 @@ This means:
 - `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml`
 - `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke.yaml`
 - `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_minirun.yaml`
+- `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_minirun.yaml`
 
 ### Qwen3 decoding presets
 
@@ -561,6 +563,8 @@ If a model call fails, CRB records a runtime failure entry rather than silently 
 - `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml`
 - `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke.yaml`
 - `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_minirun.yaml`
+- `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_minirun.yaml`
 
 ---
 
@@ -571,7 +575,7 @@ Validated in this repository:
 - single-GPU path with `CUDA_VISIBLE_DEVICES=6`
 - multi-GPU path with `CUDA_VISIBLE_DEVICES=6,7`
 - earlier real vLLM runs on MMLU-family and GSM8K
-- new real Qwen3 smoke runs on GPQA and AIME
+- new real Qwen3 smoke and mini runs on GPQA, GSM8K, and AIME
 - run JSON creation under `results/runs/`
 - cumulative scoreboard append under `results/summary/scoreboard.csv`
 - scoreboard header migration to include `model_family` and `thinking_mode`
@@ -583,26 +587,36 @@ Validated in this repository:
   - accuracy `0.125`, format failure `0.875`
 - `qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on`
   - accuracy `0.125`, format failure `0.125`
+- `qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off`
+  - accuracy `0.375`, format failure `0.250`
 - `qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off`
   - accuracy `0.125`, format failure `0.250`
 - `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke`
   - accuracy `0.500`, format failure `0.000`
 - `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal`
   - accuracy `0.000`, format failure `1.000`
+- `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_minirun`
+  - accuracy `0.40625`, format failure `0.000`, `num_samples=32`
+- `qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_minirun`
+  - accuracy `0.125`, format failure `0.250`, `num_samples=16`
 
 ### Verified result files
 - `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off__3a1145ccbdfc2637/run-20260310T145435Z-3a1145cc.json`
 - `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on__345dde13847d198f/run-20260310T145730Z-345dde13.json`
 - `results/runs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on__c56d79e297ea6e15/run-20260310T153509Z-c56d79e2.json`
+- `results/runs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off__6e97f2ab759ca496/run-20260310T160140Z-6e97f2ab.json`
 - `results/runs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off__b401cc4022eaea64/run-20260310T150040Z-b401cc40.json`
+- `results/runs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_minirun__e7fdd9b430c2034b/run-20260310T161109Z-e7fdd9b4.json`
 - `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke__9c2df9c41af27e8f/run-20260310T153733Z-9c2df9c4.json`
 - `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal__4227014d5385a505/run-20260310T154231Z-4227014d.json`
+- `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_minirun__28b8ad1633d32ddb/run-20260310T160758Z-28b8ad16.json`
 
 ### Analysis docs
 - `docs/EXECUTION_STATUS.md`
 - `docs/RESULTS_LOG.md`
 - `docs/ANALYSIS.md`
 - `docs/TODO_NEXT.md`
+- `docs/EXPERIMENT_PLAN.md`
 
 ---
 
@@ -641,6 +655,11 @@ bash scripts/materialize_qwen3_core_sweep.sh
 ### Run the full materialized sweep
 ```bash
 bash scripts/run_qwen3_core_sweep.sh
+```
+
+### Build preliminary aggregate tables
+```bash
+PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python scripts/aggregate_preliminary_results.py
 ```
 
 ---

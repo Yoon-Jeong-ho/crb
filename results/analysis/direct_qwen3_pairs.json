@@ -1,0 +1,28 @@
+[
+  {
+    "model_name": "Qwen/Qwen3-1.7B",
+    "dataset": "gpqa",
+    "evaluation_mode": "multi_turn",
+    "history_mode": "oracle_history",
+    "dummy_type": "same_domain",
+    "off_run_id": "run-20260310T160758Z-28b8ad16",
+    "on_run_id": "run-20260310T145730Z-345dde13",
+    "off_accuracy": "0.40625",
+    "on_accuracy": "0.125",
+    "off_format_failure_rate": "0.0",
+    "on_format_failure_rate": "0.875"
+  },
+  {
+    "model_name": "Qwen/Qwen3-1.7B",
+    "dataset": "gsm8k",
+    "evaluation_mode": "single_turn_flattened",
+    "history_mode": "self_history",
+    "dummy_type": "cross_domain",
+    "off_run_id": "run-20260310T160140Z-6e97f2ab",
+    "on_run_id": "run-20260310T153509Z-c56d79e2",
+    "off_accuracy": "0.375",
+    "on_accuracy": "0.125",
+    "off_format_failure_rate": "0.25",
+    "on_format_failure_rate": "0.125"
+  }
+]
