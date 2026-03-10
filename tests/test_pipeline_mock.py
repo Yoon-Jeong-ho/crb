@@ -1,9 +1,16 @@
 from pathlib import Path
 
-from crb.evaluation.runner import run_from_config
+from crb.config import load_run_config
+from crb.evaluation.runner import execute_run
 
 
 def test_mock_pipeline_creates_outputs(tmp_path: Path):
-    result = run_from_config("configs/mock_mmlu_multiturn_oracle.yaml")
+    config = load_run_config("configs/mock_mmlu_multiturn_oracle.yaml")
+    config.runtime.output_root = str(tmp_path / "results")
+    config.runtime.manifest_dir = str(tmp_path / "results" / "manifests")
+    config.runtime.summary_csv = str(tmp_path / "results" / "summary" / "scoreboard.csv")
+    config.runtime.log_dir = str(tmp_path / "logs")
+    config.runtime.skip_completed = False
+    result = execute_run(config)
     assert result["metrics"]["accuracy"] >= 0.0
     assert result["num_items"] == 2

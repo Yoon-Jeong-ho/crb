@@ -11,62 +11,76 @@ _Last updated: 2026-03-11_
 - vllm: `0.11.2`
 - datasets: `2.21.0`
 - Branch: `main`
-- Recent commits before this execution cycle:
+- Recent execution-cycle commits:
+  - `6709d70` run qwen3 gpqa and aime smoke validations
   - `e6db683` add gpqa aime and qwen3 thinking sweep support
   - `5a986c3` validate local conda env and gpu-backed vllm runs
-  - `0cbe61e` build config-driven CRB evaluation pipeline scaffold
 
 ## GPU availability
 - Policy GPUs: `6,7` only
 - Check command:
   - `nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv,noheader`
-- Snapshot at run start:
+- Most recent snapshot during this cycle:
   - GPU 6: `4 MiB / 49140 MiB`, util `0%`
   - GPU 7: `4 MiB / 49140 MiB`, util `0%`
 - Decision:
-  - Smoke runs were safe to start on `CUDA_VISIBLE_DEVICES=6`
-  - Multi-GPU expansion can wait until after smoke validation / analysis
+  - smoke and follow-up runs were safe on GPU 6
+  - one dedicated multi-GPU smoke run was also completed on GPUs 6 and 7
 
 ## Ready configs
 - `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml`
 - `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal.yaml`
 - `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off.yaml`
 - `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on.yaml`
 - `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke.yaml`
 
-## Existing result state
-- Scoreboard: `results/summary/scoreboard.csv`
-- Existing validated older real runs:
-  - `qwen25_1p5b_mmlu_multiturn_oracle_k2`
-  - `qwen25_1p5b_gsm8k_flattened_self_k2`
-- New runs completed in this cycle:
-  - Qwen3 thinking off + GPQA
-  - Qwen3 thinking on + GPQA
-  - Qwen3 thinking off + AIME
-
-## Completed runs this cycle
+## Completed runs in this staged cycle
 1. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off`
    - status: success
    - GPU: `6`
-   - result: accuracy `0.500`, format failure `0.000`
+   - accuracy `0.500`, format failure `0.000`
 2. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on`
    - status: success
    - GPU: `6`
-   - result: accuracy `0.125`, format failure `0.875`
+   - accuracy `0.125`, format failure `0.875`
 3. `qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off`
-   - status: success after one config fix
+   - status: success after config fix
    - GPU: `6`
-   - result: accuracy `0.125`, format failure `0.250`
+   - accuracy `0.125`, format failure `0.250`
+4. `qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on`
+   - status: success
+   - GPU: `6`
+   - accuracy `0.125`, format failure `0.125`
+5. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke`
+   - status: success
+   - GPU: `6,7`
+   - accuracy `0.500`, format failure `0.000`
+6. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal`
+   - status: success
+   - GPU: `6`
+   - accuracy `0.000`, format failure `1.000`
+
+## Additional completed workflow steps
+- scoreboard migration to include `model_family` and `thinking_mode`
+- Qwen3 / GPQA / AIME result JSON validation
+- paper sweep materialization executed successfully
+  - generated configs: `256`
+  - location: `configs/generated/qwen3_core_paper/`
+- pytest re-run after test isolation fix
+  - result: `8 passed`
 
 ## Risks / blockers
-- Qwen3 thinking-on on GPQA currently shows severe format instability (`7/8` parse failures in this smoke run).
-- AIME numeric parsing is working end-to-end, but two items still fail with `ambiguous_numeric_answer` because the model emits multiple candidate numerics.
-- The first AIME run failed before generation because the smoke config lacked enough cross-domain dummy candidates for manifest construction; the config was corrected by adding GPQA and MMLU dummy sources.
-- Current results are still smoke-scale (`num_samples=8`), so all observations remain preliminary.
+- Qwen3 thinking-on is not simply “harder”; on GPQA it is currently primarily a **formatting failure mode**.
+- A stricter final-answer prompt did **not** rescue GPQA thinking-on; it made parse behavior worse in the smoke run.
+- GSM8K thinking-on is much more parser-stable than GPQA thinking-on, suggesting the failure is not a universal parser bug.
+- AIME numeric parsing works, but ambiguous numeric generations still occur.
+- Current evidence remains smoke-scale (`num_samples=8`, multigpu smoke `num_samples=2`).
 
-## Pending runs
-1. Qwen3 thinking on + GSM8K to check whether the format-collapse is GPQA-specific
-2. AIME rerun with prompt / parser adjustments if needed
-3. GPQA / AIME mini runs with larger `num_samples`
-4. Multi-GPU Qwen3 validation on `CUDA_VISIBLE_DEVICES=6,7`
-5. Materialize paper sweep configs and queue next batch
+## Pending runs / next priorities
+1. GPQA thinking-off and AIME mini runs with larger `num_samples`
+2. Qwen3 thinking-off vs thinking-on on GSM8K side-by-side for cleaner comparison
+3. AIME prompt or parser refinement for ambiguous numeric outputs
+4. Materialized sweep subset launch for `k in {0,2,4,8}`
+5. Multi-GPU validation for one thinking-on config

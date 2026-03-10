@@ -262,6 +262,8 @@ This means:
 - `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off.yaml`
 - `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on.yaml`
 - `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal.yaml`
 
 ### Qwen3 decoding presets
 
@@ -557,6 +559,8 @@ If a model call fails, CRB records a runtime failure entry rather than silently 
 - `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off.yaml`
 - `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on.yaml`
 - `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal.yaml`
 
 ---
 
@@ -577,13 +581,22 @@ Validated in this repository:
   - accuracy `0.500`, format failure `0.000`
 - `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on`
   - accuracy `0.125`, format failure `0.875`
+- `qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on`
+  - accuracy `0.125`, format failure `0.125`
 - `qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off`
   - accuracy `0.125`, format failure `0.250`
+- `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke`
+  - accuracy `0.500`, format failure `0.000`
+- `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal`
+  - accuracy `0.000`, format failure `1.000`
 
 ### Verified result files
 - `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off__3a1145ccbdfc2637/run-20260310T145435Z-3a1145cc.json`
 - `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on__345dde13847d198f/run-20260310T145730Z-345dde13.json`
+- `results/runs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on__c56d79e297ea6e15/run-20260310T153509Z-c56d79e2.json`
 - `results/runs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off__b401cc4022eaea64/run-20260310T150040Z-b401cc40.json`
+- `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke__9c2df9c41af27e8f/run-20260310T153733Z-9c2df9c4.json`
+- `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal__4227014d5385a505/run-20260310T154231Z-4227014d.json`
 
 ### Analysis docs
 - `docs/EXECUTION_STATUS.md`
@@ -615,6 +628,11 @@ bash scripts/run_single_gpu.sh configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_
 bash scripts/run_single_gpu.sh configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on.yaml
 ```
 
+### GPQA / Qwen3 thinking off multi-GPU smoke
+```bash
+PYTHONNOUSERSITE=1 HF_HOME=/mnt/raid6/aa007878/.cache/huggingface CUDA_VISIBLE_DEVICES=6,7   /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb.cli.run_eval   --config configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke.yaml
+```
+
 ### Materialize the full paper sweep
 ```bash
 bash scripts/materialize_qwen3_core_sweep.sh
@@ -629,8 +647,10 @@ bash scripts/run_qwen3_core_sweep.sh
 
 ## 17. Known limitations / TODO
 
-- current new-run evidence is still smoke-scale (`num_samples=8`)
+- current new-run evidence is still smoke-scale (`num_samples=8`, multi-GPU smoke `num_samples=2`)
 - Qwen3 thinking-on is end-to-end functional, but GPQA formatting is currently unstable in this setting
+- a stricter final-answer prompt did not rescue GPQA thinking-on in the current smoke run
+- GSM8K thinking-on is much more parser-stable than GPQA thinking-on
 - AIME numeric evaluation is working, but some outputs still trigger `ambiguous_numeric_answer`
 - the paper sweep spec is ready, but the generated configs are not checked into git by default
 - AIME is treated as `domain=math`, so meaningful `cross_domain` experiments require cross-dataset dummy pools
