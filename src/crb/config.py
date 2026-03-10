@@ -24,6 +24,12 @@ class ConfigError(ValueError):
     """Raised when a YAML config cannot be parsed into the CRB schema."""
 
 
+def _coerce_scalar(cls: type[T], name: str, value: Any) -> Any:
+    if cls is ModelConfig and name == "thinking_mode" and isinstance(value, bool):
+        return "on" if value else "off"
+    return value
+
+
 def _coerce_dataclass(cls: type[T], raw: dict[str, Any]) -> T:
     kwargs: dict[str, Any] = {}
     field_map = {field.name: field for field in fields(cls)}
@@ -39,7 +45,7 @@ def _coerce_dataclass(cls: type[T], raw: dict[str, Any]) -> T:
         elif cls is EvaluationConfig and name == "dummy_sources":
             kwargs[name] = [_coerce_dataclass(DataSourceConfig, item) for item in value]
         else:
-            kwargs[name] = value
+            kwargs[name] = _coerce_scalar(cls, name, value)
     return cls(**kwargs)
 
 

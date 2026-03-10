@@ -1,14 +1,14 @@
 output_dir: configs/generated/qwen3_core_paper
 presets:
   qwen3_thinking_off:
-    model.thinking_mode: off
+    model.thinking_mode: "off"
     model.chat_template_kwargs.enable_thinking: false
     decoding.temperature: 0.7
     decoding.top_p: 0.8
     decoding.top_k: 20
     decoding.max_tokens: 1024
   qwen3_thinking_on:
-    model.thinking_mode: on
+    model.thinking_mode: "on"
     model.chat_template_kwargs.enable_thinking: true
     decoding.temperature: 0.6
     decoding.top_p: 0.95

@@ -7,7 +7,7 @@ model:
   engine: vllm
   model_name: Qwen/Qwen3-1.7B
   model_family: qwen3
-  thinking_mode: off
+  thinking_mode: "off"
   trust_remote_code: true
   tensor_parallel_size: auto
   dtype: auto
@@ -59,4 +59,16 @@ evaluation:
       path: openai/gsm8k
       subset: main
       split: train
+      cache_dir: data/cache/huggingface
+    - dataset_name: gpqa
+      adapter: gpqa
+      path: Idavidrein/gpqa
+      subset: gpqa_main
+      split: train
+      cache_dir: data/cache/huggingface
+    - dataset_name: mmlu
+      adapter: mmlu
+      path: cais/mmlu
+      subset: all
+      split: validation
       cache_dir: data/cache/huggingface

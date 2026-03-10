@@ -92,6 +92,12 @@ pyproject.toml           Editable install + CLI entrypoints
 README.md                This file
 ```
 
+### Ongoing execution docs
+- `docs/EXECUTION_STATUS.md` — current env, GPU, ready configs, blockers
+- `docs/RESULTS_LOG.md` — run-by-run execution log
+- `docs/ANALYSIS.md` — preliminary result interpretation
+- `docs/TODO_NEXT.md` — next prioritized runs
+
 ---
 
 ## 3. Supported datasets
@@ -556,28 +562,38 @@ If a model call fails, CRB records a runtime failure entry rather than silently 
 
 ## 15. Verification and current status
 
-Already validated earlier in this repository:
+Validated in this repository:
 - project-local conda env at `/data_x/aa007878/projects/crb/.conda/envs/crb`
 - single-GPU path with `CUDA_VISIBLE_DEVICES=6`
 - multi-GPU path with `CUDA_VISIBLE_DEVICES=6,7`
-- real vLLM run on an MMLU-family benchmark
-- real vLLM run on GSM8K
+- earlier real vLLM runs on MMLU-family and GSM8K
+- new real Qwen3 smoke runs on GPQA and AIME
 - run JSON creation under `results/runs/`
 - cumulative scoreboard append under `results/summary/scoreboard.csv`
+- scoreboard header migration to include `model_family` and `thinking_mode`
 
-Current repository expansion in this phase:
-- GPQA adapter hardened for deterministic choice ordering
-- AIME adapter added
-- Qwen3 thinking on/off metadata and chat-template controls added
-- paper sweep materialization support added
-- JSON / scoreboard metadata expanded with `model_family` and `thinking_mode`
+### Newly verified runs in this execution cycle
+- `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off`
+  - accuracy `0.500`, format failure `0.000`
+- `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on`
+  - accuracy `0.125`, format failure `0.875`
+- `qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off`
+  - accuracy `0.125`, format failure `0.250`
 
-### Important current operational note
-At the time of this update, GPU contention took priority over additional runtime validation. The new GPQA / AIME / Qwen3 configs and sweep tooling are committed and ready, but **additional GPU-backed execution should be resumed when GPUs 6 and 7 are free**.
+### Verified result files
+- `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off__3a1145ccbdfc2637/run-20260310T145435Z-3a1145cc.json`
+- `results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on__345dde13847d198f/run-20260310T145730Z-345dde13.json`
+- `results/runs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off__b401cc4022eaea64/run-20260310T150040Z-b401cc40.json`
+
+### Analysis docs
+- `docs/EXECUTION_STATUS.md`
+- `docs/RESULTS_LOG.md`
+- `docs/ANALYSIS.md`
+- `docs/TODO_NEXT.md`
 
 ---
 
-## 16. Quick commands to use later when GPUs are free
+## 16. Next recommended commands
 
 ### GPQA / Qwen3 thinking off
 ```bash
@@ -594,6 +610,11 @@ bash scripts/run_single_gpu.sh configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_
 bash scripts/run_single_gpu.sh configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml
 ```
 
+### GSM8K / Qwen3 thinking on follow-up
+```bash
+bash scripts/run_single_gpu.sh configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on.yaml
+```
+
 ### Materialize the full paper sweep
 ```bash
 bash scripts/materialize_qwen3_core_sweep.sh
@@ -608,11 +629,13 @@ bash scripts/run_qwen3_core_sweep.sh
 
 ## 17. Known limitations / TODO
 
-- the new GPQA / AIME / Qwen3 configs are added, but this phase intentionally defers additional GPU runs until contention clears
+- current new-run evidence is still smoke-scale (`num_samples=8`)
+- Qwen3 thinking-on is end-to-end functional, but GPQA formatting is currently unstable in this setting
+- AIME numeric evaluation is working, but some outputs still trigger `ambiguous_numeric_answer`
 - the paper sweep spec is ready, but the generated configs are not checked into git by default
 - AIME is treated as `domain=math`, so meaningful `cross_domain` experiments require cross-dataset dummy pools
 - numeric evaluation is exact-match after normalization; more advanced symbolic equivalence is not implemented yet
-- the current Qwen3 support focuses on config-level `enable_thinking`; prompt-level soft control like `/think` or `/no_think` is not the main paper path
+- prompt-level soft control like `/think` or `/no_think` is not the main paper path; current support is config-level `enable_thinking`
 
 ---
 
