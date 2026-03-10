@@ -1,0 +1,11 @@
+name: crb
+channels:
+  - conda-forge
+  - nvidia
+  - pytorch
+dependencies:
+  - python=3.12
+  - pip>=24.0
+  - git
+  - pip:
+      - -r requirements.txt

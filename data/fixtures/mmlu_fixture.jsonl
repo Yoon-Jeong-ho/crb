@@ -1,0 +1,6 @@
+{"item_id":"mmlu-1","subject":"history","domain":"humanities","question":"Who was the first President of the United States?","choices":["George Washington","Abraham Lincoln","Thomas Jefferson","John Adams"],"answer":"A","answer_type":"mcq"}
+{"item_id":"mmlu-2","subject":"history","domain":"humanities","question":"In which year did the Berlin Wall fall?","choices":["1987","1988","1989","1990"],"answer":"C","answer_type":"mcq"}
+{"item_id":"mmlu-3","subject":"physics","domain":"science","question":"What particle has a negative electric charge?","choices":["Proton","Electron","Neutron","Photon"],"answer":"B","answer_type":"mcq"}
+{"item_id":"mmlu-4","subject":"physics","domain":"science","question":"What is the SI unit of force?","choices":["Joule","Pascal","Newton","Watt"],"answer":"C","answer_type":"mcq"}
+{"item_id":"mmlu-5","subject":"history","domain":"humanities","question":"Which empire built Machu Picchu?","choices":["Roman Empire","Inca Empire","Ottoman Empire","Mongol Empire"],"answer":"B","answer_type":"mcq"}
+{"item_id":"mmlu-6","subject":"physics","domain":"science","question":"What is the speed of light in vacuum approximately?","choices":["3x10^8 m/s","3x10^6 m/s","3x10^5 km/s","300 m/s"],"answer":"A","answer_type":"mcq"}
