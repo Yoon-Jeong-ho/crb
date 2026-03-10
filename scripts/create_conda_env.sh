@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CONDA_NO_PLUGINS=true conda env create -f environment.yml || \
-CONDA_NO_PLUGINS=true conda env update -f environment.yml --prune
+ENV_PREFIX="/data_x/aa007878/projects/crb/.conda/envs/crb"
+export PYTHONNOUSERSITE="${PYTHONNOUSERSITE:-1}"
 
-echo "Activate with: conda activate crb"
-echo "Then install editable package: pip install -e ."
+if [[ ! -x "$ENV_PREFIX/bin/python" ]]; then
+  CONDA_NO_PLUGINS=true conda create -y -p "$ENV_PREFIX" python=3.10 pip
+fi
+
+"$ENV_PREFIX/bin/pip" install -r requirements.txt
+"$ENV_PREFIX/bin/pip" install -e .
+
+echo "Environment ready: $ENV_PREFIX"

@@ -113,29 +113,32 @@ This makes it easy to add new adapters later.
 
 ## Recommended environment
 - Conda env name: `crb`
-- Python: **3.12**
-- Primary backend: **vLLM 0.11.x**
-- Transformers: **4.51+**
+- Python: **3.10**
+- Primary backend: **vLLM 0.11.2**
+- Torch: **2.9.0+cu128**
+- Transformers: **4.57.6**
 
 This project prefers a compatibility-first stack over bleeding-edge pins.
+
+All setup and run scripts export `PYTHONNOUSERSITE=1` to prevent accidental leakage from user-level site-packages on this machine.
 
 ### Create the conda env
 
 ```bash
 cd /data_x/aa007878/projects/crb
 bash scripts/create_conda_env.sh
-conda activate crb
-pip install -e .
+conda activate /data_x/aa007878/projects/crb/.conda/envs/crb
 ```
 
-> Note: this repo uses `CONDA_NO_PLUGINS=true` in the helper script because this machine's base conda installation can fail during CUDA virtual-package detection under sandboxed execution.
+> Note: this repo uses `CONDA_NO_PLUGINS=true` in the helper script because this machine's base conda installation can fail during CUDA virtual-package detection under sandboxed execution, so local-prefix env creation is recommended.
 
 ### Manual environment creation
 
 ```bash
-CONDA_NO_PLUGINS=true conda env create -f environment.yml
-conda activate crb
-pip install -e .
+CONDA_NO_PLUGINS=true conda create -y -p /data_x/aa007878/projects/crb/.conda/envs/crb python=3.10 pip
+conda activate /data_x/aa007878/projects/crb/.conda/envs/crb
+PYTHONNOUSERSITE=1 pip install -r requirements.txt
+PYTHONNOUSERSITE=1 pip install -e .
 ```
 
 ### Dependency files
@@ -401,13 +404,13 @@ These are intended for actual GPU-backed runs.
 
 ### Local smoke check
 ```bash
-PYTHONPATH=src python -m crb.cli.run_eval --config configs/mock_mmlu_multiturn_oracle.yaml
-PYTHONPATH=src python -m crb.cli.run_eval --config configs/mock_gsm8k_flattened_self.yaml
+PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb.cli.run_eval --config configs/mock_mmlu_multiturn_oracle.yaml
+PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb.cli.run_eval --config configs/mock_gsm8k_flattened_self.yaml
 ```
 
 ### Manifest-only test
 ```bash
-PYTHONPATH=src python -m crb.cli.generate_pack --config configs/mock_mmlu_multiturn_oracle.yaml
+PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb.cli.generate_pack --config configs/mock_mmlu_multiturn_oracle.yaml
 ```
 
 ### Bytecode sanity check
@@ -453,10 +456,23 @@ Implemented:
 - single-/multi-GPU shell entrypoints
 - smoke-test fixture configs
 
-Pending or expected next validation steps:
-- install/verify vLLM inside the dedicated conda env
-- run real GPU-backed experiments on at least two datasets
-- confirm final single-GPU and multi-GPU end-to-end results on this machine
+Validated on this machine (2026-03-10):
+- project-local conda env at `/data_x/aa007878/projects/crb/.conda/envs/crb`
+- single-GPU path with `CUDA_VISIBLE_DEVICES=6`
+- multi-GPU path with `CUDA_VISIBLE_DEVICES=6,7`
+- real vLLM run on MMLU-family benchmark (`multi_turn` + `oracle_history`)
+- real vLLM run on GSM8K (`single_turn_flattened` + `self_history`)
+- run JSON creation under `results/runs/`
+- cumulative scoreboard append under `results/summary/scoreboard.csv`
+
+Current real-run result examples:
+- `results/runs/qwen25_1p5b_mmlu_multiturn_oracle_k2__ee884e47be5f43fd/run-20260310T060505Z-ee884e47.json`
+- `results/runs/qwen25_1p5b_gsm8k_flattened_self_k2__8018d67576ecc2b3/run-20260310T060859Z-8018d675.json`
+
+Next natural extensions:
+- add larger `num_samples` configs for full sweeps
+- add more model configs (Gemma / DeepSeek distill)
+- add MATH adapter and richer numeric evaluators
 
 ---
 

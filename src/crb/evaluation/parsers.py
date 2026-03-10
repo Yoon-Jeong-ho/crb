@@ -8,9 +8,10 @@ from crb.schemas import NormalizedItem, ParsedAnswer
 
 
 MCQ_STRICT_RE = re.compile(r"^Answer\s*:\s*([A-J])\s*$", re.IGNORECASE)
-MCQ_FALLBACK_RE = re.compile(r"\b([A-J])\b", re.IGNORECASE)
+MCQ_FALLBACK_RE = re.compile(r"^\s*\(?([A-J])[\)\.\:]?(?:\s|$)", re.IGNORECASE)
 ANSWER_LINE_RE = re.compile(r"Answer\s*:\s*(.+)", re.IGNORECASE)
 BOXED_RE = re.compile(r"\\boxed\{([^{}]+)\}")
+NUMERIC_TOKEN_RE = re.compile(r"[-+]?\d+(?:\.\d+)?(?:/\d+)?")
 
 
 
@@ -35,11 +36,17 @@ def parse_mcq_answer(raw_output: str) -> ParsedAnswer:
                 status="parsed",
             )
     candidates: list[str] = []
-    for line in lines[-3:]:
+    for line in lines[-5:]:
         if "answer" in line.lower():
-            match = MCQ_FALLBACK_RE.search(line)
-            if match:
-                candidates.append(match.group(1).upper())
+            answer_match = ANSWER_LINE_RE.search(line)
+            if answer_match:
+                letter_match = MCQ_FALLBACK_RE.search(answer_match.group(1).strip())
+                if letter_match:
+                    candidates.append(letter_match.group(1).upper())
+                    continue
+        line_match = MCQ_FALLBACK_RE.search(line)
+        if line_match:
+            candidates.append(line_match.group(1).upper())
     candidates = sorted(set(candidates))
     if len(candidates) == 1:
         return ParsedAnswer(
@@ -68,11 +75,12 @@ def parse_numeric_answer(raw_output: str) -> ParsedAnswer:
                 raw_output=raw_output,
                 normalized_answer=match.group(1).upper(),
                 parser_name="numeric_but_letter",
-                status="parsed",
+                status="invalid",
+                error_type="letter_output_for_numeric",
             )
         match = ANSWER_LINE_RE.search(line)
         if match:
-            normalized = normalize_numeric_string(match.group(1))
+            normalized = _normalize_numeric_fragment(match.group(1))
             if normalized is not None:
                 return ParsedAnswer(
                     raw_output=raw_output,
@@ -80,9 +88,22 @@ def parse_numeric_answer(raw_output: str) -> ParsedAnswer:
                     parser_name="numeric_strict",
                     status="parsed",
                 )
+    answer_spans = [match.group(1) for match in ANSWER_LINE_RE.finditer(raw_output)]
+    normalized_spans = [
+        normalized
+        for span in answer_spans
+        if (normalized := _normalize_numeric_fragment(span)) is not None
+    ]
+    if normalized_spans:
+        return ParsedAnswer(
+            raw_output=raw_output,
+            normalized_answer=normalized_spans[-1],
+            parser_name="numeric_answer_span_fallback",
+            status="parsed",
+        )
     numbers: list[str] = []
     for line in lines[-4:]:
-        normalized = normalize_numeric_string(line)
+        normalized = _normalize_numeric_fragment(line)
         if normalized is not None:
             numbers.append(normalized)
     numbers = sorted(set(numbers))
@@ -156,6 +177,20 @@ def normalize_numeric_string(value: str) -> str | None:
         return _fraction_to_string(fraction)
     except (InvalidOperation, ValueError, ZeroDivisionError):
         return None
+
+
+def _normalize_numeric_fragment(value: str) -> str | None:
+    normalized = normalize_numeric_string(value)
+    if normalized is not None:
+        return normalized
+    matches = NUMERIC_TOKEN_RE.findall(value)
+    if not matches:
+        return None
+    for token in reversed(matches):
+        normalized = normalize_numeric_string(token)
+        if normalized is not None:
+            return normalized
+    return None
 
 
 

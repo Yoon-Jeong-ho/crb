@@ -1,7 +1,7 @@
 experiment:
   name: qwen25_1p5b_gsm8k_flattened_self_k2
   seed: 42
-  num_samples: 8
+  num_samples: 2
   tags: [qwen, gsm8k, flattened]
 model:
   engine: vllm

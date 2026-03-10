@@ -3,6 +3,10 @@ AGENTS.md
 .omx/
 .codex/
 .agents/
+.conda/ 
+pyproject.toml
+tests/
+results/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -174,3 +178,5 @@ logs/
 results/manifests/
 results/runs/
 results/summary/
+
+.conda/

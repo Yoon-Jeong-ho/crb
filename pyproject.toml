@@ -7,7 +7,7 @@ name = "crb-benchmark"
 version = "0.1.0"
 description = "Conversation-Accumulated / Multi-Turn Interference Benchmark"
 readme = "README.md"
-requires-python = ">=3.12,<3.13"
+requires-python = ">=3.10,<3.11"
 license = { text = "MIT" }
 authors = [
   { name = "CRB Experiment Pipeline" }
@@ -16,7 +16,12 @@ dependencies = [
   "datasets>=2.21.0,<3.0.0",
   "PyYAML>=6.0.2,<7.0.0",
   "transformers>=4.51.0,<5.0.0",
-  "vllm>=0.11.1,<0.12.0"
+  "vllm>=0.11.1,<0.12.0",
+  "requests>=2.32.3,<3.0.0",
+  "regex>=2024.11.6",
+  "sentencepiece>=0.2.0,<1.0.0",
+  "protobuf>=5.29.0,<7.0.0",
+  "tiktoken>=0.9.0,<1.0.0"
 ]
 
 [project.optional-dependencies]
