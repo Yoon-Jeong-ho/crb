@@ -37,18 +37,25 @@ class VllmEngine(InferenceEngine):
         sampling_params = SamplingParams(
             temperature=self.decoding_config.temperature,
             top_p=self.decoding_config.top_p,
+            top_k=self.decoding_config.top_k,
+            min_p=self.decoding_config.min_p,
             max_tokens=self.decoding_config.max_tokens,
             repetition_penalty=self.decoding_config.repetition_penalty,
+            presence_penalty=self.decoding_config.presence_penalty,
             stop=self.decoding_config.stop or None,
         )
         output = self.llm.generate([prompt], sampling_params, use_tqdm=False)[0]
         return output.outputs[0].text.strip()
 
     def render_chat(self, messages: list[dict[str, str]]) -> str:
+        template_kwargs = dict(self.model_config.chat_template_kwargs)
+        if self.model_config.model_family.lower().startswith("qwen3") and "enable_thinking" not in template_kwargs:
+            template_kwargs["enable_thinking"] = self.model_config.thinking_mode.lower() != "off"
         return self.tokenizer.apply_chat_template(
             messages,
             tokenize=False,
             add_generation_prompt=True,
+            **template_kwargs,
         )
 
     def close(self) -> None:

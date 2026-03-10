@@ -1,6 +1,6 @@
 # CRB: Conversation-Accumulated / Multi-Turn Interference Benchmark
 
-CRB is a reproducible experiment pipeline for measuring how a model's answer to a **final target problem** changes after accumulating **dummy question-answer turns** in its prior conversation history.
+CRB is a reproducible experiment pipeline for measuring how a model's answer to a **final target problem** changes after accumulating **dummy question-answer turns** in prior conversation history.
 
 The benchmark supports:
 - **multi-turn accumulated evaluation**
@@ -11,6 +11,7 @@ The benchmark supports:
 - **run-level JSON outputs**
 - **cumulative CSV scoreboard logging**
 - **reusable, model-independent evaluation pack manifests**
+- **Qwen3 thinking on/off comparisons**
 
 The implementation uses the **vLLM Python API** as the primary inference backend so the same codepath can be used for single-GPU and multi-GPU runs with config-only changes.
 
@@ -30,8 +31,9 @@ For each target benchmark item:
    - `same_domain`
    - `cross_domain`
    - multiple `k` values
+   - model reasoning modes such as **Qwen3 thinking on/off**
 
-### Modes
+### Core evaluation modes
 
 - `evaluation_mode=multi_turn`
   - history is rendered as real `user/assistant` turns.
@@ -41,17 +43,30 @@ For each target benchmark item:
   - dummy turns contain the gold canonical answer.
 - `history_mode=self_history`
   - dummy turns contain the model's own parsed canonical answer.
+
+### Dummy domain policy
+
+CRB normalizes every sample into a common `domain` + `subject` schema.
+
 - `dummy_type=same_domain`
-  - dummy questions come from the same subject/domain as the target.
+  - dummy questions must share either the same normalized `subject` or the same normalized broad `domain` as the target.
 - `dummy_type=cross_domain`
-  - dummy questions come from a different subject/domain (or a different dataset pool).
+  - dummy questions must **not** share the same normalized `subject` or broad `domain` as the target.
+  - cross-dataset dummies are allowed, but they are **not automatically cross-domain** unless the normalized domain actually differs.
+
+### Important edge case: AIME / math-heavy settings
+
+AIME is almost entirely `domain=math`, so meaningful `cross_domain` evaluation usually requires **cross-dataset dummy pools** such as GPQA or MMLU non-math subjects. This is supported by the default AIME configs.
 
 ---
 
 ## 2. Repository structure
 
 ```text
-configs/                  YAML experiment configs
+configs/
+  templates/              Base templates for paper-scale sweeps
+  sweeps/                 Sweep specs that expand into concrete configs
+  *.yaml                  Hand-authored run configs
 data/
   fixtures/               Local JSONL fixtures for smoke tests
   cache/                  Optional Hugging Face dataset cache (created at runtime)
@@ -60,7 +75,7 @@ results/
   manifests/              Fixed target→dummy sampling manifests
   runs/                   Run-specific JSON + partial JSONL outputs
   summary/                Cumulative CSV scoreboard
-scripts/                  Shell helpers for env setup and runs
+scripts/                  Shell helpers for env setup, batching, and sweep materialization
 src/crb/
   cli/                    CLI entrypoints
   datasets/               Dataset adapters and normalization
@@ -70,7 +85,7 @@ src/crb/
   prompts/                Prompt rendering
   sampling/               Dummy pack / manifest generation
   utils/                  Hashing, git metadata, runtime helpers
-tests/                    Parser/sampler/pipeline tests
+tests/                    Parser/sampler/config metadata tests
 environment.yml          Conda environment definition
 requirements.txt         Pip dependency pins
 pyproject.toml           Editable install + CLI entrypoints
@@ -81,14 +96,18 @@ README.md                This file
 
 ## 3. Supported datasets
 
-### Implemented now
-- **MMLU-style multiple-choice** via `adapter: mmlu`
-  - default example config uses `cais/mmlu` as an MMLU-family knowledge benchmark.
+### Currently supported adapters
+- **MMLU-family** via `adapter: mmlu`
+  - current default example uses `cais/mmlu`
 - **GSM8K** via `adapter: gsm8k`
 - **GPQA** via `adapter: gpqa`
-- **Local JSONL fixtures** via `adapter: jsonl` for smoke testing and CI-like checks
+  - current configs use `Idavidrein/gpqa`
+- **AIME** via `adapter: aime`
+  - current configs use `HuggingFaceH4/aime_2024`
+- **Local JSONL fixtures** via `adapter: jsonl`
 
 ### Internal normalized format
+
 Each dataset adapter converts raw records into a common schema:
 
 ```json
@@ -105,16 +124,38 @@ Each dataset adapter converts raw records into a common schema:
 }
 ```
 
-This makes it easy to add new adapters later.
+### Dataset-specific notes
+
+#### MMLU-family
+- normalized as `mcq`
+- `subject` comes from the benchmark subject
+- `domain` is broad-normalized by keyword heuristics (for example, math / physics / chemistry / law / history)
+
+#### GSM8K
+- normalized as `numeric`
+- `domain=math`
+- `subject=arithmetic`
+
+#### GPQA
+- normalized as `mcq`
+- uses `High-level domain` and `Subdomain` where available
+- answer choices are **deterministically shuffled per item** so the correct answer is not always `A`
+- this preserves reproducibility while making the evaluation more realistic
+
+#### AIME
+- normalized as `numeric`
+- `domain=math`
+- `subject=aime`
+- answer extraction uses the numeric evaluator, which supports stripping extra punctuation and normalizing integers / decimals / fractions before exact comparison
 
 ---
 
 ## 4. Environment setup
 
 ## Recommended environment
-- Conda env name: `crb`
+- project-local conda env: `/data_x/aa007878/projects/crb/.conda/envs/crb`
 - Python: **3.10**
-- Primary backend: **vLLM 0.11.2**
+- primary backend: **vLLM 0.11.2**
 - Torch: **2.9.0+cu128**
 - Transformers: **4.57.6**
 
@@ -129,8 +170,6 @@ cd /data_x/aa007878/projects/crb
 bash scripts/create_conda_env.sh
 conda activate /data_x/aa007878/projects/crb/.conda/envs/crb
 ```
-
-> Note: this repo uses `CONDA_NO_PLUGINS=true` in the helper script because this machine's base conda installation can fail during CUDA virtual-package detection under sandboxed execution, so local-prefix env creation is recommended.
 
 ### Manual environment creation
 
@@ -180,6 +219,7 @@ bash scripts/run_batch.sh configs/
 
 ### Tensor parallel behavior
 Set in YAML with:
+
 ```yaml
 model:
   tensor_parallel_size: auto
@@ -191,71 +231,110 @@ model:
 
 ---
 
-## 6. CLI entrypoints
+## 6. Qwen3 thinking on / off support
+
+CRB now supports **same-family, same-size Qwen3 comparisons** using config-level thinking control.
+
+### Implementation strategy
+
+For Qwen3 configs, CRB stores:
+- `model.model_family: qwen3`
+- `model.thinking_mode: on | off`
+- `model.chat_template_kwargs.enable_thinking: true | false`
+
+At prompt rendering time, the vLLM engine forwards `chat_template_kwargs` to `tokenizer.apply_chat_template(...)`.
+
+This means:
+- **thinking off** is a hard config-level switch via `enable_thinking: false`
+- **thinking on** is a hard config-level switch via `enable_thinking: true`
+- `thinking_mode` is recorded in both run JSON and the cumulative CSV scoreboard
+
+### Included Qwen3 comparison configs
+
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on.yaml`
+- `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off.yaml`
+- `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on.yaml`
+- `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml`
+
+### Qwen3 decoding presets
+
+The configs use separate decoding defaults for paper comparisons:
+- **thinking off**: `temperature=0.7`, `top_p=0.8`, `top_k=20`
+- **thinking on**: `temperature=0.6`, `top_p=0.95`, `top_k=20`
+
+These are encoded directly in the config files and sweep presets.
+
+---
+
+## 7. CLI entrypoints
 
 ### Run an evaluation
 ```bash
-python -m crb.cli.run_eval --config configs/qwen25_1p5b_mmlu_multiturn_oracle_k2.yaml
+python -m crb.cli.run_eval --config configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml
 ```
 
 ### Generate or reuse a manifest only
 ```bash
-python -m crb.cli.generate_pack --config configs/qwen25_1p5b_mmlu_multiturn_oracle_k2.yaml
+python -m crb.cli.generate_pack --config configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml
 ```
 
 ### Run multiple configs
 ```bash
-python -m crb.cli.run_batch configs/qwen25_1p5b_mmlu_multiturn_oracle_k2.yaml configs/qwen25_1p5b_gsm8k_flattened_self_k2.yaml
+python -m crb.cli.run_batch \
+  configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml \
+  configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on.yaml
+```
+
+### Materialize the paper sweep into concrete configs
+```bash
+python -m crb.cli.materialize_sweep --spec configs/sweeps/qwen3_core_paper.yaml
 ```
 
 After editable install, you can also use:
 - `crb-eval`
 - `crb-pack`
 - `crb-batch`
+- `crb-materialize`
 
 ---
 
-## 7. Config structure
+## 8. Config structure
 
 Example:
 
 ```yaml
 experiment:
-  name: qwen25_1p5b_mmlu_multiturn_oracle_k2
+  name: qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on
   seed: 42
   num_samples: 8
 
 model:
   engine: vllm
-  model_name: Qwen/Qwen2.5-1.5B-Instruct
+  model_name: Qwen/Qwen3-1.7B
+  model_family: qwen3
+  thinking_mode: on
   tensor_parallel_size: auto
+  chat_template_kwargs:
+    enable_thinking: true
 
-prompt:
-  system_prompt: "..."
-  final_answer_instruction: "..."
+decoding:
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  max_tokens: 2048
 
 evaluation:
   evaluation_mode: multi_turn
   history_mode: oracle_history
   dummy_type: same_domain
   k: 2
-  manifest_k_values: [0, 2, 4, 8]
-  target:
-    dataset_name: mmlu
-    adapter: mmlu
-    path: cais/mmlu
-    subset: all
-    split: test
-  dummy_sources:
-    - dataset_name: mmlu
-      adapter: mmlu
-      path: cais/mmlu
-      subset: all
-      split: validation
 ```
 
 ### Important axes controlled by config
 - model name
+- model family
+- thinking mode
 - decoding params
 - prompt template
 - target dataset / split
@@ -270,7 +349,47 @@ evaluation:
 
 ---
 
-## 8. Reproducible dummy sampling
+## 9. Paper-scale sweep setup
+
+CRB now includes **paper sweep templates** and a **materialization spec** so that full experiments can be expanded consistently before batch execution.
+
+### Base templates
+
+- `configs/templates/qwen3_1p7b_mmlu_base.yaml`
+- `configs/templates/qwen3_1p7b_gsm8k_base.yaml`
+- `configs/templates/qwen3_1p7b_gpqa_base.yaml`
+- `configs/templates/qwen3_1p7b_aime_base.yaml`
+
+### Core sweep spec
+
+- `configs/sweeps/qwen3_core_paper.yaml`
+
+This sweep covers:
+- datasets: `mmlu`, `gsm8k`, `gpqa`, `aime`
+- evaluation modes: `multi_turn`, `single_turn_flattened`
+- history modes: `oracle_history`, `self_history`
+- dummy types: `same_domain`, `cross_domain`
+- `k`: `0, 2, 4, 8`
+- thinking modes: `on`, `off`
+
+### Materialize + run flow
+
+```bash
+bash scripts/materialize_qwen3_core_sweep.sh
+bash scripts/run_qwen3_core_sweep.sh
+```
+
+The generated configs are written to:
+
+```text
+configs/generated/qwen3_core_paper/
+```
+
+This keeps the paper sweep reproducible while avoiding a large hand-maintained matrix of YAML files.
+
+---
+
+## 10. Reproducible dummy sampling
 
 CRB precomputes a **model-independent evaluation manifest**.
 
@@ -287,10 +406,11 @@ This guarantees that different models reuse the same target→dummy assignments.
 - manifests are reused automatically if they already exist
 - `k` is selected from the front of a pre-sampled ordered dummy list
 - the manifest is saved before model evaluation begins
+- manifests stay **model-independent**
 
 ---
 
-## 9. Prompting and answer extraction
+## 11. Prompting and evaluators
 
 ### Output contract
 All prompts instruct the model to end with:
@@ -301,20 +421,21 @@ All prompts instruct the model to end with:
 ### History storage default
 History stores the **canonicalized answer**, not the full raw generation.
 
-### Parsing
-Implemented as:
+### MCQ evaluator
 - strict parser first
 - fallback parser second
-- explicit invalid / ambiguous failure logging
+- extracts canonical choice letters `A`–`J`
+- ambiguous or conflicting outputs become invalid
 
-### Scoring
-- MCQ: exact canonical letter match
-- Numeric: exact rationally-normalized match (`0.5 == 1/2`)
-- No reprompting
+### Numeric evaluator
+- strips extra punctuation / spaces / commas
+- normalizes integers, decimals, and fractions
+- exact match is performed on the normalized canonical form
+- useful for GSM8K and AIME-style integer answers
 
 ---
 
-## 10. Output files
+## 12. Output files
 
 ## Run-level JSON
 Each completed run writes one JSON file under:
@@ -323,17 +444,44 @@ Each completed run writes one JSON file under:
 results/runs/<experiment>__<config_hash>/run-<timestamp>-<short_hash>.json
 ```
 
-Contents include:
-- run metadata
-- git commit
-- config snapshot
-- metrics
-- per-item results
-- raw output
-- parsed answer
-- gold answer
-- dummy ids / dummy turns
-- error type
+### Top-level JSON fields
+CRB now records:
+- `run_id`
+- `timestamp`
+- `git_commit`
+- `model_name`
+- `model_family`
+- `thinking_mode`
+- `engine`
+- `dataset`
+- `split`
+- `evaluation_mode`
+- `history_mode`
+- `dummy_type`
+- `k`
+- `seed`
+- `num_items`
+- `metrics`
+- `config`
+- `per_item_results`
+
+### Per-item fields
+Each item result includes:
+- `item_id`
+- target `domain` / `subject`
+- `dummy_ids`
+- `dummy_domains`
+- `dummy_subjects`
+- `dummy_dataset_names`
+- `history_construction_mode`
+- `raw_output`
+- `parsed_answer`
+- `gold_answer`
+- `normalized_gold_answer`
+- `correct`
+- `parse_status`
+- `parser_name`
+- `error_type`
 
 ## Partial JSONL for resume
 During execution:
@@ -349,11 +497,13 @@ A single CSV is appended at:
 results/summary/scoreboard.csv
 ```
 
-Columns:
+### Scoreboard columns
 - `timestamp`
 - `run_id`
 - `git_commit`
 - `model_name`
+- `model_family`
+- `thinking_mode`
 - `dataset`
 - `split`
 - `evaluation_mode`
@@ -368,7 +518,7 @@ Columns:
 
 ---
 
-## 11. Resume / skip / failure handling
+## 13. Resume / skip / failure handling
 
 Implemented protections:
 - deterministic config hashing
@@ -379,108 +529,98 @@ Implemented protections:
 - per-item exception capture
 - timeout support via `runtime.timeout_seconds`
 - per-run log file under `logs/`
+- scoreboard header migration when new metadata fields are added
 
 If a model call fails, CRB records a runtime failure entry rather than silently dropping the item.
 
 ---
 
-## 12. Included configs
+## 14. Included configs
 
 ### Smoke / local fixture configs
 - `configs/mock_mmlu_multiturn_oracle.yaml`
 - `configs/mock_gsm8k_flattened_self.yaml`
 
-These use the mock engine and local JSONL fixtures to validate the full pipeline without GPU inference.
-
-### Real vLLM configs
+### Earlier validated Qwen2.5 configs
 - `configs/qwen25_1p5b_mmlu_multiturn_oracle_k2.yaml`
 - `configs/qwen25_1p5b_gsm8k_flattened_self_k2.yaml`
 
-These are intended for actual GPU-backed runs.
+### New Qwen3 configs
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml`
+- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on.yaml`
+- `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off.yaml`
+- `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on.yaml`
+- `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml`
 
 ---
 
-## 13. Quick verification commands
+## 15. Verification and current status
 
-### Local smoke check
-```bash
-PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb.cli.run_eval --config configs/mock_mmlu_multiturn_oracle.yaml
-PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb.cli.run_eval --config configs/mock_gsm8k_flattened_self.yaml
-```
-
-### Manifest-only test
-```bash
-PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb.cli.generate_pack --config configs/mock_mmlu_multiturn_oracle.yaml
-```
-
-### Bytecode sanity check
-```bash
-python -m compileall src tests
-```
-
----
-
-## 14. Extending the system
-
-### Add a new dataset
-1. create a loader in `src/crb/datasets/`
-2. normalize records into `NormalizedItem`
-3. register the adapter in the dataset registry
-4. add a YAML config
-
-### Add a new model
-1. duplicate a config
-2. change `model.model_name`
-3. optionally adjust decoding / tensor parallel settings
-
-### Add a new evaluation variant
-Likely extension points:
-- prompt templates in `src/crb/prompts/`
-- evaluation orchestration in `src/crb/evaluation/runner.py`
-- new parser / scorer in `src/crb/evaluation/`
-
----
-
-## 15. Current implementation status
-
-Implemented:
-- project scaffold and editable Python package
-- config-driven experiment runner
-- normalized dataset schema
-- MMLU / GSM8K / GPQA loaders
-- dummy-pack manifest generation
-- multi-turn + flattened prompting
-- self-history + oracle-history modes
-- per-run JSON writing
-- cumulative CSV scoreboard
-- single-/multi-GPU shell entrypoints
-- smoke-test fixture configs
-
-Validated on this machine (2026-03-10):
+Already validated earlier in this repository:
 - project-local conda env at `/data_x/aa007878/projects/crb/.conda/envs/crb`
 - single-GPU path with `CUDA_VISIBLE_DEVICES=6`
 - multi-GPU path with `CUDA_VISIBLE_DEVICES=6,7`
-- real vLLM run on MMLU-family benchmark (`multi_turn` + `oracle_history`)
-- real vLLM run on GSM8K (`single_turn_flattened` + `self_history`)
+- real vLLM run on an MMLU-family benchmark
+- real vLLM run on GSM8K
 - run JSON creation under `results/runs/`
 - cumulative scoreboard append under `results/summary/scoreboard.csv`
 
-Current real-run result examples:
-- `results/runs/qwen25_1p5b_mmlu_multiturn_oracle_k2__ee884e47be5f43fd/run-20260310T060505Z-ee884e47.json`
-- `results/runs/qwen25_1p5b_gsm8k_flattened_self_k2__8018d67576ecc2b3/run-20260310T060859Z-8018d675.json`
+Current repository expansion in this phase:
+- GPQA adapter hardened for deterministic choice ordering
+- AIME adapter added
+- Qwen3 thinking on/off metadata and chat-template controls added
+- paper sweep materialization support added
+- JSON / scoreboard metadata expanded with `model_family` and `thinking_mode`
 
-Next natural extensions:
-- add larger `num_samples` configs for full sweeps
-- add more model configs (Gemma / DeepSeek distill)
-- add MATH adapter and richer numeric evaluators
+### Important current operational note
+At the time of this update, GPU contention took priority over additional runtime validation. The new GPQA / AIME / Qwen3 configs and sweep tooling are committed and ready, but **additional GPU-backed execution should be resumed when GPUs 6 and 7 are free**.
 
 ---
 
-## 16. Git workflow expectation
+## 16. Quick commands to use later when GPUs are free
+
+### GPQA / Qwen3 thinking off
+```bash
+bash scripts/run_single_gpu.sh configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml
+```
+
+### GPQA / Qwen3 thinking on
+```bash
+bash scripts/run_single_gpu.sh configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on.yaml
+```
+
+### AIME / Qwen3 thinking off
+```bash
+bash scripts/run_single_gpu.sh configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml
+```
+
+### Materialize the full paper sweep
+```bash
+bash scripts/materialize_qwen3_core_sweep.sh
+```
+
+### Run the full materialized sweep
+```bash
+bash scripts/run_qwen3_core_sweep.sh
+```
+
+---
+
+## 17. Known limitations / TODO
+
+- the new GPQA / AIME / Qwen3 configs are added, but this phase intentionally defers additional GPU runs until contention clears
+- the paper sweep spec is ready, but the generated configs are not checked into git by default
+- AIME is treated as `domain=math`, so meaningful `cross_domain` experiments require cross-dataset dummy pools
+- numeric evaluation is exact-match after normalization; more advanced symbolic equivalence is not implemented yet
+- the current Qwen3 support focuses on config-level `enable_thinking`; prompt-level soft control like `/think` or `/no_think` is not the main paper path
+
+---
+
+## 18. Git workflow expectation
 
 Recommended checkpoint commits for this repo:
 - scaffold / env / README
 - dataset + manifest layer
 - evaluation pipeline + outputs
-- GPU validation + README update
-
+- benchmark expansion + reasoning mode support
+- final GPU validation pass when resources are free

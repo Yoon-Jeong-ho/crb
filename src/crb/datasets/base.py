@@ -30,12 +30,12 @@ LETTER_CHOICES = list("ABCDEFGHIJ")
 
 
 KEY_ALIASES = {
-    "question": ["question", "prompt", "problem", "query"],
-    "subject": ["subject", "category", "subdomain", "discipline"],
-    "domain": ["domain", "high_level_domain", "field"],
-    "answer": ["answer", "target", "correct_answer", "label", "answer_key"],
+    "question": ["question", "prompt", "problem", "query", "Question", "Problem"],
+    "subject": ["subject", "category", "subdomain", "discipline", "Subdomain"],
+    "domain": ["domain", "high_level_domain", "field", "High-level domain"],
+    "answer": ["answer", "target", "correct_answer", "label", "answer_key", "Answer"],
     "choices": ["choices", "options", "candidates"],
-    "item_id": ["item_id", "id", "question_id", "uid"],
+    "item_id": ["item_id", "id", "question_id", "uid", "Record ID", "ID"],
 }
 
 
@@ -44,7 +44,6 @@ def _first_present(example: dict[str, Any], keys: list[str], default: Any = None
         if key in example and example[key] not in (None, ""):
             return example[key]
     return default
-
 
 
 def _normalize_choice_answer(answer: Any, *, choices: list[str] | None = None) -> str:
@@ -60,13 +59,43 @@ def _normalize_choice_answer(answer: Any, *, choices: list[str] | None = None) -
     raise ValueError(f"Unsupported choice answer: {answer!r}")
 
 
+def canonicalize_subject(value: Any) -> str | None:
+    if value is None:
+        return None
+    cleaned = str(value).strip()
+    return cleaned or None
+
+
+def canonicalize_domain(*, dataset_name: str, raw_domain: Any, raw_subject: Any) -> str | None:
+    candidate = str(raw_domain or raw_subject or dataset_name).strip().lower()
+    if not candidate:
+        return None
+
+    keyword_groups = {
+        "math": ["math", "algebra", "geometry", "calculus", "statistics", "arithmetic", "number", "aime"],
+        "physics": ["physics", "quantum", "mechanics", "electricity", "thermo"],
+        "chemistry": ["chemistry", "chemical"],
+        "biology": ["biology", "genetics", "anatomy", "ecology", "microbiology"],
+        "computer_science": ["computer", "programming", "machine_learning", "machine learning"],
+        "economics": ["economics", "economy", "finance", "accounting"],
+        "law": ["law", "jurisprudence"],
+        "history": ["history"],
+        "philosophy": ["philosophy", "ethics", "logic"],
+        "psychology": ["psychology"],
+        "medicine": ["medicine", "clinical", "medical", "health"],
+        "humanities": ["humanities", "literature", "linguistics", "language"],
+    }
+    for normalized, keywords in keyword_groups.items():
+        if any(keyword in candidate for keyword in keywords):
+            return normalized
+    return candidate.replace(" ", "_")
+
 
 def _normalize_item_id(example: dict[str, Any], dataset_name: str, split: str, idx: int) -> str:
     explicit = _first_present(example, KEY_ALIASES["item_id"])
     if explicit is None:
         return f"{dataset_name}:{split}:{idx}"
     return f"{dataset_name}:{split}:{explicit}"
-
 
 
 def _normalize_mcq_record(example: dict[str, Any], *, dataset_name: str, split: str, idx: int) -> NormalizedItem:
@@ -79,14 +108,18 @@ def _normalize_mcq_record(example: dict[str, Any], *, dataset_name: str, split: 
         raw_choices = options if options else None
     choices = [str(choice).strip() for choice in raw_choices] if raw_choices else None
     answer = _normalize_choice_answer(_first_present(example, KEY_ALIASES["answer"]), choices=choices)
-    subject = _first_present(example, KEY_ALIASES["subject"])
-    domain = _first_present(example, KEY_ALIASES["domain"], default=subject)
+    subject = canonicalize_subject(_first_present(example, KEY_ALIASES["subject"]))
+    domain = canonicalize_domain(
+        dataset_name=dataset_name,
+        raw_domain=_first_present(example, KEY_ALIASES["domain"], default=subject),
+        raw_subject=subject,
+    )
     return NormalizedItem(
         dataset_name=dataset_name,
         split=split,
         item_id=_normalize_item_id(example, dataset_name, split, idx),
-        domain=str(domain) if domain is not None else None,
-        subject=str(subject) if subject is not None else None,
+        domain=domain,
+        subject=subject,
         question=question,
         choices=choices,
         answer=answer,
@@ -95,25 +128,27 @@ def _normalize_mcq_record(example: dict[str, Any], *, dataset_name: str, split: 
     )
 
 
-
 def _normalize_numeric_record(example: dict[str, Any], *, dataset_name: str, split: str, idx: int) -> NormalizedItem:
     question = str(_first_present(example, KEY_ALIASES["question"]))
     answer = _first_present(example, KEY_ALIASES["answer"])
-    subject = _first_present(example, KEY_ALIASES["subject"], default=dataset_name)
-    domain = _first_present(example, KEY_ALIASES["domain"], default=subject)
+    subject = canonicalize_subject(_first_present(example, KEY_ALIASES["subject"], default=dataset_name))
+    domain = canonicalize_domain(
+        dataset_name=dataset_name,
+        raw_domain=_first_present(example, KEY_ALIASES["domain"], default=subject),
+        raw_subject=subject,
+    )
     return NormalizedItem(
         dataset_name=dataset_name,
         split=split,
         item_id=_normalize_item_id(example, dataset_name, split, idx),
-        domain=str(domain) if domain is not None else None,
-        subject=str(subject) if subject is not None else None,
+        domain=domain,
+        subject=subject,
         question=question,
         choices=None,
         answer=str(answer).strip(),
         answer_type="numeric",
         metadata={"source_record": example},
     )
-
 
 
 def jsonl_loader(config: DataSourceConfig) -> list[NormalizedItem]:

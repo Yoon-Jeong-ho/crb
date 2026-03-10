@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import random
 import re
 from typing import Any
 
@@ -10,14 +11,16 @@ from crb.datasets.base import (
     _first_present,
     _normalize_choice_answer,
     _normalize_item_id,
+    canonicalize_domain,
+    canonicalize_subject,
     registry,
 )
 from crb.schemas import DataSourceConfig, NormalizedItem
+from crb.utils.hashing import stable_hash
 
 
 LETTER_CHOICES = list("ABCDEFGHIJ")
 GSM8K_ANSWER_RE = re.compile(r"####\s*([^\n]+)")
-
 
 
 def _load_hf_split(config: DataSourceConfig):
@@ -35,7 +38,6 @@ def _load_hf_split(config: DataSourceConfig):
     )
 
 
-
 def mmlu_loader(config: DataSourceConfig) -> list[NormalizedItem]:
     dataset = _load_hf_split(config)
     items: list[NormalizedItem] = []
@@ -46,15 +48,19 @@ def mmlu_loader(config: DataSourceConfig) -> list[NormalizedItem]:
             choices = list(choices.values())
         choices = [str(choice).strip() for choice in choices]
         answer = _normalize_choice_answer(_first_present(example, KEY_ALIASES["answer"]), choices=choices)
-        subject = _first_present(example, KEY_ALIASES["subject"], default=config.subset)
-        domain = _first_present(example, KEY_ALIASES["domain"], default=subject)
+        subject = canonicalize_subject(_first_present(example, KEY_ALIASES["subject"], default=config.subset))
+        domain = canonicalize_domain(
+            dataset_name=config.dataset_name,
+            raw_domain=_first_present(example, KEY_ALIASES["domain"], default=subject),
+            raw_subject=subject,
+        )
         items.append(
             NormalizedItem(
                 dataset_name=config.dataset_name,
                 split=config.split,
                 item_id=_normalize_item_id(example, config.dataset_name, config.split, idx),
-                domain=str(domain) if domain is not None else None,
-                subject=str(subject) if subject is not None else None,
+                domain=domain,
+                subject=subject,
                 question=question,
                 choices=choices,
                 answer=answer,
@@ -63,7 +69,6 @@ def mmlu_loader(config: DataSourceConfig) -> list[NormalizedItem]:
             )
         )
     return items
-
 
 
 def gsm8k_loader(config: DataSourceConfig) -> list[NormalizedItem]:
@@ -90,44 +95,91 @@ def gsm8k_loader(config: DataSourceConfig) -> list[NormalizedItem]:
     return items
 
 
-
 def gpqa_loader(config: DataSourceConfig) -> list[NormalizedItem]:
     dataset = _load_hf_split(config)
     items: list[NormalizedItem] = []
     for idx, example in enumerate(dataset):
-        question = str(
-            example.get("Question")
-            or example.get("question")
-            or example.get("prompt")
-        ).strip()
-        correct = str(example.get("Correct Answer") or example.get("correct_answer") or example.get("answer"))
+        question = str(example.get("Question") or example.get("question") or example.get("prompt")).strip()
+        correct = str(example.get("Correct Answer") or example.get("correct_answer") or example.get("answer")).strip()
         distractors = [
-            str(value)
+            str(value).strip()
             for key, value in example.items()
             if str(key).lower().startswith("incorrect answer") or str(key).lower().startswith("distractor")
         ]
         if not distractors:
             distractors = [
-                str(example[key])
+                str(example[key]).strip()
                 for key in ["Incorrect Answer 1", "Incorrect Answer 2", "Incorrect Answer 3"]
                 if key in example
             ]
-        choices = [correct, *distractors]
-        answer_letter = LETTER_CHOICES[0]
-        subject = example.get("Subdomain") or example.get("subdomain") or "gpqa"
-        domain = example.get("High-level domain") or example.get("high_level_domain") or subject
+        choice_bundle = [correct, *distractors]
+        if len(choice_bundle) < 4:
+            raise ValueError(f"GPQA item {idx} has fewer than 4 answer choices")
+
+        item_id = _normalize_item_id(example, config.dataset_name, config.split, idx)
+        indices = list(range(len(choice_bundle)))
+        rng = random.Random(int(stable_hash({"item_id": item_id, "seed": config.seed}, length=16), 16))
+        rng.shuffle(indices)
+        shuffled_choices = [choice_bundle[index] for index in indices]
+        correct_index = indices.index(0)
+        answer_letter = LETTER_CHOICES[correct_index]
+
+        subject = canonicalize_subject(example.get("Subdomain") or example.get("subdomain") or "gpqa")
+        domain = canonicalize_domain(
+            dataset_name=config.dataset_name,
+            raw_domain=example.get("High-level domain") or example.get("high_level_domain"),
+            raw_subject=subject,
+        )
         items.append(
             NormalizedItem(
                 dataset_name=config.dataset_name,
                 split=config.split,
-                item_id=_normalize_item_id(example, config.dataset_name, config.split, idx),
-                domain=str(domain),
-                subject=str(subject),
+                item_id=item_id,
+                domain=domain,
+                subject=subject,
                 question=question,
-                choices=choices,
+                choices=shuffled_choices,
                 answer=answer_letter,
                 answer_type="mcq",
-                metadata={"source_record": dict(example), "correct_choice_text": correct},
+                metadata={
+                    "source_record": dict(example),
+                    "correct_choice_text": correct,
+                    "choice_permutation": indices,
+                },
+            )
+        )
+    return items
+
+
+def aime_loader(config: DataSourceConfig) -> list[NormalizedItem]:
+    dataset = _load_hf_split(config)
+    items: list[NormalizedItem] = []
+    for idx, example in enumerate(dataset):
+        question = str(
+            example.get("problem")
+            or example.get("Problem")
+            or example.get("question")
+        ).strip()
+        answer = str(example.get("answer") or example.get("Answer")).strip()
+        item_id = _normalize_item_id(example, config.dataset_name, config.split, idx)
+        year = str(example.get("year") or example.get("Year") or "").strip() or None
+        subject = "aime"
+        items.append(
+            NormalizedItem(
+                dataset_name=config.dataset_name,
+                split=config.split,
+                item_id=item_id,
+                domain="math",
+                subject=subject,
+                question=question,
+                choices=None,
+                answer=answer,
+                answer_type="numeric",
+                metadata={
+                    "source_record": dict(example),
+                    "solution": example.get("solution") or example.get("Solution"),
+                    "year": year,
+                },
             )
         )
     return items
@@ -136,3 +188,4 @@ def gpqa_loader(config: DataSourceConfig) -> list[NormalizedItem]:
 registry.register("mmlu", mmlu_loader)
 registry.register("gsm8k", gsm8k_loader)
 registry.register("gpqa", gpqa_loader)
+registry.register("aime", aime_loader)

@@ -116,16 +116,20 @@ def _sample_candidates(
 
 
 def _matches_mode(target: NormalizedItem, candidate: NormalizedItem, mode: str) -> bool:
-    same_subject = bool(target.subject and candidate.subject and target.subject == candidate.subject)
-    same_domain = bool(target.domain and candidate.domain and target.domain == candidate.domain)
+    same_subject = bool(
+        target.subject and candidate.subject and target.subject.strip().lower() == candidate.subject.strip().lower()
+    )
+    same_domain = bool(
+        target.domain and candidate.domain and target.domain.strip().lower() == candidate.domain.strip().lower()
+    )
     if mode == "same_domain":
         if target.subject or candidate.subject or target.domain or candidate.domain:
             return same_subject or same_domain
         return target.dataset_name == candidate.dataset_name
     if mode == "cross_domain":
-        if target.dataset_name != candidate.dataset_name:
-            return True
-        return not (same_subject or same_domain)
+        if target.subject or candidate.subject or target.domain or candidate.domain:
+            return not (same_subject or same_domain)
+        return target.dataset_name != candidate.dataset_name
     raise ValueError(f"Unknown mode: {mode}")
 
 

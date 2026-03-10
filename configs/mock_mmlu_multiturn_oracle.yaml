@@ -5,6 +5,8 @@ experiment:
 model:
   engine: mock
   model_name: mock-engine
+  model_family: mock
+  thinking_mode: off
   trust_remote_code: false
 decoding:
   temperature: 0.0

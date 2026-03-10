@@ -13,6 +13,8 @@ SCOREBOARD_COLUMNS = [
     "run_id",
     "git_commit",
     "model_name",
+    "model_family",
+    "thinking_mode",
     "dataset",
     "split",
     "evaluation_mode",
@@ -58,6 +60,17 @@ def write_json(path: str | Path, payload: dict[str, Any]) -> None:
 def append_scoreboard(path: str | Path, row: dict[str, Any]) -> None:
     target = ensure_parent(path)
     file_exists = target.exists()
+    if file_exists:
+        with target.open("r", encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            existing_columns = reader.fieldnames or []
+            existing_rows = list(reader)
+        if existing_columns != SCOREBOARD_COLUMNS:
+            with target.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=SCOREBOARD_COLUMNS)
+                writer.writeheader()
+                for existing_row in existing_rows:
+                    writer.writerow({column: existing_row.get(column, "") for column in SCOREBOARD_COLUMNS})
     with target.open("a", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=SCOREBOARD_COLUMNS)
         if not file_exists:

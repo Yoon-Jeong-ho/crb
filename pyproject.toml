@@ -33,6 +33,7 @@ dev = [
 crb-eval = "crb.cli.run_eval:main"
 crb-pack = "crb.cli.generate_pack:main"
 crb-batch = "crb.cli.run_batch:main"
+crb-materialize = "crb.cli.materialize_sweep:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

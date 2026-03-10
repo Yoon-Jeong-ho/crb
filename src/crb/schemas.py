@@ -44,6 +44,8 @@ class DataSourceConfig:
 class ModelConfig:
     engine: str = "vllm"
     model_name: str = "Qwen/Qwen2.5-1.5B-Instruct"
+    model_family: str = "generic"
+    thinking_mode: str = "off"
     trust_remote_code: bool = True
     tensor_parallel_size: int | str = "auto"
     dtype: str = "auto"
@@ -54,14 +56,18 @@ class ModelConfig:
     swap_space: float = 4.0
     max_num_seqs: int | None = None
     seed: int = 42
+    chat_template_kwargs: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)
 class DecodingConfig:
     temperature: float = 0.0
     top_p: float = 1.0
+    top_k: int = -1
+    min_p: float = 0.0
     max_tokens: int = 256
     repetition_penalty: float = 1.0
+    presence_penalty: float = 0.0
     stop: list[str] = field(default_factory=list)
 
 

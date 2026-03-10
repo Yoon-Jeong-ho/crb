@@ -1,0 +1,49 @@
+output_dir: configs/generated/qwen3_core_paper
+presets:
+  qwen3_thinking_off:
+    model.thinking_mode: off
+    model.chat_template_kwargs.enable_thinking: false
+    decoding.temperature: 0.7
+    decoding.top_p: 0.8
+    decoding.top_k: 20
+    decoding.max_tokens: 1024
+  qwen3_thinking_on:
+    model.thinking_mode: on
+    model.chat_template_kwargs.enable_thinking: true
+    decoding.temperature: 0.6
+    decoding.top_p: 0.95
+    decoding.top_k: 20
+    decoding.max_tokens: 2048
+jobs:
+  - name: qwen3_mmlu
+    base_config: configs/templates/qwen3_1p7b_mmlu_base.yaml
+    variants: [qwen3_thinking_off, qwen3_thinking_on]
+    matrix:
+      evaluation.evaluation_mode: [multi_turn, single_turn_flattened]
+      evaluation.history_mode: [oracle_history, self_history]
+      evaluation.dummy_type: [same_domain, cross_domain]
+      evaluation.k: [0, 2, 4, 8]
+  - name: qwen3_gsm8k
+    base_config: configs/templates/qwen3_1p7b_gsm8k_base.yaml
+    variants: [qwen3_thinking_off, qwen3_thinking_on]
+    matrix:
+      evaluation.evaluation_mode: [multi_turn, single_turn_flattened]
+      evaluation.history_mode: [oracle_history, self_history]
+      evaluation.dummy_type: [same_domain, cross_domain]
+      evaluation.k: [0, 2, 4, 8]
+  - name: qwen3_gpqa
+    base_config: configs/templates/qwen3_1p7b_gpqa_base.yaml
+    variants: [qwen3_thinking_off, qwen3_thinking_on]
+    matrix:
+      evaluation.evaluation_mode: [multi_turn, single_turn_flattened]
+      evaluation.history_mode: [oracle_history, self_history]
+      evaluation.dummy_type: [same_domain, cross_domain]
+      evaluation.k: [0, 2, 4, 8]
+  - name: qwen3_aime
+    base_config: configs/templates/qwen3_1p7b_aime_base.yaml
+    variants: [qwen3_thinking_off, qwen3_thinking_on]
+    matrix:
+      evaluation.evaluation_mode: [multi_turn, single_turn_flattened]
+      evaluation.history_mode: [oracle_history, self_history]
+      evaluation.dummy_type: [same_domain, cross_domain]
+      evaluation.k: [0, 2, 4, 8]

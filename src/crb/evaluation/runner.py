@@ -65,7 +65,10 @@ def execute_run(config: RunConfig) -> dict:
     run_dir.mkdir(parents=True, exist_ok=True)
     final_jsons = sorted(run_dir.glob("run-*.json"))
     if final_jsons and config.runtime.skip_completed:
-        return json.loads(final_jsons[-1].read_text(encoding="utf-8"))
+        payload = json.loads(final_jsons[-1].read_text(encoding="utf-8"))
+        payload.setdefault("model_family", config.model.model_family)
+        payload.setdefault("thinking_mode", config.model.thinking_mode)
+        return payload
 
     log_path = Path(config.runtime.log_dir) / f"{config.experiment.name}__{signature}.log"
     logger = configure_logging(log_path)
@@ -119,6 +122,8 @@ def execute_run(config: RunConfig) -> dict:
         "timestamp": utc_timestamp(),
         "git_commit": get_git_commit(Path.cwd()),
         "model_name": config.model.model_name,
+        "model_family": config.model.model_family,
+        "thinking_mode": config.model.thinking_mode,
         "engine": config.model.engine,
         "dataset": config.evaluation.target.dataset_name,
         "split": config.evaluation.target.split,
@@ -142,6 +147,8 @@ def execute_run(config: RunConfig) -> dict:
             "run_id": run_id,
             "git_commit": payload["git_commit"],
             "model_name": payload["model_name"],
+            "model_family": payload["model_family"],
+            "thinking_mode": payload["thinking_mode"],
             "dataset": payload["dataset"],
             "split": payload["split"],
             "evaluation_mode": payload["evaluation_mode"],
@@ -260,7 +267,11 @@ def _evaluate_target_item(
         "question": item.question,
         "choices": item.choices,
         "dummy_ids": dummy_ids,
+        "dummy_domains": [dummy_index[dummy_id].domain for dummy_id in dummy_ids],
+        "dummy_subjects": [dummy_index[dummy_id].subject for dummy_id in dummy_ids],
+        "dummy_dataset_names": [dummy_index[dummy_id].dataset_name for dummy_id in dummy_ids],
         "dummy_turns": [dataclass_to_dict(turn) for turn in history_turns],
+        "history_construction_mode": config.evaluation.history_mode,
         "raw_output": raw_output,
         "parsed_answer": score.parsed.normalized_answer,
         "gold_answer": score.gold_answer,
@@ -316,7 +327,11 @@ def _build_runtime_failure(item: NormalizedItem, exc: Exception) -> dict:
         "question": item.question,
         "choices": item.choices,
         "dummy_ids": [],
+        "dummy_domains": [],
+        "dummy_subjects": [],
+        "dummy_dataset_names": [],
         "dummy_turns": [],
+        "history_construction_mode": "",
         "raw_output": "",
         "parsed_answer": None,
         "gold_answer": item.answer,
