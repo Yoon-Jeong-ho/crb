@@ -1,0 +1,297 @@
+{
+  "manifest_id": "manifest-2026-03-10T15:31:13Z",
+  "config_hash": "c56d79e297ea6e15",
+  "seed": 42,
+  "ks": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "gsm8k",
+      "adapter": "gsm8k",
+      "path": "openai/gsm8k",
+      "subset": "main",
+      "split": "test",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "gsm8k",
+      "adapter": "gsm8k",
+      "path": "openai/gsm8k",
+      "subset": "main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "validation",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "gsm8k:test:0",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6547",
+          "gsm8k:train:6982",
+          "mmlu:validation:7",
+          "gsm8k:train:639",
+          "gsm8k:train:5332",
+          "gsm8k:train:5244",
+          "gsm8k:train:2150",
+          "gsm8k:train:1389"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1515",
+          "mmlu:validation:834",
+          "gpqa:train:rec2ZTsqazBZ3LTWZ",
+          "mmlu:validation:641",
+          "mmlu:validation:340",
+          "mmlu:validation:729",
+          "gpqa:train:recRZjaElf8ft7xTq",
+          "gpqa:train:rec7qmSnbud4FHSqL"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:1",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5985",
+          "gsm8k:train:3081",
+          "gsm8k:train:1085",
+          "gsm8k:train:2890",
+          "gsm8k:train:1783",
+          "gsm8k:train:305",
+          "gsm8k:train:6323",
+          "gsm8k:train:6216"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1456",
+          "mmlu:validation:449",
+          "mmlu:validation:1098",
+          "gpqa:train:receYQxnUBvxPcvbQ",
+          "mmlu:validation:1317",
+          "mmlu:validation:493",
+          "mmlu:validation:216",
+          "mmlu:validation:814"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:2",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1860",
+          "gsm8k:train:3547",
+          "gsm8k:train:436",
+          "gsm8k:train:6443",
+          "gsm8k:train:3349",
+          "gsm8k:train:940",
+          "gsm8k:train:1250",
+          "gsm8k:train:6309"
+        ],
+        "cross_domain": [
+          "gpqa:train:rec9W28HgpEUeUN8k",
+          "mmlu:validation:325",
+          "mmlu:validation:1480",
+          "mmlu:validation:1031",
+          "mmlu:validation:504",
+          "mmlu:validation:362",
+          "mmlu:validation:219",
+          "mmlu:validation:436"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:3",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5371",
+          "gsm8k:train:3635",
+          "gsm8k:train:3253",
+          "gsm8k:train:1037",
+          "gsm8k:train:4203",
+          "gsm8k:train:6713",
+          "gsm8k:train:4810",
+          "gsm8k:train:6885"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1200",
+          "mmlu:validation:453",
+          "gpqa:train:recBTsbQnhEKSSnQh",
+          "mmlu:validation:208",
+          "mmlu:validation:559",
+          "mmlu:validation:1438",
+          "mmlu:validation:918",
+          "mmlu:validation:398"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:4",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4527",
+          "gsm8k:train:6880",
+          "gsm8k:train:3356",
+          "gsm8k:train:1876",
+          "gsm8k:train:6602",
+          "gsm8k:train:3068",
+          "gsm8k:train:1338",
+          "gsm8k:train:734"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1132",
+          "mmlu:validation:449",
+          "mmlu:validation:53",
+          "mmlu:validation:781",
+          "mmlu:validation:1461",
+          "mmlu:validation:106",
+          "gpqa:train:recBXlqrZUCR897It",
+          "mmlu:validation:223"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:5",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5453",
+          "gsm8k:train:6335",
+          "gsm8k:train:946",
+          "gsm8k:train:6724",
+          "gsm8k:train:2068",
+          "gsm8k:train:4259",
+          "gsm8k:train:4602",
+          "gsm8k:train:43"
+        ],
+        "cross_domain": [
+          "mmlu:validation:511",
+          "mmlu:validation:884",
+          "gpqa:train:recooG6bivTUJpDBz",
+          "mmlu:validation:25",
+          "mmlu:validation:1083",
+          "gpqa:train:recWSIn23pglAdv4f",
+          "gpqa:train:recLSALHT675vkEwE",
+          "mmlu:validation:1086"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:6",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3032",
+          "gsm8k:train:5793",
+          "gsm8k:train:565",
+          "gsm8k:train:5039",
+          "gsm8k:train:3965",
+          "gsm8k:train:2296",
+          "gsm8k:train:4302",
+          "gsm8k:train:841"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1091",
+          "mmlu:validation:486",
+          "mmlu:validation:1249",
+          "mmlu:validation:1176",
+          "gpqa:train:recEitMlu2rOnMmkn",
+          "mmlu:validation:1525",
+          "mmlu:validation:1374",
+          "mmlu:validation:334"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:7",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4611",
+          "gsm8k:train:2216",
+          "gsm8k:train:1503",
+          "gsm8k:train:7236",
+          "gsm8k:train:5474",
+          "gsm8k:train:3201",
+          "gsm8k:train:4540",
+          "gsm8k:train:755"
+        ],
+        "cross_domain": [
+          "gpqa:train:recAYkd96NNuNl1Ei",
+          "mmlu:validation:1379",
+          "mmlu:validation:324",
+          "mmlu:validation:1479",
+          "gpqa:train:recIDiDKKrN61Auyr",
+          "mmlu:validation:1463",
+          "mmlu:validation:528",
+          "gpqa:train:recUBgVlkKzcRPDdK"
+        ]
+      }
+    }
+  ]
+}

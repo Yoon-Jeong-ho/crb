@@ -1,0 +1,115 @@
+{
+  "manifest_id": "manifest-2026-03-10T15:36:34Z",
+  "config_hash": "9c2df9c41af27e8f",
+  "seed": 42,
+  "ks": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "validation",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "gpqa:train:rec055vn3qEqKHHTc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recftca7pyp2TCeAG",
+          "gpqa:train:recAYkd96NNuNl1Ei",
+          "gpqa:train:recKeCj07mR2qOvCH",
+          "gpqa:train:rec8CavTqDWHF8KJj",
+          "mmlu:validation:321",
+          "gpqa:train:reckoUYCML0XkjPZD",
+          "gpqa:train:recZdZxsN0AxDx0pB",
+          "gpqa:train:rec2K9NTFNw04xewq"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1020",
+          "mmlu:validation:173",
+          "mmlu:validation:192",
+          "mmlu:validation:1250",
+          "mmlu:validation:1065",
+          "mmlu:validation:1077",
+          "mmlu:validation:986",
+          "mmlu:validation:1046"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec06pnAkLOr2t2mp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recINGR1z01Fh1Z3A",
+          "gpqa:train:recMLNCge97pgSDHq",
+          "gpqa:train:reciOUAwJv4qTlXxs",
+          "gpqa:train:rec4YVw9r9DC0DK6U",
+          "gpqa:train:recV1nqYQvpII94oC",
+          "gpqa:train:recfTlTMjZBuOducT",
+          "gpqa:train:recywRj5a8EEjj2Ib",
+          "mmlu:validation:190"
+        ],
+        "cross_domain": [
+          "mmlu:validation:281",
+          "mmlu:validation:703",
+          "mmlu:validation:1088",
+          "mmlu:validation:598",
+          "mmlu:validation:1466",
+          "mmlu:validation:250",
+          "mmlu:validation:1529",
+          "mmlu:validation:827"
+        ]
+      }
+    }
+  ]
+}

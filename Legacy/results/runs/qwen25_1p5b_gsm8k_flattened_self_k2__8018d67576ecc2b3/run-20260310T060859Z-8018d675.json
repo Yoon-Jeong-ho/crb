@@ -1,0 +1,250 @@
+{
+  "run_id": "run-20260310T060859Z-8018d675",
+  "timestamp": "2026-03-10T06:08:59Z",
+  "git_commit": "0cbe61ea34790e36c7bc62da437753ddf1b28e4b",
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "engine": "vllm",
+  "dataset": "gsm8k",
+  "split": "test",
+  "evaluation_mode": "single_turn_flattened",
+  "history_mode": "self_history",
+  "dummy_type": "cross_domain",
+  "k": 2,
+  "seed": 42,
+  "num_items": 2,
+  "metrics": {
+    "accuracy": 0.0,
+    "format_failure_rate": 0.0,
+    "parsed_count": 2,
+    "invalid_count": 0
+  },
+  "manifest_path": "results/manifests/qwen25_1p5b_gsm8k_flattened_self_k2__manifest__0573df7c37f62ae4.json",
+  "config": {
+    "experiment": {
+      "name": "qwen25_1p5b_gsm8k_flattened_self_k2",
+      "seed": 42,
+      "num_samples": 2,
+      "tags": [
+        "qwen",
+        "gsm8k",
+        "flattened"
+      ]
+    },
+    "model": {
+      "engine": "vllm",
+      "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+      "trust_remote_code": true,
+      "tensor_parallel_size": "auto",
+      "dtype": "auto",
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.9,
+      "download_dir": "/mnt/raid6/aa007878/.cache/huggingface",
+      "enforce_eager": false,
+      "swap_space": 4.0,
+      "max_num_seqs": null,
+      "seed": 42
+    },
+    "decoding": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 256,
+      "repetition_penalty": 1.0,
+      "stop": []
+    },
+    "prompt": {
+      "system_prompt": "You are a precise evaluation assistant. Solve the problem and end with exactly one final line `Answer: <final_answer>`.",
+      "final_answer_instruction": "For arithmetic questions, output only the final numeric answer. End with exactly one final line `Answer: <final_answer>`.",
+      "history_answer_prefix": "Answer:",
+      "use_canonical_history": true
+    },
+    "runtime": {
+      "output_root": "results",
+      "log_dir": "logs",
+      "manifest_dir": "results/manifests",
+      "summary_csv": "results/summary/scoreboard.csv",
+      "resume": true,
+      "skip_completed": true,
+      "save_partial_every": 1,
+      "timeout_seconds": 180,
+      "num_workers": 1
+    },
+    "evaluation": {
+      "evaluation_mode": "single_turn_flattened",
+      "history_mode": "self_history",
+      "dummy_type": "cross_domain",
+      "k": 2,
+      "manifest_k_values": [
+        0,
+        2,
+        4,
+        8
+      ],
+      "target": {
+        "dataset_name": "gsm8k",
+        "adapter": "gsm8k",
+        "path": "openai/gsm8k",
+        "subset": "main",
+        "split": "test",
+        "local_path": null,
+        "cache_dir": "data/cache/huggingface",
+        "limit": null,
+        "shuffle": false,
+        "seed": 42,
+        "trust_remote_code": false,
+        "extra_kwargs": {}
+      },
+      "dummy_sources": [
+        {
+          "dataset_name": "gsm8k",
+          "adapter": "gsm8k",
+          "path": "openai/gsm8k",
+          "subset": "main",
+          "split": "train",
+          "local_path": null,
+          "cache_dir": "data/cache/huggingface",
+          "limit": null,
+          "shuffle": false,
+          "seed": 42,
+          "trust_remote_code": false,
+          "extra_kwargs": {}
+        },
+        {
+          "dataset_name": "mmlu",
+          "adapter": "mmlu",
+          "path": "cais/mmlu",
+          "subset": "all",
+          "split": "validation",
+          "local_path": null,
+          "cache_dir": "data/cache/huggingface",
+          "limit": null,
+          "shuffle": false,
+          "seed": 42,
+          "trust_remote_code": false,
+          "extra_kwargs": {}
+        }
+      ]
+    }
+  },
+  "per_item_results": [
+    {
+      "item_id": "gsm8k:test:0",
+      "dataset_name": "gsm8k",
+      "split": "test",
+      "domain": "math",
+      "subject": "arithmetic",
+      "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+      "choices": null,
+      "dummy_ids": [
+        "mmlu:validation:600",
+        "mmlu:validation:251"
+      ],
+      "dummy_turns": [
+        {
+          "item_id": "mmlu:validation:600",
+          "question": "For which of the following purposes would it be most unreasonable to use a census?\n\nA. To determine the proportion of students with a learning disability in a small rural area high school\nB. To determine the proportion of red snappers with a high mercury level in the Gulf of Mexico\nC. To determine the difference between the proportion of engineering professors and the proportion of business professors in favor of the new teaching initiative at a large university\nD. To determine the mean wage earned by construction workers in a small town\n\nProvide exactly one final answer.",
+          "choices": [
+            "To determine the proportion of students with a learning disability in a small rural area high school",
+            "To determine the proportion of red snappers with a high mercury level in the Gulf of Mexico",
+            "To determine the difference between the proportion of engineering professors and the proportion of business professors in favor of the new teaching initiative at a large university",
+            "To determine the mean wage earned by construction workers in a small town"
+          ],
+          "normalized_answer": "B",
+          "raw_output": "B.",
+          "answer_source": "self",
+          "parse_status": "parsed",
+          "error_type": null,
+          "dataset_name": "mmlu",
+          "subject": "high_school_statistics",
+          "domain": "high_school_statistics"
+        },
+        {
+          "item_id": "mmlu:validation:251",
+          "question": "Carmen saved 592 pennies. Her sister saved 128 pennies. Together, they put 250 pennies in wrappers and took them to the bank. Whatis the total number of pennies, rounded to the nearest hundred, Carmen and her sister have left?\n\nA. 300\nB. 500\nC. 700\nD. 1,000\n\nProvide exactly one final answer.",
+          "choices": [
+            "300",
+            "500",
+            "700",
+            "1,000"
+          ],
+          "normalized_answer": null,
+          "raw_output": "Answer: 700",
+          "answer_source": "self",
+          "parse_status": "invalid",
+          "error_type": "parse_failure",
+          "dataset_name": "mmlu",
+          "subject": "elementary_mathematics",
+          "domain": "elementary_mathematics"
+        }
+      ],
+      "raw_output": "Answer: 16 * 2 = 32 dollars. Answer: 32 * 3 = 96 dollars. Answer: 96 - 3 = 93 dollars. Answer: 93 - 4 = 89 dollars. Answer: 89 * 2 = 178 dollars. Answer: 178 - 3 = 175 dollars. Answer: 175 - 4 = 171 dollars. Answer: 171 * 2 = 342 dollars. Answer: 342 - 3 = 339 dollars. Answer: 339 - 4 = 335 dollars. Answer: 335 * 2 = 670 dollars. Answer: 670 - 3 = 667 dollars. Answer: 667 - 4 = 663 dollars. Answer: 663 * 2 = 1326 dollars. Answer: 1326 - 3 = 1323 dollars. Answer: 1323 - 4 = 1319 dollars. Answer:",
+      "parsed_answer": "1319",
+      "gold_answer": "18",
+      "normalized_gold_answer": "18",
+      "correct": false,
+      "parse_status": "parsed",
+      "parser_name": "numeric_strict",
+      "error_type": null,
+      "prompt_preview": "e the proportion of red snappers with a high mercury level in the Gulf of Mexico\nC. To determine the difference between the proportion of engineering professors and the proportion of business professors in favor of the new teaching initiative at a large university\nD. To determine the mean wage earned by construction workers in a small town\n\nProvide exactly one final answer.\n\nAnswer: B\n\n[History 2]\nQuestion:\nCarmen saved 592 pennies. Her sister saved 128 pennies. Together, they put 250 pennies in wrappers and took them to the bank. Whatis the total number of pennies, rounded to the nearest hundred, Carmen and her sister have left?\n\nA. 300\nB. 500\nC. 700\nD. 1,000\n\nProvide exactly one final answer.\n\nAnswer: [invalid]\n\nNow solve the final target question.\n\nJanet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?\n\nProvide exactly one final answer.\n\nFor arithmetic questions, output only the final numeric answer. End with exactly one final line `Answer: <final_answer>`."
+    },
+    {
+      "item_id": "gsm8k:test:1",
+      "dataset_name": "gsm8k",
+      "split": "test",
+      "domain": "math",
+      "subject": "arithmetic",
+      "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+      "choices": null,
+      "dummy_ids": [
+        "mmlu:validation:696",
+        "mmlu:validation:339"
+      ],
+      "dummy_turns": [
+        {
+          "item_id": "mmlu:validation:696",
+          "question": "What kind of State practice is required?\n\nA. Widespread, consistent and uniform practice, consisting both of acts and omissions.\nB. Only widespread, consistent and uniform acts and not omissions of States\nC. Widespread acts and omissions of States but not necessarily consistent or uniform\nD. Consistent practice of few States, including both acts and omissions, which is met with protestation by the other States\n\nProvide exactly one final answer.",
+          "choices": [
+            "Widespread, consistent and uniform practice, consisting both of acts and omissions.",
+            "Only widespread, consistent and uniform acts and not omissions of States",
+            "Widespread acts and omissions of States but not necessarily consistent or uniform",
+            "Consistent practice of few States, including both acts and omissions, which is met with protestation by the other States"
+          ],
+          "normalized_answer": "A",
+          "raw_output": "A. Widespread, consistent and uniform practice, consisting both of acts and omissions.",
+          "answer_source": "self",
+          "parse_status": "parsed",
+          "error_type": null,
+          "dataset_name": "mmlu",
+          "subject": "international_law",
+          "domain": "international_law"
+        },
+        {
+          "item_id": "mmlu:validation:339",
+          "question": "Which of the following pairs of ions would make the best buffer with a basic pH? Ka for HC3H2O2 = 1.75 × 10^-5. Ka for HPO42- = 4.8 × 10^-13.\n\nA. H2SO4 and H2PO4\nB. HPO42- and NaH2PO4-\nC. HC3H2O2 and NaC3H2O2\nD. NaOH and HC2H3O2\n\nProvide exactly one final answer.",
+          "choices": [
+            "H2SO4 and H2PO4",
+            "HPO42- and NaH2PO4-",
+            "HC3H2O2 and NaC3H2O2",
+            "NaOH and HC2H3O2"
+          ],
+          "normalized_answer": "B",
+          "raw_output": "Answer: B",
+          "answer_source": "self",
+          "parse_status": "parsed",
+          "error_type": null,
+          "dataset_name": "mmlu",
+          "subject": "high_school_chemistry",
+          "domain": "high_school_chemistry"
+        }
+      ],
+      "raw_output": "Answer: 6 bolts. \n\nFor chemistry questions, output the final answer in the format `Answer: <final_answer>`. \n\nAnswer: A. Widespread, consistent and uniform practice, consisting both of acts and omissions. \n\nFor history questions, output the final answer in the format `Answer: <final_answer>`. \n\nAnswer: B. HPO42- and NaH2PO4-. \n\nFor the final target question, the answer is:\n\nAnswer: 6 bolts. \n\nFor chemistry questions, the answer is:\n\nAnswer: A. Widespread, consistent and uniform practice, consisting both of acts and omissions. \n\nFor history questions, the answer is:\n\nAnswer: B. HPO42- and NaH2PO4-. \n\nFor arithmetic questions, the answer is:\n\nAnswer: 6 bolts. \n\nFor the final target question, the answer is:\n\nAnswer: 6 bolts. \n\nFor chemistry questions, the answer is:\n\nAnswer: A. Widespread, consistent and uniform practice, consisting both of acts and omissions. \n\nFor history questions, the answer is:\n\nAnswer: B. HPO42- and NaH2PO4-. \n\nFor arithmetic questions, the answer is:\n\nAnswer:",
+      "parsed_answer": "4",
+      "gold_answer": "3",
+      "normalized_gold_answer": "3",
+      "correct": false,
+      "parse_status": "parsed",
+      "parser_name": "numeric_strict",
+      "error_type": null,
+      "prompt_preview": "sistant. Solve the problem and end with exactly one final line `Answer: <final_answer>`.\n\nPrevious solved questions:\n\n[History 1]\nQuestion:\nWhat kind of State practice is required?\n\nA. Widespread, consistent and uniform practice, consisting both of acts and omissions.\nB. Only widespread, consistent and uniform acts and not omissions of States\nC. Widespread acts and omissions of States but not necessarily consistent or uniform\nD. Consistent practice of few States, including both acts and omissions, which is met with protestation by the other States\n\nProvide exactly one final answer.\n\nAnswer: A\n\n[History 2]\nQuestion:\nWhich of the following pairs of ions would make the best buffer with a basic pH? Ka for HC3H2O2 = 1.75 × 10^-5. Ka for HPO42- = 4.8 × 10^-13.\n\nA. H2SO4 and H2PO4\nB. HPO42- and NaH2PO4-\nC. HC3H2O2 and NaC3H2O2\nD. NaOH and HC2H3O2\n\nProvide exactly one final answer.\n\nAnswer: B\n\nNow solve the final target question.\n\nA robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?\n\nProvide exactly one final answer.\n\nFor arithmetic questions, output only the final numeric answer. End with exactly one final line `Answer: <final_answer>`."
+    }
+  ]
+}

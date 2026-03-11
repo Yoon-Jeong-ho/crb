@@ -1,0 +1,101 @@
+{
+  "manifest_id": "manifest-2026-03-10T06:03:30Z",
+  "config_hash": "ee884e47be5f43fd",
+  "seed": 42,
+  "ks": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "test",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "validation",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "mmlu:test:0",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "abstract_algebra",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:2",
+          "mmlu:validation:4",
+          "mmlu:validation:5",
+          "mmlu:validation:7",
+          "mmlu:validation:10",
+          "mmlu:validation:0",
+          "mmlu:validation:3",
+          "mmlu:validation:1"
+        ],
+        "cross_domain": [
+          "mmlu:validation:754",
+          "mmlu:validation:861",
+          "mmlu:validation:856",
+          "mmlu:validation:660",
+          "mmlu:validation:1038",
+          "mmlu:validation:1420",
+          "mmlu:validation:551",
+          "mmlu:validation:848"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:1",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "abstract_algebra",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:7",
+          "mmlu:validation:10",
+          "mmlu:validation:6",
+          "mmlu:validation:2",
+          "mmlu:validation:9",
+          "mmlu:validation:3",
+          "mmlu:validation:0",
+          "mmlu:validation:8"
+        ],
+        "cross_domain": [
+          "mmlu:validation:180",
+          "mmlu:validation:1032",
+          "mmlu:validation:34",
+          "mmlu:validation:1435",
+          "mmlu:validation:102",
+          "mmlu:validation:586",
+          "mmlu:validation:241",
+          "mmlu:validation:327"
+        ]
+      }
+    }
+  ]
+}

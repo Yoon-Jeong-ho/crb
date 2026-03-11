@@ -1,0 +1,240 @@
+{
+  "run_id": "run-20260310T060236Z-5de7a128",
+  "timestamp": "2026-03-10T06:02:36Z",
+  "git_commit": "0cbe61ea34790e36c7bc62da437753ddf1b28e4b",
+  "model_name": "mock-engine",
+  "engine": "mock",
+  "dataset": "mmlu_fixture",
+  "split": "test",
+  "evaluation_mode": "multi_turn",
+  "history_mode": "oracle_history",
+  "dummy_type": "same_domain",
+  "k": 2,
+  "seed": 42,
+  "num_items": 2,
+  "metrics": {
+    "accuracy": 0.5,
+    "format_failure_rate": 0.0,
+    "parsed_count": 2,
+    "invalid_count": 0
+  },
+  "manifest_path": "results/manifests/mock_mmlu_multiturn_oracle__manifest__919e437547b99c01.json",
+  "config": {
+    "experiment": {
+      "name": "mock_mmlu_multiturn_oracle",
+      "seed": 42,
+      "num_samples": 2,
+      "tags": []
+    },
+    "model": {
+      "engine": "mock",
+      "model_name": "mock-engine",
+      "trust_remote_code": false,
+      "tensor_parallel_size": "auto",
+      "dtype": "auto",
+      "max_model_len": null,
+      "gpu_memory_utilization": 0.9,
+      "download_dir": null,
+      "enforce_eager": false,
+      "swap_space": 4.0,
+      "max_num_seqs": null,
+      "seed": 42
+    },
+    "decoding": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 32,
+      "repetition_penalty": 1.0,
+      "stop": []
+    },
+    "prompt": {
+      "system_prompt": "You are a precise evaluation assistant. End with `Answer: <final_answer>`.",
+      "final_answer_instruction": "End with exactly one final line `Answer: <final_answer>`. Correct answer: A",
+      "history_answer_prefix": "Answer:",
+      "use_canonical_history": true
+    },
+    "runtime": {
+      "output_root": "results",
+      "log_dir": "logs",
+      "manifest_dir": "results/manifests",
+      "summary_csv": "results/summary/scoreboard.csv",
+      "resume": true,
+      "skip_completed": false,
+      "save_partial_every": 1,
+      "timeout_seconds": null,
+      "num_workers": 1
+    },
+    "evaluation": {
+      "evaluation_mode": "multi_turn",
+      "history_mode": "oracle_history",
+      "dummy_type": "same_domain",
+      "k": 2,
+      "manifest_k_values": [
+        0,
+        2
+      ],
+      "target": {
+        "dataset_name": "mmlu_fixture",
+        "adapter": "jsonl",
+        "path": null,
+        "subset": null,
+        "split": "test",
+        "local_path": "data/fixtures/mmlu_fixture.jsonl",
+        "cache_dir": null,
+        "limit": null,
+        "shuffle": false,
+        "seed": 42,
+        "trust_remote_code": false,
+        "extra_kwargs": {}
+      },
+      "dummy_sources": [
+        {
+          "dataset_name": "mmlu_fixture",
+          "adapter": "jsonl",
+          "path": null,
+          "subset": null,
+          "split": "train",
+          "local_path": "data/fixtures/mmlu_fixture.jsonl",
+          "cache_dir": null,
+          "limit": null,
+          "shuffle": false,
+          "seed": 42,
+          "trust_remote_code": false,
+          "extra_kwargs": {}
+        }
+      ]
+    }
+  },
+  "per_item_results": [
+    {
+      "item_id": "mmlu_fixture:test:mmlu-1",
+      "dataset_name": "mmlu_fixture",
+      "split": "test",
+      "domain": "humanities",
+      "subject": "history",
+      "question": "Who was the first President of the United States?",
+      "choices": [
+        "George Washington",
+        "Abraham Lincoln",
+        "Thomas Jefferson",
+        "John Adams"
+      ],
+      "dummy_ids": [
+        "mmlu_fixture:train:mmlu-5",
+        "mmlu_fixture:train:mmlu-2"
+      ],
+      "dummy_turns": [
+        {
+          "item_id": "mmlu_fixture:train:mmlu-5",
+          "question": "Which empire built Machu Picchu?\n\nA. Roman Empire\nB. Inca Empire\nC. Ottoman Empire\nD. Mongol Empire\n\nProvide exactly one final answer.",
+          "choices": [
+            "Roman Empire",
+            "Inca Empire",
+            "Ottoman Empire",
+            "Mongol Empire"
+          ],
+          "normalized_answer": "B",
+          "raw_output": null,
+          "answer_source": "oracle",
+          "parse_status": "oracle",
+          "error_type": null,
+          "dataset_name": "mmlu_fixture",
+          "subject": "history",
+          "domain": "humanities"
+        },
+        {
+          "item_id": "mmlu_fixture:train:mmlu-2",
+          "question": "In which year did the Berlin Wall fall?\n\nA. 1987\nB. 1988\nC. 1989\nD. 1990\n\nProvide exactly one final answer.",
+          "choices": [
+            "1987",
+            "1988",
+            "1989",
+            "1990"
+          ],
+          "normalized_answer": "C",
+          "raw_output": null,
+          "answer_source": "oracle",
+          "parse_status": "oracle",
+          "error_type": null,
+          "dataset_name": "mmlu_fixture",
+          "subject": "history",
+          "domain": "humanities"
+        }
+      ],
+      "raw_output": "Answer: A",
+      "parsed_answer": "A",
+      "gold_answer": "A",
+      "normalized_gold_answer": "A",
+      "correct": true,
+      "parse_status": "parsed",
+      "parser_name": "mcq_strict",
+      "error_type": null,
+      "prompt_preview": "SYSTEM: You are a precise evaluation assistant. End with `Answer: <final_answer>`.\n\nUSER: Which empire built Machu Picchu?\n\nA. Roman Empire\nB. Inca Empire\nC. Ottoman Empire\nD. Mongol Empire\n\nProvide exactly one final answer.\n\nASSISTANT: Answer: B\n\nUSER: In which year did the Berlin Wall fall?\n\nA. 1987\nB. 1988\nC. 1989\nD. 1990\n\nProvide exactly one final answer.\n\nASSISTANT: Answer: C\n\nUSER: Who was the first President of the United States?\n\nA. George Washington\nB. Abraham Lincoln\nC. Thomas Jefferson\nD. John Adams\n\nProvide exactly one final answer.\n\nEnd with exactly one final line `Answer: <final_answer>`. Correct answer: A"
+    },
+    {
+      "item_id": "mmlu_fixture:test:mmlu-2",
+      "dataset_name": "mmlu_fixture",
+      "split": "test",
+      "domain": "humanities",
+      "subject": "history",
+      "question": "In which year did the Berlin Wall fall?",
+      "choices": [
+        "1987",
+        "1988",
+        "1989",
+        "1990"
+      ],
+      "dummy_ids": [
+        "mmlu_fixture:train:mmlu-5",
+        "mmlu_fixture:train:mmlu-1"
+      ],
+      "dummy_turns": [
+        {
+          "item_id": "mmlu_fixture:train:mmlu-5",
+          "question": "Which empire built Machu Picchu?\n\nA. Roman Empire\nB. Inca Empire\nC. Ottoman Empire\nD. Mongol Empire\n\nProvide exactly one final answer.",
+          "choices": [
+            "Roman Empire",
+            "Inca Empire",
+            "Ottoman Empire",
+            "Mongol Empire"
+          ],
+          "normalized_answer": "B",
+          "raw_output": null,
+          "answer_source": "oracle",
+          "parse_status": "oracle",
+          "error_type": null,
+          "dataset_name": "mmlu_fixture",
+          "subject": "history",
+          "domain": "humanities"
+        },
+        {
+          "item_id": "mmlu_fixture:train:mmlu-1",
+          "question": "Who was the first President of the United States?\n\nA. George Washington\nB. Abraham Lincoln\nC. Thomas Jefferson\nD. John Adams\n\nProvide exactly one final answer.",
+          "choices": [
+            "George Washington",
+            "Abraham Lincoln",
+            "Thomas Jefferson",
+            "John Adams"
+          ],
+          "normalized_answer": "A",
+          "raw_output": null,
+          "answer_source": "oracle",
+          "parse_status": "oracle",
+          "error_type": null,
+          "dataset_name": "mmlu_fixture",
+          "subject": "history",
+          "domain": "humanities"
+        }
+      ],
+      "raw_output": "Answer: A",
+      "parsed_answer": "A",
+      "gold_answer": "C",
+      "normalized_gold_answer": "C",
+      "correct": false,
+      "parse_status": "parsed",
+      "parser_name": "mcq_strict",
+      "error_type": null,
+      "prompt_preview": "SYSTEM: You are a precise evaluation assistant. End with `Answer: <final_answer>`.\n\nUSER: Which empire built Machu Picchu?\n\nA. Roman Empire\nB. Inca Empire\nC. Ottoman Empire\nD. Mongol Empire\n\nProvide exactly one final answer.\n\nASSISTANT: Answer: B\n\nUSER: Who was the first President of the United States?\n\nA. George Washington\nB. Abraham Lincoln\nC. Thomas Jefferson\nD. John Adams\n\nProvide exactly one final answer.\n\nASSISTANT: Answer: A\n\nUSER: In which year did the Berlin Wall fall?\n\nA. 1987\nB. 1988\nC. 1989\nD. 1990\n\nProvide exactly one final answer.\n\nEnd with exactly one final line `Answer: <final_answer>`. Correct answer: A"
+    }
+  ]
+}

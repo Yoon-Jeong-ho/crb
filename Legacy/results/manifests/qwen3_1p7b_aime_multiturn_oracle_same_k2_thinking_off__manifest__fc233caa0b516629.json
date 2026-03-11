@@ -1,0 +1,311 @@
+{
+  "manifest_id": "manifest-2026-03-10T14:59:10Z",
+  "config_hash": "b401cc4022eaea64",
+  "seed": 42,
+  "ks": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "aime",
+      "adapter": "aime",
+      "path": "HuggingFaceH4/aime_2024",
+      "subset": null,
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "aime",
+      "adapter": "aime",
+      "path": "HuggingFaceH4/aime_2024",
+      "subset": null,
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "gsm8k",
+      "adapter": "gsm8k",
+      "path": "openai/gsm8k",
+      "subset": "main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "validation",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "aime:train:60",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:7328",
+          "gsm8k:train:5869",
+          "gsm8k:train:6767",
+          "gsm8k:train:2390",
+          "gsm8k:train:6517",
+          "gsm8k:train:699",
+          "gsm8k:train:5302",
+          "gsm8k:train:1662"
+        ],
+        "cross_domain": [
+          "mmlu:validation:519",
+          "mmlu:validation:1107",
+          "mmlu:validation:1103",
+          "gpqa:train:recLFSUuIxZo6jcFr",
+          "mmlu:validation:210",
+          "mmlu:validation:648",
+          "mmlu:validation:924",
+          "gpqa:train:recOKwCrRbyEWoYKe"
+        ]
+      }
+    },
+    {
+      "target_item_id": "aime:train:61",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5186",
+          "gsm8k:train:1244",
+          "gsm8k:train:7037",
+          "gsm8k:train:5791",
+          "gsm8k:train:753",
+          "gsm8k:train:3489",
+          "gsm8k:train:1466",
+          "gsm8k:train:5931"
+        ],
+        "cross_domain": [
+          "mmlu:validation:902",
+          "mmlu:validation:859",
+          "gpqa:train:recgM7o1tcc7tP778",
+          "mmlu:validation:1038",
+          "gpqa:train:reccGBrJaZk9DWZxk",
+          "mmlu:validation:157",
+          "mmlu:validation:1152",
+          "mmlu:validation:1173"
+        ]
+      }
+    },
+    {
+      "target_item_id": "aime:train:62",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4907",
+          "gsm8k:train:954",
+          "gsm8k:train:785",
+          "gsm8k:train:3404",
+          "gsm8k:train:5402",
+          "gsm8k:train:2745",
+          "gsm8k:train:1459",
+          "gsm8k:train:7068"
+        ],
+        "cross_domain": [
+          "gpqa:train:recguj40XQkQq1l7Q",
+          "gpqa:train:recNAiPUKOulQbKVP",
+          "mmlu:validation:305",
+          "mmlu:validation:555",
+          "gpqa:train:recHJhX5qXExBhr4w",
+          "mmlu:validation:82",
+          "mmlu:validation:838",
+          "gpqa:train:recN4DY9Q5V03glmQ"
+        ]
+      }
+    },
+    {
+      "target_item_id": "aime:train:63",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:535",
+          "gsm8k:train:4975",
+          "gsm8k:train:4686",
+          "gsm8k:train:4128",
+          "gsm8k:train:587",
+          "gsm8k:train:5526",
+          "gsm8k:train:413",
+          "gsm8k:train:3101"
+        ],
+        "cross_domain": [
+          "mmlu:validation:290",
+          "mmlu:validation:617",
+          "mmlu:validation:559",
+          "mmlu:validation:41",
+          "mmlu:validation:630",
+          "mmlu:validation:1327",
+          "mmlu:validation:454",
+          "mmlu:validation:1510"
+        ]
+      }
+    },
+    {
+      "target_item_id": "aime:train:64",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4938",
+          "gsm8k:train:184",
+          "gsm8k:train:5515",
+          "gsm8k:train:1615",
+          "gsm8k:train:7368",
+          "gsm8k:train:4309",
+          "gsm8k:train:2545",
+          "gsm8k:train:583"
+        ],
+        "cross_domain": [
+          "mmlu:validation:818",
+          "mmlu:validation:1493",
+          "mmlu:validation:1102",
+          "mmlu:validation:374",
+          "mmlu:validation:732",
+          "mmlu:validation:279",
+          "mmlu:validation:295",
+          "mmlu:validation:568"
+        ]
+      }
+    },
+    {
+      "target_item_id": "aime:train:65",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5265",
+          "gsm8k:train:3607",
+          "gsm8k:train:819",
+          "gsm8k:train:3130",
+          "gsm8k:train:1182",
+          "gsm8k:train:3482",
+          "gsm8k:train:2770",
+          "gsm8k:train:616"
+        ],
+        "cross_domain": [
+          "mmlu:validation:344",
+          "gpqa:train:recJxK8wQDqG7ESSh",
+          "mmlu:validation:850",
+          "mmlu:validation:354",
+          "gpqa:train:rec0LlchAeJwY28ZY",
+          "gpqa:train:recHNRejvl3n0Fr7C",
+          "gpqa:train:recBXlqrZUCR897It",
+          "gpqa:train:recYCMJWH7IpcdqwE"
+        ]
+      }
+    },
+    {
+      "target_item_id": "aime:train:66",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4628",
+          "gsm8k:train:6597",
+          "gsm8k:train:6668",
+          "gsm8k:train:2020",
+          "gsm8k:train:1627",
+          "gsm8k:train:2025",
+          "gsm8k:train:4233",
+          "gsm8k:train:2660"
+        ],
+        "cross_domain": [
+          "mmlu:validation:580",
+          "mmlu:validation:363",
+          "mmlu:validation:1097",
+          "mmlu:validation:433",
+          "mmlu:validation:349",
+          "gpqa:train:recGFKDUd8qgz81Zl",
+          "mmlu:validation:271",
+          "mmlu:validation:1028"
+        ]
+      }
+    },
+    {
+      "target_item_id": "aime:train:67",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4071",
+          "gsm8k:train:3942",
+          "gsm8k:train:4581",
+          "gsm8k:train:1959",
+          "gsm8k:train:4381",
+          "gsm8k:train:1034",
+          "gsm8k:train:5681",
+          "mmlu:validation:123"
+        ],
+        "cross_domain": [
+          "mmlu:validation:62",
+          "gpqa:train:recNGovj5Pv0yxbfx",
+          "mmlu:validation:379",
+          "mmlu:validation:727",
+          "mmlu:validation:587",
+          "mmlu:validation:392",
+          "gpqa:train:recRVn0fyFjTbKdq4",
+          "mmlu:validation:360"
+        ]
+      }
+    }
+  ]
+}

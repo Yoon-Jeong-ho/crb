@@ -1,0 +1,75 @@
+{
+  "manifest_id": "manifest-2026-03-10T05:41:00Z",
+  "config_hash": "5de7a128c4306b72",
+  "seed": 42,
+  "ks": [
+    0,
+    2
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "mmlu_fixture",
+      "adapter": "jsonl",
+      "path": null,
+      "subset": null,
+      "split": "test",
+      "local_path": "data/fixtures/mmlu_fixture.jsonl",
+      "cache_dir": null,
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "mmlu_fixture",
+      "adapter": "jsonl",
+      "path": null,
+      "subset": null,
+      "split": "train",
+      "local_path": "data/fixtures/mmlu_fixture.jsonl",
+      "cache_dir": null,
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "mmlu_fixture:test:mmlu-1",
+      "target_dataset_name": "mmlu_fixture",
+      "target_subject": "history",
+      "target_domain": "humanities",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu_fixture:train:mmlu-5",
+          "mmlu_fixture:train:mmlu-2"
+        ],
+        "cross_domain": [
+          "mmlu_fixture:train:mmlu-6",
+          "mmlu_fixture:train:mmlu-3"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu_fixture:test:mmlu-2",
+      "target_dataset_name": "mmlu_fixture",
+      "target_subject": "history",
+      "target_domain": "humanities",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu_fixture:train:mmlu-5",
+          "mmlu_fixture:train:mmlu-1"
+        ],
+        "cross_domain": [
+          "mmlu_fixture:train:mmlu-4",
+          "mmlu_fixture:train:mmlu-3"
+        ]
+      }
+    }
+  ]
+}

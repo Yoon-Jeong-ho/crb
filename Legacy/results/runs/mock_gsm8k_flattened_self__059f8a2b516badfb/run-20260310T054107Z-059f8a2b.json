@@ -1,0 +1,244 @@
+{
+  "run_id": "run-20260310T054107Z-059f8a2b",
+  "timestamp": "2026-03-10T05:41:07Z",
+  "git_commit": "5e1664382c1e96360a67e24bfc891fd5cf689f1d",
+  "model_name": "mock-engine",
+  "engine": "mock",
+  "dataset": "gsm8k_fixture",
+  "split": "test",
+  "evaluation_mode": "single_turn_flattened",
+  "history_mode": "self_history",
+  "dummy_type": "cross_domain",
+  "k": 2,
+  "seed": 7,
+  "num_items": 2,
+  "metrics": {
+    "accuracy": 1.0,
+    "format_failure_rate": 0.0,
+    "parsed_count": 2,
+    "invalid_count": 0
+  },
+  "manifest_path": "results/manifests/mock_gsm8k_flattened_self__manifest__baad0d26bb398867.json",
+  "config": {
+    "experiment": {
+      "name": "mock_gsm8k_flattened_self",
+      "seed": 7,
+      "num_samples": 2,
+      "tags": []
+    },
+    "model": {
+      "engine": "mock",
+      "model_name": "mock-engine",
+      "trust_remote_code": false,
+      "tensor_parallel_size": "auto",
+      "dtype": "auto",
+      "max_model_len": null,
+      "gpu_memory_utilization": 0.9,
+      "download_dir": null,
+      "enforce_eager": false,
+      "swap_space": 4.0,
+      "max_num_seqs": null,
+      "seed": 42
+    },
+    "decoding": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 32,
+      "repetition_penalty": 1.0,
+      "stop": []
+    },
+    "prompt": {
+      "system_prompt": "You are a precise evaluation assistant. End with `Answer: <final_answer>`.",
+      "final_answer_instruction": "End with exactly one final line `Answer: <final_answer>`. Correct answer: 7",
+      "history_answer_prefix": "Answer:",
+      "use_canonical_history": true
+    },
+    "runtime": {
+      "output_root": "results",
+      "log_dir": "logs",
+      "manifest_dir": "results/manifests",
+      "summary_csv": "results/summary/scoreboard.csv",
+      "resume": true,
+      "skip_completed": false,
+      "save_partial_every": 1,
+      "timeout_seconds": null,
+      "num_workers": 1
+    },
+    "evaluation": {
+      "evaluation_mode": "single_turn_flattened",
+      "history_mode": "self_history",
+      "dummy_type": "cross_domain",
+      "k": 2,
+      "manifest_k_values": [
+        0,
+        2
+      ],
+      "target": {
+        "dataset_name": "gsm8k_fixture",
+        "adapter": "jsonl",
+        "path": null,
+        "subset": null,
+        "split": "test",
+        "local_path": "data/fixtures/gsm8k_fixture.jsonl",
+        "cache_dir": null,
+        "limit": null,
+        "shuffle": false,
+        "seed": 42,
+        "trust_remote_code": false,
+        "extra_kwargs": {}
+      },
+      "dummy_sources": [
+        {
+          "dataset_name": "mmlu_fixture",
+          "adapter": "jsonl",
+          "path": null,
+          "subset": null,
+          "split": "train",
+          "local_path": "data/fixtures/mmlu_fixture.jsonl",
+          "cache_dir": null,
+          "limit": null,
+          "shuffle": false,
+          "seed": 42,
+          "trust_remote_code": false,
+          "extra_kwargs": {}
+        },
+        {
+          "dataset_name": "gsm8k_fixture",
+          "adapter": "jsonl",
+          "path": null,
+          "subset": null,
+          "split": "train",
+          "local_path": "data/fixtures/gsm8k_fixture.jsonl",
+          "cache_dir": null,
+          "limit": null,
+          "shuffle": false,
+          "seed": 42,
+          "trust_remote_code": false,
+          "extra_kwargs": {}
+        }
+      ]
+    }
+  },
+  "per_item_results": [
+    {
+      "item_id": "gsm8k_fixture:test:gsm8k-1",
+      "dataset_name": "gsm8k_fixture",
+      "split": "test",
+      "domain": "math",
+      "subject": "arithmetic",
+      "question": "Alice has 3 apples and buys 4 more. How many apples does she have now?",
+      "choices": null,
+      "dummy_ids": [
+        "mmlu_fixture:train:mmlu-6",
+        "mmlu_fixture:train:mmlu-4"
+      ],
+      "dummy_turns": [
+        {
+          "item_id": "mmlu_fixture:train:mmlu-6",
+          "question": "What is the speed of light in vacuum approximately?\n\nA. 3x10^8 m/s\nB. 3x10^6 m/s\nC. 3x10^5 km/s\nD. 300 m/s\n\nProvide exactly one final answer.",
+          "choices": [
+            "3x10^8 m/s",
+            "3x10^6 m/s",
+            "3x10^5 km/s",
+            "300 m/s"
+          ],
+          "normalized_answer": null,
+          "raw_output": "Answer: 7",
+          "answer_source": "self",
+          "parse_status": "invalid",
+          "error_type": "parse_failure",
+          "dataset_name": "mmlu_fixture",
+          "subject": "physics",
+          "domain": "science"
+        },
+        {
+          "item_id": "mmlu_fixture:train:mmlu-4",
+          "question": "What is the SI unit of force?\n\nA. Joule\nB. Pascal\nC. Newton\nD. Watt\n\nProvide exactly one final answer.",
+          "choices": [
+            "Joule",
+            "Pascal",
+            "Newton",
+            "Watt"
+          ],
+          "normalized_answer": null,
+          "raw_output": "Answer: 7",
+          "answer_source": "self",
+          "parse_status": "invalid",
+          "error_type": "parse_failure",
+          "dataset_name": "mmlu_fixture",
+          "subject": "physics",
+          "domain": "science"
+        }
+      ],
+      "raw_output": "Answer: 7",
+      "parsed_answer": "7",
+      "gold_answer": "7",
+      "normalized_gold_answer": "7",
+      "correct": true,
+      "parse_status": "parsed",
+      "parser_name": "numeric_strict",
+      "error_type": null,
+      "prompt_preview": "You are a precise evaluation assistant. End with `Answer: <final_answer>`.\n\nPrevious solved questions:\n\n[History 1]\nQuestion:\nWhat is the speed of light in vacuum approximately?\n\nA. 3x10^8 m/s\nB. 3x10^6 m/s\nC. 3x10^5 km/s\nD. 300 m/s\n\nProvide exactly one final answer.\n\nAnswer: [invalid]\n\n[History 2]\nQuestion:\nWhat is the SI unit of force?\n\nA. Joule\nB. Pascal\nC. Newton\nD. Watt\n\nProvide exactly one final answer.\n\nAnswer: [invalid]\n\nNow solve the final target question.\n\nAlice has 3 apples and buys 4 more. How many apples does she have now?\n\nProvide exactly one final answer.\n\nEnd with exactly one final line `Answer: <final_answer>`. Correct answer: 7"
+    },
+    {
+      "item_id": "gsm8k_fixture:test:gsm8k-2",
+      "dataset_name": "gsm8k_fixture",
+      "split": "test",
+      "domain": "math",
+      "subject": "arithmetic",
+      "question": "Tom has 12 marbles and gives away 5. How many marbles remain?",
+      "choices": null,
+      "dummy_ids": [
+        "mmlu_fixture:train:mmlu-5",
+        "mmlu_fixture:train:mmlu-1"
+      ],
+      "dummy_turns": [
+        {
+          "item_id": "mmlu_fixture:train:mmlu-5",
+          "question": "Which empire built Machu Picchu?\n\nA. Roman Empire\nB. Inca Empire\nC. Ottoman Empire\nD. Mongol Empire\n\nProvide exactly one final answer.",
+          "choices": [
+            "Roman Empire",
+            "Inca Empire",
+            "Ottoman Empire",
+            "Mongol Empire"
+          ],
+          "normalized_answer": null,
+          "raw_output": "Answer: 7",
+          "answer_source": "self",
+          "parse_status": "invalid",
+          "error_type": "parse_failure",
+          "dataset_name": "mmlu_fixture",
+          "subject": "history",
+          "domain": "humanities"
+        },
+        {
+          "item_id": "mmlu_fixture:train:mmlu-1",
+          "question": "Who was the first President of the United States?\n\nA. George Washington\nB. Abraham Lincoln\nC. Thomas Jefferson\nD. John Adams\n\nProvide exactly one final answer.",
+          "choices": [
+            "George Washington",
+            "Abraham Lincoln",
+            "Thomas Jefferson",
+            "John Adams"
+          ],
+          "normalized_answer": null,
+          "raw_output": "Answer: 7",
+          "answer_source": "self",
+          "parse_status": "invalid",
+          "error_type": "parse_failure",
+          "dataset_name": "mmlu_fixture",
+          "subject": "history",
+          "domain": "humanities"
+        }
+      ],
+      "raw_output": "Answer: 7",
+      "parsed_answer": "7",
+      "gold_answer": "7",
+      "normalized_gold_answer": "7",
+      "correct": true,
+      "parse_status": "parsed",
+      "parser_name": "numeric_strict",
+      "error_type": null,
+      "prompt_preview": "You are a precise evaluation assistant. End with `Answer: <final_answer>`.\n\nPrevious solved questions:\n\n[History 1]\nQuestion:\nWhich empire built Machu Picchu?\n\nA. Roman Empire\nB. Inca Empire\nC. Ottoman Empire\nD. Mongol Empire\n\nProvide exactly one final answer.\n\nAnswer: [invalid]\n\n[History 2]\nQuestion:\nWho was the first President of the United States?\n\nA. George Washington\nB. Abraham Lincoln\nC. Thomas Jefferson\nD. John Adams\n\nProvide exactly one final answer.\n\nAnswer: [invalid]\n\nNow solve the final target question.\n\nTom has 12 marbles and gives away 5. How many marbles remain?\n\nProvide exactly one final answer.\n\nEnd with exactly one final line `Answer: <final_answer>`. Correct answer: 7"
+    }
+  ]
+}

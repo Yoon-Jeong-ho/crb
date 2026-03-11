@@ -1,0 +1,84 @@
+experiment:
+  name: qwen3_1p7b_mmlu__qwen3_thinking_off__evaluation_mode-multi_turn__history_mode-self_history__dummy_type-same_domain__k-4
+  seed: 42
+  num_samples: 50
+  tags:
+  - paper
+  - qwen3
+  - mmlu
+model:
+  engine: vllm
+  model_name: Qwen/Qwen3-1.7B
+  model_family: qwen3
+  thinking_mode: 'off'
+  trust_remote_code: true
+  tensor_parallel_size: auto
+  dtype: auto
+  max_model_len: 16384
+  gpu_memory_utilization: 0.9
+  download_dir: /mnt/raid6/aa007878/.cache/huggingface
+  seed: 42
+  chat_template_kwargs:
+    enable_thinking: false
+decoding:
+  temperature: 0.7
+  top_p: 0.8
+  top_k: 20
+  min_p: 0.0
+  max_tokens: 1024
+prompt:
+  system_prompt: 'You are a precise evaluation assistant. Solve the problem and end
+    with exactly one final line `Answer: <final_answer>`.'
+  final_answer_instruction: 'If the question is multiple choice, output only the choice
+    letter. End with exactly one final line `Answer: <final_answer>`.'
+  history_answer_prefix: 'Answer:'
+  use_canonical_history: true
+runtime:
+  output_root: results
+  log_dir: logs
+  manifest_dir: results/manifests
+  summary_csv: results/summary/scoreboard.csv
+  resume: true
+  skip_completed: true
+  timeout_seconds: 300
+evaluation:
+  evaluation_mode: multi_turn
+  history_mode: self_history
+  dummy_type: same_domain
+  k: 4
+  manifest_k_values:
+  - 0
+  - 2
+  - 4
+  - 8
+  target:
+    dataset_name: mmlu
+    adapter: mmlu
+    path: cais/mmlu
+    subset: all
+    split: test
+    cache_dir: data/cache/huggingface
+  dummy_sources:
+  - dataset_name: mmlu
+    adapter: mmlu
+    path: cais/mmlu
+    subset: all
+    split: validation
+    cache_dir: data/cache/huggingface
+  - dataset_name: gsm8k
+    adapter: gsm8k
+    path: openai/gsm8k
+    subset: main
+    split: train
+    cache_dir: data/cache/huggingface
+  - dataset_name: gpqa
+    adapter: gpqa
+    path: Idavidrein/gpqa
+    subset: gpqa_main
+    split: train
+    cache_dir: data/cache/huggingface
+  - dataset_name: aime
+    adapter: aime
+    path: HuggingFaceH4/aime_2024
+    split: train
+    cache_dir: data/cache/huggingface

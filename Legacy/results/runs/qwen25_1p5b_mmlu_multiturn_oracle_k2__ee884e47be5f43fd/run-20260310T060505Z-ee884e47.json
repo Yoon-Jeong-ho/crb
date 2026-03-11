@@ -1,0 +1,246 @@
+{
+  "run_id": "run-20260310T060505Z-ee884e47",
+  "timestamp": "2026-03-10T06:05:05Z",
+  "git_commit": "0cbe61ea34790e36c7bc62da437753ddf1b28e4b",
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "engine": "vllm",
+  "dataset": "mmlu",
+  "split": "test",
+  "evaluation_mode": "multi_turn",
+  "history_mode": "oracle_history",
+  "dummy_type": "same_domain",
+  "k": 2,
+  "seed": 42,
+  "num_items": 2,
+  "metrics": {
+    "accuracy": 0.5,
+    "format_failure_rate": 0.0,
+    "parsed_count": 2,
+    "invalid_count": 0
+  },
+  "manifest_path": "results/manifests/qwen25_1p5b_mmlu_multiturn_oracle_k2__manifest__066e8e5e9c7e3eeb.json",
+  "config": {
+    "experiment": {
+      "name": "qwen25_1p5b_mmlu_multiturn_oracle_k2",
+      "seed": 42,
+      "num_samples": 2,
+      "tags": [
+        "qwen",
+        "mmlu",
+        "multiturn"
+      ]
+    },
+    "model": {
+      "engine": "vllm",
+      "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+      "trust_remote_code": true,
+      "tensor_parallel_size": "auto",
+      "dtype": "auto",
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.9,
+      "download_dir": "/mnt/raid6/aa007878/.cache/huggingface",
+      "enforce_eager": false,
+      "swap_space": 4.0,
+      "max_num_seqs": null,
+      "seed": 42
+    },
+    "decoding": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 256,
+      "repetition_penalty": 1.0,
+      "stop": []
+    },
+    "prompt": {
+      "system_prompt": "You are a precise evaluation assistant. Solve the problem and end with exactly one final line `Answer: <final_answer>`.",
+      "final_answer_instruction": "If the question is multiple choice, output only the choice letter. End with exactly one final line `Answer: <final_answer>`.",
+      "history_answer_prefix": "Answer:",
+      "use_canonical_history": true
+    },
+    "runtime": {
+      "output_root": "results",
+      "log_dir": "logs",
+      "manifest_dir": "results/manifests",
+      "summary_csv": "results/summary/scoreboard.csv",
+      "resume": true,
+      "skip_completed": true,
+      "save_partial_every": 1,
+      "timeout_seconds": 180,
+      "num_workers": 1
+    },
+    "evaluation": {
+      "evaluation_mode": "multi_turn",
+      "history_mode": "oracle_history",
+      "dummy_type": "same_domain",
+      "k": 2,
+      "manifest_k_values": [
+        0,
+        2,
+        4,
+        8
+      ],
+      "target": {
+        "dataset_name": "mmlu",
+        "adapter": "mmlu",
+        "path": "cais/mmlu",
+        "subset": "all",
+        "split": "test",
+        "local_path": null,
+        "cache_dir": "data/cache/huggingface",
+        "limit": null,
+        "shuffle": false,
+        "seed": 42,
+        "trust_remote_code": false,
+        "extra_kwargs": {}
+      },
+      "dummy_sources": [
+        {
+          "dataset_name": "mmlu",
+          "adapter": "mmlu",
+          "path": "cais/mmlu",
+          "subset": "all",
+          "split": "validation",
+          "local_path": null,
+          "cache_dir": "data/cache/huggingface",
+          "limit": null,
+          "shuffle": false,
+          "seed": 42,
+          "trust_remote_code": false,
+          "extra_kwargs": {}
+        }
+      ]
+    }
+  },
+  "per_item_results": [
+    {
+      "item_id": "mmlu:test:0",
+      "dataset_name": "mmlu",
+      "split": "test",
+      "domain": "abstract_algebra",
+      "subject": "abstract_algebra",
+      "question": "Find the degree for the given field extension Q(sqrt(2), sqrt(3), sqrt(18)) over Q.",
+      "choices": [
+        "0",
+        "4",
+        "2",
+        "6"
+      ],
+      "dummy_ids": [
+        "mmlu:validation:2",
+        "mmlu:validation:4"
+      ],
+      "dummy_turns": [
+        {
+          "item_id": "mmlu:validation:2",
+          "question": "Statement 1 | A permutation that is a product of m even permutations and n odd permutations is an even permutation if and only if n is even. Statement 2 | Every group is isomorphic to a group of permutations.\n\nA. True, True\nB. False, False\nC. True, False\nD. False, True\n\nProvide exactly one final answer.",
+          "choices": [
+            "True, True",
+            "False, False",
+            "True, False",
+            "False, True"
+          ],
+          "normalized_answer": "A",
+          "raw_output": null,
+          "answer_source": "oracle",
+          "parse_status": "oracle",
+          "error_type": null,
+          "dataset_name": "mmlu",
+          "subject": "abstract_algebra",
+          "domain": "abstract_algebra"
+        },
+        {
+          "item_id": "mmlu:validation:4",
+          "question": "Find the maximum possible order for some element of Z_4 x Z_6.\n\nA. 4\nB. 6\nC. 12\nD. 24\n\nProvide exactly one final answer.",
+          "choices": [
+            "4",
+            "6",
+            "12",
+            "24"
+          ],
+          "normalized_answer": "C",
+          "raw_output": null,
+          "answer_source": "oracle",
+          "parse_status": "oracle",
+          "error_type": null,
+          "dataset_name": "mmlu",
+          "subject": "abstract_algebra",
+          "domain": "abstract_algebra"
+        }
+      ],
+      "raw_output": "Answer: B",
+      "parsed_answer": "B",
+      "gold_answer": "B",
+      "normalized_gold_answer": "B",
+      "correct": true,
+      "parse_status": "parsed",
+      "parser_name": "mcq_strict",
+      "error_type": null,
+      "prompt_preview": "<|im_start|>system\nYou are a precise evaluation assistant. Solve the problem and end with exactly one final line `Answer: <final_answer>`.<|im_end|>\n<|im_start|>user\nStatement 1 | A permutation that is a product of m even permutations and n odd permutations is an even permutation if and only if n is even. Statement 2 | Every group is isomorphic to a group of permutations.\n\nA. True, True\nB. False, False\nC. True, False\nD. False, True\n\nProvide exactly one final answer.<|im_end|>\n<|im_start|>assistant\nAnswer: A<|im_end|>\n<|im_start|>user\nFind the maximum possible order for some element of Z_4 x Z_6.\n\nA. 4\nB. 6\nC. 12\nD. 24\n\nProvide exactly one final answer.<|im_end|>\n<|im_start|>assistant\nAnswer: C<|im_end|>\n<|im_start|>user\nFind the degree for the given field extension Q(sqrt(2), sqrt(3), sqrt(18)) over Q.\n\nA. 0\nB. 4\nC. 2\nD. 6\n\nProvide exactly one final answer.\n\nIf the question is multiple choice, output only the choice letter. End with exactly one final line `Answer: <final_answer>`.<|im_end|>\n<|im_start|>assistant\n"
+    },
+    {
+      "item_id": "mmlu:test:1",
+      "dataset_name": "mmlu",
+      "split": "test",
+      "domain": "abstract_algebra",
+      "subject": "abstract_algebra",
+      "question": "Let p = (1, 2, 5, 4)(2, 3) in S_5 . Find the index of <p> in S_5.",
+      "choices": [
+        "8",
+        "2",
+        "24",
+        "120"
+      ],
+      "dummy_ids": [
+        "mmlu:validation:7",
+        "mmlu:validation:10"
+      ],
+      "dummy_turns": [
+        {
+          "item_id": "mmlu:validation:7",
+          "question": "Statement 1 | If f is a homomorphism from G to K and H is normal in G then f(H) is normal in K. Statement 2 | If f is a homomorphism from G to a group and H is finite subgroup of G, then |f(H)| divides |H|.\n\nA. True, True\nB. False, False\nC. True, False\nD. False, True\n\nProvide exactly one final answer.",
+          "choices": [
+            "True, True",
+            "False, False",
+            "True, False",
+            "False, True"
+          ],
+          "normalized_answer": "D",
+          "raw_output": null,
+          "answer_source": "oracle",
+          "parse_status": "oracle",
+          "error_type": null,
+          "dataset_name": "mmlu",
+          "subject": "abstract_algebra",
+          "domain": "abstract_algebra"
+        },
+        {
+          "item_id": "mmlu:validation:10",
+          "question": "Statement 1 | If a group has an element of order 10, then the number of elements of order 10 is divisible by 4. Statement 2 | If m and n are positive integers and phi is the Euler phi function, then phi(mn) = phi(m)phi(n).\n\nA. True, True\nB. False, False\nC. True, False\nD. False, True\n\nProvide exactly one final answer.",
+          "choices": [
+            "True, True",
+            "False, False",
+            "True, False",
+            "False, True"
+          ],
+          "normalized_answer": "B",
+          "raw_output": null,
+          "answer_source": "oracle",
+          "parse_status": "oracle",
+          "error_type": null,
+          "dataset_name": "mmlu",
+          "subject": "abstract_algebra",
+          "domain": "abstract_algebra"
+        }
+      ],
+      "raw_output": "Answer: A",
+      "parsed_answer": "A",
+      "gold_answer": "C",
+      "normalized_gold_answer": "C",
+      "correct": false,
+      "parse_status": "parsed",
+      "parser_name": "mcq_strict",
+      "error_type": null,
+      "prompt_preview": "t|>system\nYou are a precise evaluation assistant. Solve the problem and end with exactly one final line `Answer: <final_answer>`.<|im_end|>\n<|im_start|>user\nStatement 1 | If f is a homomorphism from G to K and H is normal in G then f(H) is normal in K. Statement 2 | If f is a homomorphism from G to a group and H is finite subgroup of G, then |f(H)| divides |H|.\n\nA. True, True\nB. False, False\nC. True, False\nD. False, True\n\nProvide exactly one final answer.<|im_end|>\n<|im_start|>assistant\nAnswer: D<|im_end|>\n<|im_start|>user\nStatement 1 | If a group has an element of order 10, then the number of elements of order 10 is divisible by 4. Statement 2 | If m and n are positive integers and phi is the Euler phi function, then phi(mn) = phi(m)phi(n).\n\nA. True, True\nB. False, False\nC. True, False\nD. False, True\n\nProvide exactly one final answer.<|im_end|>\n<|im_start|>assistant\nAnswer: B<|im_end|>\n<|im_start|>user\nLet p = (1, 2, 5, 4)(2, 3) in S_5 . Find the index of <p> in S_5.\n\nA. 8\nB. 2\nC. 24\nD. 120\n\nProvide exactly one final answer.\n\nIf the question is multiple choice, output only the choice letter. End with exactly one final line `Answer: <final_answer>`.<|im_end|>\n<|im_start|>assistant\n"
+    }
+  ]
+}
