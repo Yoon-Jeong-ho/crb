@@ -34,6 +34,87 @@
 - GPU4 결과는 **오늘 확보된 baseline evidence**로만 남기고, 새 continuation launch에는 재사용하지 않는다.
 - parserfix는 첫 smoke가 검증됐지만, 아직 추가 rerun과 invalid-case 정리가 필요하다.
 
+## 2.1 How `k` dummy turns are inserted right now
+
+- 구현 위치
+  - manifest sampling: `Legacy/src/crb/sampling/dummy_sampler.py`
+  - runtime insertion: `Legacy/src/crb/evaluation/runner.py`
+- 현재 방식은 **target item마다 미리 reproducible dummy list를 만들고**, 실제 run에서는 그 prefix를 잘라 쓴다.
+- 구체적으로는:
+  1. 각 target item마다 `same_domain` / `cross_domain` 후보 dummy를 미리 만든다.
+  2. 후보는 `max(manifest_k_values)` 개까지 뽑는다.
+  3. 실제 run에서는 `dummy_ids_by_type[dummy_type][:k]` 를 사용한다.
+  4. 즉, `k=2` 는 `k=4` 와 `k=8` 의 **prefix subset** 이다.
+- 이 prefix 구조의 장점
+  - `k` 증가 효과를 비교할 때 sample composition drift가 줄어든다.
+  - 같은 target에 대해 `k=2 -> 4 -> 8` 비교가 더 해석 가능해진다.
+
+### same_domain / cross_domain 판정
+
+- `same_domain`
+  - normalized `subject` 가 같거나
+  - normalized `domain` 이 같으면 허용
+  - 둘 다 없으면 같은 dataset으로 fallback
+- `cross_domain`
+  - normalized `subject` / `domain` 이 둘 다 다르면 허용
+  - 둘 다 없으면 다른 dataset으로 fallback
+
+### history_mode에 따른 삽입 차이
+
+- `oracle_history`
+  - dummy turn answer를 gold canonical answer로 바로 넣는다.
+  - dummy generation step이 없다.
+- `self_history`
+  - dummy 1을 생성하고 history에 넣고,
+  - 그 상태에서 dummy 2를 생성하고,
+  - 이런 식으로 **sequentially accumulated** 된다.
+  - 따라서 `self_history` 는 단순 length 증가가 아니라 **model’s own prior answers contamination** 을 포함한다.
+
+### evaluation_mode에 따른 삽입 차이
+
+- `multi_turn`
+  - history를 실제 `user` / `assistant` turn으로 번갈아 넣고
+  - 마지막에 target question user turn을 붙인다.
+- `single_turn_flattened`
+  - history를 `[History i]` 블록으로 평탄화하고
+  - 마지막 target question을 이어 붙인다.
+- 따라서 `multi_turn vs flattened` 는 token length보다 **turn structure effect** 를 보기 위한 비교다.
+
+### scoring rule
+
+- 앞의 `k` dummy는 채점하지 않는다.
+- **마지막 target answer만 채점** 한다.
+- 이 점이 CRB의 핵심이다.
+
+## 2.2 Other viable choices worth considering
+
+- 유지할 가치가 큰 현재 선택
+  - prefix-based `k` sampling
+  - target-only scoring
+  - `self_history` vs `oracle_history`
+  - `same_domain` vs `cross_domain`
+
+- 추가로 고려할 수 있는 선택
+  1. `k=1` 추가
+     - very early degradation onset을 더 잘 본다.
+  2. `k=6` 또는 `k=12` 같은 중간값
+     - curve shape를 더 매끈하게 본다.
+  3. token-length matched control
+     - 같은 `k` 안에서도 길이 때문인지 turn 구조 때문인지 더 분리 가능
+  4. difficulty-matched dummy sampling
+     - same/cross뿐 아니라 dummy difficulty를 맞춰 간섭 해석을 더 깨끗하게 할 수 있다.
+  5. mixed dummy packs
+     - `same_domain` / `cross_domain` 를 섞은 혼합형 pack
+     - 현실 대화에는 더 가까우나 해석은 어려워진다.
+  6. target-turn-only control
+     - target turn만 `/no_think` / prefill / constrained decoding
+     - 현재 가장 유망한 follow-up이다.
+
+- 지금 시점의 판단
+  - 가장 먼저 할 것은 `k` grid를 더 늘리는 것이 아니라,
+  - **target final-answer emission을 안정화** 하는 것이다.
+  - 그 다음에야 `k=1` 추가나 token-length control이 의미가 있다.
+
 ## 3. Fresh verified result
 
 - GPU 5 / GPQA / Qwen3 thinking-on / parserfix smoke
