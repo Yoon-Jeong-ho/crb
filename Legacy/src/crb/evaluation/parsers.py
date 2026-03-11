@@ -10,6 +10,12 @@ from crb.schemas import NormalizedItem, ParsedAnswer
 MCQ_STRICT_RE = re.compile(r"^Answer\s*:\s*([A-J])\s*$", re.IGNORECASE)
 MCQ_FALLBACK_RE = re.compile(r"^\s*\(?([A-J])[\)\.\:]?(?:\s|$)", re.IGNORECASE)
 ANSWER_LINE_RE = re.compile(r"Answer\s*:\s*(.+)", re.IGNORECASE)
+MCQ_REASONING_PATTERNS = [
+    re.compile(r"\b(?:answer|option|choice)\s*(?:is|:)\s*([A-J])\b", re.IGNORECASE),
+    re.compile(r"\bwhich is\s*([A-J])\b", re.IGNORECASE),
+    re.compile(r"\btherefore\s*,?\s*(?:the\s+)?(?:answer|option|choice)\s*(?:is|:)\s*([A-J])\b", re.IGNORECASE),
+    re.compile(r"\bso\s*,?\s*(?:the\s+)?(?:answer|option|choice)\s*(?:is|:)\s*([A-J])\b", re.IGNORECASE),
+]
 BOXED_RE = re.compile(r"\\boxed\{([^{}]+)\}")
 NUMERIC_TOKEN_RE = re.compile(r"[-+]?\d+(?:\.\d+)?(?:/\d+)?")
 
@@ -35,8 +41,21 @@ def parse_mcq_answer(raw_output: str) -> ParsedAnswer:
                 parser_name="mcq_strict",
                 status="parsed",
             )
+
+    reasoning_tail = raw_output[-1600:]
+    reasoning_candidates: list[str] = []
+    for pattern in MCQ_REASONING_PATTERNS:
+        reasoning_candidates.extend(match.group(1).upper() for match in pattern.finditer(reasoning_tail))
+    if reasoning_candidates:
+        return ParsedAnswer(
+            raw_output=raw_output,
+            normalized_answer=reasoning_candidates[-1],
+            parser_name="mcq_reasoning_fallback",
+            status="parsed",
+        )
+
     candidates: list[str] = []
-    for line in lines[-5:]:
+    for line in lines[-20:]:
         if "answer" in line.lower():
             answer_match = ANSWER_LINE_RE.search(line)
             if answer_match:

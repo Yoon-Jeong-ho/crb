@@ -2,66 +2,33 @@
 
 - Date: 2026-03-11
 
-## Bootstrap conclusions
+## Current conclusions
 
-1. **`Legacy/`가 현재 유일한 runnable CRB 파이프라인이다.**
-   - 루트에는 `src/`, `configs/`, `tests/`, `scripts/`가 없다.
-   - 실제 실행/검증은 `Legacy/src/crb`, `Legacy/configs`, `Legacy/tests` 기준으로 이뤄져야 한다.
-2. **루트는 당분간 “rewrite 대상”이 아니라 “wrapper / bootstrap shell”로 다루는 편이 안전하다.**
-   - 빈 `README.md`를 채우고,
-   - 루트 문서에서 `Legacy/`를 현재 실행 경로로 명시하고,
-   - promote-vs-wrap 결정을 별도 단계로 두는 것이 가장 리스크가 낮다.
-3. **문서 정책은 이제 GPUs `4,5,6,7 only`로 통일되어야 한다.**
-   - 기존 `README_CRB.md`와 일부 setup 문서는 `6,7` 중심이라 현재 운영 규칙과 어긋난다.
+1. **`Legacy/` is still the only runnable CRB tree.**
+   - Root remains documentation/bootstrap glue.
+   - Therefore all new technical validation still depends on `Legacy/` execution.
+2. **The pushed baseline is already established.**
+   - `28e4058` and `02fa431` are on `origin/main`.
+   - Those commits define the current stable documentation checkpoint.
+3. **This continuation pass still uses GPUs `5,6,7 only`.**
+   - Earlier same-day GPU4 smoke evidence remains useful reference, but it is carry-over evidence for this pass.
+4. **The parserfix branch has now crossed the “first successful run” gate.**
+   - `run-20260311T060823Z-1947f5cf` proves the GPU567 branch can produce a fresh GPQA thinking-on result.
+   - But `format_failure_rate = 0.5` and `invalid_count = 4` show that parser/final-answer handling is still the main bottleneck.
+5. **The allowed-set multi-GPU path is also re-verified.**
+   - `run-20260311T061434Z-10e36149` on GPUs `5,6` succeeded cleanly.
+   - So the remaining blocker is not multi-GPU execution stability; it is thinking-on final-answer quality.
 
-## Verified legacy evidence to carry forward
+## What this result means
 
-- GPQA / Qwen3 thinking off
-  - smoke: accuracy `0.500`, format failure `0.000`
-  - mini: accuracy `0.40625`, format failure `0.000`
-  - 해석: baseline path로 가장 안정적이다.
-- GPQA / Qwen3 thinking on
-  - smoke: accuracy `0.125`, format failure `0.875`
-  - strict-final rescue: accuracy `0.000`, format failure `1.000`
-  - 해석: 현재 병목은 정답 품질보다 **format / postprocessing collapse**에 가깝다.
-- GSM8K / Qwen3 off/on pair
-  - off: accuracy `0.375`, format failure `0.250`
-  - on: accuracy `0.125`, format failure `0.125`
-  - 해석: thinking-on 문제가 GPQA처럼 전역적으로 터지는 것은 아니다.
-- AIME / Qwen3 thinking off
-  - smoke/mini 모두 accuracy `0.125`, format failure `0.250`
-  - 해석: numeric evaluator path는 살아 있고, 남은 문제는 품질/모호성이다.
+- The branch is no longer only a docs/planning hypothesis.
+- The branch is also not yet “fixed”: half of the items still failed format/parsing.
+- So the right interpretation is **partial validation, not closure**.
+- The invalid outputs we inspected end mid-reasoning and lack a final `Answer: <letter>` line.
+- That makes the next fix target more specific: **final-answer emission / truncation control**, not just parser regex expansion.
 
-## New bootstrap-cycle smoke evidence
+## Practical next step
 
-- 2026-03-11에 worker-5가 **GPU 4**에서 GPQA thinking-off smoke를 새로 실행했다.
-- 실행 위치: `Legacy/`
-- 핵심 조건:
-  - model: `Qwen/Qwen3-1.7B`
-  - dataset: `gpqa`
-  - mode: `multi_turn`
-  - history: `oracle_history`
-  - dummy: `same_domain`
-  - `k=2`, `num_items=8`
-- 결과:
-  - run id: `run-20260311T054045Z-c4316b30`
-  - accuracy `0.500`
-  - format failure `0.000`
-  - scoreboard append 확인
-- 산출물:
-  - JSON: `Legacy/results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_worker5_smoke_20260311__c4316b30556d7ecf/run-20260311T054045Z-c4316b30.json`
-  - log: `Legacy/logs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_worker5_smoke_20260311__c4316b30556d7ecf.log`
-
-## Operational lesson from the smoke rerun
-
-- 첫 sandboxed 시도는 Hugging Face 접근이 막혀 `ConnectionError`로 실패했다.
-- unsandboxed 재시도로 dataset download 후 정상 실행되었다.
-- 추론: 새 머신/새 캐시 상황의 smoke 검증은 **로컬 코드만 있어도 외부 dataset 접근**이 필요할 수 있다.
-
-## What this means next
-
-- 가장 빠른 안전 경로는 **Legacy를 즉시 재작성하는 것보다, 루트 README/docs를 Legacy 실행 경로에 맞게 정렬하는 것**이다.
-- 다음 진짜 기술 병목은:
-  1. root package/layout 정렬,
-  2. GPQA thinking-on parser/postprocessing 개선,
-  3. selective sweep 운영이다.
+- Highest-value next action: inspect the 4 invalid outputs from `run-20260311T060823Z-1947f5cf`.
+- After that, rerun once on GPU 6 or 7 to check whether the partial improvement is stable.
+- Multi-GPU verification is already done for the allowed set, so the next config change should target **final-answer emission**, not infrastructure.

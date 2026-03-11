@@ -1,78 +1,71 @@
 # EXECUTION STATUS
 
 - Date: 2026-03-11
-- Team: `crb-team-bootstrap-v3-crb-expe`
-- Basis docs: `CRB_EXPERIMENT_SETUP.md`, `README.md`, `README_CRB.md`, `Legacy/README.md`
-- GPU rule for this run: `4,5,6,7` only
+- Team: `crb-gpu567-continuation-gpus-5`
+- Basis docs: `README.md`, `CRB_EXPERIMENT_SETUP.md`, `docs/RESULTS_LOG.md`, `docs/ANALYSIS.md`, `docs/TODO_NEXT.md`
 - Env: `/data_x/aa007878/projects/crb/.conda/envs/crb`
+- GPU rule for **this continuation run**: `5,6,7` only
 
 ## Current state
-- [x] Repo status checked (`git status`: root currently shows new `docs/` worktree for bootstrap docs)
-- [x] Basis docs read
-- [x] OMX team launched
-- [x] Team roles defined
-- [x] Root/Legacy split detected
-- [x] Active runnable path confirmed in `Legacy/`
-- [x] Root `README.md` filled with current bootstrap reality
-- [x] One new GPQA smoke run completed on GPU 4
-- [x] Promote-vs-wrap decision made (`wrap via root bridge`)
-- [ ] Root package layout aligned with runnable code
-- [x] Commit created (`28e4058`)
-- [x] Push completed (`origin/main`)
 
-## Role ownership
-- Data Lead — dataset scope, schema, manifest/sampling policy
-- Pipeline Engineer — code/config/CLI path alignment
-- Verifier / Reviewer — smoke/mini validation checklist
-- Experiment Operator — GPU/run execution log
-- Docs & Git Maintainer — README/setup/docs/git hygiene
+- [x] Root vs `Legacy/` runnable split re-confirmed
+- [x] Docs refreshed for the GPU567 continuation pass
+- [x] Earlier pushed baseline commits recorded: `28e4058`, `02fa431`
+- [x] Historical GPQA thinking-off GPU4 smoke evidence carried forward as reference
+- [x] Parserfix branch validated with a fresh GPU5 run
+- [x] First true continuation-cycle result logged
+- [x] One allowed multi-GPU verification completed on GPUs `5,6`
+- [ ] Parserfix follow-up rerun on GPU6/7 not yet logged
+- [ ] Remaining invalid outputs not yet analyzed
 
-## Repo snapshot
-- Root now exposes a bridge to the runnable Legacy pipeline:
-  - `src/crb -> ../Legacy/src/crb`
-  - `configs -> Legacy/configs`
-  - `scripts -> Legacy/scripts`
-  - `tests -> Legacy/tests`
-  - `data -> Legacy/data`
-- `Legacy/` still contains the working candidate pipeline (`src/crb`, configs, tests, logs, docs).
-- `README.md` now acts as a root bootstrap/wrapper doc; `README_CRB.md` remains an older overview.
-- `pyproject.toml` expects root `src/` and `README.md`, so packaging/docs are currently misaligned.
+## Fresh verified result
 
-## Runnable path right now
-- Workdir: `Legacy/`
-- Import requirement: `PYTHONPATH=src`
-- Primary command shape:
-  - `PYTHONNOUSERSITE=1 PYTHONPATH=src /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb.cli.run_eval --config ...`
-- Runtime outputs currently land under:
-  - `Legacy/results/runs/`
-  - `Legacy/results/manifests/`
-  - `Legacy/results/summary/scoreboard.csv`
-  - `Legacy/logs/`
+- experiment: GPQA / Qwen3 thinking-on / parserfix smoke
+- GPU: `5`
+- config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_parserfix.yaml`
+- run id: `run-20260311T060823Z-1947f5cf`
+- metrics:
+  - accuracy `0.375`
+  - format failure `0.500`
+  - parsed `4/8`
+  - invalid `4/8`
+- evidence:
+  - JSON: `Legacy/results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_parserfix__1947f5cf9df42ec1/run-20260311T060823Z-1947f5cf.json`
+  - log: `Legacy/logs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_parserfix__1947f5cf9df42ec1.log`
+  - scoreboard append confirmed in `Legacy/results/summary/scoreboard.csv`
 
-## New smoke evidence (bootstrap cycle)
-- Status: success
-- Date/time: `2026-03-11T05:40:45Z`
-- GPU: `4`
-- Experiment: `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_worker5_smoke_20260311`
-- Run id: `run-20260311T054045Z-c4316b30`
-- Metrics:
+## Fresh multi-GPU verification
+
+- experiment: GPQA / Qwen3 thinking-off / multi-GPU smoke
+- GPUs: `5,6`
+- config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_gpu56_smoke_20260311.yaml`
+- run id: `run-20260311T061434Z-10e36149`
+- metrics:
   - accuracy `0.500`
   - format failure `0.000`
-  - parsed `8/8`
-- Evidence:
-  - JSON: `Legacy/results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_worker5_smoke_20260311__c4316b30556d7ecf/run-20260311T054045Z-c4316b30.json`
+  - parsed `2/2`
+  - invalid `0/2`
+- evidence:
+  - JSON: `Legacy/results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_gpu56_smoke_20260311__10e361496f9e67c7/run-20260311T061434Z-10e36149.json`
   - scoreboard row: `Legacy/results/summary/scoreboard.csv`
-  - log: `Legacy/logs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_worker5_smoke_20260311__c4316b30556d7ecf.log`
+
+## Active local WIP
+
+- parserfix files currently present locally:
+  - `Legacy/src/crb/evaluation/parsers.py`
+  - `Legacy/tests/test_parsers.py`
+  - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_parserfix.yaml`
+- meaning: the branch now has **one verified GPU5 smoke**, but it is still local/unpushed and still has `invalid_count = 4`.
 
 ## Immediate queue
-1. Finish remaining dataset-status cleanup for GSM8K / AIME / MMLU.
-2. Align root package metadata / entrypoints with the bridge or promote path.
-3. Re-validate one thinking-on condition.
-4. Re-validate one allowed multi-GPU condition.
-5. Decide whether to keep `README_CRB.md` as historical reference or merge it into `README.md`.
 
-## Blockers / risks
-- Root repo structure does not match `pyproject.toml`.
-- Dataset-backed smoke on a cold cache may require unsandboxed network access.
-- Shared root `docs/RESULTS_LOG.md` is owned by another worker, so this file carries the run evidence for now.
-- Some older docs still mention GPUs `6,7`; current rule is `4,5,6,7` only.
+1. Inspect the 4 invalid outputs from `run-20260311T060823Z-1947f5cf`.
+2. Confirm whether those invalids are parse bugs or no-final-answer / truncation failures.
+3. Run one follow-up parserfix smoke on GPU 6 or 7.
+4. Reflect any new evidence in `docs/RESULTS_LOG.md` and `docs/ANALYSIS.md` immediately.
+
+## Risks / blockers
+
+- parserfix is no longer unverified, but format failure is still `0.5`.
+- GPU4 smoke evidence remains helpful baseline material, not the scheduler rule for this continuation pass.
+- Root package/layout mismatch still exists; docs are aligned first, code/package cleanup remains separate work.

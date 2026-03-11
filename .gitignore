@@ -4,6 +4,7 @@ AGENTS.md
 .codex/
 .agents/
 .conda/
+cache/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

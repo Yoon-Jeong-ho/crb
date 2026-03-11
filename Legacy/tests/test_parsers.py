@@ -12,3 +12,9 @@ def test_parse_numeric_fraction_normalization():
     assert parsed.status == "parsed"
     assert parsed.normalized_answer == "1/2"
     assert normalize_numeric_string("1/2") == "1/2"
+
+
+def test_parse_mcq_reasoning_phrase():
+    parsed = parse_mcq_answer("Long reasoning... the best choice is B because it dominates the uncertainty scale.")
+    assert parsed.status == "parsed"
+    assert parsed.normalized_answer == "B"
