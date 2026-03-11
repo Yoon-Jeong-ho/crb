@@ -115,6 +115,41 @@
   - **target final-answer emission을 안정화** 하는 것이다.
   - 그 다음에야 `k=1` 추가나 token-length control이 의미가 있다.
 
+## 2.3 Cross-model context policy (recommended)
+
+- **dummy question manifest는 모든 모델에 공통으로 고정**
+  - target마다 어떤 dummy IDs를 붙일지는 shared manifest로 유지한다.
+  - 그래야 모델 비교에서 context composition drift가 줄어든다.
+- `oracle_history`
+  - 모든 모델에 공통 gold answer history를 넣는다.
+  - 즉, 같은 target / 같은 `k` / 같은 dummy pack이면 입력 조건이 거의 동일하다.
+- `self_history`
+  - **평가하는 모델별로 따로 생성**한다.
+  - 이유: self_history의 핵심은 “모델 자신의 이전 답변이 후속 target을 얼마나 오염시키는가”이기 때문이다.
+- 따라서 권장 해석은:
+  - manifest는 shared
+  - oracle는 shared
+  - self만 model-specific
+
+### Why this is the right default
+
+- manifest까지 모델별로 바꾸면
+  - 성능 차이가 model 차이인지
+  - dummy sampling 차이인지
+  - domain mix 차이인지
+  분리가 어려워진다.
+- 반대로 self_history까지 완전히 공통으로 고정하면
+  - 그건 self contamination이 아니라
+  - **external contaminated history robustness** 실험이 된다.
+
+### Optional extra control
+
+- 예산이 남으면 추가 ablation으로
+  - **fixed generated history**
+  - 즉, 특정 reference model이 만든 history를 모든 모델에 공통 입력
+  을 둘 수 있다.
+- 하지만 이건 primary protocol이 아니라 **secondary control** 로 두는 것이 좋다.
+
 ## 3. Fresh verified result
 
 - GPU 5 / GPQA / Qwen3 thinking-on / parserfix smoke
