@@ -67,6 +67,7 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
 - 시작 문서:
   - 운영 가이드: `CRB_EXPERIMENT_SETUP.md`
   - 이전 장문 연구/운영 스펙 아카이브: `docs/CRB_EXPERIMENT_SETUP_LONGFORM_ARCHIVE_20260311.md`
+  - 리서치 노트: `research/README.md`
   - 현재 상태: `docs/EXECUTION_STATUS.md`
   - 결과 로그: `docs/RESULTS_LOG.md`
   - 해석: `docs/ANALYSIS.md`
