@@ -17,6 +17,7 @@
 - [x] One allowed multi-GPU verification completed on GPUs `5,6`
 - [x] Parserfix follow-up rerun on GPU6 logged
 - [x] Remaining invalid outputs analyzed
+- [x] AIME refresh on GPU7 logged
 
 ## Fresh verified result
 
@@ -65,20 +66,34 @@
   - accuracy got worse
   - branch is still not ready to call stable
 
-## Active local WIP
+## AIME refresh
+
+- experiment: AIME / Qwen3 thinking-off / offline smoke
+- GPU: `7`
+- config: `Legacy/configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_gpu7_offline_smoke_20260311.yaml`
+- run id: `run-20260311T064335Z-1ab1abe2`
+- metrics:
+  - accuracy `0.125`
+  - format failure `0.250`
+  - parsed `6/8`
+  - invalid `2/8`
+
+## Current parserfix branch files
 
 - parserfix files currently present locally:
   - `Legacy/src/crb/evaluation/parsers.py`
   - `Legacy/tests/test_parsers.py`
   - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_parserfix.yaml`
-- meaning: the branch now has **one verified GPU5 smoke**, but it is still local/unpushed and still has `invalid_count = 4`.
+- meaning:
+  - parser regex improvement itself is worth keeping
+  - remaining failures are mostly no-final-answer / truncation
+  - next change target is prompt/decoding, not more regex expansion
 
 ## Immediate queue
 
-1. Inspect the 4 invalid outputs from `run-20260311T060823Z-1947f5cf`. ✅
-2. Confirm whether those invalids are parse bugs or no-final-answer / truncation failures. ✅ mostly no-final-answer / truncation
-3. Run one follow-up parserfix smoke on GPU 6 or 7. ✅ GPU6 complete
-4. Choose the next prompt/decoding change rather than more parser regex
+1. Choose the next prompt/decoding change rather than more parser regex.
+2. Decide whether GSM8K or MMLU gets the next continuation slot.
+3. Keep AIME numeric path warm with the new GPU7 offline evidence.
 
 ## Risks / blockers
 

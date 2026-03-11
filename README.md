@@ -49,13 +49,16 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
   - accuracy `0.125`
   - format failure `0.25`
 
-## Local work in progress (not pushed yet)
+## Current parserfix branch files
 
 - parserfix 작업 파일:
   - `Legacy/src/crb/evaluation/parsers.py`
   - `Legacy/tests/test_parsers.py`
   - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_parserfix.yaml`
-- 현재 상태: **GPU5 smoke 1회는 검증됨**, 하지만 코드는 아직 로컬 변경 상태이며 추가 rerun/정리가 남아 있습니다.
+- 현재 상태:
+  - GPU5 parserfix smoke 검증 완료
+  - GPU6 strict-final follow-up 검증 완료
+  - 여전히 next step은 parser 추가보다 **final-answer emission / decoding 보정**입니다.
 
 ## Operational reality
 
@@ -71,7 +74,6 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
 
 ## Next actions
 
-1. `run-20260311T060823Z-1947f5cf`의 invalid 4건을 확인합니다.
-2. 현재 invalid가 parser regex 문제인지, **final answer 미출력/생성 truncation**인지 분리합니다.
-3. **GPU 6 또는 7**에서 parserfix follow-up single-GPU rerun을 1회 더 남깁니다.
-4. 새 결과가 생기면 `docs/RESULTS_LOG.md` / `docs/ANALYSIS.md` / `docs/TODO_NEXT.md`를 즉시 동기화합니다.
+1. thinking-on branch에서 **final answer emission**을 개선할 다음 config를 정합니다.
+2. GSM8K 또는 MMLU 중 다음 `5,6,7` continuation slot을 선택합니다.
+3. 새 결과가 생기면 `docs/RESULTS_LOG.md` / `docs/ANALYSIS.md` / `docs/TODO_NEXT.md`를 즉시 동기화합니다.
