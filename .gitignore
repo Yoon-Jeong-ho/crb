@@ -171,6 +171,7 @@ cython_debug/
 
 # CRB runtime artifacts
 data/cache/
+Legacy/data/cache/
 logs/
 results/manifests/
 results/runs/

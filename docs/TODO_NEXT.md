@@ -3,10 +3,10 @@
 - Date: 2026-03-11
 
 ## Now
-- [ ] Decide `Legacy/` promote-vs-wrap strategy for the root repo
+- [x] Decide `Legacy/` promote-vs-wrap strategy for the root repo (`wrap` for bootstrap)
 - [ ] Align root `pyproject.toml` / entrypoints with the chosen runnable path
-- [ ] Merge worker outputs into one consistent root bootstrap snapshot
-- [ ] Reflect the new GPU4 GPQA smoke in the shared run narrative if `docs/RESULTS_LOG.md` owner wants it mirrored
+- [x] Merge worker outputs into one consistent root bootstrap snapshot
+- [x] Reflect the new GPU4 GPQA smoke in the shared run narrative
 
 ## Near-term runs
 - [ ] GPQA thinking-on parser/postprocessing fallback
@@ -16,7 +16,8 @@
 - [ ] Expand AIME after numeric ambiguity review
 
 ## Docs / Git hygiene
-- [ ] Commit root `README.md` + bootstrap docs after the team pass settles
+- [x] Commit root `README.md` + bootstrap docs after the team pass settles (`28e4058`)
+- [x] Push bootstrap commit to `origin/main`
 - [ ] Decide whether `README_CRB.md` stays historical or is updated to current GPU policy
 - [ ] Keep unresolved Legacy questions captured in `docs/LEGACY_NOTES.md`
 - [ ] Distinguish “historical legacy evidence” from “newly re-verified bootstrap-cycle evidence”

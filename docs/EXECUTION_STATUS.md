@@ -15,10 +15,10 @@
 - [x] Active runnable path confirmed in `Legacy/`
 - [x] Root `README.md` filled with current bootstrap reality
 - [x] One new GPQA smoke run completed on GPU 4
-- [ ] Promote-vs-wrap decision made
+- [x] Promote-vs-wrap decision made (`wrap via root bridge`)
 - [ ] Root package layout aligned with runnable code
-- [ ] Commit created
-- [ ] Push completed
+- [x] Commit created (`28e4058`)
+- [x] Push completed (`origin/main`)
 
 ## Role ownership
 - Data Lead — dataset scope, schema, manifest/sampling policy
@@ -28,8 +28,13 @@
 - Docs & Git Maintainer — README/setup/docs/git hygiene
 
 ## Repo snapshot
-- Root missing active `src/`, `configs/`, `scripts/`, `tests/`, `docs/` implementation tree.
-- `Legacy/` contains the working candidate pipeline (`src/crb`, configs, tests, logs, docs).
+- Root now exposes a bridge to the runnable Legacy pipeline:
+  - `src/crb -> ../Legacy/src/crb`
+  - `configs -> Legacy/configs`
+  - `scripts -> Legacy/scripts`
+  - `tests -> Legacy/tests`
+  - `data -> Legacy/data`
+- `Legacy/` still contains the working candidate pipeline (`src/crb`, configs, tests, logs, docs).
 - `README.md` now acts as a root bootstrap/wrapper doc; `README_CRB.md` remains an older overview.
 - `pyproject.toml` expects root `src/` and `README.md`, so packaging/docs are currently misaligned.
 
@@ -60,11 +65,11 @@
   - log: `Legacy/logs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_worker5_smoke_20260311__c4316b30556d7ecf.log`
 
 ## Immediate queue
-1. Merge worker docs into one root bootstrap snapshot.
-2. Confirm dataset readiness for GPQA / GSM8K / AIME / MMLU-family.
-3. Decide whether root should promote `Legacy/` pipeline or wrap it.
-4. Align root package metadata / entrypoints with the chosen path.
-5. Re-validate one thinking-on condition and one allowed multi-GPU condition.
+1. Finish remaining dataset-status cleanup for GSM8K / AIME / MMLU.
+2. Align root package metadata / entrypoints with the bridge or promote path.
+3. Re-validate one thinking-on condition.
+4. Re-validate one allowed multi-GPU condition.
+5. Decide whether to keep `README_CRB.md` as historical reference or merge it into `README.md`.
 
 ## Blockers / risks
 - Root repo structure does not match `pyproject.toml`.
