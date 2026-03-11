@@ -23,9 +23,13 @@
 - Current status: verified once on GPU5, but still only `4/8` parsed with `invalid_count = 4`.
 - Allowed-set multi-GPU verification is now also present:
   - `run-20260311T061434Z-10e36149` on GPUs `5,6`
+- GPU6 strict-final follow-up is also present:
+  - `run-20260311T063838Z-7956de92`
+- AIME GPU7 offline smoke is also present:
+  - `run-20260311T064335Z-1ab1abe2`
 
 ## Open questions
 
-1. Which exact output patterns caused the 4 invalid parserfix cases?
-2. Does the same branch reproduce on GPU 6 or 7?
-3. After one more rerun, should this parserfix config become the active thinking-on baseline or need another pass?
+1. Can we improve final-answer emission without sacrificing the better accuracy of the non-strict parserfix run?
+2. Should local snapshot-path model runs be normalized back to canonical model naming in scoreboard reporting?
+3. Which follow-up dataset after GPQA should get the next `5,6,7` continuation slot: GSM8K or MMLU?

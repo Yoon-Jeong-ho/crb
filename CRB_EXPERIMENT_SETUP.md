@@ -60,8 +60,8 @@
 - [x] GPU 5에서 GPQA thinking-on parserfix smoke 1회
 - [x] 첫 true GPU567-cycle result를 문서화
 - [x] allowed subset `5,6`으로 multi-GPU smoke 1회
-- [ ] invalid 4건 원인 확인
-- [ ] GPU 6 또는 7에서 follow-up single-GPU rerun 1회
+- [x] invalid 4건 원인 확인
+- [x] GPU 6 또는 7에서 follow-up single-GPU rerun 1회
 
 ## 5. Output locations
 

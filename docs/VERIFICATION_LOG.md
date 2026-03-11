@@ -15,7 +15,7 @@
 - [x] `./.conda/envs/crb/bin/python -m compileall src` → pass
 - [x] `PYTHONPATH=Legacy/src ./.conda/envs/crb/bin/python -m compileall Legacy/src` → pass
 - [x] `./.conda/envs/crb/bin/python -m pytest tests -q` → `9 passed in 1.69s`
-- [x] `PYTHONPATH=Legacy/src ./.conda/envs/crb/bin/python -m pytest Legacy/tests -q` → `8 passed in 5.57s`
+- [x] `PYTHONPATH=Legacy/src ./.conda/envs/crb/bin/python -m pytest Legacy/tests -q` → `9 passed in 1.86s`
 - [x] Mock end-to-end path verified via `./.conda/envs/crb/bin/python -m pytest tests/test_pipeline_mock.py -q` → `1 passed in 4.31s`
 - [x] Parser tests after fallback patch: `PYTHONPATH=src ../.conda/envs/crb/bin/python -m pytest tests/test_parsers.py -q` (from `Legacy/`) → `3 passed`
 
@@ -24,7 +24,9 @@
 - [x] Real GPU4 smoke config exists: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_smoke_20260311.yaml`
 - [x] Real GPU4 smoke manifest exists: `Legacy/results/manifests/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_smoke_20260311__manifest__280958988d2e6bca.json`
 - [x] Real GPU4 smoke run JSON exists: `Legacy/results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_gpu4_smoke_20260311__f40cce6cd46fde00/run-20260311T053304Z-f40cce6c.json`
-- [ ] This worker did not replay the real GPQA smoke locally inside the sandbox
+- [x] GPU5 thinking-on parserfix smoke replayed successfully outside the sandbox
+- [x] GPU5,6 multi-GPU GPQA smoke replayed successfully outside the sandbox
+- [x] GPU7 AIME offline smoke replayed successfully outside the sandbox
 
 ## Run-verified
 - [x] Real GPQA smoke artifact set verified on disk for `run-20260311T053304Z-f40cce6c`
@@ -33,6 +35,8 @@
 - [x] Additional later GPQA smoke artifact also exists: `run-20260311T054045Z-c4316b30`
 - [x] GPQA thinking-on parserfix smoke artifact exists: `run-20260311T060823Z-1947f5cf`
 - [x] Allowed-set multi-GPU smoke artifact exists: `run-20260311T061434Z-10e36149`
+- [x] GPQA thinking-on GPU6 strictfinal follow-up exists: `run-20260311T063838Z-7956de92`
+- [x] AIME GPU7 offline smoke exists: `run-20260311T064335Z-1ab1abe2`
 
 ## Sandbox vs escalated path
 - Sandbox-limited verification: direct tmux inspection failed inside the sandbox with `error connecting to /tmp/tmux-2057/default (Operation not permitted)` until escalated.
@@ -42,12 +46,11 @@
 ## Verification protocol evidence
 - PASS — typecheck-equivalent: `./.conda/envs/crb/bin/python -m compileall src` and `PYTHONPATH=Legacy/src ./.conda/envs/crb/bin/python -m compileall Legacy/src`
 - PASS — full tests: `./.conda/envs/crb/bin/python -m pytest tests -q` → `8 passed in 3.69s`
-- PASS — legacy tests: `PYTHONPATH=Legacy/src ./.conda/envs/crb/bin/python -m pytest Legacy/tests -q` → `8 passed in 5.57s`
+- PASS — legacy tests: `PYTHONPATH=Legacy/src ./.conda/envs/crb/bin/python -m pytest Legacy/tests -q` → `9 passed in 1.86s`
 - PASS — end-to-end mock path: `./.conda/envs/crb/bin/python -m pytest tests/test_pipeline_mock.py -q` → `1 passed in 4.31s`
 - FAIL — modified-file lint: `markdownlint docs/VERIFICATION_LOG.md` / `mdl docs/VERIFICATION_LOG.md` unavailable (`no markdown linter configured`)
 - PASS — regression spot-check: `PYTHONPATH=Legacy/src ./.conda/envs/crb/bin/python -m pytest Legacy/tests/test_pipeline_mock.py -q` → `1 passed in 5.53s`
 
 ## Not yet verified
-- Real GPU-backed smoke was not re-executed by this worker in the current sandboxed session.
 - Markdown linting could not run because no markdown linter is configured.
 - `README.md` packaging/doc cleanup is still incomplete even though smoke artifacts now exist.

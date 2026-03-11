@@ -15,8 +15,8 @@
 - [x] Parserfix branch validated with a fresh GPU5 run
 - [x] First true continuation-cycle result logged
 - [x] One allowed multi-GPU verification completed on GPUs `5,6`
-- [ ] Parserfix follow-up rerun on GPU6/7 not yet logged
-- [ ] Remaining invalid outputs not yet analyzed
+- [x] Parserfix follow-up rerun on GPU6 logged
+- [x] Remaining invalid outputs analyzed
 
 ## Fresh verified result
 
@@ -49,6 +49,22 @@
   - JSON: `Legacy/results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_gpu56_smoke_20260311__10e361496f9e67c7/run-20260311T061434Z-10e36149.json`
   - scoreboard row: `Legacy/results/summary/scoreboard.csv`
 
+## Follow-up single-GPU rerun
+
+- experiment: GPQA / Qwen3 thinking-on / parserfix + strictfinal
+- GPU: `6`
+- config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_parserfix_gpu6_strictfinal_20260311.yaml`
+- run id: `run-20260311T063838Z-7956de92`
+- metrics:
+  - accuracy `0.125`
+  - format failure `0.375`
+  - parsed `5/8`
+  - invalid `3/8`
+- interpretation:
+  - format failure improved vs GPU5 parserfix run
+  - accuracy got worse
+  - branch is still not ready to call stable
+
 ## Active local WIP
 
 - parserfix files currently present locally:
@@ -59,10 +75,10 @@
 
 ## Immediate queue
 
-1. Inspect the 4 invalid outputs from `run-20260311T060823Z-1947f5cf`.
-2. Confirm whether those invalids are parse bugs or no-final-answer / truncation failures.
-3. Run one follow-up parserfix smoke on GPU 6 or 7.
-4. Reflect any new evidence in `docs/RESULTS_LOG.md` and `docs/ANALYSIS.md` immediately.
+1. Inspect the 4 invalid outputs from `run-20260311T060823Z-1947f5cf`. ✅
+2. Confirm whether those invalids are parse bugs or no-final-answer / truncation failures. ✅ mostly no-final-answer / truncation
+3. Run one follow-up parserfix smoke on GPU 6 or 7. ✅ GPU6 complete
+4. Choose the next prompt/decoding change rather than more parser regex
 
 ## Risks / blockers
 

@@ -37,6 +37,18 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
   - parsed / invalid: `2 / 0`
 - 해석: continuation cycle 안에서 allowed GPU set 기준의 single-GPU + multi-GPU evidence를 둘 다 확보했습니다.
 
+## Additional continuation evidence
+
+- GPU 6 / GPQA / thinking-on parserfix + strictfinal follow-up
+  - run: `run-20260311T063838Z-7956de92`
+  - accuracy `0.125`
+  - format failure `0.375`
+  - 해석: 형식은 조금 나아졌지만 정확도는 악화되어, 현재 active thinking-on path로 채택하기 어렵습니다.
+- GPU 7 / AIME / thinking-off offline smoke
+  - run: `run-20260311T064335Z-1ab1abe2`
+  - accuracy `0.125`
+  - format failure `0.25`
+
 ## Local work in progress (not pushed yet)
 
 - parserfix 작업 파일:

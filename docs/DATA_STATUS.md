@@ -5,9 +5,9 @@
 
 ## Dataset readiness snapshot
 - [x] GPQA — adapter/path/schema re-verified via fresh GPU4 smoke (`run-20260311T054045Z-c4316b30`)
-- [ ] GSM8K — adapter/path/schema not freshly rerun this cycle
-- [ ] AIME — numeric parse/eval path re-verified in active root
-- [ ] MMLU-family — adapter/path/schema re-verified in active root
+- [x] GSM8K — adapter/path/schema re-verified via fresh offline dataset load on 2026-03-11
+- [x] AIME — numeric parse/eval path re-verified in active root and fresh GPU7 offline smoke (`run-20260311T064335Z-1ab1abe2`)
+- [x] MMLU-family — adapter/path/schema re-verified via fresh offline dataset load on 2026-03-11
 
 ## Normalized common format
 - `dataset_name`
@@ -46,9 +46,10 @@
 - [x] `same_domain` policy = same normalized `subject` or broad `domain`
 - [x] `cross_domain` policy = different normalized `subject` and broad `domain`
 - [x] Manifest generation / reuse path exists in `Legacy/src/crb/sampling/dummy_sampler.py`
-- [ ] Fresh cache/access check for GSM8K and MMLU on this machine
-- [ ] Fresh AIME numeric rerun in the current bootstrap path
+- [x] Fresh cache/access check for GSM8K and MMLU on this machine
+- [x] Fresh AIME numeric rerun in the current bootstrap path
 
 ## Risks
 - AIME `cross_domain` is weak if dummy pool stays math-only.
 - Real-dataset reruns may still need unsandboxed HF access on a cold cache.
+- Offline local-model runs currently record the snapshot path in `model_name`; normalize later if needed.

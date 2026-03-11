@@ -48,6 +48,31 @@
   - multi-GPU continuation evidence: 확보
 - 남은 핵심 문제는 **thinking-on parserfix branch의 invalid 4건**이다.
 
+## GPU6 follow-up rerun
+
+- GPQA / Qwen3 thinking-on / parserfix + strictfinal follow-up ran on **GPU 6**.
+  - config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_parserfix_gpu6_strictfinal_20260311.yaml`
+  - run id: `run-20260311T063838Z-7956de92`
+  - accuracy: `0.125`
+  - format failure rate: `0.375`
+  - parsed_count: `5`
+  - invalid_count: `3`
+- interpretation:
+  - strict-final prompt reduced invalids (`4 -> 3`)
+  - but hurt accuracy (`0.375 -> 0.125`)
+  - so this is not yet the replacement thinking-on baseline
+
+## AIME refresh
+
+- AIME / Qwen3 thinking-off / offline smoke succeeded on **GPU 7**.
+  - config: `Legacy/configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_gpu7_offline_smoke_20260311.yaml`
+  - run id: `run-20260311T064335Z-1ab1abe2`
+  - accuracy: `0.125`
+  - format failure rate: `0.25`
+  - parsed_count: `6`
+  - invalid_count: `2`
+  - JSON: `Legacy/results/runs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_gpu7_offline_smoke_20260311__1ab1abe2aef754b4/run-20260311T064335Z-1ab1abe2.json`
+
 ## Already pushed documentation baseline
 
 - `28e4058` — bootstrap root bridge + GPU4 smoke rerun logging
@@ -55,6 +80,8 @@
 
 ## Next expected entries
 
-1. Invalid-output review for `run-20260311T060823Z-1947f5cf`
-2. GPU 6 or 7 follow-up parserfix rerun
-3. If needed, stricter final-answer prompt or decoding adjustment
+1. Choose the next thinking-on branch:
+   - keep parserfix base prompt, or
+   - keep strict-final prompt but recover accuracy
+2. Tune final-answer emission / decoding
+3. If needed, add one GSM8K or MMLU continuation rerun
