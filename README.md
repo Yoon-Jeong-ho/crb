@@ -77,3 +77,13 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
 1. thinking-on branch에서 **final answer emission**을 개선할 다음 config를 정합니다.
 2. GSM8K 또는 MMLU 중 다음 `5,6,7` continuation slot을 선택합니다.
 3. 새 결과가 생기면 `docs/RESULTS_LOG.md` / `docs/ANALYSIS.md` / `docs/TODO_NEXT.md`를 즉시 동기화합니다.
+
+## Research-backed next bets
+
+- Qwen 공식 문서는 thinking mode에서 `temperature=0.6`, `top_p=0.95`, `top_k=20`을 권장하고, overly greedy한 설정은 반복/품질 저하를 부를 수 있다고 안내합니다.
+- Qwen 공식 문서는 turn-level 제어로 `/think`, `/no_think`, 또는 assistant prefill `<think>\n\n</think>\n\n` 패턴을 제공합니다.
+- vLLM 공식 문서는 structured outputs의 `choice` / `regex` 제약을 지원합니다.
+- 따라서 지금 가장 유망한 다음 개선은:
+  1. GPQA MCQ에 `choice=["A","B","C","D"]` 류의 constrained decoding 실험
+  2. target turn만 `/no_think` 또는 prefill 방식으로 final answer emission 안정화 실험
+  3. strict-final prompt는 유지하되, decoding을 Qwen 권장 thinking 설정에 더 가깝게 되돌리는 실험

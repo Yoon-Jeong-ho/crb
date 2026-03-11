@@ -39,3 +39,13 @@
 
 - Highest-value next action after these reruns: choose one follow-up thinking-on config that improves final-answer emission without sacrificing too much accuracy.
 - Multi-GPU verification is already done for the allowed set, so the next config change should target **final-answer emission**, not infrastructure.
+
+## External documentation research summary
+
+- Qwen 공식 문서는 thinking mode에서 `temperature=0.6`, `top_p=0.95`, `top_k=20`을 권장한다.
+- 같은 문서에서 `/think`, `/no_think`, assistant prefill `<think>\n\n</think>\n\n` 로 turn-level 제어가 가능하다고 안내한다.
+- vLLM 공식 문서는 structured outputs `choice` / `regex` 제약을 지원한다.
+- 현재 결과와 합치면, 가장 유망한 개선 방향은:
+  1. parser 추가보다 **MCQ constrained decoding**
+  2. target turn에서만 **thinking control**
+  3. strict-final prompt를 쓰더라도 Qwen 권장 thinking sampling으로 회귀

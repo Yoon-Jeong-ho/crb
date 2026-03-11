@@ -100,3 +100,15 @@
   - parser regex 보강은 유지할 가치가 있다.
   - strict-final prompt는 형식엔 도움이 있지만 정확도를 깎는다.
   - 다음 개선 포인트는 **final-answer emission / decoding** 쪽이다.
+
+## 7. Research-backed improvement bets
+
+- Qwen 공식 문서 기준
+  - thinking mode 권장 샘플링은 `temperature=0.6`, `top_p=0.95`, `top_k=20`
+  - `/think`, `/no_think` soft switch 또는 assistant prefill `<think>\n\n</think>\n\n` 로 turn-level 제어 가능
+- vLLM 공식 문서 기준
+  - structured outputs `choice` / `regex` 제약을 offline/online 모두 지원
+- 따라서 다음 우선 실험 제안
+  1. GPQA MCQ target turn에 constrained decoding(`A/B/C/D` choice) 적용
+  2. target turn만 `/no_think` 또는 prefill 방식으로 final answer emission 안정화
+  3. strict-final prompt + Qwen 권장 thinking 샘플링 조합 재검증
