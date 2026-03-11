@@ -69,6 +69,9 @@ class DecodingConfig:
     repetition_penalty: float = 1.0
     presence_penalty: float = 0.0
     stop: list[str] = field(default_factory=list)
+    target_structured_choice: list[str] = field(default_factory=list)
+    target_structured_regex: str | None = None
+    target_choice_from_item_choices: bool = False
 
 
 @dataclass(slots=True)
@@ -83,6 +86,8 @@ class PromptConfig:
     )
     history_answer_prefix: str = "Answer:"
     use_canonical_history: bool = True
+    target_thinking_mode: Literal["default", "think", "no_think"] = "default"
+    target_response_prefill: str | None = None
 
 
 @dataclass(slots=True)

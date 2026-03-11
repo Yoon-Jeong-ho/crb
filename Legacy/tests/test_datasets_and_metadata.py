@@ -24,3 +24,10 @@ def test_gpqa_config_uses_gpqa_adapter():
     config = load_run_config('configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml')
     assert config.evaluation.target.adapter == 'gpqa'
     assert config.evaluation.target.dataset_name == 'gpqa'
+
+
+def test_generation_control_config_parses():
+    config = load_run_config('configs/mock_mmlu_multiturn_oracle_constrained_nothink.yaml')
+    assert config.decoding.target_choice_from_item_choices is True
+    assert config.prompt.target_thinking_mode == 'no_think'
+    assert config.prompt.target_response_prefill == 'Answer: '

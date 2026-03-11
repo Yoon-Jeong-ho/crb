@@ -8,6 +8,14 @@ from crb.schemas import HistoryTurn, NormalizedItem, PromptConfig
 LETTER_CHOICES = list("ABCDEFGHIJ")
 
 
+def _apply_target_thinking_control(text: str, prompt_config: PromptConfig) -> str:
+    if prompt_config.target_thinking_mode == "no_think":
+        return f"/no_think\n{text}"
+    if prompt_config.target_thinking_mode == "think":
+        return f"/think\n{text}"
+    return text
+
+
 
 def render_question_block(item: NormalizedItem) -> str:
     lines = [item.question.strip()]
@@ -44,6 +52,7 @@ def build_multi_turn_messages(
     target_content = (
         f"{render_question_block(target_item)}\n\n{prompt_config.final_answer_instruction}"
     )
+    target_content = _apply_target_thinking_control(target_content, prompt_config)
     messages.append({"role": "user", "content": target_content})
     return messages
 
@@ -61,8 +70,12 @@ def build_flattened_prompt(
         for turn_index, turn in enumerate(history, start=1):
             chunks.append(f"[History {turn_index}]\n{render_history_entry(turn, prompt_config)}")
     chunks.append("Now solve the final target question.")
-    chunks.append(render_question_block(target_item))
-    chunks.append(prompt_config.final_answer_instruction)
+    chunks.append(
+        _apply_target_thinking_control(
+            f"{render_question_block(target_item)}\n\n{prompt_config.final_answer_instruction}",
+            prompt_config,
+        )
+    )
     return "\n\n".join(chunk.strip() for chunk in chunks if chunk.strip())
 
 
@@ -71,7 +84,9 @@ def render_single_turn_prompt(item: NormalizedItem, prompt_config: PromptConfig)
     return "\n\n".join(
         [
             prompt_config.system_prompt,
-            render_question_block(item),
-            prompt_config.final_answer_instruction,
+            _apply_target_thinking_control(
+                f"{render_question_block(item)}\n\n{prompt_config.final_answer_instruction}",
+                prompt_config,
+            ),
         ]
     )

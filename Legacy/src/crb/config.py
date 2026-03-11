@@ -73,4 +73,16 @@ def load_run_config(path: str | Path) -> RunConfig:
         raise ConfigError(
             f"evaluation.k={config.evaluation.k} must appear in evaluation.manifest_k_values"
         )
+    if config.prompt.target_thinking_mode not in {"default", "think", "no_think"}:
+        raise ConfigError(
+            "prompt.target_thinking_mode must be one of: default, think, no_think"
+        )
+    if config.decoding.target_structured_choice and config.decoding.target_structured_regex:
+        raise ConfigError(
+            "Set only one of decoding.target_structured_choice or decoding.target_structured_regex"
+        )
+    if config.decoding.target_choice_from_item_choices and config.decoding.target_structured_choice:
+        raise ConfigError(
+            "Use either decoding.target_choice_from_item_choices or decoding.target_structured_choice, not both"
+        )
     return config

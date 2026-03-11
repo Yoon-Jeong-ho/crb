@@ -112,3 +112,29 @@
   1. GPQA MCQ target turn에 constrained decoding(`A/B/C/D` choice) 적용
   2. target turn만 `/no_think` 또는 prefill 방식으로 final answer emission 안정화
   3. strict-final prompt + Qwen 권장 thinking 샘플링 조합 재검증
+
+## 8. Implemented-but-not-yet-run experiment configs
+
+- [x] choice constrained GPQA thinking-on config 추가
+  - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained.yaml`
+- [x] target `/no_think` + response prefill config 추가
+  - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_nothink_prefill.yaml`
+- [x] choice constrained + `/no_think` + prefill 결합 config 추가
+  - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained_nothink_prefill.yaml`
+- [x] mock config / tests로 generation-control plumbing 검증
+  - `Legacy/configs/mock_mmlu_multiturn_oracle_constrained_nothink.yaml`
+
+## 9. Deferred debug / run checklist
+
+- [ ] GPU available when ready
+- [ ] Run choice constrained GPQA thinking-on on allowed GPU set
+- [ ] Run `/no_think` + prefill GPQA thinking-on on allowed GPU set
+- [ ] Run combined constrained + `/no_think` + prefill GPQA thinking-on on allowed GPU set
+- [ ] Compare against current parserfix baseline:
+  - `run-20260311T060823Z-1947f5cf`
+- [ ] Compare against strictfinal follow-up:
+  - `run-20260311T063838Z-7956de92`
+- [ ] Record whether invalids shift from parse_failure to wrong-answer
+- [ ] Record whether accuracy recovers without raising format failure
+- [ ] Append results to `docs/RESULTS_LOG.md`
+- [ ] Summarize winner in `docs/ANALYSIS.md`

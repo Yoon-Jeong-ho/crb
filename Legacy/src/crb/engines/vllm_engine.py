@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 from crb.engines.base import InferenceEngine
 from crb.schemas import DecodingConfig, ModelConfig
 from crb.utils.runtime import resolve_tensor_parallel_size
@@ -31,8 +33,19 @@ class VllmEngine(InferenceEngine):
             seed=model_config.seed,
         )
 
-    def generate(self, prompt: str) -> str:
+    def generate(self, prompt: str, request_options: dict[str, Any] | None = None) -> str:
         from vllm import SamplingParams
+        from vllm.sampling_params import StructuredOutputsParams
+
+        request_options = request_options or {}
+        structured_outputs = None
+        structured_choice = request_options.get("structured_choice") or None
+        structured_regex = request_options.get("structured_regex") or None
+        if structured_choice or structured_regex:
+            structured_outputs = StructuredOutputsParams(
+                choice=structured_choice,
+                regex=structured_regex,
+            )
 
         sampling_params = SamplingParams(
             temperature=self.decoding_config.temperature,
@@ -43,6 +56,7 @@ class VllmEngine(InferenceEngine):
             repetition_penalty=self.decoding_config.repetition_penalty,
             presence_penalty=self.decoding_config.presence_penalty,
             stop=self.decoding_config.stop or None,
+            structured_outputs=structured_outputs,
         )
         output = self.llm.generate([prompt], sampling_params, use_tqdm=False)[0]
         return output.outputs[0].text.strip()

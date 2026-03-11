@@ -1,12 +1,17 @@
 from __future__ import annotations
 
 import re
+from typing import Any
 
 from crb.engines.base import InferenceEngine
 
 
 class MockEngine(InferenceEngine):
-    def generate(self, prompt: str) -> str:
+    def generate(self, prompt: str, request_options: dict[str, Any] | None = None) -> str:
+        request_options = request_options or {}
+        structured_choice = request_options.get("structured_choice") or []
+        if structured_choice:
+            return str(structured_choice[0])
         letter_match = re.search(r"Correct answer:\s*([A-J])", prompt)
         if letter_match:
             return f"Answer: {letter_match.group(1)}"

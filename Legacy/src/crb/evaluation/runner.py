@@ -256,7 +256,14 @@ def _evaluate_target_item(
         engine=engine,
         force_multi_turn=False,
     )
-    raw_output = _generate_with_timeout(engine.generate, final_prompt, config.runtime.timeout_seconds)
+    final_prompt = _apply_target_response_prefill(final_prompt, config)
+    generation_request_options = _build_generation_request_options(item=item, config=config)
+    raw_output = _generate_with_timeout(
+        engine.generate,
+        final_prompt,
+        config.runtime.timeout_seconds,
+        generation_request_options,
+    )
     score = score_output(item, raw_output)
     return {
         "item_id": item.item_id,
@@ -280,6 +287,12 @@ def _evaluate_target_item(
         "parse_status": score.parsed.status,
         "parser_name": score.parsed.parser_name,
         "error_type": score.parsed.error_type,
+        "generation_controls": {
+            "target_thinking_mode": config.prompt.target_thinking_mode,
+            "target_response_prefill": config.prompt.target_response_prefill,
+            "structured_choice": generation_request_options.get("structured_choice") if generation_request_options else None,
+            "structured_regex": generation_request_options.get("structured_regex") if generation_request_options else None,
+        },
         "prompt_preview": final_prompt[-1200:],
     }
 
@@ -308,12 +321,38 @@ def _render_prompt_for_generation(
 
 
 def _generate_with_timeout(
-    generate_fn: Callable[[str], str],
+    generate_fn: Callable[[str, dict | None], str],
     prompt: str,
     timeout_seconds: int | None,
+    request_options: dict | None = None,
 ) -> str:
     with _timeout(timeout_seconds):
-        return generate_fn(prompt)
+        return generate_fn(prompt, request_options)
+
+
+def _apply_target_response_prefill(prompt: str, config: RunConfig) -> str:
+    if config.prompt.target_response_prefill:
+        return f"{prompt}{config.prompt.target_response_prefill}"
+    return prompt
+
+
+def _build_generation_request_options(
+    *,
+    item: NormalizedItem,
+    config: RunConfig,
+) -> dict[str, object] | None:
+    structured_choice = list(config.decoding.target_structured_choice)
+    if config.decoding.target_choice_from_item_choices and item.choices:
+        structured_choice = [chr(ord("A") + idx) for idx in range(len(item.choices))]
+    structured_regex = config.decoding.target_structured_regex
+    if not structured_choice and not structured_regex:
+        return None
+    options: dict[str, object] = {}
+    if structured_choice:
+        options["structured_choice"] = structured_choice
+    if structured_regex:
+        options["structured_regex"] = structured_regex
+    return options
 
 
 

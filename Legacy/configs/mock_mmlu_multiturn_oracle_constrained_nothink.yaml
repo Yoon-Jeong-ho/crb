@@ -1,0 +1,45 @@
+experiment:
+  name: mock_mmlu_multiturn_oracle_constrained_nothink
+  seed: 42
+  num_samples: 2
+model:
+  engine: mock
+  model_name: mock-engine
+  model_family: mock
+  thinking_mode: "off"
+  trust_remote_code: false
+decoding:
+  temperature: 0.0
+  top_p: 1.0
+  max_tokens: 32
+  target_choice_from_item_choices: true
+prompt:
+  system_prompt: "You are a precise evaluation assistant. End with `Answer: <final_answer>`."
+  final_answer_instruction: "End with exactly one final line `Answer: <final_answer>`. Correct answer: A"
+  history_answer_prefix: "Answer:"
+  use_canonical_history: true
+  target_thinking_mode: "no_think"
+  target_response_prefill: "Answer: "
+runtime:
+  output_root: results
+  log_dir: logs
+  manifest_dir: results/manifests
+  summary_csv: results/summary/scoreboard.csv
+  resume: true
+  skip_completed: false
+evaluation:
+  evaluation_mode: multi_turn
+  history_mode: oracle_history
+  dummy_type: same_domain
+  k: 2
+  manifest_k_values: [0, 2]
+  target:
+    dataset_name: mmlu_fixture
+    adapter: jsonl
+    local_path: data/fixtures/mmlu_fixture.jsonl
+    split: test
+  dummy_sources:
+    - dataset_name: mmlu_fixture
+      adapter: jsonl
+      local_path: data/fixtures/mmlu_fixture.jsonl
+      split: train
