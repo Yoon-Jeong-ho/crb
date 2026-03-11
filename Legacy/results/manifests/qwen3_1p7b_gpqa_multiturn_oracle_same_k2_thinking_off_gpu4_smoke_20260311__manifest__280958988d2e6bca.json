@@ -1,0 +1,101 @@
+{
+  "manifest_id": "manifest-2026-03-11T05:32:18Z",
+  "config_hash": "f40cce6cd46fde00",
+  "seed": 42,
+  "ks": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "/mnt/raid6/aa007878/.cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "/mnt/raid6/aa007878/.cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "gpqa:train:rec055vn3qEqKHHTc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recFFpPZ3kaybaysi",
+          "gpqa:train:rec1Ey0Fnt2RhnsmU",
+          "gpqa:train:rec42yAdAZnQgoibP",
+          "gpqa:train:recxjillUQ4ucEWi2",
+          "gpqa:train:rec8CavTqDWHF8KJj",
+          "gpqa:train:recBL3B8AT9ApKtOA",
+          "gpqa:train:recUZuPWogSLnPBaw",
+          "gpqa:train:rec2ZTsqazBZ3LTWZ"
+        ],
+        "cross_domain": [
+          "gpqa:train:recTVnk0jyigx3o9P",
+          "gpqa:train:recuIk9Y5lMFea9vK",
+          "gpqa:train:recbMrWKlgp9uWgUK",
+          "gpqa:train:rect4iLrSfUwkNTno",
+          "gpqa:train:recwhMjaIdnLkGTgN",
+          "gpqa:train:recfTlTMjZBuOducT",
+          "gpqa:train:recvlnu8BuLmXZhSX",
+          "gpqa:train:reclHtd90GlPQJHXg"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec06pnAkLOr2t2mp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recH879YiAi6dLCSy",
+          "gpqa:train:recIIUynGGpsGEYuo",
+          "gpqa:train:recyPffUDqC2k7ZZO",
+          "gpqa:train:recl0GPPYEAK1PZax",
+          "gpqa:train:recoKZlD5PwM9zbk6",
+          "gpqa:train:recf4iXKY773NYRFw",
+          "gpqa:train:recJxK8wQDqG7ESSh",
+          "gpqa:train:rec4YVw9r9DC0DK6U"
+        ],
+        "cross_domain": [
+          "gpqa:train:recJZ3QEfRKjYw9a7",
+          "gpqa:train:recEmTBhx2hgw6tPQ",
+          "gpqa:train:recx6dMdmcp1ftRVY",
+          "gpqa:train:recTs7qzfJs6kfLUK",
+          "gpqa:train:recA1i5ZAh0Uzclxp",
+          "gpqa:train:rec1oj2DveQWl9Rpw",
+          "gpqa:train:recRgabRzMaEoBRcM",
+          "gpqa:train:recUBgVlkKzcRPDdK"
+        ]
+      }
+    }
+  ]
+}

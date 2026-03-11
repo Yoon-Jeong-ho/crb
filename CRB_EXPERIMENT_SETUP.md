@@ -18,6 +18,18 @@
 
 ---
 
+## 0. 현재 저장소 실행 현실 (2026-03-11)
+
+- 현재 **실행 가능한 CRB 파이프라인**은 `Legacy/` 아래에 있다.
+  - 코드: `Legacy/src/crb`
+  - config: `Legacy/configs`
+  - tests: `Legacy/tests`
+  - outputs: `Legacy/results`, `Legacy/logs`
+- 루트 문서는 bootstrap / 정렬 작업용이며, 루트 `pyproject.toml`과 실제 코드 위치는 아직 불일치한다.
+- 따라서 현재 실행/검증은 원칙적으로 `cd Legacy` 후 `PYTHONPATH=src` 기준으로 수행한다.
+
+---
+
 ## 2. 연구 질문
 
 ### RQ1. 
@@ -149,13 +161,16 @@
 - Python / torch / transformers / vllm 버전은 현재 저장소 기준을 따른다.
 
 ### 6.3 GPU 사용 규칙
-- 기본: `CUDA_VISIBLE_DEVICES=6,7`
-- 단일 GPU 디버깅: `CUDA_VISIBLE_DEVICES=6`
-- 다른 GPU는 사용하지 않음
+- 허용 GPU: `CUDA_VISIBLE_DEVICES=4,5,6,7`만 사용
+- 기본 단일 GPU smoke: `CUDA_VISIBLE_DEVICES=4`
+- 기본 2-GPU smoke/mini: `CUDA_VISIBLE_DEVICES=4,5`
+- 필요 시 `4,5,6,7` 안에서 다른 조합으로 이동 가능
+- `0,1,2,3`은 사용하지 않음
 
 ### 6.4 운영 원칙
 - 새 env 만들지 않음
 - 프로젝트 내부 추가 sandbox 만들지 않음
+- 현재 실행은 `Legacy/`에서 `PYTHONPATH=src`를 명시하는 경로를 기본으로 함
 - 설치 변경 시 `environment.yml`, `requirements.txt`, `README`에 반영
 
 ---
@@ -359,7 +374,9 @@
 ## 12. 리스크 및 주의사항
 
 ### 12.1 GPU contention
-- GPU 6,7이 바쁘면 full run보다 smoke/mini run 또는 문서화/분석 작업 우선
+- 허용 GPU는 `4,5,6,7`만 본다.
+- 4,5가 바쁘면 6 또는 7 단일 GPU smoke/mini로 우회할 수 있다.
+- 허용 GPU가 모두 바쁘면 full run보다 smoke/mini run 또는 문서화/분석 작업 우선
 
 ### 12.2 Dataset/domain 정의
 - GPQA, MMLU-family는 domain 분리가 비교적 명확
@@ -382,7 +399,7 @@
 ### 13.1 사전 점검
 - [ ] git status clean 확인
 - [ ] conda env import check
-- [ ] GPU 6,7 상태 확인
+- [ ] GPU 4,5,6,7 상태 확인
 - [ ] scoreboard 현황 확인
 - [ ] docs 상태 확인
 - [ ] configs 존재 여부 확인
@@ -458,4 +475,3 @@
 - 파일럿에서 본 실험으로 확장 가능한 config와 workflow가 정리됨
 - 분석 md 문서가 지속적으로 축적됨
 - README가 현재 상태를 정확히 반영함
-
