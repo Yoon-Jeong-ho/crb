@@ -2,6 +2,15 @@
 
 CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 **multi-turn accumulated history** 환경으로 바꿔, 앞선 더미 턴이 마지막 실제 평가 문제 성능을 얼마나 흔드는지 확인하는 작업공간입니다.
 
+현재 연구의 primary focus는:
+- 앞의 **k개 dummy turns** 가 마지막 target를 얼마나 흔드는지
+- `multi_turn vs flattened`
+- `self_history vs oracle_history`
+- `same_domain vs cross_domain`
+를 채우는 것이다.
+
+`thinking on/off`는 이 메커니즘을 읽는 **secondary axis** 로 취급한다.
+
 ## Current continuation snapshot (2026-03-11)
 
 - 팀: `crb-gpu567-continuation-gpus-5`
@@ -9,6 +18,7 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
 - 루트는 현재 **bootstrap 문서 + 실행 가이드 + 팀 조율용 레이어**입니다.
 - 사용 env: `/data_x/aa007878/projects/crb/.conda/envs/crb`
 - **이번 continuation run의 GPU 규칙은 `5,6,7 only`** 입니다.
+- 2026-03-11 저녁 follow-up sweep은 **실제 가용 GPU가 `5,6`뿐이어서 그 두 장만 사용**했습니다.
 - 오늘 earlier에 확보한 GPU4 smoke evidence는 **carry-over baseline**으로만 취급합니다. 새 launch는 5/6/7에서만 진행합니다.
 
 ## Already pushed
@@ -49,6 +59,28 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
   - accuracy `0.125`
   - format failure `0.25`
 
+## Fresh GPU5/6 follow-up sweep
+
+- GPU 5,6 / GPQA / thinking-on / **choice constrained only**
+  - run: `run-20260311T091942Z-f3e9f0fa`
+  - accuracy `0.25`
+  - format failure `0.0`
+  - parsed / invalid `8 / 0`
+  - 해석: 형식은 완전히 안정화됐지만, 출력이 사실상 전부 `A`로 붕괴해 정확도가 떨어졌습니다.
+- GPU 5,6 / GPQA / thinking-on / **`/no_think` + prefill**
+  - run: `run-20260311T092221Z-dfa04164`
+  - accuracy `0.375`
+  - format failure `0.0`
+  - parsed / invalid `8 / 0`
+- GPU 5,6 / GPQA / thinking-on / **choice constrained + `/no_think` + prefill**
+  - run: `run-20260311T092432Z-dac259a0`
+  - accuracy `0.375`
+  - format failure `0.0`
+  - parsed / invalid `8 / 0`
+- 해석:
+  - `/no_think` + prefill 계열은 parserfix baseline의 정확도(`0.375`)를 유지하면서 invalid를 `4 -> 0`으로 줄였습니다.
+  - combined config도 같은 정확도를 냈지만, **단순성 기준의 현재 winner는 `/no_think` + prefill 단독안**입니다.
+
 ## Current parserfix branch files
 
 - parserfix 작업 파일:
@@ -58,7 +90,7 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
 - 현재 상태:
   - GPU5 parserfix smoke 검증 완료
   - GPU6 strict-final follow-up 검증 완료
-  - 여전히 next step은 parser 추가보다 **final-answer emission / decoding 보정**입니다.
+  - GPU5/6 follow-up sweep까지 반영하면, parser 추가보다 **target turn final-answer emission 제어**가 더 효과적임이 확인됐습니다.
 
 ## Operational reality
 
@@ -75,9 +107,9 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
 
 ## Next actions
 
-1. thinking-on branch에서 **final answer emission**을 개선할 다음 config를 정합니다.
-2. GSM8K 또는 MMLU 중 다음 `5,6,7` continuation slot을 선택합니다.
-3. 새 결과가 생기면 `docs/RESULTS_LOG.md` / `docs/ANALYSIS.md` / `docs/TODO_NEXT.md`를 즉시 동기화합니다.
+1. `k={0,2,4,8}` 와 `mode/history/domain` 축을 채우는 broader sweep을 계속 진행합니다.
+2. accumulated-history mechanism rows를 먼저 확보하고, 그 위에서 thinking on/off 차이를 읽습니다.
+3. GPQA thinking-on rescue config (`/no_think` + prefill)는 유지하되, 전체 연구 narrative의 중심에 두지 않습니다.
 
 ## Research-backed next bets
 
@@ -85,6 +117,6 @@ CRB(Conversation-Accumulated Robustness Benchmark)는 single-turn benchmark를 *
 - Qwen 공식 문서는 turn-level 제어로 `/think`, `/no_think`, 또는 assistant prefill `<think>\n\n</think>\n\n` 패턴을 제공합니다.
 - vLLM 공식 문서는 structured outputs의 `choice` / `regex` 제약을 지원합니다.
 - 따라서 지금 가장 유망한 다음 개선은:
-  1. GPQA MCQ에 `choice=["A","B","C","D"]` 류의 constrained decoding 실험
-  2. target turn만 `/no_think` 또는 prefill 방식으로 final answer emission 안정화 실험
-  3. strict-final prompt는 유지하되, decoding을 Qwen 권장 thinking 설정에 더 가깝게 되돌리는 실험
+  1. `k / mode / history / domain` 축을 우선 채우는 것
+  2. target turn emission control은 GPQA thinking-on rescue용 보조 수단으로만 쓰는 것
+  3. **choice-only constrained decoding은 단독으로 쓰지 않는 것** (2026-03-11 follow-up에서 all-`A` 붕괴 확인)

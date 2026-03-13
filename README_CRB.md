@@ -4,11 +4,14 @@ CRB는 기존 single-turn benchmark를 **multi-turn accumulated history** 환경
 
 핵심 질문은 다음과 같습니다.
 
+- 앞에 들어가는 **k개의 dummy turn** 이 마지막 target 정확도를 얼마나 떨어뜨리는가?
+- 이 간섭은 dummy의 **정답/오답/모델 자신의 이전 답변(self history)** 에 따라 어떻게 달라지는가?
+- 같은 domain dummy와 다른 domain dummy는 어떤 식으로 다른 간섭을 만드는가?
 - 멀티턴 히스토리가 누적되면 성능은 얼마나 감소하는가?
 - 이 감소는 단순 context length 때문인가, 아니면 **turn-structured history** 자체 때문인가?
 - 앞선 더미 문제에 대한 모델의 실제 응답이 후속 문제까지 오염시키는가?
 - 같은 domain의 더미가 더 강한 간섭을 만드는가?
-- 같은 모델 패밀리 안에서 **thinking on/off**는 다른 강건성을 보이는가?
+- 같은 모델 패밀리 안에서 **thinking on/off**는 이 간섭을 악화/완화하는 **부차적 축**으로 어떻게 작동하는가?
 
 ---
 
@@ -27,6 +30,9 @@ CRB는 기존 single-turn benchmark를 **multi-turn accumulated history** 환경
 
 ## 2. 핵심 실험 축
 
+CRB의 핵심은 **모델 자체 비교**보다 먼저, 아래 **protocol axis** 를 통해 accumulated interference를 분해하는 것이다.
+`thinking on/off`는 그 위에 얹는 **secondary analysis axis** 이다.
+
 ### Evaluation mode
 - `multi_turn`: 실제 user/assistant turn 구조 유지
 - `single_turn_flattened`: 이전 QA를 하나의 긴 프롬프트로 평탄화
@@ -34,6 +40,10 @@ CRB는 기존 single-turn benchmark를 **multi-turn accumulated history** 환경
 ### History mode
 - `self_history`: dummy에 대한 모델의 실제 답을 history에 사용
 - `oracle_history`: dummy에 대한 gold answer만 history에 사용
+
+즉, 앞의 k개 dummy는 단순 distractor가 아니라:
+- **gold canonical answer** 가 들어갈 수도 있고 (`oracle_history`)
+- **모델 자신의 실제 이전 답변 / reasoning leakage** 가 들어갈 수도 있다 (`self_history`)
 
 ### Dummy type
 - `same_domain`: target과 같은 subject/domain에서 dummy 추출
@@ -77,7 +87,13 @@ CRB는 기존 single-turn benchmark를 **multi-turn accumulated history** 환경
 - DeepSeek distill reasoning 계열
 - Gemma instruct 계열
 
-현재 본문 핵심 비교는 **같은 Qwen3 family 내에서 thinking on/off 비교**입니다.
+현재 본문 핵심 비교는
+- **k dummy turns**
+- **multi_turn vs flattened**
+- **self_history vs oracle_history**
+- **same_domain vs cross_domain**
+를 먼저 보는 것이고,
+`Qwen3 thinking on/off`는 이 위에 얹는 **secondary but valuable axis** 입니다.
 
 ---
 
@@ -264,9 +280,10 @@ bash scripts/run_qwen3_core_sweep.sh
 ## 11. 권장 실험 순서
 
 ### 파일럿
-1. GPQA + Qwen3 thinking off + multi_turn + oracle + same_domain + k=2
-2. GPQA 또는 GSM8K + Qwen3 thinking on + flattened 또는 multi_turn + k=2
-3. AIME + Qwen3 thinking off + numeric evaluator 확인
+1. GPQA + multi_turn + oracle + same_domain + k=2
+2. GSM8K + flattened + self + cross_domain + k=2
+3. AIME + numeric evaluator 확인
+4. 그 다음에 같은 조건 위에 thinking on/off를 얹어 secondary comparison 수행
 
 ### 미니 런
 - smoke 성공 설정에 대해 `num_samples` 증가
@@ -275,11 +292,11 @@ bash scripts/run_qwen3_core_sweep.sh
 ### 본 실험
 최소 비교 축:
 - dataset: MMLU-family, GSM8K, GPQA, AIME
-- model: Qwen3 thinking off/on
 - mode: multi_turn, single_turn_flattened
 - history: self_history, oracle_history
 - dummy: same_domain, cross_domain
 - k: 0,2,4,8
+- model/reasoning mode: Qwen3 thinking off/on (**secondary axis**)
 
 ---
 
@@ -289,7 +306,7 @@ bash scripts/run_qwen3_core_sweep.sh
 - multi_turn vs flattened 차이
 - self_history vs oracle_history 차이
 - same_domain vs cross_domain 차이
-- thinking on/off 차이
+- thinking on/off 차이 (secondary)
 - dataset별 robustness 패턴
 - format failure rate
 

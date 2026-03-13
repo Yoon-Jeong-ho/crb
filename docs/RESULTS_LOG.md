@@ -73,6 +73,43 @@
   - invalid_count: `2`
   - JSON: `Legacy/results/runs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_gpu7_offline_smoke_20260311__1ab1abe2aef754b4/run-20260311T064335Z-1ab1abe2.json`
 
+## GPU5/6 follow-up sweep
+
+- GPQA / Qwen3 thinking-on / choice constrained only ran on **GPUs 5,6**.
+  - config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained.yaml`
+  - run id: `run-20260311T091942Z-f3e9f0fa`
+  - accuracy: `0.25`
+  - format failure rate: `0.0`
+  - parsed_count: `8`
+  - invalid_count: `0`
+  - interpretation:
+    - parser failures are gone,
+    - but output collapsed to effectively all `A`, so accuracy regressed.
+
+- GPQA / Qwen3 thinking-on / `/no_think` + prefill ran on **GPUs 5,6**.
+  - config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_nothink_prefill.yaml`
+  - run id: `run-20260311T092221Z-dfa04164`
+  - accuracy: `0.375`
+  - format failure rate: `0.0`
+  - parsed_count: `8`
+  - invalid_count: `0`
+  - JSON: `Legacy/results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_nothink_prefill__dfa0416483d9dd0c/run-20260311T092221Z-dfa04164.json`
+
+- GPQA / Qwen3 thinking-on / choice constrained + `/no_think` + prefill ran on **GPUs 5,6**.
+  - config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained_nothink_prefill.yaml`
+  - run id: `run-20260311T092432Z-dac259a0`
+  - accuracy: `0.375`
+  - format failure rate: `0.0`
+  - parsed_count: `8`
+  - invalid_count: `0`
+  - JSON: `Legacy/results/runs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained_nothink_prefill__dac259a068068106/run-20260311T092432Z-dac259a0.json`
+
+## Current follow-up interpretation
+
+- parserfix branch의 핵심 문제였던 invalid output은 이제 `/no_think` + prefill 계열에서 `0`으로 떨어졌다.
+- choice-only constrained decoding은 surface formatting은 잡지만 answer diversity를 망가뜨릴 수 있다.
+- 현재 가장 단순한 winner는 **`/no_think` + prefill** 이다.
+
 ## Already pushed documentation baseline
 
 - `28e4058` — bootstrap root bridge + GPU4 smoke rerun logging
@@ -80,8 +117,6 @@
 
 ## Next expected entries
 
-1. Choose the next thinking-on branch:
-   - keep parserfix base prompt, or
-   - keep strict-final prompt but recover accuracy
-2. Tune final-answer emission / decoding
-3. If needed, add one GSM8K or MMLU continuation rerun
+1. Confirm whether `/no_think` + prefill becomes the active thinking-on branch.
+2. Decide whether combined config stays as a fallback or gets dropped.
+3. If needed, add one GSM8K or MMLU continuation rerun with the winning control.

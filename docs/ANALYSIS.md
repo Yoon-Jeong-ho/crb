@@ -24,21 +24,30 @@
    - so stricter final-answer prompting alone is not the full fix.
 7. **AIME numeric path is still alive on the allowed GPU set.**
    - `run-20260311T064335Z-1ab1abe2` on GPU `7` reproduced the same general AIME quality band (`accuracy 0.125`, `format_failure 0.25`).
+8. **The GPU5/6 follow-up sweep proved that final-answer control can remove invalids entirely.**
+   - `run-20260311T092221Z-dfa04164` and `run-20260311T092432Z-dac259a0` both achieved `format_failure = 0.0` with `parsed_count = 8/8`.
+9. **Choice-only constrained decoding is not a safe default by itself.**
+   - `run-20260311T091942Z-f3e9f0fa` removed parse failures,
+   - but accuracy fell to `0.25` because the output effectively collapsed to all `A`.
+10. **`/no_think` + prefill is the current best tradeoff.**
+   - It kept accuracy at `0.375` (matching the parserfix baseline),
+   - while removing the baseline’s `4/8` invalid outputs.
 
 ## What this result means
 
 - The branch is no longer only a docs/planning hypothesis.
-- The branch is also not yet “fixed”: half of the items still failed format/parsing.
-- So the right interpretation is **partial validation, not closure**.
-- The invalid outputs we inspected end mid-reasoning and lack a final `Answer: <letter>` line.
-- That makes the next fix target more specific: **final-answer emission / truncation control**, not just parser regex expansion.
-- The GPU6 strict-final rerun confirms that “force a stricter final answer” can improve parseability but still damage answer quality.
-- Therefore the next step should target **gentler final-answer control or decoding changes**, not simply stronger formatting pressure.
+- The old parserfix-only path is still informative, but it is no longer the best active lane.
+- The better interpretation now is:
+  - **parserfix** showed the branch could run,
+  - **strict-final** showed that stronger formatting pressure hurts accuracy,
+  - **`/no_think` + prefill** showed that target-turn control can remove invalids without losing the parserfix-level accuracy.
+- In other words, the main blocker moved from “can we get a clean final answer at all?” to **“which clean-output control should become the default?”**
+- Combined constrained + `/no_think` + prefill is viable, but it did not beat the simpler `/no_think` + prefill variant on accuracy.
 
 ## Practical next step
 
-- Highest-value next action after these reruns: choose one follow-up thinking-on config that improves final-answer emission without sacrificing too much accuracy.
-- Multi-GPU verification is already done for the allowed set, so the next config change should target **final-answer emission**, not infrastructure.
+- Highest-value next action now: treat **`/no_think` + prefill** as the provisional winner and rerun/extend it before adding new control complexity.
+- Multi-GPU verification is already done for the allowed set, so the next action should be **replication or dataset extension**, not infra work.
 
 ## External documentation research summary
 
@@ -46,6 +55,6 @@
 - 같은 문서에서 `/think`, `/no_think`, assistant prefill `<think>\n\n</think>\n\n` 로 turn-level 제어가 가능하다고 안내한다.
 - vLLM 공식 문서는 structured outputs `choice` / `regex` 제약을 지원한다.
 - 현재 결과와 합치면, 가장 유망한 개선 방향은:
-  1. parser 추가보다 **MCQ constrained decoding**
-  2. target turn에서만 **thinking control**
-  3. strict-final prompt를 쓰더라도 Qwen 권장 thinking sampling으로 회귀
+  1. parser 추가보다 **target turn thinking control**
+  2. `/no_think` + prefill 경로의 재현 및 다른 dataset 확장
+  3. choice-only constraint는 active default로 쓰지 않기

@@ -11,7 +11,7 @@ The benchmark supports:
 - **run-level JSON outputs**
 - **cumulative CSV scoreboard logging**
 - **reusable, model-independent evaluation pack manifests**
-- **Qwen3 thinking on/off comparisons**
+- **reasoning-mode comparisons such as Qwen3 thinking on/off** as a **secondary axis**
 
 The implementation uses the **vLLM Python API** as the primary inference backend so the same codepath can be used for single-GPU and multi-GPU runs with config-only changes.
 
@@ -32,6 +32,9 @@ For each target benchmark item:
    - `cross_domain`
    - multiple `k` values
    - model reasoning modes such as **Qwen3 thinking on/off**
+
+Important: the primary CRB object is the **dummy-turn interference protocol** itself.
+Reasoning-mode comparisons are useful, but they are not the main claim of the benchmark.
 
 ### Core evaluation modes
 
@@ -239,6 +242,9 @@ model:
 
 ## 6. Qwen3 thinking on / off support
 
+This section documents a **secondary experiment axis**.
+The main CRB benchmark remains the `k / mode / history / domain` protocol.
+
 CRB now supports **same-family, same-size Qwen3 comparisons** using config-level thinking control.
 
 ### Implementation strategy
@@ -273,7 +279,7 @@ The configs use separate decoding defaults for paper comparisons:
 - **thinking off**: `temperature=0.7`, `top_p=0.8`, `top_k=20`
 - **thinking on**: `temperature=0.6`, `top_p=0.95`, `top_k=20`
 
-These are encoded directly in the config files and sweep presets.
+These are encoded directly in the config files and sweep presets, but should be interpreted as overlays on top of the main accumulated-history protocol.
 
 ---
 
@@ -380,7 +386,7 @@ This sweep covers:
 - history modes: `oracle_history`, `self_history`
 - dummy types: `same_domain`, `cross_domain`
 - `k`: `0, 2, 4, 8`
-- thinking modes: `on`, `off`
+- thinking modes: `on`, `off` (**secondary analysis axis**)
 
 ### Materialize + run flow
 
@@ -667,14 +673,14 @@ PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python scri
 ## 17. Known limitations / TODO
 
 - current new-run evidence is still smoke-scale (`num_samples=8`, multi-GPU smoke `num_samples=2`)
-- Qwen3 thinking-on is end-to-end functional, but GPQA formatting is currently unstable in this setting
+- Qwen3 thinking-on is end-to-end functional, but benchmark sensitivity differs sharply by dataset
 - a stricter final-answer prompt did not rescue GPQA thinking-on in the current smoke run
 - GSM8K thinking-on is much more parser-stable than GPQA thinking-on
 - AIME numeric evaluation is working, but some outputs still trigger `ambiguous_numeric_answer`
 - the paper sweep spec is ready, but the generated configs are not checked into git by default
 - AIME is treated as `domain=math`, so meaningful `cross_domain` experiments require cross-dataset dummy pools
 - numeric evaluation is exact-match after normalization; more advanced symbolic equivalence is not implemented yet
-- prompt-level soft control like `/think` or `/no_think` is not the main paper path; current support is config-level `enable_thinking`
+- prompt-level soft control like `/think` or `/no_think` should be treated as a rescue/control tool, not the primary benchmark definition
 
 ---
 

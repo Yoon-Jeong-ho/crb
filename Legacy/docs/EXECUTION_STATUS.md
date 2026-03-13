@@ -1,6 +1,6 @@
 # CRB Execution Status
 
-_Last updated: 2026-03-11_
+_Last updated: 2026-03-12_
 
 ## Current environment
 - Project root: `/data_x/aa007878/projects/crb`
@@ -11,94 +11,100 @@ _Last updated: 2026-03-11_
 - vllm: `0.11.2`
 - datasets: `2.21.0`
 - Branch: `main`
-- Recent execution-cycle commits:
-  - `f6a8976` extend qwen3 staged execution and analysis docs
-  - `6709d70` run qwen3 gpqa and aime smoke validations
-  - `e6db683` add gpqa aime and qwen3 thinking sweep support
 
-## GPU availability
-- Policy GPUs: `6,7` only
-- Check command:
-  - `nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv,noheader`
-- Current interpretation:
-  - GPUs 6 and 7 remain available for staged runs when checked.
-  - Single-GPU smoke/mini runs continue to be the default path.
-  - One multi-GPU smoke validation is complete.
+## GPU policy / current usage
+- Current operator-allowed GPUs: `4,5,6`
+- Main-table core full batch on GPUs `5,6` is complete.
+- MMLU full pair was launched after the core batch:
+  - thinking off: `CUDA_VISIBLE_DEVICES=4`
+  - thinking on: `CUDA_VISIBLE_DEVICES=5,6`
 
-## Ready configs
-- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off.yaml`
-- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_minirun.yaml`
-- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke.yaml`
-- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on.yaml`
-- `configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal.yaml`
-- `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off.yaml`
-- `configs/qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on.yaml`
-- `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off.yaml`
-- `configs/qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_minirun.yaml`
+## Main-table core batch status
 
-## Completed runs in this staged cycle
-1. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off`
-   - status: success
-   - GPU: `6`
-   - accuracy `0.500`, format failure `0.000`
-2. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on`
-   - status: success
-   - GPU: `6`
-   - accuracy `0.125`, format failure `0.875`
-3. `qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off`
-   - status: success after config fix
-   - GPU: `6`
-   - accuracy `0.125`, format failure `0.250`
-4. `qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_on`
-   - status: success
-   - GPU: `6`
-   - accuracy `0.125`, format failure `0.125`
-5. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_multigpu_smoke`
-   - status: success
-   - GPU: `6,7`
-   - accuracy `0.500`, format failure `0.000`
-6. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_strictfinal`
-   - status: success
-   - GPU: `6`
-   - accuracy `0.000`, format failure `1.000`
-7. `qwen3_1p7b_gsm8k_flattened_self_cross_k2_thinking_off`
-   - status: success
-   - GPU: `6`
-   - accuracy `0.375`, format failure `0.250`
-8. `qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_off_minirun`
-   - status: success
-   - GPU: `6`
-   - accuracy `0.40625`, format failure `0.000`
-   - `num_items=32`
-9. `qwen3_1p7b_aime_multiturn_oracle_same_k2_thinking_off_minirun`
-   - status: success
-   - GPU: `6`
-   - accuracy `0.125`, format failure `0.250`
-   - `num_items=16`
+### Completed full-sample rows
+1. **GPQA / Qwen3 thinking off**
+   - run: `run-20260311T095147Z-9780aeaf`
+   - items: `448`
+   - accuracy `0.27232142857142855`
+   - format failure `0.008928571428571428`
+
+2. **GPQA / Qwen3 thinking on (`/no_think` + prefill)**
+   - run: `run-20260311T095329Z-562ba8dc`
+   - items: `448`
+   - accuracy `0.27232142857142855`
+   - format failure `0.026785714285714284`
+
+3. **GSM8K / Qwen3 thinking off**
+   - run: `run-20260311T115627Z-db8bf662`
+   - items: `1319`
+   - accuracy `0.35178165276724793`
+   - format failure `0.18271417740712662`
+
+4. **GSM8K / Qwen3 thinking on**
+   - run: `run-20260311T193631Z-270aebac`
+   - items: `1319`
+   - accuracy `0.3889310083396513`
+   - format failure `0.1379833206974981`
+
+5. **AIME / Qwen3 thinking off**
+   - run: `run-20260311T193920Z-b16718e7`
+   - items: `30`
+   - accuracy `0.1`
+   - format failure `0.26666666666666666`
+
+6. **AIME / Qwen3 thinking on**
+   - run: `run-20260311T194547Z-1bb770a7`
+   - items: `30`
+   - accuracy `0.03333333333333333`
+   - format failure `0.8333333333333334`
+
+### MMLU state
+- smoke validation completed:
+  - off: `run-20260311T094321Z-b9d8f324`
+  - on: `run-20260311T094535Z-26b1aa1b`
+- full pair completed:
+  - off: `run-20260312T053743Z-b5f103ff`
+  - on: `run-20260312T193756Z-f686300f`
+  - items: `14042 / 14042`
+  - off accuracy `0.5883777239709443`, format failure `0.0010682238997293833`
+  - on accuracy `0.6664292835778379`, format failure `0.021364477994587665`
 
 ## Analysis artifacts
 - `results/analysis/latest_qwen3_runs.csv`
 - `results/analysis/latest_qwen3_runs_canonical.csv`
 - `results/analysis/direct_qwen3_pairs.csv`
 - `results/analysis/direct_qwen3_pairs.json`
+- `results/analysis/main_table_qwen3.csv`
+- `results/analysis/main_table_qwen3.json`
 - `results/analysis/summary_overview.json`
 
-## Current direct pairs
-- GPQA canonical pair
-  - off: accuracy `0.40625`, format failure `0.000`
-  - on: accuracy `0.125`, format failure `0.875`
-- GSM8K canonical pair
-  - off: accuracy `0.375`, format failure `0.250`
-  - on: accuracy `0.125`, format failure `0.125`
+## Current full-sample direct pairs
+- **GPQA / multi_turn / oracle_history / same_domain / k=2**
+  - off: accuracy `0.2723`, format failure `0.0089`
+  - on: accuracy `0.2723`, format failure `0.0268`
 
-## Risks / blockers
-- GPQA thinking-on remains dominated by formatting failure; prompt-only tightening did not fix it.
-- GSM8K now has a direct off/on pair, but both runs are still small.
-- AIME mini run confirms the benchmark path is stable enough to scale, but numeric ambiguity still persists.
-- The generated sweep set exists, but a selective subset still needs to be launched to move from mini runs to broader coverage.
+- **GSM8K / single_turn_flattened / self_history / cross_domain / k=2**
+  - off: accuracy `0.3518`, format failure `0.1827`
+  - on: accuracy `0.3889`, format failure `0.1380`
+
+- **AIME / multi_turn / oracle_history / same_domain / k=2**
+  - off: accuracy `0.1000`, format failure `0.2667`
+  - on: accuracy `0.0333`, format failure `0.8333`
+
+
+- **MMLU / multi_turn / oracle_history / same_domain / k=2**
+  - off: accuracy `0.5884`, format failure `0.0011`
+  - on: accuracy `0.6664`, format failure `0.0214`
+
+## Current interpretation
+- GPQA thinking-on no longer collapses the way the early smoke runs did, but it still does **not** outperform thinking-off.
+- GSM8K is the strongest current case for a beneficial thinking-on effect in the main-table setting.
+- AIME thinking-on is currently not a viable main-table path.
+- The core paper-table rows are now full-sample for **GPQA/GSM8K/AIME/MMLU**.
+- MMLU full-sample results materially strengthen the current main table because they add a large-breadth anchor benchmark.
 
 ## Pending next priorities
-1. Add parser-side fallback for Qwen3 thinking-on GPQA outputs
-2. Launch first selective sweep subset from generated configs (`k in {0,2,4,8}`)
-3. Expand GSM8K pair and AIME beyond current mini scale where useful
-4. Validate one thinking-on config on `CUDA_VISIBLE_DEVICES=6,7`
+1. Add per-dataset error breakdowns on top of the finished four-benchmark main table.
+2. Launch the first selective `k={0,2,4,8}` subset on the strongest current lanes.
+3. Decide whether AIME thinking-on should stay in the headline table or move to a failure-case appendix.
+4. Sync root-level docs with the new four-benchmark full-sample state.

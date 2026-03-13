@@ -11,8 +11,8 @@ Drive CRB from smoke validation to paper-usable experimental coverage using a st
 7. next-step selection
 
 ## Current phase
-- Phase: post-smoke / mini-run transition
-- Status: core new paths validated, direct off/on pairs established on two benchmarks, selective sweep execution still pending
+- Phase: broad protocol-sweep execution
+- Status: four-benchmark main table is populated; selective/broader sweep execution is active
 
 ## Completed
 - Qwen3 GPQA thinking-off smoke
@@ -28,29 +28,30 @@ Drive CRB from smoke validation to paper-usable experimental coverage using a st
 - preliminary aggregate table generation in `results/analysis/`
 
 ## In progress
-1. GPQA thinking-on parser/postprocessing hardening
-2. selective sweep subset launch from generated configs
-3. broader mini-run coverage for direct comparison conditions
+1. selective / broad sweep launch from generated configs
+2. `k={0,2,4,8}` accumulation-curve population
+3. `mode / history / domain` contrast coverage
 
 ## Next execution batches
-### Batch 1: parser + pair hardening
-- GPQA thinking-on parser/postprocessing fallback
-- optional GPQA thinking-on rerun after parser change
+### Batch 1: canonical k-sweep anchors
+- MMLU / GPQA / GSM8K / AIME at `k={0,2,4,8}`
+- prioritize the currently strongest protocol rows first
 
-### Batch 2: selective sweep subset
-- GPQA thinking-off across `k={0,2,4,8}`
+### Batch 2: mechanism comparisons
 - same vs cross where feasible
-- one self-history/oracle-history continuation branch
+- self vs oracle where feasible
+- multi_turn vs flattened where feasible
 
-### Batch 3: benchmark pair scaling
-- GSM8K off/on mini expansion
-- AIME follow-up if ambiguity handling improves
+### Batch 3: secondary reasoning-mode comparisons
+- read thinking on/off effects on top of the mechanism rows
+- keep GPQA rescue controls as supporting machinery, not the main benchmark definition
 
 ## Completion heuristics
 We can start treating the repository as paper-usable when:
 - at least one direct off/on pair is available on two benchmarks  ✅
 - at least one multi-turn vs flattened pair is available on two benchmarks  ⏳
 - at least one k sweep subset is populated with real runs  ⏳
+- self vs oracle and same vs cross rows begin to accumulate beyond isolated points  ⏳
 - scoreboard and analysis docs remain synchronized with results  ✅
 
 ## Current completion estimate

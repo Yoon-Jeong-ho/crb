@@ -1,27 +1,26 @@
 # CRB Next TODO
 
 ## Highest priority
-1. Add a parser/postprocessing fallback for Qwen3 GPQA thinking-on outputs
-2. Launch a first selective sweep subset from `configs/generated/qwen3_core_paper/`
-3. Run one thinking-on config on `CUDA_VISIBLE_DEVICES=6,7`
+1. Add a short error-breakdown note for GPQA / GSM8K / AIME / MMLU full rows
+2. Decide whether the headline narrative is “mixed benchmark sensitivity” or “GSM8K/MMLU thinking-on gains with GPQA parity and AIME failure”
+3. Sync root-level docs with the completed four-benchmark table
 
 ## Medium priority
-1. Expand the GSM8K off/on pair beyond `num_samples=8`
-2. Expand GPQA thinking-off beyond `num_samples=32` if useful
-3. Revisit AIME numeric ambiguity reduction
-4. Add regression tests for any new GPQA thinking-on parser fallback
+1. Launch the first selective `k={0,2,4,8}` subset from `configs/generated/qwen3_core_paper/`
+2. Use GPQA thinking-off and GSM8K thinking-on as the first broader-sweep anchor lanes
+3. Revisit AIME thinking-on only if we need broader full-benchmark off/on coverage
 
 ## Lower priority
-1. Add more benchmark-result aggregate scripts for paper tables
-2. Generate k-sweep summaries from scoreboard automatically
-3. Add richer README links to `results/analysis/` artifacts
+1. Add richer table/figure-ready exports beyond `main_table_qwen3.csv`
+2. Generate k-sweep summaries automatically from the scoreboard
+3. Sync root-level docs with the new full-sample core-table state
 
 ## Current best next batch
-- GPQA thinking-on parser fallback implementation
-- generated subset: GPQA thinking-off, k={0,2,4,8}, oracle_history, same/cross_domain
-- generated subset: GSM8K off/on continuation
+- expand from the completed four-benchmark table into selective k-sweeps
+- prioritize GPQA thinking-off and GSM8K/MMLU thinking-on as anchor lanes
+- then add richer analysis artifacts
 
 ## Risks to track
-- GPQA thinking-on may need generation-budget or parser changes, not just prompt changes
-- AIME numeric ambiguity may continue even when formatting succeeds
-- selective sweep batching is now the key operational step between mini-runs and broader paper coverage
+- AIME thinking-on remains highly format-unstable
+- GPQA thinking-on is rescued but still not superior to thinking off
+- strong MMLU/GSM8K thinking-on results should not be over-generalized across all benchmarks

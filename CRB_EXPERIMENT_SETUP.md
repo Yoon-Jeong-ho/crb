@@ -16,15 +16,18 @@
   - one verified GPU5 parserfix smoke,
   - one verified GPU6 strict-final follow-up,
   - one verified GPUs 5,6 multi-GPU smoke,
-  - one verified GPU7 AIME offline smoke
+  - one verified GPU7 AIME offline smoke,
+  - one verified GPU5/6 choice-only follow-up,
+  - one verified GPU5/6 `/no_think` + prefill follow-up,
+  - one verified GPU5/6 combined follow-up
 
 ## 1. Goal
 
 - single-turn benchmark를 multi-turn accumulated-history 평가로 바꿨을 때 성능 저하/간섭을 측정한다.
 - 이번 continuation pass의 실질 목표는:
-  1. thinking-off baseline을 historical reference로 유지하고,
-  2. thinking-on parser/postprocessing 병목을 parserfix branch로 줄여 보고,
-  3. 새 evidence를 `5/6/7` 범위 GPU에서만 추가하는 것이다.
+  1. **앞의 k개 dummy turn** 이 마지막 target를 얼마나 흔드는지 보는 CRB protocol을 먼저 채우고,
+  2. `multi_turn vs flattened`, `self_history vs oracle_history`, `same_domain vs cross_domain`, `k={0,2,4,8}` 축을 메인 분석 대상으로 유지하며,
+  3. thinking on/off는 이 accumulated-interference 결과를 읽는 **secondary axis** 로 다루는 것이다.
 
 ## 2. Current run rules
 
@@ -33,6 +36,7 @@
 - 이번 run에서는 GPU `5,6,7`만 사용한다.
 - GPU4 결과는 **오늘 확보된 baseline evidence**로만 남기고, 새 continuation launch에는 재사용하지 않는다.
 - parserfix는 첫 smoke가 검증됐지만, 아직 추가 rerun과 invalid-case 정리가 필요하다.
+- 2026-03-11 저녁 follow-up은 가용성 제약 때문에 GPU `5,6`만 사용한다.
 
 ## 2.1 How `k` dummy turns are inserted right now
 
@@ -111,9 +115,13 @@
      - 현재 가장 유망한 follow-up이다.
 
 - 지금 시점의 판단
-  - 가장 먼저 할 것은 `k` grid를 더 늘리는 것이 아니라,
-  - **target final-answer emission을 안정화** 하는 것이다.
-  - 그 다음에야 `k=1` 추가나 token-length control이 의미가 있다.
+- 가장 먼저 할 것은 `k` grid를 더 늘리는 것이 아니라,
+- **target final-answer emission을 안정화** 하는 것이다.
+- 그 다음에야 `k=1` 추가나 token-length control이 의미가 있다.
+-
+- 정리하면:
+  - primary: accumulated-history mechanism axes
+  - secondary: reasoning-mode / emission-control axes
 
 ## 2.3 Cross-model context policy (recommended)
 
@@ -191,6 +199,30 @@
   - format_failure_rate: `0.25`
   - parsed_count / invalid_count: `6 / 2`
 
+- GPU 5,6 / GPQA / Qwen3 thinking-on / choice constrained only
+  - config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained.yaml`
+  - run id: `run-20260311T091942Z-f3e9f0fa`
+  - num_items: `8`
+  - accuracy: `0.25`
+  - format_failure_rate: `0.0`
+  - parsed_count / invalid_count: `8 / 0`
+
+- GPU 5,6 / GPQA / Qwen3 thinking-on / `/no_think` + prefill
+  - config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_nothink_prefill.yaml`
+  - run id: `run-20260311T092221Z-dfa04164`
+  - num_items: `8`
+  - accuracy: `0.375`
+  - format_failure_rate: `0.0`
+  - parsed_count / invalid_count: `8 / 0`
+
+- GPU 5,6 / GPQA / Qwen3 thinking-on / choice constrained + `/no_think` + prefill
+  - config: `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained_nothink_prefill.yaml`
+  - run id: `run-20260311T092432Z-dac259a0`
+  - num_items: `8`
+  - accuracy: `0.375`
+  - format_failure_rate: `0.0`
+  - parsed_count / invalid_count: `8 / 0`
+
 ## 4. Immediate experiment checklist
 
 - [x] GPU 5에서 GPQA thinking-on parserfix smoke 1회
@@ -199,6 +231,9 @@
 - [x] invalid 4건 원인 확인
 - [x] GPU 6 또는 7에서 follow-up single-GPU rerun 1회
 - [x] AIME fresh numeric rerun 1회
+- [x] choice constrained GPQA thinking-on on GPUs `5,6`
+- [x] `/no_think` + prefill GPQA thinking-on on GPUs `5,6`
+- [x] combined constrained + `/no_think` + prefill GPQA thinking-on on GPUs `5,6`
 
 ## 5. Output locations
 
@@ -215,7 +250,11 @@
 - 현재 판단:
   - parser regex 보강은 유지할 가치가 있다.
   - strict-final prompt는 형식엔 도움이 있지만 정확도를 깎는다.
-  - 다음 개선 포인트는 **final-answer emission / decoding** 쪽이다.
+  - pure choice constraint는 형식은 잡지만 all-`A` 쏠림으로 정확도를 깎는다.
+  - `/no_think` + prefill은 parserfix baseline 정확도(`0.375`)를 유지하면서 format failure를 `0.0`으로 만들었다.
+  - combined config도 같은 정확도를 냈지만, 현재는 **단순한 `/no_think` + prefill**이 active winner다.
+  - 다만 이것은 어디까지나 **GPQA thinking-on rescue lane** 에 대한 이야기이고,
+  - CRB 전체 연구의 중심은 여전히 `k / mode / history / domain` 축이다.
 
 ## 7. Research-backed improvement bets
 
@@ -225,32 +264,39 @@
 - vLLM 공식 문서 기준
   - structured outputs `choice` / `regex` 제약을 offline/online 모두 지원
 - 따라서 다음 우선 실험 제안
-  1. GPQA MCQ target turn에 constrained decoding(`A/B/C/D` choice) 적용
-  2. target turn만 `/no_think` 또는 prefill 방식으로 final answer emission 안정화
-  3. strict-final prompt + Qwen 권장 thinking 샘플링 조합 재검증
+  1. `k={0,2,4,8}` sweep으로 dummy-turn accumulation curve를 채우기
+  2. `self_history vs oracle_history`, `same_domain vs cross_domain`, `multi_turn vs flattened` 차이를 먼저 확보하기
+  3. thinking on/off는 위 protocol rows 위에서 secondary comparison으로 읽기
+  4. GPQA thinking-on rescue lane은 `/no_think` + prefill을 유지하되, headline objective로 두지 않기
 
-## 8. Implemented-but-not-yet-run experiment configs
+## 8. Implemented experiment configs and fresh outcomes
 
 - [x] choice constrained GPQA thinking-on config 추가
   - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained.yaml`
+  - result: `run-20260311T091942Z-f3e9f0fa` / accuracy `0.25` / format failure `0.0`
 - [x] target `/no_think` + response prefill config 추가
   - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_nothink_prefill.yaml`
+  - result: `run-20260311T092221Z-dfa04164` / accuracy `0.375` / format failure `0.0`
 - [x] choice constrained + `/no_think` + prefill 결합 config 추가
   - `Legacy/configs/qwen3_1p7b_gpqa_multiturn_oracle_same_k2_thinking_on_choiceconstrained_nothink_prefill.yaml`
+  - result: `run-20260311T092432Z-dac259a0` / accuracy `0.375` / format failure `0.0`
 - [x] mock config / tests로 generation-control plumbing 검증
   - `Legacy/configs/mock_mmlu_multiturn_oracle_constrained_nothink.yaml`
 
-## 9. Deferred debug / run checklist
+## 9. Deferred next-step checklist
 
-- [ ] GPU available when ready
-- [ ] Run choice constrained GPQA thinking-on on allowed GPU set
-- [ ] Run `/no_think` + prefill GPQA thinking-on on allowed GPU set
-- [ ] Run combined constrained + `/no_think` + prefill GPQA thinking-on on allowed GPU set
-- [ ] Compare against current parserfix baseline:
+- [x] GPU available when ready
+- [x] Run choice constrained GPQA thinking-on on allowed GPU set
+- [x] Run `/no_think` + prefill GPQA thinking-on on allowed GPU set
+- [x] Run combined constrained + `/no_think` + prefill GPQA thinking-on on allowed GPU set
+- [x] Compare against current parserfix baseline:
   - `run-20260311T060823Z-1947f5cf`
-- [ ] Compare against strictfinal follow-up:
+- [x] Compare against strictfinal follow-up:
   - `run-20260311T063838Z-7956de92`
-- [ ] Record whether invalids shift from parse_failure to wrong-answer
-- [ ] Record whether accuracy recovers without raising format failure
-- [ ] Append results to `docs/RESULTS_LOG.md`
-- [ ] Summarize winner in `docs/ANALYSIS.md`
+- [x] Record whether invalids shift from parse_failure to wrong-answer
+- [x] Record whether accuracy recovers without raising format failure
+- [x] Append results to `docs/RESULTS_LOG.md`
+- [x] Summarize winner in `docs/ANALYSIS.md`
+- [ ] Replicate `/no_think` + prefill once more on GPUs `5,6`
+- [ ] Decide whether combined config is worth keeping beyond fallback use
+- [ ] Port the winning control to GSM8K or MMLU

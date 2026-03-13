@@ -1,103 +1,88 @@
 # CRB Analysis
 
 ## Scope
-This document summarizes the current **preliminary** staged CRB results for Qwen3 across GPQA, GSM8K, and AIME. Some results are smoke-scale; GPQA thinking-off and AIME thinking-off now also have mini-run follow-up coverage.
+This document summarizes the current **full-sample main-table state** for Qwen3-1.7B across GPQA, GSM8K, AIME, and MMLU.
 
-## Current verified conditions
+## Current verified full-sample conditions
 
-### GPQA / Qwen3 / thinking off
-- smoke (`num_samples=8`): accuracy `0.500`, format failure `0.000`
-- mini (`num_samples=32`): accuracy `0.40625`, format failure `0.000`
-
-Interpretation:
-- The main result is stability, not raw absolute accuracy.
-- GPQA thinking-off is parser-stable and therefore suitable as a baseline path for larger CRB sweeps.
-- The slight drop from `0.500` to `0.40625` with more samples is unsurprising and does not indicate a pipeline problem.
-
-### GPQA / Qwen3 / thinking on
-- canonical smoke (`num_samples=8`): accuracy `0.125`, format failure `0.875`
-- strict-final rescue attempt (`num_samples=8`): accuracy `0.000`, format failure `1.000`
+### GPQA / Qwen3 / k=2 / multi_turn / oracle_history / same_domain
+- thinking off (`num_items=448`): accuracy `0.27232142857142855`, format failure `0.008928571428571428`
+- thinking on with `/no_think` + prefill (`num_items=448`): accuracy `0.27232142857142855`, format failure `0.026785714285714284`
 
 Interpretation:
-- The failure mode is still dominated by formatting rather than purely wrong answers.
-- The stricter final-answer prompt did not help, which suggests a parser/postprocessing or generation-budget issue rather than a simple instruction clarity issue.
-- Many outputs appear to spend the entire visible budget in reasoning text and never surface a final canonical line.
+- The earlier GPQA thinking-on format collapse has been removed at full scale.
+- However, the new thinking-on path does **not** improve accuracy over thinking off.
+- The tradeoff is now “comparable accuracy, slightly worse format robustness,” rather than catastrophic parse failure.
 
-### GSM8K / Qwen3 off/on direct pair
-- thinking off (`num_samples=8`): accuracy `0.375`, format failure `0.250`
-- thinking on (`num_samples=8`): accuracy `0.125`, format failure `0.125`
-
-Interpretation:
-- On GSM8K, thinking-on is still weak on answer quality in the current small run, but parser stability is much better than GPQA.
-- That strongly suggests the GPQA thinking-on problem is not just a universal “thinking-on breaks the parser” phenomenon.
-
-### AIME / Qwen3 / thinking off
-- smoke (`num_samples=8`): accuracy `0.125`, format failure `0.250`
-- mini (`num_samples=16`): accuracy `0.125`, format failure `0.250`
+### GSM8K / Qwen3 / k=2 / single_turn_flattened / self_history / cross_domain
+- thinking off (`num_items=1319`): accuracy `0.35178165276724793`, format failure `0.18271417740712662`
+- thinking on (`num_items=1319`): accuracy `0.3889310083396513`, format failure `0.1379833206974981`
 
 Interpretation:
-- The benchmark path is stable enough to reuse.
-- The evaluator works; the dominant failure is not infrastructure failure but numeric ambiguity / wrong answers.
-- The unchanged metrics across smoke and mini suggest the issue is persistent model behavior rather than noise from the very small sample.
+- This is the clearest current full-sample win for thinking on.
+- Thinking on improves both answer quality and output-format robustness in this condition.
+- GSM8K remains the strongest benchmark for showing that thinking-on behavior is not uniformly harmful.
 
-## Direct pair summary
-Current canonical direct pairs from `results/analysis/direct_qwen3_pairs.csv`:
+### AIME / Qwen3 / k=2 / multi_turn / oracle_history / same_domain
+- thinking off (`num_items=30`): accuracy `0.1`, format failure `0.26666666666666666`
+- thinking on (`num_items=30`): accuracy `0.03333333333333333`, format failure `0.8333333333333334`
 
-1. **GPQA / multi_turn / oracle_history / same_domain / k=2**
-   - off: accuracy `0.40625`, format failure `0.000`
-   - on: accuracy `0.125`, format failure `0.875`
+Interpretation:
+- AIME thinking-on is currently unstable and not ready for use as a strong main-table comparison row.
+- The dominant issue is again output-format failure, but here the accuracy also worsens sharply.
 
-2. **GSM8K / single_turn_flattened / self_history / cross_domain / k=2**
-   - off: accuracy `0.375`, format failure `0.250`
-   - on: accuracy `0.125`, format failure `0.125`
+## Direct-pair summary
+Current canonical direct pairs from `results/analysis/main_table_qwen3.csv`:
 
-## Main provisional findings
+1. **GPQA**
+   - off vs on accuracy delta: `0.0000`
+   - off vs on format-failure delta: `+0.0179` for thinking on
 
-### Finding 1: GPQA is the most sensitive current probe for reasoning-mode instability
-GPQA with thinking-on is currently the sharpest failure detector in the repository:
-- parser stability collapses
-- answer quality also drops
-- prompt-only rescue did not fix it
+2. **GSM8K**
+   - off vs on accuracy delta: `+0.0371` for thinking on
+   - off vs on format-failure delta: `-0.0447` for thinking on
 
-### Finding 2: thinking-on instability is condition-specific, not globally uniform
-GSM8K thinking-on remains parseable in most cases.
-Therefore, the GPQA failure seems to depend on benchmark/task structure rather than just “thinking on” by itself.
+3. **AIME**
+   - off vs on accuracy delta: `-0.0667` for thinking on
+   - off vs on format-failure delta: `+0.5667` for thinking on
 
-### Finding 3: AIME is ready to remain in the benchmark suite
-AIME adapter + numeric evaluator + manifest handling are now verified repeatedly.
-The remaining problem is quality/ambiguity, not pipeline readiness.
+## Main findings
 
-### Finding 4: multi-GPU support for the new Qwen3 path is validated
-At least one new GPQA path now works on `CUDA_VISIBLE_DEVICES=6,7`, which reduces risk before wider sweep expansion.
+### Finding 1: the GPQA thinking-on path is now usable, but not better
+The `/no_think` + prefill control moved GPQA thinking-on from “broken” to “usable.”
+That is a meaningful infrastructure/result quality win.
+But at full scale, it lands at the same accuracy as thinking off and slightly worse format failure.
 
-## Failure modes observed
+### Finding 2: GSM8K provides the strongest current argument for reasoning-mode sensitivity
+On GSM8K, thinking on improves both metrics at full scale.
+This makes GSM8K the best current benchmark for a positive thinking-on result in CRB.
 
-1. **Reasoning spillover / no final answer surfaced**
-   - especially GPQA thinking-on
-2. **Prompt-only rescue failure**
-   - strict final-answer wording alone was ineffective
-3. **Ambiguous numeric outputs**
-   - especially AIME
-4. **Manifest dependence on cross-domain candidate diversity**
-   - already fixed in the AIME config
+### Finding 3: AIME thinking-on remains the weakest lane
+AIME thinking-on should not yet be promoted into broader sweep claims.
+Its current full-sample row is too format-unstable.
 
-## What becomes paper-usable now
-- GPQA thinking-off path
-- GSM8K off/on comparison path
-- AIME benchmark inclusion path
-- scoreboard / JSON / metadata pipeline
-- direct-pair aggregation artifacts in `results/analysis/`
+### Finding 4: the main table is now full-sample for four benchmarks
+GPQA, GSM8K, AIME, and MMLU now have full-sample canonical rows.
+This is a clear step up from the earlier smoke/mini regime.
 
-## What still needs work before broader sweep claims
-- parser/postprocessing strategy for GPQA thinking-on
-- larger direct-pair runs on GSM8K and GPQA
-- first selective sweep subset across `k={0,2,4,8}`
-- more history/domain comparison coverage beyond isolated conditions
+## MMLU / Qwen3 / k=2 / multi_turn / oracle_history / same_domain
+- thinking off (`num_items=14042`): accuracy `0.5883777239709443`, format failure `0.0010682238997293833`
+- thinking on (`num_items=14042`): accuracy `0.6664292835778379`, format failure `0.021364477994587665`
 
-## Recommended next experiments
-1. Implement a parser/postprocessing fallback specifically for GPQA thinking-on outputs
-2. Launch a selective generated-sweep subset focused on:
-   - GPQA thinking-off across `k={0,2,4,8}`
-   - GSM8K off/on pair continuation
-3. Expand GPQA thinking-off and AIME thinking-off one more step if compute budget allows
-4. Validate a thinking-on path on multi-GPU
+Interpretation:
+- MMLU is now the strongest broad-coverage benchmark in the repository.
+- Thinking on improves accuracy substantially at full scale here, while remaining highly parseable.
+- The cost is a small format-failure increase, but it stays very low in absolute terms.
+
+## What is paper-usable now
+- full-sample GPQA off/on row
+- full-sample GSM8K off/on row
+- full-sample AIME off/on row
+- canonical `main_table_qwen3.csv/json` artifacts
+- k-aware pair aggregation that no longer collapses different `k` conditions into one row
+
+## What still needs work
+1. Add a per-dataset error taxonomy on the finished four-benchmark table.
+2. Start selective k-sweep expansion from the strongest current rows.
+3. Revisit AIME thinking-on only if we want broader “thinking on/off everywhere” claims.
+4. Decide whether the headline table should emphasize the positive GSM8K/MMLU thinking-on effect or the mixed benchmark sensitivity story.
