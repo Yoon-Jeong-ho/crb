@@ -1,0 +1,6 @@
+configs/generated/qwen3_protocol_k_sweep_full/qwen3_gpqa_off_canonical__k-0.yaml
+configs/generated/qwen3_protocol_k_sweep_full/qwen3_gpqa_off_canonical__k-4.yaml
+configs/generated/qwen3_protocol_k_sweep_full/qwen3_gpqa_off_canonical__k-8.yaml
+configs/generated/qwen3_protocol_k_sweep_full/qwen3_gsm8k_on_canonical__k-0.yaml
+configs/generated/qwen3_protocol_k_sweep_full/qwen3_gsm8k_on_canonical__k-4.yaml
+configs/generated/qwen3_protocol_k_sweep_full/qwen3_gsm8k_on_canonical__k-8.yaml
