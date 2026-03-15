@@ -6,7 +6,7 @@ from typing import Any, Literal
 
 AnswerType = Literal["mcq", "numeric", "freeform"]
 EvaluationMode = Literal["multi_turn", "single_turn_flattened"]
-HistoryMode = Literal["self_history", "oracle_history"]
+HistoryMode = Literal["self_history", "oracle_history", "wrong_history"]
 DummyType = Literal["same_domain", "cross_domain"]
 
 
@@ -159,7 +159,7 @@ class HistoryTurn:
     choices: list[str] | None
     normalized_answer: str | None
     raw_output: str | None
-    answer_source: Literal["oracle", "self"]
+    answer_source: Literal["oracle", "self", "wrong"]
     parse_status: str
     error_type: str | None = None
     dataset_name: str | None = None

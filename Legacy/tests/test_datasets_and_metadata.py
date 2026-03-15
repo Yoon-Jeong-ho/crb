@@ -31,3 +31,8 @@ def test_generation_control_config_parses():
     assert config.decoding.target_choice_from_item_choices is True
     assert config.prompt.target_thinking_mode == 'no_think'
     assert config.prompt.target_response_prefill == 'Answer: '
+
+
+def test_wrong_history_config_parses():
+    config = load_run_config('configs/mock_mmlu_multiturn_wrong_history.yaml')
+    assert config.evaluation.history_mode == 'wrong_history'

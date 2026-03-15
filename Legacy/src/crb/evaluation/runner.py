@@ -6,6 +6,7 @@ import random
 import signal
 import traceback
 from contextlib import contextmanager
+from fractions import Fraction
 from pathlib import Path
 from typing import Callable, Iterable
 
@@ -192,6 +193,27 @@ def _load_dummy_items(config: RunConfig) -> list[NormalizedItem]:
     return combined
 
 
+def _build_deterministic_wrong_answer(item: NormalizedItem) -> str:
+    gold = normalize_gold_answer(item)
+    if item.answer_type == "mcq":
+        if not item.choices or len(item.choices) < 2:
+            raise ValueError(f"Cannot build wrong MCQ history for {item.item_id} without >=2 choices")
+        candidates = [chr(ord("A") + idx) for idx in range(len(item.choices))]
+        for candidate in candidates:
+            if candidate != gold:
+                return candidate
+        raise ValueError(f"Could not build wrong MCQ history for {item.item_id}")
+    if item.answer_type == "numeric":
+        try:
+            wrong = Fraction(gold) + 1
+            if wrong.denominator == 1:
+                return str(wrong.numerator)
+            return f"{wrong.numerator}/{wrong.denominator}"
+        except (ValueError, ZeroDivisionError):
+            return f"{gold}_wrong"
+    return "[wrong-history-answer]"
+
+
 
 def _evaluate_target_item(
     *,
@@ -216,6 +238,23 @@ def _evaluate_target_item(
                     raw_output=None,
                     answer_source="oracle",
                     parse_status="oracle",
+                    dataset_name=dummy_item.dataset_name,
+                    subject=dummy_item.subject,
+                    domain=dummy_item.domain,
+                )
+            )
+    elif config.evaluation.history_mode == "wrong_history":
+        for dummy_id in dummy_ids:
+            dummy_item = dummy_index[dummy_id]
+            history_turns.append(
+                HistoryTurn(
+                    item_id=dummy_item.item_id,
+                    question=render_question_block(dummy_item),
+                    choices=dummy_item.choices,
+                    normalized_answer=_build_deterministic_wrong_answer(dummy_item),
+                    raw_output=None,
+                    answer_source="wrong",
+                    parse_status="wrong",
                     dataset_name=dummy_item.dataset_name,
                     subject=dummy_item.subject,
                     domain=dummy_item.domain,
