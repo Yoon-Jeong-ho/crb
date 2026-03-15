@@ -1,0 +1,6 @@
+configs/generated/qwen3_gpqa_cross_domain_full/gpqa_cross_domain_oracle__k-2.yaml
+configs/generated/qwen3_gpqa_cross_domain_full/gpqa_cross_domain_wrong__k-2.yaml
+configs/generated/qwen3_gpqa_cross_domain_full/gpqa_cross_domain_oracle__k-4.yaml
+configs/generated/qwen3_gpqa_cross_domain_full/gpqa_cross_domain_wrong__k-4.yaml
+configs/generated/qwen3_gpqa_cross_domain_full/gpqa_cross_domain_oracle__k-8.yaml
+configs/generated/qwen3_gpqa_cross_domain_full/gpqa_cross_domain_wrong__k-8.yaml
