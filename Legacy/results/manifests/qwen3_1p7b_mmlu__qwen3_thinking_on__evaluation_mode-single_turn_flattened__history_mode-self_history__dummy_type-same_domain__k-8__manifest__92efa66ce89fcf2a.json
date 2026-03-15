@@ -1,0 +1,1487 @@
+{
+  "manifest_id": "manifest-2026-03-13T23:47:46Z",
+  "config_hash": "3af0aa4f25cb5d4a",
+  "seed": 42,
+  "ks": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "test",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "validation",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "gsm8k",
+      "adapter": "gsm8k",
+      "path": "openai/gsm8k",
+      "subset": "main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "aime",
+      "adapter": "aime",
+      "path": "HuggingFaceH4/aime_2024",
+      "subset": null,
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "mmlu:test:0",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2188",
+          "gsm8k:train:2894",
+          "gsm8k:train:1011",
+          "gsm8k:train:5897",
+          "gsm8k:train:0",
+          "gsm8k:train:6007",
+          "gsm8k:train:1766",
+          "gsm8k:train:1718"
+        ],
+        "cross_domain": [
+          "mmlu:validation:881",
+          "gpqa:train:rec90hpebagUgiRpS",
+          "gpqa:train:recgM7o1tcc7tP778",
+          "gpqa:train:recvlnu8BuLmXZhSX",
+          "mmlu:validation:348",
+          "mmlu:validation:449",
+          "mmlu:validation:835",
+          "mmlu:validation:382"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:1",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5065",
+          "gsm8k:train:2139",
+          "gsm8k:train:4917",
+          "gsm8k:train:1023",
+          "gsm8k:train:1983",
+          "gsm8k:train:1896",
+          "gsm8k:train:5604",
+          "gsm8k:train:2347"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1046",
+          "mmlu:validation:912",
+          "mmlu:validation:1308",
+          "mmlu:validation:200",
+          "mmlu:validation:977",
+          "mmlu:validation:1513",
+          "mmlu:validation:353",
+          "gpqa:train:rec4UqStf9WUVif1f"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:2",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:586",
+          "gsm8k:train:5037",
+          "gsm8k:train:773",
+          "gsm8k:train:6010",
+          "gsm8k:train:4806",
+          "gsm8k:train:4939",
+          "gsm8k:train:2958",
+          "gsm8k:train:2559"
+        ],
+        "cross_domain": [
+          "mmlu:validation:827",
+          "mmlu:validation:1205",
+          "mmlu:validation:1005",
+          "gpqa:train:recrs0kUo7Ua1xhKO",
+          "mmlu:validation:1437",
+          "mmlu:validation:71",
+          "mmlu:validation:1449",
+          "gpqa:train:reclHtd90GlPQJHXg"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:3",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:7143",
+          "gsm8k:train:4283",
+          "gsm8k:train:7452",
+          "gsm8k:train:2386",
+          "gsm8k:train:1763",
+          "gsm8k:train:3547",
+          "gsm8k:train:10",
+          "gsm8k:train:5907"
+        ],
+        "cross_domain": [
+          "mmlu:validation:723",
+          "mmlu:validation:1500",
+          "mmlu:validation:789",
+          "gpqa:train:recqisVCkgd2ojfRy",
+          "mmlu:validation:1215",
+          "gpqa:train:recIIMmhxoNeJkgye",
+          "mmlu:validation:13",
+          "mmlu:validation:1518"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:4",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2826",
+          "gsm8k:train:3403",
+          "gsm8k:train:6281",
+          "gsm8k:train:4878",
+          "gsm8k:train:4679",
+          "gsm8k:train:4403",
+          "gsm8k:train:5119",
+          "gsm8k:train:3810"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1506",
+          "gpqa:train:recmI7EiLv72PxmYK",
+          "mmlu:validation:1040",
+          "mmlu:validation:328",
+          "mmlu:validation:986",
+          "mmlu:validation:394",
+          "mmlu:validation:140",
+          "mmlu:validation:415"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:5",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6374",
+          "gsm8k:train:3998",
+          "gsm8k:train:6157",
+          "gsm8k:train:5238",
+          "gsm8k:train:695",
+          "gsm8k:train:2079",
+          "gsm8k:train:5104",
+          "gsm8k:train:4441"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1107",
+          "mmlu:validation:783",
+          "mmlu:validation:853",
+          "mmlu:validation:1465",
+          "mmlu:validation:496",
+          "mmlu:validation:658",
+          "mmlu:validation:204",
+          "gpqa:train:recXsuOHRBLcyenF2"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:6",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1824",
+          "gsm8k:train:3423",
+          "gsm8k:train:7406",
+          "gsm8k:train:7259",
+          "gsm8k:train:5801",
+          "gsm8k:train:3872",
+          "gsm8k:train:5521",
+          "gsm8k:train:2101"
+        ],
+        "cross_domain": [
+          "mmlu:validation:25",
+          "mmlu:validation:679",
+          "mmlu:validation:447",
+          "gpqa:train:recp6FiqiYRjKEcXZ",
+          "gpqa:train:recH8lrIXfvsjKMv2",
+          "mmlu:validation:500",
+          "gpqa:train:recG1ljJQcVy6CbSl",
+          "mmlu:validation:732"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:7",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4773",
+          "gsm8k:train:1057",
+          "gsm8k:train:6021",
+          "gsm8k:train:1861",
+          "gsm8k:train:897",
+          "gsm8k:train:4933",
+          "gsm8k:train:196",
+          "gsm8k:train:6418"
+        ],
+        "cross_domain": [
+          "gpqa:train:rec6DU0HQcUBaVwHD",
+          "gpqa:train:rec4r4KWNLrT7g2kR",
+          "mmlu:validation:1116",
+          "mmlu:validation:1031",
+          "mmlu:validation:1339",
+          "mmlu:validation:729",
+          "mmlu:validation:137",
+          "mmlu:validation:1035"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:8",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:7107",
+          "gsm8k:train:1223",
+          "gsm8k:train:3908",
+          "gsm8k:train:1930",
+          "gsm8k:train:200",
+          "gsm8k:train:5454",
+          "gsm8k:train:6870",
+          "gsm8k:train:3820"
+        ],
+        "cross_domain": [
+          "gpqa:train:recnjViFrqlZNL3fY",
+          "mmlu:validation:830",
+          "mmlu:validation:1216",
+          "gpqa:train:recLrRirj7iXoB0rU",
+          "mmlu:validation:622",
+          "gpqa:train:recr5Un4bVj4cRnAP",
+          "mmlu:validation:1205",
+          "mmlu:validation:943"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:9",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:309",
+          "gsm8k:train:4238",
+          "gsm8k:train:3880",
+          "gsm8k:train:5204",
+          "gsm8k:train:3728",
+          "gsm8k:train:4588",
+          "mmlu:validation:124",
+          "gsm8k:train:4118"
+        ],
+        "cross_domain": [
+          "gpqa:train:recIOlKBsOeEcgkA1",
+          "gpqa:train:rec8CavTqDWHF8KJj",
+          "mmlu:validation:90",
+          "mmlu:validation:163",
+          "mmlu:validation:1053",
+          "mmlu:validation:1442",
+          "mmlu:validation:162",
+          "mmlu:validation:1266"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:10",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5099",
+          "gsm8k:train:2169",
+          "gsm8k:train:605",
+          "gsm8k:train:1812",
+          "gsm8k:train:3235",
+          "gsm8k:train:1651",
+          "gsm8k:train:2236",
+          "gsm8k:train:6732"
+        ],
+        "cross_domain": [
+          "mmlu:validation:158",
+          "mmlu:validation:1194",
+          "mmlu:validation:1473",
+          "mmlu:validation:307",
+          "mmlu:validation:296",
+          "mmlu:validation:815",
+          "gpqa:train:rech8ob03J69QNAxU",
+          "mmlu:validation:941"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:11",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:34",
+          "gsm8k:train:5069",
+          "gsm8k:train:5867",
+          "gsm8k:train:4305",
+          "gsm8k:train:3122",
+          "gsm8k:train:4426",
+          "gsm8k:train:3848",
+          "gsm8k:train:1695"
+        ],
+        "cross_domain": [
+          "mmlu:validation:158",
+          "mmlu:validation:329",
+          "mmlu:validation:310",
+          "mmlu:validation:456",
+          "mmlu:validation:902",
+          "mmlu:validation:1441",
+          "mmlu:validation:657",
+          "mmlu:validation:1203"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:12",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5444",
+          "gsm8k:train:5824",
+          "gsm8k:train:289",
+          "gsm8k:train:5591",
+          "gsm8k:train:711",
+          "gsm8k:train:7121",
+          "gsm8k:train:2943",
+          "gsm8k:train:7007"
+        ],
+        "cross_domain": [
+          "mmlu:validation:321",
+          "mmlu:validation:1505",
+          "gpqa:train:recmP8wLov7D0Npq6",
+          "mmlu:validation:1171",
+          "mmlu:validation:560",
+          "mmlu:validation:275",
+          "mmlu:validation:1156",
+          "mmlu:validation:1470"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:13",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1089",
+          "gsm8k:train:893",
+          "gsm8k:train:5280",
+          "gsm8k:train:4236",
+          "gsm8k:train:1771",
+          "gsm8k:train:3655",
+          "gsm8k:train:6402",
+          "gsm8k:train:3954"
+        ],
+        "cross_domain": [
+          "mmlu:validation:394",
+          "gpqa:train:recp9KlaeChcn7DzX",
+          "mmlu:validation:645",
+          "gpqa:train:reclLfdRGRmiI6CO5",
+          "mmlu:validation:947",
+          "mmlu:validation:220",
+          "mmlu:validation:1224",
+          "mmlu:validation:357"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:14",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1806",
+          "gsm8k:train:2825",
+          "gsm8k:train:521",
+          "gsm8k:train:6197",
+          "gsm8k:train:5741",
+          "gsm8k:train:7443",
+          "gsm8k:train:3153",
+          "gsm8k:train:7246"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1105",
+          "mmlu:validation:678",
+          "mmlu:validation:1440",
+          "mmlu:validation:767",
+          "mmlu:validation:364",
+          "mmlu:validation:1425",
+          "mmlu:validation:583",
+          "gpqa:train:recUIKopRfOBy6lOx"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:15",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3941",
+          "gsm8k:train:3383",
+          "gsm8k:train:2960",
+          "gsm8k:train:2853",
+          "gsm8k:train:4362",
+          "gsm8k:train:7015",
+          "gsm8k:train:4464",
+          "gsm8k:train:1073"
+        ],
+        "cross_domain": [
+          "mmlu:validation:384",
+          "gpqa:train:receo3UUzRvWCqyfA",
+          "mmlu:validation:1196",
+          "mmlu:validation:1106",
+          "mmlu:validation:984",
+          "mmlu:validation:1319",
+          "mmlu:validation:164",
+          "gpqa:train:recPyDDO11h9okNQk"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:16",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2079",
+          "gsm8k:train:4456",
+          "gsm8k:train:4663",
+          "gsm8k:train:3455",
+          "gsm8k:train:1795",
+          "gsm8k:train:2114",
+          "gsm8k:train:4432",
+          "gsm8k:train:942"
+        ],
+        "cross_domain": [
+          "mmlu:validation:404",
+          "mmlu:validation:1277",
+          "mmlu:validation:50",
+          "gpqa:train:recigLZFBov8HBmLt",
+          "mmlu:validation:343",
+          "mmlu:validation:1370",
+          "mmlu:validation:1010",
+          "mmlu:validation:79"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:17",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6376",
+          "gsm8k:train:6021",
+          "gsm8k:train:7239",
+          "gsm8k:train:1267",
+          "mmlu:validation:591",
+          "gsm8k:train:2250",
+          "gsm8k:train:3079",
+          "gsm8k:train:6408"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1371",
+          "mmlu:validation:1138",
+          "mmlu:validation:424",
+          "mmlu:validation:1276",
+          "mmlu:validation:827",
+          "mmlu:validation:674",
+          "mmlu:validation:1436",
+          "gpqa:train:recvBj7jG98Moe76N"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:18",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3667",
+          "gsm8k:train:2285",
+          "gsm8k:train:188",
+          "gsm8k:train:4127",
+          "gsm8k:train:338",
+          "gsm8k:train:2932",
+          "gsm8k:train:7371",
+          "gsm8k:train:1123"
+        ],
+        "cross_domain": [
+          "mmlu:validation:631",
+          "mmlu:validation:298",
+          "mmlu:validation:1371",
+          "mmlu:validation:720",
+          "mmlu:validation:502",
+          "mmlu:validation:1175",
+          "mmlu:validation:1272",
+          "gpqa:train:rec7qmSnbud4FHSqL"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:19",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1270",
+          "mmlu:validation:258",
+          "gsm8k:train:1474",
+          "gsm8k:train:1467",
+          "gsm8k:train:1095",
+          "gsm8k:train:4262",
+          "gsm8k:train:4959",
+          "gsm8k:train:22"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1326",
+          "mmlu:validation:771",
+          "mmlu:validation:1317",
+          "mmlu:validation:832",
+          "mmlu:validation:61",
+          "mmlu:validation:1183",
+          "gpqa:train:recoOD3zBJsXtLjBv",
+          "mmlu:validation:1356"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:20",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5055",
+          "gsm8k:train:2262",
+          "gsm8k:train:3499",
+          "gsm8k:train:832",
+          "gsm8k:train:4933",
+          "gsm8k:train:2463",
+          "gsm8k:train:7394",
+          "gsm8k:train:2321"
+        ],
+        "cross_domain": [
+          "mmlu:validation:813",
+          "mmlu:validation:1256",
+          "mmlu:validation:829",
+          "mmlu:validation:768",
+          "mmlu:validation:88",
+          "mmlu:validation:1465",
+          "mmlu:validation:960",
+          "mmlu:validation:1291"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:21",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6551",
+          "gsm8k:train:5190",
+          "gsm8k:train:1965",
+          "gsm8k:train:2033",
+          "mmlu:validation:258",
+          "gsm8k:train:6519",
+          "gsm8k:train:5645",
+          "gsm8k:train:1098"
+        ],
+        "cross_domain": [
+          "mmlu:validation:985",
+          "mmlu:validation:804",
+          "mmlu:validation:892",
+          "mmlu:validation:692",
+          "mmlu:validation:834",
+          "gpqa:train:recZbxrocrxh9YENH",
+          "mmlu:validation:977",
+          "mmlu:validation:731"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:22",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6794",
+          "gsm8k:train:4443",
+          "gsm8k:train:6589",
+          "gsm8k:train:6845",
+          "gsm8k:train:202",
+          "gsm8k:train:4651",
+          "gsm8k:train:2254",
+          "gsm8k:train:2645"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1094",
+          "gpqa:train:rec5P74u2x8a2ZBjG",
+          "gpqa:train:recOvqPKUtyy9ISA1",
+          "mmlu:validation:159",
+          "mmlu:validation:1211",
+          "mmlu:validation:427",
+          "mmlu:validation:966",
+          "gpqa:train:recA1i5ZAh0Uzclxp"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:23",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:261",
+          "gsm8k:train:4459",
+          "gsm8k:train:5502",
+          "gsm8k:train:7304",
+          "gsm8k:train:1533",
+          "gsm8k:train:6583",
+          "gsm8k:train:339",
+          "gsm8k:train:610"
+        ],
+        "cross_domain": [
+          "mmlu:validation:290",
+          "gpqa:train:recfsHcxGI288m9ZB",
+          "mmlu:validation:584",
+          "mmlu:validation:1008",
+          "mmlu:validation:876",
+          "mmlu:validation:572",
+          "mmlu:validation:1384",
+          "gpqa:train:recHVUd2DkoKfedJZ"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:24",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:757",
+          "gsm8k:train:523",
+          "gsm8k:train:4069",
+          "gsm8k:train:2603",
+          "gsm8k:train:1032",
+          "gsm8k:train:6294",
+          "gsm8k:train:3079",
+          "gsm8k:train:2056"
+        ],
+        "cross_domain": [
+          "mmlu:validation:21",
+          "mmlu:validation:1174",
+          "mmlu:validation:360",
+          "gpqa:train:rec32C1ZEapBnCC0E",
+          "mmlu:validation:1443",
+          "mmlu:validation:1050",
+          "mmlu:validation:337",
+          "mmlu:validation:1239"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:25",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3522",
+          "gsm8k:train:6335",
+          "gsm8k:train:2282",
+          "gsm8k:train:2984",
+          "gsm8k:train:3033",
+          "gsm8k:train:2586",
+          "gsm8k:train:6801",
+          "gsm8k:train:1412"
+        ],
+        "cross_domain": [
+          "mmlu:validation:456",
+          "mmlu:validation:867",
+          "mmlu:validation:52",
+          "gpqa:train:recTVnk0jyigx3o9P",
+          "mmlu:validation:707",
+          "gpqa:train:recQSmIQF2OGPfbL8",
+          "mmlu:validation:78",
+          "mmlu:validation:689"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:26",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4031",
+          "gsm8k:train:5899",
+          "gsm8k:train:730",
+          "gsm8k:train:3967",
+          "gsm8k:train:1119",
+          "gsm8k:train:35",
+          "gsm8k:train:1315",
+          "gsm8k:train:3057"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1443",
+          "mmlu:validation:1180",
+          "mmlu:validation:1143",
+          "mmlu:validation:763",
+          "mmlu:validation:1225",
+          "mmlu:validation:1387",
+          "mmlu:validation:1237",
+          "mmlu:validation:1133"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:27",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2140",
+          "gsm8k:train:537",
+          "gsm8k:train:1279",
+          "gsm8k:train:6047",
+          "gsm8k:train:5399",
+          "gsm8k:train:4127",
+          "gsm8k:train:3766",
+          "gsm8k:train:2946"
+        ],
+        "cross_domain": [
+          "mmlu:validation:358",
+          "gpqa:train:recV1nqYQvpII94oC",
+          "mmlu:validation:769",
+          "gpqa:train:recYE7Rss564wKABO",
+          "gpqa:train:recxjillUQ4ucEWi2",
+          "mmlu:validation:834",
+          "mmlu:validation:1482",
+          "mmlu:validation:692"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:28",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5921",
+          "gsm8k:train:688",
+          "gsm8k:train:5661",
+          "gsm8k:train:6281",
+          "gsm8k:train:3213",
+          "gsm8k:train:5222",
+          "gsm8k:train:6600",
+          "gsm8k:train:1099"
+        ],
+        "cross_domain": [
+          "mmlu:validation:689",
+          "mmlu:validation:645",
+          "mmlu:validation:1090",
+          "gpqa:train:recafnH3RRnMBXEb1",
+          "mmlu:validation:1387",
+          "mmlu:validation:329",
+          "mmlu:validation:807",
+          "mmlu:validation:1283"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:29",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3382",
+          "gsm8k:train:2330",
+          "gsm8k:train:5282",
+          "gsm8k:train:3092",
+          "gsm8k:train:1837",
+          "gsm8k:train:2731",
+          "gsm8k:train:6458",
+          "gsm8k:train:6735"
+        ],
+        "cross_domain": [
+          "mmlu:validation:709",
+          "mmlu:validation:1064",
+          "mmlu:validation:79",
+          "mmlu:validation:1127",
+          "gpqa:train:recZSGUkn56v9kEp1",
+          "mmlu:validation:428",
+          "mmlu:validation:1076",
+          "mmlu:validation:912"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:30",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4626",
+          "gsm8k:train:1953",
+          "gsm8k:train:7097",
+          "gsm8k:train:4604",
+          "gsm8k:train:2972",
+          "mmlu:validation:243",
+          "gsm8k:train:3226",
+          "gsm8k:train:7300"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1472",
+          "gpqa:train:recixxJmdux0d8LZQ",
+          "mmlu:validation:1162",
+          "mmlu:validation:1396",
+          "mmlu:validation:1260",
+          "mmlu:validation:864",
+          "gpqa:train:reckYqR92oJkqJXkE",
+          "gpqa:train:rec9mLiVJz3PC7NZJ"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:31",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4886",
+          "gsm8k:train:236",
+          "gsm8k:train:6985",
+          "gsm8k:train:5705",
+          "mmlu:validation:604",
+          "gsm8k:train:691",
+          "gsm8k:train:5418",
+          "gsm8k:train:7374"
+        ],
+        "cross_domain": [
+          "mmlu:validation:329",
+          "gpqa:train:recmzeT93BlfOcNzr",
+          "gpqa:train:reccoJcrp4TJBNe1n",
+          "mmlu:validation:202",
+          "mmlu:validation:128",
+          "mmlu:validation:448",
+          "mmlu:validation:1430",
+          "mmlu:validation:1365"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:32",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "aime:train:88",
+          "gsm8k:train:1125",
+          "gsm8k:train:4934",
+          "gsm8k:train:3523",
+          "gsm8k:train:7204",
+          "gsm8k:train:6941",
+          "gsm8k:train:2165",
+          "gsm8k:train:216"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1429",
+          "mmlu:validation:1458",
+          "gpqa:train:recCg6VIPmIj5aQ2x",
+          "gpqa:train:recf6ayQmL1SxKbvW",
+          "mmlu:validation:1001",
+          "mmlu:validation:885",
+          "mmlu:validation:1264",
+          "mmlu:validation:285"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:33",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5486",
+          "gsm8k:train:2990",
+          "gsm8k:train:3855",
+          "gsm8k:train:5763",
+          "gsm8k:train:647",
+          "gsm8k:train:3074",
+          "gsm8k:train:4936",
+          "gsm8k:train:4460"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1195",
+          "mmlu:validation:527",
+          "mmlu:validation:1410",
+          "mmlu:validation:432",
+          "gpqa:train:recZ13cwgDQf9jRd9",
+          "mmlu:validation:723",
+          "gpqa:train:recGGT3pm4I7J2GXy",
+          "mmlu:validation:691"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:34",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:7167",
+          "gsm8k:train:355",
+          "gsm8k:train:2234",
+          "gsm8k:train:6456",
+          "gsm8k:train:6489",
+          "gsm8k:train:4746",
+          "gsm8k:train:4946",
+          "gsm8k:train:6383"
+        ],
+        "cross_domain": [
+          "mmlu:validation:914",
+          "mmlu:validation:697",
+          "gpqa:train:recjTmmMZ8Q1uJQJp",
+          "mmlu:validation:841",
+          "mmlu:validation:928",
+          "mmlu:validation:570",
+          "mmlu:validation:1142",
+          "mmlu:validation:956"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:35",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4476",
+          "gsm8k:train:5372",
+          "gsm8k:train:2312",
+          "gsm8k:train:6051",
+          "gsm8k:train:6576",
+          "gsm8k:train:5393",
+          "gsm8k:train:1524",
+          "gsm8k:train:910"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1241",
+          "mmlu:validation:93",
+          "mmlu:validation:1319",
+          "mmlu:validation:360",
+          "mmlu:validation:636",
+          "mmlu:validation:13",
+          "mmlu:validation:1355",
+          "gpqa:train:recZFq7Xrv9643qdd"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:36",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6832",
+          "gsm8k:train:6411",
+          "gsm8k:train:7027",
+          "gsm8k:train:3990",
+          "gsm8k:train:1151",
+          "gsm8k:train:129",
+          "gsm8k:train:100",
+          "gsm8k:train:4265"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1261",
+          "mmlu:validation:1045",
+          "mmlu:validation:657",
+          "mmlu:validation:1023",
+          "mmlu:validation:487",
+          "gpqa:train:recG1ljJQcVy6CbSl",
+          "mmlu:validation:266",
+          "mmlu:validation:699"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:37",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6229",
+          "gsm8k:train:2350",
+          "gsm8k:train:6723",
+          "gsm8k:train:1419",
+          "gsm8k:train:7418",
+          "gsm8k:train:3970",
+          "gsm8k:train:4431",
+          "gsm8k:train:4703"
+        ],
+        "cross_domain": [
+          "mmlu:validation:217",
+          "gpqa:train:rechKl68Uc6H7vU0N",
+          "mmlu:validation:1062",
+          "mmlu:validation:158",
+          "mmlu:validation:566",
+          "mmlu:validation:1386",
+          "mmlu:validation:533",
+          "mmlu:validation:1451"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:38",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2600",
+          "gsm8k:train:6067",
+          "gsm8k:train:6971",
+          "gsm8k:train:1077",
+          "gsm8k:train:5981",
+          "gsm8k:train:3267",
+          "gsm8k:train:5007",
+          "gsm8k:train:1005"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1000",
+          "mmlu:validation:185",
+          "mmlu:validation:701",
+          "gpqa:train:recIIMmhxoNeJkgye",
+          "mmlu:validation:540",
+          "gpqa:train:reckbjNKYmpQlU5TY",
+          "mmlu:validation:338",
+          "gpqa:train:recfTlTMjZBuOducT"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:39",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2002",
+          "gsm8k:train:897",
+          "gsm8k:train:5303",
+          "gsm8k:train:7133",
+          "gsm8k:train:3965",
+          "gsm8k:train:4023",
+          "gsm8k:train:2211",
+          "gsm8k:train:5441"
+        ],
+        "cross_domain": [
+          "mmlu:validation:750",
+          "mmlu:validation:852",
+          "gpqa:train:recHNRejvl3n0Fr7C",
+          "mmlu:validation:429",
+          "mmlu:validation:833",
+          "mmlu:validation:1206",
+          "mmlu:validation:1495",
+          "mmlu:validation:665"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:40",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:975",
+          "gsm8k:train:6744",
+          "gsm8k:train:7320",
+          "gsm8k:train:3219",
+          "gsm8k:train:2843",
+          "gsm8k:train:2124",
+          "gsm8k:train:1733",
+          "gsm8k:train:365"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1040",
+          "mmlu:validation:926",
+          "mmlu:validation:427",
+          "mmlu:validation:19",
+          "mmlu:validation:913",
+          "gpqa:train:recLSzwBUS3olCjhl",
+          "gpqa:train:recV1nqYQvpII94oC",
+          "mmlu:validation:1207"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:41",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:559",
+          "gsm8k:train:5503",
+          "gsm8k:train:4486",
+          "gsm8k:train:2746",
+          "gsm8k:train:3402",
+          "gsm8k:train:14",
+          "gsm8k:train:2375",
+          "gsm8k:train:7029"
+        ],
+        "cross_domain": [
+          "mmlu:validation:851",
+          "mmlu:validation:1035",
+          "mmlu:validation:14",
+          "mmlu:validation:1329",
+          "mmlu:validation:574",
+          "gpqa:train:reckbjNKYmpQlU5TY",
+          "gpqa:train:rec4J0X5OLsY61yQm",
+          "mmlu:validation:1497"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:42",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6183",
+          "gsm8k:train:5180",
+          "gsm8k:train:6031",
+          "gsm8k:train:5212",
+          "gsm8k:train:7123",
+          "gsm8k:train:6910",
+          "gsm8k:train:2673",
+          "gsm8k:train:5334"
+        ],
+        "cross_domain": [
+          "gpqa:train:recnawZPumSCLMVgp",
+          "mmlu:validation:895",
+          "mmlu:validation:651",
+          "mmlu:validation:668",
+          "mmlu:validation:863",
+          "mmlu:validation:826",
+          "mmlu:validation:816",
+          "mmlu:validation:1039"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:43",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3140",
+          "gsm8k:train:5687",
+          "gsm8k:train:6837",
+          "gsm8k:train:3239",
+          "gsm8k:train:178",
+          "gsm8k:train:3570",
+          "gsm8k:train:6560",
+          "gsm8k:train:1943"
+        ],
+        "cross_domain": [
+          "mmlu:validation:944",
+          "mmlu:validation:1265",
+          "mmlu:validation:1400",
+          "mmlu:validation:107",
+          "mmlu:validation:1398",
+          "mmlu:validation:616",
+          "mmlu:validation:659",
+          "mmlu:validation:190"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:44",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4574",
+          "gsm8k:train:5097",
+          "gsm8k:train:6364",
+          "gsm8k:train:3738",
+          "gsm8k:train:6653",
+          "gsm8k:train:5767",
+          "gsm8k:train:5949",
+          "gsm8k:train:5923"
+        ],
+        "cross_domain": [
+          "gpqa:train:recfsHcxGI288m9ZB",
+          "gpqa:train:recE9pSb1glprNqNa",
+          "mmlu:validation:442",
+          "mmlu:validation:874",
+          "gpqa:train:recYCMJWH7IpcdqwE",
+          "mmlu:validation:450",
+          "mmlu:validation:1303",
+          "gpqa:train:recqTvvfE8ldJbknb"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:45",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1617",
+          "gsm8k:train:3377",
+          "gsm8k:train:6271",
+          "gsm8k:train:1013",
+          "gsm8k:train:550",
+          "gsm8k:train:7147",
+          "gsm8k:train:577",
+          "gsm8k:train:1159"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1310",
+          "mmlu:validation:493",
+          "mmlu:validation:672",
+          "gpqa:train:recsiPyyjXBOPsSMv",
+          "mmlu:validation:1420",
+          "mmlu:validation:678",
+          "mmlu:validation:999",
+          "mmlu:validation:150"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:46",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6927",
+          "gsm8k:train:444",
+          "gsm8k:train:4967",
+          "gsm8k:train:142",
+          "gsm8k:train:6634",
+          "gsm8k:train:1941",
+          "gsm8k:train:2408",
+          "gsm8k:train:5074"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1489",
+          "mmlu:validation:796",
+          "mmlu:validation:533",
+          "mmlu:validation:423",
+          "gpqa:train:recr3VHM4zYf6dMFY",
+          "gpqa:train:recwr979t2fqhhZK8",
+          "mmlu:validation:775",
+          "mmlu:validation:366"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:47",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5979",
+          "gsm8k:train:2149",
+          "gsm8k:train:2340",
+          "gsm8k:train:6754",
+          "gsm8k:train:6852",
+          "gsm8k:train:6886",
+          "gsm8k:train:2285",
+          "gsm8k:train:3444"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1430",
+          "gpqa:train:recKHoKLpcxt8aOjM",
+          "mmlu:validation:177",
+          "gpqa:train:rec0Arme2jcXQZnAW",
+          "mmlu:validation:543",
+          "mmlu:validation:852",
+          "mmlu:validation:268",
+          "gpqa:train:recINSFEYLCyyd08m"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:48",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1836",
+          "gsm8k:train:2131",
+          "gsm8k:train:286",
+          "gsm8k:train:5950",
+          "gsm8k:train:3842",
+          "gsm8k:train:6571",
+          "gsm8k:train:2885",
+          "gsm8k:train:6645"
+        ],
+        "cross_domain": [
+          "gpqa:train:recx6dMdmcp1ftRVY",
+          "mmlu:validation:267",
+          "gpqa:train:reclLadsjOEgLcuah",
+          "mmlu:validation:500",
+          "gpqa:train:recLB0EkQ54bYVhnd",
+          "mmlu:validation:1175",
+          "mmlu:validation:722",
+          "mmlu:validation:1024"
+        ]
+      }
+    },
+    {
+      "target_item_id": "mmlu:test:49",
+      "target_dataset_name": "mmlu",
+      "target_subject": "abstract_algebra",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6174",
+          "gsm8k:train:6563",
+          "gsm8k:train:3101",
+          "gsm8k:train:3071",
+          "gsm8k:train:5749",
+          "gsm8k:train:5468",
+          "gsm8k:train:6249",
+          "gsm8k:train:6019"
+        ],
+        "cross_domain": [
+          "mmlu:validation:496",
+          "mmlu:validation:391",
+          "gpqa:train:recKcjTwONILZqHAX",
+          "mmlu:validation:1196",
+          "mmlu:validation:538",
+          "mmlu:validation:1348",
+          "mmlu:validation:573",
+          "gpqa:train:recZFq7Xrv9643qdd"
+        ]
+      }
+    }
+  ]
+}

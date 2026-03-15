@@ -1,15 +1,19 @@
 {
-  "qwen3_total_rows": 9,
-  "qwen3_latest_condition_rows": 5,
-  "qwen3_latest_canonical_condition_rows": 5,
-  "direct_pair_count": 2,
+  "qwen3_total_rows": 28,
+  "qwen3_latest_condition_rows": 10,
+  "qwen3_latest_canonical_condition_rows": 8,
+  "direct_pair_count": 4,
+  "main_table_row_count": 4,
   "datasets": [
     "aime",
     "gpqa",
-    "gsm8k"
+    "gsm8k",
+    "mmlu"
   ],
   "excluded_noncanonical_tokens": [
     "strictfinal",
-    "multigpu_smoke"
+    "multigpu",
+    "smoke",
+    "choiceconstrained"
   ]
 }

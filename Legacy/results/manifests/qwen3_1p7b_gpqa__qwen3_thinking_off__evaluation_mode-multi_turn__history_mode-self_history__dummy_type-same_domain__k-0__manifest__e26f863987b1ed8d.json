@@ -1,0 +1,1487 @@
+{
+  "manifest_id": "manifest-2026-03-13T09:49:16Z",
+  "config_hash": "0cfe95cbb33db020",
+  "seed": 42,
+  "ks": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "validation",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "gsm8k",
+      "adapter": "gsm8k",
+      "path": "openai/gsm8k",
+      "subset": "main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "aime",
+      "adapter": "aime",
+      "path": "HuggingFaceH4/aime_2024",
+      "subset": null,
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "gpqa:train:rec055vn3qEqKHHTc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recftca7pyp2TCeAG",
+          "gpqa:train:recAYkd96NNuNl1Ei",
+          "gpqa:train:recKeCj07mR2qOvCH",
+          "gpqa:train:rec8CavTqDWHF8KJj",
+          "mmlu:validation:321",
+          "gpqa:train:reckoUYCML0XkjPZD",
+          "gpqa:train:recZdZxsN0AxDx0pB",
+          "gpqa:train:rec2K9NTFNw04xewq"
+        ],
+        "cross_domain": [
+          "gsm8k:train:4951",
+          "gsm8k:train:7126",
+          "gsm8k:train:5802",
+          "gsm8k:train:2890",
+          "gsm8k:train:16",
+          "gsm8k:train:2776",
+          "gsm8k:train:5552",
+          "gsm8k:train:1797"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec06pnAkLOr2t2mp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recINGR1z01Fh1Z3A",
+          "gpqa:train:recMLNCge97pgSDHq",
+          "gpqa:train:reciOUAwJv4qTlXxs",
+          "gpqa:train:rec4YVw9r9DC0DK6U",
+          "gpqa:train:recV1nqYQvpII94oC",
+          "gpqa:train:recfTlTMjZBuOducT",
+          "gpqa:train:recywRj5a8EEjj2Ib",
+          "mmlu:validation:190"
+        ],
+        "cross_domain": [
+          "gsm8k:train:22",
+          "gsm8k:train:5864",
+          "gsm8k:train:6506",
+          "gsm8k:train:3424",
+          "gsm8k:train:6981",
+          "gsm8k:train:3689",
+          "gsm8k:train:3246",
+          "gsm8k:train:1896"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0Arme2jcXQZnAW",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:reccGBrJaZk9DWZxk",
+          "gpqa:train:recXlt6DeL8i1eeTO",
+          "gpqa:train:recNFJjE5PPTqVJGv",
+          "gpqa:train:recuXwnZ1Nq5uRiu3",
+          "mmlu:validation:342",
+          "gpqa:train:rec2fEZkqcDWMh1JV",
+          "gpqa:train:reckl6PkaEMWM50yZ",
+          "gpqa:train:recJJcOHhFeSaRpl4"
+        ],
+        "cross_domain": [
+          "gsm8k:train:4172",
+          "gsm8k:train:3995",
+          "gsm8k:train:6178",
+          "gsm8k:train:5736",
+          "gsm8k:train:2482",
+          "gsm8k:train:5069",
+          "gsm8k:train:6635",
+          "gsm8k:train:5735"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0LlchAeJwY28ZY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:326",
+          "gpqa:train:recZt4x514UQNnsgy",
+          "gpqa:train:recb2M22zaD3tL6Qc",
+          "gpqa:train:reck1zKeCssmN82Ga",
+          "gpqa:train:recWrxK7TzlOf9cSB",
+          "gpqa:train:recaeEWE23avuB6do",
+          "mmlu:validation:338",
+          "gpqa:train:recRgabRzMaEoBRcM"
+        ],
+        "cross_domain": [
+          "gsm8k:train:2423",
+          "gsm8k:train:2132",
+          "gsm8k:train:4896",
+          "gsm8k:train:3563",
+          "gsm8k:train:6859",
+          "gsm8k:train:5663",
+          "gsm8k:train:118",
+          "mmlu:validation:319"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0OlNe6zQJU1ps4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recJJcOHhFeSaRpl4",
+          "mmlu:validation:333",
+          "gpqa:train:recoW8Ztae7Ruxru4",
+          "mmlu:validation:327",
+          "gpqa:train:recs3PLPUEMiqg4P8",
+          "gpqa:train:recIlghoOw5VbY4Zh",
+          "gpqa:train:rec2fsnzUuvNtUYK8",
+          "gpqa:train:recYOzCsevNz61Lyn"
+        ],
+        "cross_domain": [
+          "mmlu:validation:806",
+          "gsm8k:train:128",
+          "gsm8k:train:4182",
+          "gsm8k:train:2438",
+          "gsm8k:train:2532",
+          "mmlu:validation:48",
+          "gsm8k:train:5871",
+          "gpqa:train:recRZjaElf8ft7xTq"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0VuKUjt1SZ7NYv",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recyrk6XBVwugG5u8",
+          "gpqa:train:recgCB0HSVt2IslDN",
+          "gpqa:train:recF89DhiduLI4cNl",
+          "gpqa:train:receYQxnUBvxPcvbQ",
+          "mmlu:validation:186",
+          "gpqa:train:reccVBrYdwsB84fGy",
+          "gpqa:train:recVE8cUNHpHZIAvL",
+          "mmlu:validation:150"
+        ],
+        "cross_domain": [
+          "gsm8k:train:3433",
+          "gpqa:train:recqqFgbShO7tyavI",
+          "gsm8k:train:1404",
+          "gsm8k:train:4587",
+          "gsm8k:train:2976",
+          "gsm8k:train:1454",
+          "gpqa:train:recsibPli53Ona88K",
+          "gsm8k:train:469"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0Y0PY1lx8aZPZh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recQWH5bK8Z9btsrr",
+          "gpqa:train:recmP8wLov7D0Npq6",
+          "gpqa:train:reclJjWliRRF378UN",
+          "gpqa:train:recAAJoHMW45Lv5je",
+          "gpqa:train:recFperaY3GpdU6oG",
+          "gpqa:train:recfsHcxGI288m9ZB",
+          "mmlu:validation:335",
+          "gpqa:train:rechKl68Uc6H7vU0N"
+        ],
+        "cross_domain": [
+          "gsm8k:train:3880",
+          "gsm8k:train:2791",
+          "gsm8k:train:4455",
+          "aime:train:61",
+          "gsm8k:train:2556",
+          "gpqa:train:recRhwQwHijW0gCLo",
+          "gsm8k:train:4450",
+          "gsm8k:train:5145"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0wZvZgiz320KRs",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:515",
+          "gpqa:train:recxWirvTOyWz2zja",
+          "gpqa:train:reckbjNKYmpQlU5TY",
+          "gpqa:train:recpki12iG9RUGrz9",
+          "gpqa:train:recZ8cm5DvTme4AI4",
+          "mmlu:validation:174",
+          "gpqa:train:recYG3SqTUBlu7jvf",
+          "gpqa:train:reckwNMHJYPkcbXNZ"
+        ],
+        "cross_domain": [
+          "gsm8k:train:6824",
+          "gsm8k:train:4539",
+          "gsm8k:train:6742",
+          "mmlu:validation:1466",
+          "mmlu:validation:1238",
+          "gsm8k:train:7278",
+          "gsm8k:train:3799",
+          "gsm8k:train:7221"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0yTRmO1o1xCA6H",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:193",
+          "gpqa:train:recYI852ugl1pFhAv",
+          "mmlu:validation:524",
+          "gpqa:train:recNPa63g37t1COiO",
+          "gpqa:train:recguj40XQkQq1l7Q",
+          "gpqa:train:recYG3SqTUBlu7jvf",
+          "gpqa:train:rect4iLrSfUwkNTno",
+          "gpqa:train:recmI7EiLv72PxmYK"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1514",
+          "gsm8k:train:3920",
+          "mmlu:validation:735",
+          "gsm8k:train:6249",
+          "gsm8k:train:165",
+          "gsm8k:train:2179",
+          "mmlu:validation:443",
+          "gsm8k:train:4479"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1AAE9RApPLqeqt",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:reccrAgUClrIVaBYa",
+          "gpqa:train:recFaL6j8UMhutXrc",
+          "gpqa:train:reckyB637GAnW0uRM",
+          "gpqa:train:recZWeueB7lSPR6wN",
+          "gpqa:train:recaeEWE23avuB6do",
+          "gpqa:train:recINSFEYLCyyd08m",
+          "mmlu:validation:332",
+          "gpqa:train:recCJJOeBGERaHYax"
+        ],
+        "cross_domain": [
+          "mmlu:validation:888",
+          "gsm8k:train:1137",
+          "gsm8k:train:1226",
+          "mmlu:validation:1037",
+          "mmlu:validation:462",
+          "mmlu:validation:1455",
+          "gsm8k:train:6456",
+          "gsm8k:train:2522"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1Ey0Fnt2RhnsmU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:311",
+          "mmlu:validation:309",
+          "gpqa:train:recx6dMdmcp1ftRVY",
+          "gpqa:train:recw4rROcnHKNZhtK",
+          "gpqa:train:recKeCj07mR2qOvCH",
+          "gpqa:train:recIOlKBsOeEcgkA1",
+          "gpqa:train:recYt8xx80OTyDsL0",
+          "gpqa:train:recbWK7TxyPMNhPIb"
+        ],
+        "cross_domain": [
+          "gsm8k:train:5071",
+          "gsm8k:train:1055",
+          "gsm8k:train:6200",
+          "gsm8k:train:5467",
+          "gsm8k:train:877",
+          "mmlu:validation:1511",
+          "gsm8k:train:3324",
+          "gsm8k:train:2428"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1oj2DveQWl9Rpw",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:103",
+          "gpqa:train:recL9MFV5zmdlle5T",
+          "mmlu:validation:322",
+          "gpqa:train:recDj2Y2BbtV02Wv5",
+          "gpqa:train:recXsYa3i2UhGF5fe",
+          "gpqa:train:recUOePh79cp4T2Bg",
+          "gpqa:train:recyl3usDqb7ruXJx",
+          "gpqa:train:reckyB637GAnW0uRM"
+        ],
+        "cross_domain": [
+          "gsm8k:train:737",
+          "gsm8k:train:7288",
+          "gsm8k:train:7416",
+          "gsm8k:train:6166",
+          "mmlu:validation:881",
+          "gsm8k:train:2884",
+          "mmlu:validation:1237",
+          "gsm8k:train:6093"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1zl5LvaatzGhFt",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recIIUynGGpsGEYuo",
+          "gpqa:train:rec0wsMJZgWo7ICJm",
+          "gpqa:train:rechgQucGlrnt8KRV",
+          "gpqa:train:rec06pnAkLOr2t2mp",
+          "gpqa:train:rec8y3ZrBOcLgNEkE",
+          "gpqa:train:recN4DY9Q5V03glmQ",
+          "gpqa:train:recr71WEmXEEMzRgq",
+          "gpqa:train:recYE7Rss564wKABO"
+        ],
+        "cross_domain": [
+          "gsm8k:train:5233",
+          "gsm8k:train:2994",
+          "mmlu:validation:1251",
+          "gsm8k:train:6319",
+          "gsm8k:train:1285",
+          "gsm8k:train:3631",
+          "gsm8k:train:6385",
+          "gsm8k:train:5485"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec260hNUCEj109Dj",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recK3Xnphg6jVxIHv",
+          "gpqa:train:recg02EmYPFs5srwA",
+          "gpqa:train:recMLNCge97pgSDHq",
+          "gpqa:train:recYG3SqTUBlu7jvf",
+          "gpqa:train:receYQxnUBvxPcvbQ",
+          "gpqa:train:recdya6FuYraBU5Rh",
+          "gpqa:train:rechyhGsrgszzPsdc",
+          "mmlu:validation:195"
+        ],
+        "cross_domain": [
+          "mmlu:validation:99",
+          "gsm8k:train:7102",
+          "gsm8k:train:6142",
+          "gsm8k:train:1925",
+          "gsm8k:train:4434",
+          "gsm8k:train:7263",
+          "gsm8k:train:5649",
+          "gsm8k:train:7116"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2K9NTFNw04xewq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recKHoKLpcxt8aOjM",
+          "gpqa:train:recJtvFAlzbVyKlWf",
+          "gpqa:train:recafnH3RRnMBXEb1",
+          "gpqa:train:rec527dNeEtWJrYNl",
+          "mmlu:validation:24",
+          "mmlu:validation:294",
+          "mmlu:validation:792",
+          "mmlu:validation:296"
+        ],
+        "cross_domain": [
+          "gsm8k:train:3143",
+          "gsm8k:train:5600",
+          "gsm8k:train:5193",
+          "gsm8k:train:275",
+          "mmlu:validation:990",
+          "mmlu:validation:1390",
+          "gsm8k:train:5074",
+          "mmlu:validation:798"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2NJhNJ4umq2HFG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:reclx98uq6gUM42UR",
+          "gpqa:train:recMLNCge97pgSDHq",
+          "mmlu:validation:519",
+          "gpqa:train:recywRj5a8EEjj2Ib",
+          "gpqa:train:recX2lK3byHnClL54",
+          "gpqa:train:recgCB0HSVt2IslDN",
+          "gpqa:train:recUAzHaz2w1b1Ih8",
+          "mmlu:validation:151"
+        ],
+        "cross_domain": [
+          "gsm8k:train:7095",
+          "gsm8k:train:4803",
+          "gsm8k:train:3574",
+          "mmlu:validation:1399",
+          "mmlu:validation:588",
+          "gsm8k:train:2351",
+          "gsm8k:train:6669",
+          "gsm8k:train:6492"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2UlKqC6RFHdcro",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:reczlLY9O5zHKaGL0",
+          "gpqa:train:rec2x0OAFHVNGxCgA",
+          "mmlu:validation:187",
+          "mmlu:validation:176",
+          "mmlu:validation:196",
+          "gpqa:train:recNPa63g37t1COiO",
+          "gpqa:train:recwhMjaIdnLkGTgN",
+          "gpqa:train:rec4JrWy7Il8ho5vk"
+        ],
+        "cross_domain": [
+          "gsm8k:train:379",
+          "gsm8k:train:6934",
+          "mmlu:validation:295",
+          "gsm8k:train:1023",
+          "mmlu:validation:667",
+          "mmlu:validation:377",
+          "gsm8k:train:392",
+          "gsm8k:train:5870"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2ZTsqazBZ3LTWZ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recm7S5Gq7FWCgaHZ",
+          "gpqa:train:recePdwdV9KRLqPDx",
+          "mmlu:validation:82",
+          "gpqa:train:recKeCj07mR2qOvCH",
+          "mmlu:validation:306",
+          "gpqa:train:recZdZxsN0AxDx0pB",
+          "gpqa:train:recNfEV6AjS2ZFn5W",
+          "gpqa:train:recTs7qzfJs6kfLUK"
+        ],
+        "cross_domain": [
+          "gsm8k:train:4371",
+          "gsm8k:train:5966",
+          "gsm8k:train:5863",
+          "gsm8k:train:4687",
+          "mmlu:validation:952",
+          "mmlu:validation:386",
+          "gsm8k:train:7183",
+          "gsm8k:train:7226"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2fEZkqcDWMh1JV",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recNFJjE5PPTqVJGv",
+          "gpqa:train:recFperaY3GpdU6oG",
+          "gpqa:train:recb4cGsC6BJUCU3V",
+          "mmlu:validation:102",
+          "gpqa:train:reczkBiPPNrNN49Hp",
+          "gpqa:train:rec63khLVM4kK3sW3",
+          "gpqa:train:recGFNRVl1qBZGwyU",
+          "gpqa:train:recv7GsQg3f0fvB1f"
+        ],
+        "cross_domain": [
+          "gsm8k:train:880",
+          "gsm8k:train:6512",
+          "gsm8k:train:4874",
+          "gsm8k:train:1369",
+          "gsm8k:train:1692",
+          "mmlu:validation:1294",
+          "mmlu:validation:442",
+          "gsm8k:train:2642"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2fsnzUuvNtUYK8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:rec5P74u2x8a2ZBjG",
+          "gpqa:train:recs3PLPUEMiqg4P8",
+          "gpqa:train:recXsYa3i2UhGF5fe",
+          "gpqa:train:recCg6VIPmIj5aQ2x",
+          "gpqa:train:recsfV2VlPdl7SLR6",
+          "mmlu:validation:325",
+          "gpqa:train:recQM36StGVD7wwP2",
+          "gpqa:train:recWgLWFncNSime5A"
+        ],
+        "cross_domain": [
+          "gsm8k:train:64",
+          "gsm8k:train:4592",
+          "gsm8k:train:6113",
+          "gsm8k:train:2483",
+          "gsm8k:train:1869",
+          "gsm8k:train:4041",
+          "gsm8k:train:1993",
+          "gsm8k:train:2625"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2mwDP38Ocj5kO9",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recNVjLDmy64W9NRQ",
+          "gpqa:train:recJJcOHhFeSaRpl4",
+          "gpqa:train:receWdnr3u8wvTfPA",
+          "gpqa:train:rec5rjeLsEq5Fg7Oj",
+          "mmlu:validation:329",
+          "gpqa:train:recYCMJWH7IpcdqwE",
+          "gpqa:train:recDj2Y2BbtV02Wv5",
+          "gpqa:train:recH8lrIXfvsjKMv2"
+        ],
+        "cross_domain": [
+          "gsm8k:train:180",
+          "gsm8k:train:2244",
+          "mmlu:validation:466",
+          "gsm8k:train:3426",
+          "gsm8k:train:2719",
+          "mmlu:validation:1122",
+          "gsm8k:train:6881",
+          "gsm8k:train:3903"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2x0OAFHVNGxCgA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recI1ls9OXdxatHQn",
+          "gpqa:train:recQEFX6mtMj6XQvA",
+          "gpqa:train:recatj4YXzbOaq3Ar",
+          "gpqa:train:rec8y3ZrBOcLgNEkE",
+          "gpqa:train:recMLNCge97pgSDHq",
+          "gpqa:train:recnsAVZoGayGIj3g",
+          "mmlu:validation:520",
+          "gpqa:train:recjqhQe22OY2P2H0"
+        ],
+        "cross_domain": [
+          "gsm8k:train:591",
+          "gsm8k:train:6560",
+          "gsm8k:train:1115",
+          "gsm8k:train:700",
+          "gsm8k:train:1610",
+          "gsm8k:train:6937",
+          "gsm8k:train:6769",
+          "gsm8k:train:688"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2xN0SZSiyfKb4E",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:181",
+          "gpqa:train:recSl0g9xnRRB2e0L",
+          "gpqa:train:recjqhQe22OY2P2H0",
+          "gpqa:train:reclx98uq6gUM42UR",
+          "gpqa:train:recDytVnNYZe2HuUU",
+          "mmlu:validation:512",
+          "gpqa:train:recK3Xnphg6jVxIHv",
+          "gpqa:train:recS48OsU6kVadBPW"
+        ],
+        "cross_domain": [
+          "gsm8k:train:2414",
+          "gsm8k:train:575",
+          "gsm8k:train:4921",
+          "gsm8k:train:4007",
+          "gsm8k:train:3082",
+          "gsm8k:train:6040",
+          "mmlu:validation:351",
+          "gsm8k:train:6970"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2ylY4X59IrLLuV",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:340",
+          "gpqa:train:recZ13cwgDQf9jRd9",
+          "gpqa:train:rec5P74u2x8a2ZBjG",
+          "gpqa:train:recNuT2oSnO86bxOx",
+          "gpqa:train:rectlyG9pCAAuWhoB",
+          "mmlu:validation:328",
+          "gpqa:train:recrNbtgTNoabJJi6",
+          "gpqa:train:recDDxpS9s8cwkqfq"
+        ],
+        "cross_domain": [
+          "mmlu:validation:747",
+          "gsm8k:train:6884",
+          "gsm8k:train:6633",
+          "gsm8k:train:3812",
+          "gsm8k:train:6889",
+          "gsm8k:train:329",
+          "gsm8k:train:5744",
+          "gsm8k:train:7264"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec32C1ZEapBnCC0E",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recPIzpnuYpB4yvmp",
+          "gpqa:train:recPSTGXK3P39yNYT",
+          "gpqa:train:reciuppdQde4FGX1z",
+          "gpqa:train:recXvQ6gWAmyakrpD",
+          "mmlu:validation:183",
+          "gpqa:train:rect4iLrSfUwkNTno",
+          "gpqa:train:recsOrgoWMrLoY31T",
+          "gpqa:train:recMLNCge97pgSDHq"
+        ],
+        "cross_domain": [
+          "gsm8k:train:115",
+          "gsm8k:train:3060",
+          "gsm8k:train:5044",
+          "gsm8k:train:4467",
+          "gsm8k:train:3196",
+          "gsm8k:train:845",
+          "gsm8k:train:4184",
+          "gsm8k:train:3921"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec3VinRRdXScdEMI",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:311",
+          "mmlu:validation:299",
+          "gpqa:train:recypVp2NmPlBKVTp",
+          "gpqa:train:recr5Un4bVj4cRnAP",
+          "gpqa:train:reciLRvawYgDdCzrg",
+          "mmlu:validation:290",
+          "gpqa:train:rec527dNeEtWJrYNl",
+          "mmlu:validation:20"
+        ],
+        "cross_domain": [
+          "gsm8k:train:5675",
+          "gsm8k:train:3888",
+          "gsm8k:train:7093",
+          "gsm8k:train:1098",
+          "gsm8k:train:5412",
+          "gsm8k:train:6292",
+          "gsm8k:train:2622",
+          "gsm8k:train:5351"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec42yAdAZnQgoibP",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:rec6rBGCwlGy1Q1xk",
+          "mmlu:validation:298",
+          "gpqa:train:recp6FiqiYRjKEcXZ",
+          "mmlu:validation:12",
+          "mmlu:validation:294",
+          "gpqa:train:recw4rROcnHKNZhtK",
+          "gpqa:train:recAYkd96NNuNl1Ei",
+          "mmlu:validation:791"
+        ],
+        "cross_domain": [
+          "gsm8k:train:57",
+          "mmlu:validation:1491",
+          "mmlu:validation:555",
+          "gsm8k:train:865",
+          "gsm8k:train:5960",
+          "gsm8k:train:5818",
+          "gsm8k:train:2583",
+          "aime:train:71"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec47oNPXudlTIk4y",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:rec1oj2DveQWl9Rpw",
+          "gpqa:train:recb2M22zaD3tL6Qc",
+          "gpqa:train:reck4G4xxv3YnpbtQ",
+          "gpqa:train:recbMrWKlgp9uWgUK",
+          "mmlu:validation:104",
+          "gpqa:train:rec1BjNQici8oD53a",
+          "gpqa:train:recoy9ZLBsc7HIRBy",
+          "gpqa:train:recreOOuMnQkSzybb"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1458",
+          "gsm8k:train:3247",
+          "gsm8k:train:7471",
+          "gsm8k:train:2812",
+          "gsm8k:train:6022",
+          "gsm8k:train:3524",
+          "gsm8k:train:294",
+          "gsm8k:train:2718"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4J0X5OLsY61yQm",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recs3PLPUEMiqg4P8",
+          "mmlu:validation:334",
+          "gpqa:train:recBGxVySx1pkrO1i",
+          "mmlu:validation:331",
+          "gpqa:train:reccOKzFNmyqeJ6ry",
+          "gpqa:train:recySCwROqoVpo0UG",
+          "gpqa:train:recv7GsQg3f0fvB1f",
+          "gpqa:train:rec1oj2DveQWl9Rpw"
+        ],
+        "cross_domain": [
+          "gsm8k:train:5357",
+          "gsm8k:train:6512",
+          "gsm8k:train:2015",
+          "gsm8k:train:3541",
+          "gsm8k:train:622",
+          "gsm8k:train:2199",
+          "gsm8k:train:4450",
+          "gsm8k:train:7193"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4JrWy7Il8ho5vk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:522",
+          "mmlu:validation:189",
+          "gpqa:train:recYG3SqTUBlu7jvf",
+          "mmlu:validation:525",
+          "mmlu:validation:190",
+          "gpqa:train:recKcjTwONILZqHAX",
+          "gpqa:train:recIN1LyuCWtFwrJ4",
+          "gpqa:train:recUkvCduGEdjxHsF"
+        ],
+        "cross_domain": [
+          "gsm8k:train:2619",
+          "gsm8k:train:5976",
+          "mmlu:validation:934",
+          "gsm8k:train:6024",
+          "gsm8k:train:607",
+          "mmlu:validation:448",
+          "gsm8k:train:6893",
+          "gsm8k:train:6181"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4L69T0Y1AS4AFS",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:rece85GY0YT0kSlPQ",
+          "mmlu:validation:88",
+          "gpqa:train:recVvpD8miVjmmyfe",
+          "gpqa:train:recm7S5Gq7FWCgaHZ",
+          "mmlu:validation:24",
+          "mmlu:validation:92",
+          "gpqa:train:recOKE5XNz2i1eDEm",
+          "gpqa:train:recnTTKdBzfuoZ7w7"
+        ],
+        "cross_domain": [
+          "gsm8k:train:6664",
+          "gsm8k:train:3929",
+          "gsm8k:train:2567",
+          "gsm8k:train:4258",
+          "gsm8k:train:7119",
+          "gsm8k:train:3462",
+          "gsm8k:train:1890",
+          "gsm8k:train:3301"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4Md9alOxTHa2QG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recnTTKdBzfuoZ7w7",
+          "gpqa:train:recD8oX1KevFbl7bL",
+          "gpqa:train:recbWK7TxyPMNhPIb",
+          "mmlu:validation:320",
+          "mmlu:validation:306",
+          "gpqa:train:recqcypy0BOtxk1Vr",
+          "gpqa:train:recr5Un4bVj4cRnAP",
+          "gpqa:train:recBeOYL2vJeESmQ5"
+        ],
+        "cross_domain": [
+          "gsm8k:train:1794",
+          "gsm8k:train:2968",
+          "gpqa:train:recFperaY3GpdU6oG",
+          "gsm8k:train:4850",
+          "gsm8k:train:187",
+          "gsm8k:train:4403",
+          "gsm8k:train:2997",
+          "gsm8k:train:1648"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4UqStf9WUVif1f",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:rec7qmSnbud4FHSqL",
+          "gpqa:train:recks5wKHpwzraAyO",
+          "gpqa:train:recV1dB3itJjvXzLx",
+          "gpqa:train:rec260hNUCEj109Dj",
+          "gpqa:train:recr6XgkQQXYycWDm",
+          "gpqa:train:recuIk9Y5lMFea9vK",
+          "mmlu:validation:175",
+          "gpqa:train:recf4iXKY773NYRFw"
+        ],
+        "cross_domain": [
+          "gsm8k:train:5519",
+          "gsm8k:train:3170",
+          "gsm8k:train:5909",
+          "gsm8k:train:4898",
+          "gsm8k:train:95",
+          "gsm8k:train:1636",
+          "mmlu:validation:554",
+          "gpqa:train:recDDxpS9s8cwkqfq"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4YVw9r9DC0DK6U",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recV1dB3itJjvXzLx",
+          "gpqa:train:recxWirvTOyWz2zja",
+          "gpqa:train:recHNRejvl3n0Fr7C",
+          "gpqa:train:recDpYJ14wFOQCRnO",
+          "gpqa:train:recINGR1z01Fh1Z3A",
+          "gpqa:train:recIFvejHDfK7ybwT",
+          "gpqa:train:rec4JrWy7Il8ho5vk",
+          "mmlu:validation:517"
+        ],
+        "cross_domain": [
+          "gsm8k:train:1860",
+          "gsm8k:train:5835",
+          "gsm8k:train:3731",
+          "gsm8k:train:6026",
+          "mmlu:validation:789",
+          "gsm8k:train:6838",
+          "gsm8k:train:7294",
+          "gsm8k:train:6374"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4r4KWNLrT7g2kR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recpJmTOXx6T48nDJ",
+          "gpqa:train:recDjE01bu72pPUU2",
+          "gpqa:train:recOvqPKUtyy9ISA1",
+          "gpqa:train:rec6DU0HQcUBaVwHD",
+          "mmlu:validation:334",
+          "gpqa:train:recmP8wLov7D0Npq6",
+          "gpqa:train:recOkA2zsy4GSMD9R",
+          "mmlu:validation:329"
+        ],
+        "cross_domain": [
+          "gsm8k:train:6455",
+          "gsm8k:train:5011",
+          "gsm8k:train:7104",
+          "gsm8k:train:1559",
+          "gsm8k:train:787",
+          "gsm8k:train:6293",
+          "gsm8k:train:1230",
+          "mmlu:validation:1143"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec527dNeEtWJrYNl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recsibPli53Ona88K",
+          "mmlu:validation:790",
+          "gpqa:train:recUZuPWogSLnPBaw",
+          "mmlu:validation:14",
+          "gpqa:train:recKeCj07mR2qOvCH",
+          "gpqa:train:recjTmmMZ8Q1uJQJp",
+          "mmlu:validation:791",
+          "gpqa:train:rec4L69T0Y1AS4AFS"
+        ],
+        "cross_domain": [
+          "gsm8k:train:5883",
+          "gsm8k:train:1223",
+          "gsm8k:train:1484",
+          "gsm8k:train:3552",
+          "gsm8k:train:5479",
+          "gsm8k:train:4003",
+          "gsm8k:train:856",
+          "gsm8k:train:6609"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5P74u2x8a2ZBjG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recIDiDKKrN61Auyr",
+          "gpqa:train:recNFJjE5PPTqVJGv",
+          "gpqa:train:recGFNRVl1qBZGwyU",
+          "gpqa:train:rec2mwDP38Ocj5kO9",
+          "gpqa:train:rec63khLVM4kK3sW3",
+          "gpqa:train:recyl3usDqb7ruXJx",
+          "gpqa:train:recuyeuT5rQ6qDt8F",
+          "mmlu:validation:336"
+        ],
+        "cross_domain": [
+          "gsm8k:train:2613",
+          "gsm8k:train:1138",
+          "gsm8k:train:7200",
+          "gsm8k:train:670",
+          "gsm8k:train:2116",
+          "gsm8k:train:3231",
+          "gsm8k:train:6126",
+          "gsm8k:train:5528"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5UhR77onQftbyk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:receWdnr3u8wvTfPA",
+          "gpqa:train:recWzUUYBN0NuXO2k",
+          "gpqa:train:recJtBNF0wTwJS1eC",
+          "gpqa:train:recINSFEYLCyyd08m",
+          "gpqa:train:rec2fsnzUuvNtUYK8",
+          "gpqa:train:recLAgwx9vbgB5EHk",
+          "gpqa:train:recv7GsQg3f0fvB1f",
+          "gpqa:train:recPNRl3rOMGbrVIg"
+        ],
+        "cross_domain": [
+          "gsm8k:train:3154",
+          "gsm8k:train:5789",
+          "mmlu:validation:1415",
+          "gsm8k:train:4567",
+          "gsm8k:train:3327",
+          "gsm8k:train:994",
+          "mmlu:validation:512",
+          "gsm8k:train:1628"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5eA17Qr1ucNLUf",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recmkvk6EFAmqyMxR",
+          "gpqa:train:recks5wKHpwzraAyO",
+          "gpqa:train:recOYsaYs6RmtlTDy",
+          "mmlu:validation:153",
+          "gpqa:train:recKcjTwONILZqHAX",
+          "gpqa:train:recR15XgGZlVy6kdJ",
+          "gpqa:train:rec0yTRmO1o1xCA6H",
+          "gpqa:train:recUVWz7kU1KFTc5G"
+        ],
+        "cross_domain": [
+          "gsm8k:train:1802",
+          "aime:train:89",
+          "gsm8k:train:5820",
+          "gsm8k:train:6336",
+          "gsm8k:train:1160",
+          "gsm8k:train:5580",
+          "gsm8k:train:6804",
+          "gsm8k:train:5958"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5gf9RftZN8uzUk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recVE8cUNHpHZIAvL",
+          "gpqa:train:recNPa63g37t1COiO",
+          "gpqa:train:rechyhGsrgszzPsdc",
+          "mmlu:validation:196",
+          "gpqa:train:recWSIn23pglAdv4f",
+          "gpqa:train:recYG3SqTUBlu7jvf",
+          "gpqa:train:recZZTKvQtZ3x8dGl",
+          "gpqa:train:recNu3MXkvWUzHZr9"
+        ],
+        "cross_domain": [
+          "gsm8k:train:782",
+          "mmlu:validation:1130",
+          "gsm8k:train:1323",
+          "gsm8k:train:1266",
+          "gsm8k:train:318",
+          "gsm8k:train:2635",
+          "gsm8k:train:3176",
+          "mmlu:validation:1138"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5rjeLsEq5Fg7Oj",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:rec5P74u2x8a2ZBjG",
+          "gpqa:train:reco8WSc71p8zAv4q",
+          "gpqa:train:receWdnr3u8wvTfPA",
+          "gpqa:train:recH8lrIXfvsjKMv2",
+          "gpqa:train:recHn7vGOLWx9rnh3",
+          "gpqa:train:recihePFulRgNKsIn",
+          "gpqa:train:recTVnk0jyigx3o9P",
+          "gpqa:train:recK3b4oZYRiKNVaA"
+        ],
+        "cross_domain": [
+          "gsm8k:train:236",
+          "gsm8k:train:5606",
+          "gsm8k:train:2089",
+          "gsm8k:train:3391",
+          "gsm8k:train:3286",
+          "gsm8k:train:1229",
+          "mmlu:validation:704",
+          "gsm8k:train:892"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec63khLVM4kK3sW3",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recAAJoHMW45Lv5je",
+          "gpqa:train:reccrAgUClrIVaBYa",
+          "gpqa:train:recs3PLPUEMiqg4P8",
+          "mmlu:validation:332",
+          "gpqa:train:recXlt6DeL8i1eeTO",
+          "mmlu:validation:325",
+          "gpqa:train:recQSmIQF2OGPfbL8",
+          "mmlu:validation:330"
+        ],
+        "cross_domain": [
+          "gsm8k:train:725",
+          "gsm8k:train:4478",
+          "gsm8k:train:5816",
+          "gsm8k:train:3091",
+          "gsm8k:train:290",
+          "gsm8k:train:4007",
+          "gsm8k:train:7472",
+          "gsm8k:train:6780"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec6n4uNMB9XA5T8U",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recQ8oxSY2aCwFRS8",
+          "gpqa:train:reclyy1tNCYpnp0UW",
+          "gpqa:train:rec7qmSnbud4FHSqL",
+          "mmlu:validation:183",
+          "gpqa:train:recrs0kUo7Ua1xhKO",
+          "gpqa:train:recZ7P8XqZ8HMU5OF",
+          "gpqa:train:reckbjNKYmpQlU5TY",
+          "mmlu:validation:172"
+        ],
+        "cross_domain": [
+          "gsm8k:train:7090",
+          "mmlu:validation:729",
+          "gsm8k:train:2265",
+          "mmlu:validation:1294",
+          "gsm8k:train:4624",
+          "gsm8k:train:6303",
+          "gsm8k:train:5610",
+          "gsm8k:train:1464"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec6rBGCwlGy1Q1xk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:rec2ZTsqazBZ3LTWZ",
+          "gpqa:train:recp6FiqiYRjKEcXZ",
+          "mmlu:validation:303",
+          "mmlu:validation:21",
+          "gpqa:train:recFFpPZ3kaybaysi",
+          "gpqa:train:rec4L69T0Y1AS4AFS",
+          "mmlu:validation:12",
+          "gpqa:train:recKHoKLpcxt8aOjM"
+        ],
+        "cross_domain": [
+          "gsm8k:train:2406",
+          "gsm8k:train:1778",
+          "gsm8k:train:677",
+          "gsm8k:train:3577",
+          "gsm8k:train:1312",
+          "mmlu:validation:1396",
+          "gsm8k:train:5235",
+          "gsm8k:train:4091"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec6sE2CRtD4drtHg",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:rech8ob03J69QNAxU",
+          "mmlu:validation:517",
+          "gpqa:train:recGFKDUd8qgz81Zl",
+          "mmlu:validation:187",
+          "gpqa:train:recr6XgkQQXYycWDm",
+          "mmlu:validation:158",
+          "gpqa:train:recIMcQfaQNa6vzsT",
+          "mmlu:validation:157"
+        ],
+        "cross_domain": [
+          "gsm8k:train:643",
+          "gsm8k:train:6332",
+          "gsm8k:train:4148",
+          "gsm8k:train:22",
+          "gsm8k:train:7332",
+          "gsm8k:train:3212",
+          "gsm8k:train:3481",
+          "gsm8k:train:2549"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec7C06XOB2h298ue",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gpqa:train:recWPMm91mGDLXONm",
+          "gpqa:train:recZ13cwgDQf9jRd9",
+          "gpqa:train:recOvqPKUtyy9ISA1",
+          "gpqa:train:recAAJoHMW45Lv5je",
+          "gpqa:train:recn3NhOhqAPLda16",
+          "gpqa:train:recUOePh79cp4T2Bg",
+          "gpqa:train:recZWeueB7lSPR6wN",
+          "mmlu:validation:325"
+        ],
+        "cross_domain": [
+          "gsm8k:train:4842",
+          "gsm8k:train:3513",
+          "gsm8k:train:4015",
+          "mmlu:validation:527",
+          "gsm8k:train:5937",
+          "mmlu:validation:65",
+          "gsm8k:train:537",
+          "gsm8k:train:5535"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec7qmSnbud4FHSqL",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:156",
+          "gpqa:train:recatj4YXzbOaq3Ar",
+          "gpqa:train:recH879YiAi6dLCSy",
+          "gpqa:train:recsPlJ0dQUiWr1fh",
+          "gpqa:train:recE2ihVfqEK4R9d0",
+          "gpqa:train:rec2UlKqC6RFHdcro",
+          "gpqa:train:reclHtd90GlPQJHXg",
+          "mmlu:validation:194"
+        ],
+        "cross_domain": [
+          "gsm8k:train:6459",
+          "gsm8k:train:3584",
+          "gsm8k:train:997",
+          "gsm8k:train:4846",
+          "gsm8k:train:2972",
+          "mmlu:validation:375",
+          "gsm8k:train:4651",
+          "gsm8k:train:5595"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec8CavTqDWHF8KJj",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:89",
+          "mmlu:validation:292",
+          "mmlu:validation:786",
+          "mmlu:validation:317",
+          "gpqa:train:rec9mLiVJz3PC7NZJ",
+          "gpqa:train:recftca7pyp2TCeAG",
+          "mmlu:validation:11",
+          "gpqa:train:recr5Un4bVj4cRnAP"
+        ],
+        "cross_domain": [
+          "gsm8k:train:105",
+          "gsm8k:train:509",
+          "mmlu:validation:1146",
+          "gsm8k:train:522",
+          "gsm8k:train:4278",
+          "mmlu:validation:683",
+          "gsm8k:train:5002",
+          "gsm8k:train:3590"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec8JPf9jHanVNzdH",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:523",
+          "gpqa:train:recOEBk1oclk8qChi",
+          "mmlu:validation:516",
+          "gpqa:train:recVE8cUNHpHZIAvL",
+          "mmlu:validation:192",
+          "mmlu:validation:155",
+          "mmlu:validation:151",
+          "mmlu:validation:156"
+        ],
+        "cross_domain": [
+          "gsm8k:train:4195",
+          "gsm8k:train:6906",
+          "mmlu:validation:229",
+          "mmlu:validation:1085",
+          "gsm8k:train:3131",
+          "gsm8k:train:3564",
+          "gsm8k:train:377",
+          "gsm8k:train:5753"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec8mjcMS01O8rOLR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:332",
+          "mmlu:validation:103",
+          "gpqa:train:recJJcOHhFeSaRpl4",
+          "gpqa:train:recpJmTOXx6T48nDJ",
+          "mmlu:validation:331",
+          "mmlu:validation:341",
+          "gpqa:train:rectkWWgfYZ4ZsJIN",
+          "gpqa:train:reczkBiPPNrNN49Hp"
+        ],
+        "cross_domain": [
+          "gsm8k:train:2812",
+          "gsm8k:train:269",
+          "gsm8k:train:1718",
+          "gsm8k:train:6941",
+          "mmlu:validation:1412",
+          "gsm8k:train:5606",
+          "gsm8k:train:7163",
+          "mmlu:validation:670"
+        ]
+      }
+    }
+  ]
+}

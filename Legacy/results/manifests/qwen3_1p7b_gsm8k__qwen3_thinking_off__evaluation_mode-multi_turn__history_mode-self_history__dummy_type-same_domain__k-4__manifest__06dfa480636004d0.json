@@ -1,0 +1,1487 @@
+{
+  "manifest_id": "manifest-2026-03-13T14:39:09Z",
+  "config_hash": "d4d41a32d5de72d4",
+  "seed": 42,
+  "ks": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "gsm8k",
+      "adapter": "gsm8k",
+      "path": "openai/gsm8k",
+      "subset": "main",
+      "split": "test",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "gsm8k",
+      "adapter": "gsm8k",
+      "path": "openai/gsm8k",
+      "subset": "main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "mmlu",
+      "adapter": "mmlu",
+      "path": "cais/mmlu",
+      "subset": "all",
+      "split": "validation",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    },
+    {
+      "dataset_name": "aime",
+      "adapter": "aime",
+      "path": "HuggingFaceH4/aime_2024",
+      "subset": null,
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "gsm8k:test:0",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6534",
+          "gsm8k:train:1760",
+          "gsm8k:train:2478",
+          "gsm8k:train:308",
+          "gsm8k:train:5838",
+          "gsm8k:train:6365",
+          "gsm8k:train:6831",
+          "gsm8k:train:3070"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1515",
+          "mmlu:validation:834",
+          "gpqa:train:rec2ZTsqazBZ3LTWZ",
+          "mmlu:validation:641",
+          "mmlu:validation:340",
+          "mmlu:validation:729",
+          "gpqa:train:recRZjaElf8ft7xTq",
+          "gpqa:train:rec7qmSnbud4FHSqL"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:1",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3639",
+          "gsm8k:train:6470",
+          "gsm8k:train:97",
+          "gsm8k:train:6817",
+          "gsm8k:train:1933",
+          "gsm8k:train:3049",
+          "gsm8k:train:5952",
+          "gsm8k:train:4488"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1456",
+          "mmlu:validation:449",
+          "mmlu:validation:1098",
+          "gpqa:train:receYQxnUBvxPcvbQ",
+          "mmlu:validation:1317",
+          "mmlu:validation:493",
+          "mmlu:validation:216",
+          "mmlu:validation:814"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:2",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4780",
+          "gsm8k:train:4804",
+          "gsm8k:train:7067",
+          "gsm8k:train:6248",
+          "gsm8k:train:2520",
+          "gsm8k:train:6116",
+          "gsm8k:train:1189",
+          "mmlu:validation:0"
+        ],
+        "cross_domain": [
+          "gpqa:train:rec9W28HgpEUeUN8k",
+          "mmlu:validation:325",
+          "mmlu:validation:1480",
+          "mmlu:validation:1031",
+          "mmlu:validation:504",
+          "mmlu:validation:362",
+          "mmlu:validation:219",
+          "mmlu:validation:436"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:3",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6900",
+          "gsm8k:train:2747",
+          "gsm8k:train:5823",
+          "gsm8k:train:3385",
+          "gsm8k:train:2716",
+          "gsm8k:train:3036",
+          "gsm8k:train:2274",
+          "gsm8k:train:1429"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1200",
+          "mmlu:validation:453",
+          "gpqa:train:recBTsbQnhEKSSnQh",
+          "mmlu:validation:208",
+          "mmlu:validation:559",
+          "mmlu:validation:1438",
+          "mmlu:validation:918",
+          "mmlu:validation:398"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:4",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1048",
+          "gsm8k:train:7250",
+          "gsm8k:train:279",
+          "gsm8k:train:3656",
+          "gsm8k:train:1882",
+          "gsm8k:train:3745",
+          "gsm8k:train:5255",
+          "gsm8k:train:991"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1132",
+          "mmlu:validation:449",
+          "mmlu:validation:53",
+          "mmlu:validation:781",
+          "mmlu:validation:1461",
+          "mmlu:validation:106",
+          "gpqa:train:recBXlqrZUCR897It",
+          "mmlu:validation:223"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:5",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5066",
+          "gsm8k:train:577",
+          "gsm8k:train:5053",
+          "gsm8k:train:5312",
+          "gsm8k:train:4108",
+          "gsm8k:train:562",
+          "gsm8k:train:2496",
+          "gsm8k:train:5081"
+        ],
+        "cross_domain": [
+          "mmlu:validation:511",
+          "mmlu:validation:884",
+          "gpqa:train:recooG6bivTUJpDBz",
+          "mmlu:validation:25",
+          "mmlu:validation:1083",
+          "gpqa:train:recWSIn23pglAdv4f",
+          "gpqa:train:recLSALHT675vkEwE",
+          "mmlu:validation:1086"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:6",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5608",
+          "gsm8k:train:5094",
+          "gsm8k:train:6392",
+          "gsm8k:train:4047",
+          "gsm8k:train:5361",
+          "gsm8k:train:4812",
+          "gsm8k:train:5723",
+          "gsm8k:train:3017"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1091",
+          "mmlu:validation:486",
+          "mmlu:validation:1249",
+          "mmlu:validation:1176",
+          "gpqa:train:recEitMlu2rOnMmkn",
+          "mmlu:validation:1525",
+          "mmlu:validation:1374",
+          "mmlu:validation:334"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:7",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2321",
+          "gsm8k:train:5586",
+          "gsm8k:train:5269",
+          "gsm8k:train:1840",
+          "gsm8k:train:4655",
+          "aime:train:85",
+          "gsm8k:train:4766",
+          "gsm8k:train:3517"
+        ],
+        "cross_domain": [
+          "gpqa:train:recAYkd96NNuNl1Ei",
+          "mmlu:validation:1379",
+          "mmlu:validation:324",
+          "mmlu:validation:1479",
+          "gpqa:train:recIDiDKKrN61Auyr",
+          "mmlu:validation:1463",
+          "mmlu:validation:528",
+          "gpqa:train:recUBgVlkKzcRPDdK"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:8",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1324",
+          "gsm8k:train:2249",
+          "gsm8k:train:4982",
+          "gsm8k:train:1184",
+          "gsm8k:train:4283",
+          "gsm8k:train:2115",
+          "gsm8k:train:3984",
+          "gsm8k:train:1928"
+        ],
+        "cross_domain": [
+          "mmlu:validation:502",
+          "gpqa:train:reclyy1tNCYpnp0UW",
+          "gpqa:train:reck4G4xxv3YnpbtQ",
+          "mmlu:validation:824",
+          "mmlu:validation:1231",
+          "gpqa:train:recR15XgGZlVy6kdJ",
+          "mmlu:validation:689",
+          "mmlu:validation:1116"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:9",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2277",
+          "gsm8k:train:2762",
+          "gsm8k:train:3009",
+          "gsm8k:train:6970",
+          "gsm8k:train:3429",
+          "gsm8k:train:7189",
+          "gsm8k:train:4122",
+          "gsm8k:train:1203"
+        ],
+        "cross_domain": [
+          "gpqa:train:recPhX6WPmdYxmHtQ",
+          "mmlu:validation:536",
+          "mmlu:validation:396",
+          "mmlu:validation:178",
+          "mmlu:validation:548",
+          "mmlu:validation:1036",
+          "mmlu:validation:1087",
+          "mmlu:validation:569"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:10",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1580",
+          "gsm8k:train:4227",
+          "gsm8k:train:6859",
+          "gsm8k:train:3266",
+          "gsm8k:train:3260",
+          "gsm8k:train:3382",
+          "gsm8k:train:5902",
+          "gsm8k:train:5924"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1450",
+          "mmlu:validation:422",
+          "mmlu:validation:977",
+          "gpqa:train:recgCiCKBPgyhJcE7",
+          "mmlu:validation:622",
+          "gpqa:train:recHNRejvl3n0Fr7C",
+          "mmlu:validation:572",
+          "gpqa:train:rech8ob03J69QNAxU"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:11",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:434",
+          "gsm8k:train:629",
+          "gsm8k:train:117",
+          "gsm8k:train:2314",
+          "gsm8k:train:109",
+          "gsm8k:train:2805",
+          "gsm8k:train:4016",
+          "gsm8k:train:7213"
+        ],
+        "cross_domain": [
+          "gpqa:train:rec9mLiVJz3PC7NZJ",
+          "mmlu:validation:417",
+          "mmlu:validation:450",
+          "gpqa:train:recnTTKdBzfuoZ7w7",
+          "gpqa:train:recL9MFV5zmdlle5T",
+          "gpqa:train:reckyB637GAnW0uRM",
+          "mmlu:validation:91",
+          "gpqa:train:rec44cTEfuCXCkHVs"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:12",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1530",
+          "gsm8k:train:3008",
+          "gsm8k:train:6569",
+          "gsm8k:train:926",
+          "gsm8k:train:1408",
+          "gsm8k:train:700",
+          "gsm8k:train:6449",
+          "gsm8k:train:778"
+        ],
+        "cross_domain": [
+          "mmlu:validation:542",
+          "mmlu:validation:322",
+          "mmlu:validation:1407",
+          "mmlu:validation:39",
+          "gpqa:train:recHDth5xRxp73oig",
+          "gpqa:train:recFwRHr3u5YpusE2",
+          "mmlu:validation:1335",
+          "mmlu:validation:105"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:13",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2781",
+          "gsm8k:train:5361",
+          "gsm8k:train:6493",
+          "gsm8k:train:3817",
+          "gsm8k:train:6968",
+          "gsm8k:train:1712",
+          "gsm8k:train:7196",
+          "gsm8k:train:4914"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1017",
+          "mmlu:validation:526",
+          "mmlu:validation:528",
+          "mmlu:validation:972",
+          "mmlu:validation:1352",
+          "mmlu:validation:695",
+          "mmlu:validation:983",
+          "mmlu:validation:545"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:14",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:7149",
+          "gsm8k:train:2450",
+          "gsm8k:train:2167",
+          "gsm8k:train:750",
+          "gsm8k:train:3267",
+          "gsm8k:train:5751",
+          "gsm8k:train:4443",
+          "gsm8k:train:2801"
+        ],
+        "cross_domain": [
+          "mmlu:validation:822",
+          "gpqa:train:recX9sU1D7BxJNXyI",
+          "mmlu:validation:112",
+          "mmlu:validation:1427",
+          "gpqa:train:reckYqR92oJkqJXkE",
+          "mmlu:validation:1317",
+          "gpqa:train:recp7VwqZlO6v7ly8",
+          "gpqa:train:recZbxrocrxh9YENH"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:15",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3948",
+          "gsm8k:train:3915",
+          "mmlu:validation:469",
+          "gsm8k:train:3146",
+          "gsm8k:train:4521",
+          "gsm8k:train:1340",
+          "gsm8k:train:7471",
+          "gsm8k:train:6267"
+        ],
+        "cross_domain": [
+          "mmlu:validation:996",
+          "mmlu:validation:199",
+          "mmlu:validation:834",
+          "gpqa:train:recqisVCkgd2ojfRy",
+          "gpqa:train:rec1zl5LvaatzGhFt",
+          "mmlu:validation:622",
+          "mmlu:validation:110",
+          "mmlu:validation:859"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:16",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2756",
+          "gsm8k:train:6656",
+          "gsm8k:train:3224",
+          "gsm8k:train:2070",
+          "gsm8k:train:1609",
+          "gsm8k:train:6788",
+          "gsm8k:train:1378",
+          "gsm8k:train:3999"
+        ],
+        "cross_domain": [
+          "mmlu:validation:73",
+          "mmlu:validation:209",
+          "mmlu:validation:703",
+          "mmlu:validation:874",
+          "gpqa:train:recihePFulRgNKsIn",
+          "mmlu:validation:1150",
+          "mmlu:validation:1055",
+          "gpqa:train:recIIUynGGpsGEYuo"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:17",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3966",
+          "gsm8k:train:2957",
+          "gsm8k:train:4488",
+          "gsm8k:train:5500",
+          "gsm8k:train:2024",
+          "gsm8k:train:1909",
+          "gsm8k:train:5093",
+          "gsm8k:train:4750"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1145",
+          "mmlu:validation:1296",
+          "mmlu:validation:534",
+          "mmlu:validation:1327",
+          "mmlu:validation:1228",
+          "mmlu:validation:775",
+          "mmlu:validation:141",
+          "mmlu:validation:378"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:18",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6628",
+          "gsm8k:train:6458",
+          "gsm8k:train:2207",
+          "gsm8k:train:3257",
+          "gsm8k:train:7046",
+          "gsm8k:train:2675",
+          "gsm8k:train:451",
+          "gsm8k:train:2611"
+        ],
+        "cross_domain": [
+          "mmlu:validation:667",
+          "mmlu:validation:919",
+          "mmlu:validation:1023",
+          "mmlu:validation:788",
+          "gpqa:train:recnGEpF1srQpaqWq",
+          "mmlu:validation:929",
+          "mmlu:validation:1240",
+          "mmlu:validation:880"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:19",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6494",
+          "gsm8k:train:2920",
+          "gsm8k:train:3930",
+          "gsm8k:train:2189",
+          "gsm8k:train:364",
+          "mmlu:validation:249",
+          "gsm8k:train:7181",
+          "gsm8k:train:660"
+        ],
+        "cross_domain": [
+          "mmlu:validation:663",
+          "gpqa:train:reccVFW11Elovnf8T",
+          "mmlu:validation:519",
+          "mmlu:validation:738",
+          "gpqa:train:recZdZxsN0AxDx0pB",
+          "mmlu:validation:630",
+          "gpqa:train:recUIKopRfOBy6lOx",
+          "mmlu:validation:1302"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:20",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:158",
+          "gsm8k:train:2682",
+          "gsm8k:train:4503",
+          "gsm8k:train:287",
+          "gsm8k:train:1653",
+          "gsm8k:train:1830",
+          "gsm8k:train:6874",
+          "gsm8k:train:2017"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1080",
+          "mmlu:validation:1253",
+          "mmlu:validation:1255",
+          "mmlu:validation:141",
+          "mmlu:validation:218",
+          "mmlu:validation:1105",
+          "mmlu:validation:525",
+          "mmlu:validation:1324"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:21",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3710",
+          "gsm8k:train:5163",
+          "mmlu:validation:458",
+          "gsm8k:train:4068",
+          "gsm8k:train:4367",
+          "gsm8k:train:6981",
+          "gsm8k:train:3231",
+          "gsm8k:train:1311"
+        ],
+        "cross_domain": [
+          "mmlu:validation:901",
+          "mmlu:validation:1354",
+          "mmlu:validation:691",
+          "gpqa:train:recwlwlcPvXVNPmvl",
+          "mmlu:validation:211",
+          "mmlu:validation:876",
+          "gpqa:train:rec4r4KWNLrT7g2kR",
+          "mmlu:validation:775"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:22",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2031",
+          "gsm8k:train:5147",
+          "gsm8k:train:5827",
+          "gsm8k:train:5449",
+          "gsm8k:train:6013",
+          "gsm8k:train:1067",
+          "gsm8k:train:5557",
+          "gsm8k:train:2745"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1031",
+          "mmlu:validation:221",
+          "mmlu:validation:73",
+          "mmlu:validation:642",
+          "gpqa:train:recsPlJ0dQUiWr1fh",
+          "mmlu:validation:938",
+          "mmlu:validation:614",
+          "mmlu:validation:768"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:23",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6581",
+          "gsm8k:train:3636",
+          "gsm8k:train:237",
+          "gsm8k:train:436",
+          "gsm8k:train:4521",
+          "gsm8k:train:3466",
+          "gsm8k:train:6351",
+          "gsm8k:train:3709"
+        ],
+        "cross_domain": [
+          "mmlu:validation:173",
+          "mmlu:validation:1482",
+          "gpqa:train:recIlghoOw5VbY4Zh",
+          "gpqa:train:recqTvvfE8ldJbknb",
+          "mmlu:validation:643",
+          "mmlu:validation:1358",
+          "gpqa:train:recoW8Ztae7Ruxru4",
+          "mmlu:validation:1060"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:24",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1671",
+          "gsm8k:train:896",
+          "gsm8k:train:6764",
+          "gsm8k:train:4925",
+          "gsm8k:train:2872",
+          "gsm8k:train:3728",
+          "gsm8k:train:3724",
+          "gsm8k:train:894"
+        ],
+        "cross_domain": [
+          "mmlu:validation:733",
+          "mmlu:validation:807",
+          "gpqa:train:reclPSWuaG47bkpDv",
+          "mmlu:validation:1378",
+          "mmlu:validation:942",
+          "mmlu:validation:648",
+          "mmlu:validation:689",
+          "mmlu:validation:642"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:25",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:603",
+          "gsm8k:train:1061",
+          "gsm8k:train:460",
+          "gsm8k:train:1119",
+          "gsm8k:train:3681",
+          "gsm8k:train:7369",
+          "gsm8k:train:2895",
+          "gsm8k:train:7036"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1058",
+          "mmlu:validation:1012",
+          "mmlu:validation:1059",
+          "mmlu:validation:369",
+          "gpqa:train:recRhwQwHijW0gCLo",
+          "mmlu:validation:1162",
+          "mmlu:validation:941",
+          "mmlu:validation:1409"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:26",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1839",
+          "gsm8k:train:160",
+          "gsm8k:train:5655",
+          "gsm8k:train:6228",
+          "gsm8k:train:467",
+          "gsm8k:train:3250",
+          "gsm8k:train:5771",
+          "gsm8k:train:6287"
+        ],
+        "cross_domain": [
+          "gpqa:train:recMicVBcqy1xM1jq",
+          "gpqa:train:recLFSUuIxZo6jcFr",
+          "mmlu:validation:1447",
+          "gpqa:train:recQM36StGVD7wwP2",
+          "mmlu:validation:1247",
+          "mmlu:validation:1452",
+          "gpqa:train:reczlLY9O5zHKaGL0",
+          "mmlu:validation:738"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:27",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:873",
+          "gsm8k:train:842",
+          "mmlu:validation:591",
+          "gsm8k:train:5650",
+          "gsm8k:train:1774",
+          "gsm8k:train:5657",
+          "gsm8k:train:2516",
+          "gsm8k:train:7292"
+        ],
+        "cross_domain": [
+          "gpqa:train:recWzUUYBN0NuXO2k",
+          "gpqa:train:recXfU8eT0BtQtqlE",
+          "gpqa:train:recoKZlD5PwM9zbk6",
+          "mmlu:validation:423",
+          "gpqa:train:recG0sothgt3COU4K",
+          "gpqa:train:recyPffUDqC2k7ZZO",
+          "mmlu:validation:102",
+          "mmlu:validation:1163"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:28",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1780",
+          "gsm8k:train:5795",
+          "mmlu:validation:479",
+          "gsm8k:train:448",
+          "gsm8k:train:4976",
+          "gsm8k:train:1769",
+          "gsm8k:train:580",
+          "gsm8k:train:329"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1207",
+          "gpqa:train:recb80OwMgNnceA9t",
+          "mmlu:validation:1094",
+          "mmlu:validation:919",
+          "gpqa:train:recPIzpnuYpB4yvmp",
+          "mmlu:validation:342",
+          "mmlu:validation:1193",
+          "gpqa:train:recuhnGik8v2nOK3g"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:29",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:5676",
+          "gsm8k:train:6060",
+          "gsm8k:train:2618",
+          "gsm8k:train:776",
+          "gsm8k:train:5591",
+          "gsm8k:train:1891",
+          "gsm8k:train:6100",
+          "gsm8k:train:3696"
+        ],
+        "cross_domain": [
+          "mmlu:validation:912",
+          "mmlu:validation:1508",
+          "mmlu:validation:384",
+          "mmlu:validation:1388",
+          "mmlu:validation:1401",
+          "mmlu:validation:1467",
+          "mmlu:validation:157",
+          "mmlu:validation:992"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:30",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:7160",
+          "gsm8k:train:3662",
+          "gsm8k:train:6730",
+          "gsm8k:train:1906",
+          "gsm8k:train:3832",
+          "gsm8k:train:5546",
+          "gsm8k:train:6419",
+          "gsm8k:train:2408"
+        ],
+        "cross_domain": [
+          "mmlu:validation:412",
+          "mmlu:validation:220",
+          "mmlu:validation:966",
+          "mmlu:validation:1422",
+          "mmlu:validation:1284",
+          "mmlu:validation:797",
+          "gpqa:train:recvZlMbpPz0yLDle",
+          "gpqa:train:recUZuPWogSLnPBaw"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:31",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3469",
+          "gsm8k:train:61",
+          "gsm8k:train:3528",
+          "gsm8k:train:499",
+          "gsm8k:train:7146",
+          "gsm8k:train:4319",
+          "gsm8k:train:424",
+          "gsm8k:train:3346"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1270",
+          "gpqa:train:rec8y3ZrBOcLgNEkE",
+          "mmlu:validation:1248",
+          "mmlu:validation:414",
+          "mmlu:validation:901",
+          "mmlu:validation:662",
+          "mmlu:validation:194",
+          "mmlu:validation:1096"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:32",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1945",
+          "gsm8k:train:4151",
+          "gsm8k:train:4358",
+          "gsm8k:train:6747",
+          "gsm8k:train:2422",
+          "gsm8k:train:3628",
+          "gsm8k:train:5237",
+          "gsm8k:train:1641"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1311",
+          "gpqa:train:rec8y3ZrBOcLgNEkE",
+          "mmlu:validation:1399",
+          "gpqa:train:recu58vdfXz3rTiJ5",
+          "mmlu:validation:751",
+          "mmlu:validation:1286",
+          "mmlu:validation:853",
+          "mmlu:validation:189"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:33",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6277",
+          "gsm8k:train:7127",
+          "gsm8k:train:81",
+          "gsm8k:train:6245",
+          "gsm8k:train:3832",
+          "gsm8k:train:4079",
+          "gsm8k:train:3560",
+          "gsm8k:train:1631"
+        ],
+        "cross_domain": [
+          "gpqa:train:recBhnXrUyTJ6WHIR",
+          "mmlu:validation:1008",
+          "mmlu:validation:1275",
+          "mmlu:validation:1162",
+          "mmlu:validation:1390",
+          "mmlu:validation:584",
+          "mmlu:validation:386",
+          "mmlu:validation:114"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:34",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1284",
+          "gsm8k:train:6068",
+          "gsm8k:train:3431",
+          "gsm8k:train:6928",
+          "gsm8k:train:2178",
+          "gsm8k:train:1178",
+          "gsm8k:train:1126",
+          "gsm8k:train:6403"
+        ],
+        "cross_domain": [
+          "mmlu:validation:905",
+          "mmlu:validation:759",
+          "gpqa:train:recIOlKBsOeEcgkA1",
+          "gpqa:train:recNFJjE5PPTqVJGv",
+          "mmlu:validation:1074",
+          "mmlu:validation:1021",
+          "mmlu:validation:1433",
+          "mmlu:validation:585"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:35",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4987",
+          "gsm8k:train:1492",
+          "gsm8k:train:4658",
+          "gsm8k:train:6187",
+          "gsm8k:train:4109",
+          "gsm8k:train:2738",
+          "gsm8k:train:3245",
+          "gsm8k:train:5392"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1009",
+          "gpqa:train:recyl3usDqb7ruXJx",
+          "mmlu:validation:778",
+          "gpqa:train:recYI852ugl1pFhAv",
+          "mmlu:validation:301",
+          "mmlu:validation:677",
+          "gpqa:train:recNAiPUKOulQbKVP",
+          "mmlu:validation:454"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:36",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6482",
+          "gsm8k:train:5298",
+          "gsm8k:train:5980",
+          "gsm8k:train:7064",
+          "gsm8k:train:4806",
+          "gsm8k:train:7415",
+          "gsm8k:train:4700",
+          "gsm8k:train:1070"
+        ],
+        "cross_domain": [
+          "mmlu:validation:420",
+          "gpqa:train:recBeOYL2vJeESmQ5",
+          "mmlu:validation:1113",
+          "mmlu:validation:12",
+          "mmlu:validation:1351",
+          "mmlu:validation:1135",
+          "mmlu:validation:293",
+          "mmlu:validation:810"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:37",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:576",
+          "gsm8k:train:5410",
+          "gsm8k:train:4791",
+          "gsm8k:train:1599",
+          "gsm8k:train:1561",
+          "gsm8k:train:2907",
+          "gsm8k:train:4882",
+          "gsm8k:train:1072"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1063",
+          "mmlu:validation:831",
+          "mmlu:validation:455",
+          "gpqa:train:reccGBrJaZk9DWZxk",
+          "mmlu:validation:716",
+          "gpqa:train:recReg13iV2HwJTaA",
+          "mmlu:validation:1118",
+          "mmlu:validation:489"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:38",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1586",
+          "gsm8k:train:1090",
+          "gsm8k:train:5589",
+          "gsm8k:train:1478",
+          "gsm8k:train:897",
+          "gsm8k:train:3901",
+          "gsm8k:train:1516",
+          "gsm8k:train:7112"
+        ],
+        "cross_domain": [
+          "mmlu:validation:342",
+          "mmlu:validation:537",
+          "mmlu:validation:309",
+          "mmlu:validation:733",
+          "mmlu:validation:1189",
+          "gpqa:train:recr71WEmXEEMzRgq",
+          "gpqa:train:recHJhX5qXExBhr4w",
+          "mmlu:validation:504"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:39",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6868",
+          "gsm8k:train:881",
+          "gsm8k:train:5573",
+          "gsm8k:train:2656",
+          "gsm8k:train:3999",
+          "mmlu:validation:10",
+          "gsm8k:train:1738",
+          "gsm8k:train:3900"
+        ],
+        "cross_domain": [
+          "mmlu:validation:452",
+          "mmlu:validation:859",
+          "mmlu:validation:281",
+          "mmlu:validation:793",
+          "mmlu:validation:55",
+          "mmlu:validation:1015",
+          "mmlu:validation:1040",
+          "gpqa:train:recCU7eV1ixcXGCHm"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:40",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:4776",
+          "gsm8k:train:1197",
+          "gsm8k:train:6981",
+          "gsm8k:train:142",
+          "gsm8k:train:1595",
+          "gsm8k:train:3135",
+          "gsm8k:train:2682",
+          "gsm8k:train:6808"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1352",
+          "mmlu:validation:1388",
+          "mmlu:validation:296",
+          "mmlu:validation:1209",
+          "mmlu:validation:984",
+          "mmlu:validation:151",
+          "mmlu:validation:73",
+          "gpqa:train:recKeCj07mR2qOvCH"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:41",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:3555",
+          "gsm8k:train:4639",
+          "gsm8k:train:1560",
+          "gsm8k:train:3543",
+          "gsm8k:train:4178",
+          "gsm8k:train:3767",
+          "gsm8k:train:492",
+          "gsm8k:train:1585"
+        ],
+        "cross_domain": [
+          "mmlu:validation:821",
+          "mmlu:validation:1149",
+          "mmlu:validation:1448",
+          "gpqa:train:recr6XgkQQXYycWDm",
+          "mmlu:validation:272",
+          "mmlu:validation:501",
+          "gpqa:train:recKcjTwONILZqHAX",
+          "mmlu:validation:556"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:42",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1772",
+          "gsm8k:train:1402",
+          "gsm8k:train:1882",
+          "gsm8k:train:6073",
+          "gsm8k:train:4908",
+          "gsm8k:train:3031",
+          "gsm8k:train:6717",
+          "mmlu:validation:116"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1019",
+          "mmlu:validation:1083",
+          "mmlu:validation:416",
+          "gpqa:train:recMLNCge97pgSDHq",
+          "mmlu:validation:718",
+          "gpqa:train:recsiPyyjXBOPsSMv",
+          "gpqa:train:recqLRu4BcJvlSANc",
+          "gpqa:train:recJJcOHhFeSaRpl4"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:43",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:2718",
+          "gsm8k:train:6036",
+          "gsm8k:train:5056",
+          "gsm8k:train:6243",
+          "gsm8k:train:5642",
+          "gsm8k:train:561",
+          "gsm8k:train:2661",
+          "gsm8k:train:7151"
+        ],
+        "cross_domain": [
+          "gpqa:train:recEitMlu2rOnMmkn",
+          "mmlu:validation:446",
+          "gpqa:train:recr5Un4bVj4cRnAP",
+          "gpqa:train:recPNRl3rOMGbrVIg",
+          "gpqa:train:recp9KlaeChcn7DzX",
+          "gpqa:train:recX9sU1D7BxJNXyI",
+          "mmlu:validation:1446",
+          "gpqa:train:recV1dB3itJjvXzLx"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:44",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:7448",
+          "gsm8k:train:1061",
+          "gsm8k:train:6620",
+          "gsm8k:train:835",
+          "gsm8k:train:2216",
+          "gsm8k:train:6171",
+          "gsm8k:train:5750",
+          "gsm8k:train:2893"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1063",
+          "mmlu:validation:1396",
+          "mmlu:validation:1325",
+          "mmlu:validation:1145",
+          "mmlu:validation:1001",
+          "mmlu:validation:1411",
+          "mmlu:validation:534",
+          "mmlu:validation:705"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:45",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:7434",
+          "gsm8k:train:1853",
+          "gsm8k:train:7469",
+          "gsm8k:train:6191",
+          "gsm8k:train:7133",
+          "gsm8k:train:4526",
+          "gsm8k:train:2967",
+          "gsm8k:train:1676"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1041",
+          "mmlu:validation:111",
+          "mmlu:validation:340",
+          "mmlu:validation:72",
+          "mmlu:validation:914",
+          "mmlu:validation:368",
+          "mmlu:validation:1289",
+          "mmlu:validation:1401"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:46",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6218",
+          "gsm8k:train:1110",
+          "gsm8k:train:6178",
+          "gsm8k:train:729",
+          "gsm8k:train:2040",
+          "gsm8k:train:754",
+          "gsm8k:train:7403",
+          "gsm8k:train:1848"
+        ],
+        "cross_domain": [
+          "mmlu:validation:87",
+          "gpqa:train:recDjE01bu72pPUU2",
+          "mmlu:validation:1286",
+          "gpqa:train:recLAgwx9vbgB5EHk",
+          "gpqa:train:recguj40XQkQq1l7Q",
+          "mmlu:validation:885",
+          "gpqa:train:recrNbtgTNoabJJi6",
+          "gpqa:train:recNlydMKDY5MQ4xU"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:47",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:1687",
+          "gsm8k:train:1088",
+          "gsm8k:train:5732",
+          "gsm8k:train:7022",
+          "gsm8k:train:4897",
+          "gsm8k:train:7120",
+          "gsm8k:train:824",
+          "gsm8k:train:4228"
+        ],
+        "cross_domain": [
+          "mmlu:validation:33",
+          "mmlu:validation:68",
+          "mmlu:validation:36",
+          "mmlu:validation:990",
+          "gpqa:train:recsPlJ0dQUiWr1fh",
+          "mmlu:validation:1170",
+          "mmlu:validation:327",
+          "gpqa:train:reciuppdQde4FGX1z"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:48",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "gsm8k:train:6103",
+          "gsm8k:train:2251",
+          "gsm8k:train:4935",
+          "gsm8k:train:4183",
+          "gsm8k:train:6251",
+          "gsm8k:train:561",
+          "gsm8k:train:6338",
+          "gsm8k:train:2565"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1397",
+          "mmlu:validation:754",
+          "mmlu:validation:1392",
+          "mmlu:validation:1071",
+          "mmlu:validation:653",
+          "mmlu:validation:140",
+          "mmlu:validation:45",
+          "mmlu:validation:650"
+        ]
+      }
+    },
+    {
+      "target_item_id": "gsm8k:test:49",
+      "target_dataset_name": "gsm8k",
+      "target_subject": "arithmetic",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [
+          "mmlu:validation:478",
+          "gsm8k:train:3315",
+          "gsm8k:train:1271",
+          "gsm8k:train:5103",
+          "gsm8k:train:1254",
+          "gsm8k:train:246",
+          "gsm8k:train:3545",
+          "gsm8k:train:4405"
+        ],
+        "cross_domain": [
+          "mmlu:validation:1185",
+          "mmlu:validation:614",
+          "mmlu:validation:147",
+          "gpqa:train:recYCMJWH7IpcdqwE",
+          "gpqa:train:recw5EQAukB4ep12V",
+          "mmlu:validation:1007",
+          "gpqa:train:rec0VuKUjt1SZ7NYv",
+          "mmlu:validation:948"
+        ]
+      }
+    }
+  ]
+}
