@@ -96,6 +96,7 @@
   - prefix-based `k` sampling
   - target-only scoring
   - `self_history` vs `oracle_history`
+  - explicit `wrong_history`
   - `same_domain` vs `cross_domain`
 
 - 추가로 고려할 수 있는 선택
@@ -113,6 +114,8 @@
   6. target-turn-only control
      - target turn만 `/no_think` / prefill / constrained decoding
      - 현재 가장 유망한 follow-up이다.
+  7. controlled wrong-answer dummy history
+     - gold / self-generated / explicitly wrong dummy answers 를 분리해서 비교
 
 - 지금 시점의 판단
 - 가장 먼저 할 것은 `k` grid를 더 늘리는 것이 아니라,
@@ -121,6 +124,7 @@
 -
 - 정리하면:
   - primary: accumulated-history mechanism axes
+  - primary(extended): `oracle_history / self_history / wrong_history`
   - secondary: reasoning-mode / emission-control axes
 
 ## 2.3 Cross-model context policy (recommended)

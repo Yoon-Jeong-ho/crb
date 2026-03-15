@@ -7,10 +7,17 @@ CRB is not primarily a reasoning-mode benchmark. Its primary object is **convers
 - prepend `k` dummy turns before a final target question
 - vary whether that history is rendered as real turns or flattened text
 - vary whether the dummy answers are gold (`oracle_history`) or the model's own previous answers (`self_history`)
+- vary whether the dummy answers are explicitly wrong (`wrong_history`)
 - vary whether the dummy items are from the same domain or a different domain
 - score **only the final target answer**
 
 In this framing, `thinking on/off` is a **secondary analysis axis** layered on top of the main accumulated-history protocol.
+
+As of 2026-03-15, CRB also has an explicit `wrong_history` axis so that:
+- **correct dummy answers** (`oracle_history`)
+- **model-produced previous answers** (`self_history`)
+- **controlled incorrect dummy answers** (`wrong_history`)
+can be compared directly.
 
 ## 2. Full-sample main table
 
@@ -133,6 +140,15 @@ The most defensible current claims are:
 3. Build one figure each for:
    - canonical `k` sweep
    - `multi_turn vs flattened`
-   - `self_history vs oracle_history`
+   - `oracle_history vs self_history vs wrong_history`
    - `same_domain vs cross_domain`
 4. Treat `thinking on/off` as a second-layer table/figure, not the main benchmark definition.
+
+## 10. Current protocol-first follow-up runs
+
+The current selective full-sample follow-ups are:
+
+- **GPQA / oracle_history / same_domain / k={0,4,8}** — completed
+- **GPQA / wrong_history / same_domain / k={2,4,8}** — completed
+- **GSM8K / self_history / cross_domain / k={0,4,8}** — in progress
+- **GSM8K / wrong_history / cross_domain / k={2,4,8}** — in progress

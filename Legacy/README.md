@@ -46,6 +46,13 @@ Reasoning-mode comparisons are useful, but they are not the main claim of the be
   - dummy turns contain the gold canonical answer.
 - `history_mode=self_history`
   - dummy turns contain the model's own parsed canonical answer.
+- `history_mode=wrong_history`
+  - dummy turns contain a deterministic incorrect canonical answer.
+
+This gives CRB three distinct dummy-answer sources:
+- correct gold answers
+- model-generated previous answers
+- controlled wrong answers
 
 ### Dummy domain policy
 

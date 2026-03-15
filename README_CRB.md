@@ -40,10 +40,12 @@ CRB의 핵심은 **모델 자체 비교**보다 먼저, 아래 **protocol axis**
 ### History mode
 - `self_history`: dummy에 대한 모델의 실제 답을 history에 사용
 - `oracle_history`: dummy에 대한 gold answer만 history에 사용
+- `wrong_history`: dummy에 대해 **의도적으로 틀린 canonical answer** 를 history에 사용
 
 즉, 앞의 k개 dummy는 단순 distractor가 아니라:
 - **gold canonical answer** 가 들어갈 수도 있고 (`oracle_history`)
 - **모델 자신의 실제 이전 답변 / reasoning leakage** 가 들어갈 수도 있다 (`self_history`)
+- **명시적으로 틀린 dummy answer** 가 들어갈 수도 있다 (`wrong_history`)
 
 ### Dummy type
 - `same_domain`: target과 같은 subject/domain에서 dummy 추출

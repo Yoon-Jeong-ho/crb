@@ -1,9 +1,9 @@
 # CRB Next TODO
 
 ## Highest priority
-1. Add a short error-breakdown note for GPQA / GSM8K / AIME / MMLU full rows
-2. Decide whether the headline narrative is “mixed benchmark sensitivity” or “GSM8K/MMLU thinking-on gains with GPQA parity and AIME failure”
-3. Sync root-level docs with the completed four-benchmark table
+1. Finish the ongoing selective full-sample protocol runs on GPUs 4 and 5
+2. Compare `oracle_history` vs `wrong_history` on GPQA
+3. Compare `self_history` vs `wrong_history` on GSM8K
 
 ## Medium priority
 1. Launch the first selective `k={0,2,4,8}` subset from `configs/generated/qwen3_core_paper/`
@@ -17,7 +17,8 @@
 
 ## Current best next batch
 - expand from the completed four-benchmark table into selective k-sweeps
-- prioritize GPQA thinking-off and GSM8K/MMLU thinking-on as anchor lanes
+- explicitly separate `oracle / self / wrong` dummy histories
+- prioritize GPQA for domain effects and GSM8K for answer-history effects
 - then add richer analysis artifacts
 
 ## Risks to track
