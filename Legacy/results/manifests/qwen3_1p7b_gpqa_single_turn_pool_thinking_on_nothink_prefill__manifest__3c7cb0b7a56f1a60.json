@@ -1,0 +1,4522 @@
+{
+  "manifest_id": "manifest-2026-03-16T07:06:23Z",
+  "config_hash": "49dedcb0c9225521",
+  "seed": 42,
+  "ks": [
+    0
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "gpqa",
+      "adapter": "gpqa",
+      "path": "Idavidrein/gpqa",
+      "subset": "gpqa_main",
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "gpqa:train:rec055vn3qEqKHHTc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec06pnAkLOr2t2mp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0Arme2jcXQZnAW",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0LlchAeJwY28ZY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0OlNe6zQJU1ps4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0VuKUjt1SZ7NYv",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0Y0PY1lx8aZPZh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0wZvZgiz320KRs",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0yTRmO1o1xCA6H",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1AAE9RApPLqeqt",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1Ey0Fnt2RhnsmU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1oj2DveQWl9Rpw",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1zl5LvaatzGhFt",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec260hNUCEj109Dj",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2K9NTFNw04xewq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2NJhNJ4umq2HFG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2UlKqC6RFHdcro",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2ZTsqazBZ3LTWZ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2fEZkqcDWMh1JV",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2fsnzUuvNtUYK8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2mwDP38Ocj5kO9",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2x0OAFHVNGxCgA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2xN0SZSiyfKb4E",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec2ylY4X59IrLLuV",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec32C1ZEapBnCC0E",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec3VinRRdXScdEMI",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec42yAdAZnQgoibP",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec47oNPXudlTIk4y",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4J0X5OLsY61yQm",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4JrWy7Il8ho5vk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4L69T0Y1AS4AFS",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4Md9alOxTHa2QG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4UqStf9WUVif1f",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4YVw9r9DC0DK6U",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec4r4KWNLrT7g2kR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec527dNeEtWJrYNl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5P74u2x8a2ZBjG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5UhR77onQftbyk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5eA17Qr1ucNLUf",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5gf9RftZN8uzUk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec5rjeLsEq5Fg7Oj",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec63khLVM4kK3sW3",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec6n4uNMB9XA5T8U",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec6rBGCwlGy1Q1xk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec6sE2CRtD4drtHg",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec7C06XOB2h298ue",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec7qmSnbud4FHSqL",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec8CavTqDWHF8KJj",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec8JPf9jHanVNzdH",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec8mjcMS01O8rOLR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec8nshandHARTkrg",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec8y3ZrBOcLgNEkE",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec90hpebagUgiRpS",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec9GugrngvsQR99A",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec9W28HgpEUeUN8k",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec9mLiVJz3PC7NZJ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec9ubQihAh6g9bft",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recA1i5ZAh0Uzclxp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recAAJoHMW45Lv5je",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recAYkd96NNuNl1Ei",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recBGxVySx1pkrO1i",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recBL3B8AT9ApKtOA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recBTsbQnhEKSSnQh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recBXlqrZUCR897It",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recBhnXrUyTJ6WHIR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recBtVK8rBVtIlXDq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recC9TQpdpRVRFzXO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recCJJOeBGERaHYax",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recCU7eV1ixcXGCHm",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recCeQdxhSfJJFGeE",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recCg6VIPmIj5aQ2x",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recD8oX1KevFbl7bL",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recDDxpS9s8cwkqfq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recDj2Y2BbtV02Wv5",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recDjE01bu72pPUU2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recDpYJ14wFOQCRnO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recDytVnNYZe2HuUU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recE2ihVfqEK4R9d0",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recE9pSb1glprNqNa",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recEO0cONj7M4p94J",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recEOfvRabVkK4MTg",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Statistical Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recEitMlu2rOnMmkn",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recEmTBhx2hgw6tPQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recEs2YwfHWZM3zJ4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recF4XZ3k6osbZeZi",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recF89DhiduLI4cNl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recFFpPZ3kaybaysi",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recFaL6j8UMhutXrc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recFperaY3GpdU6oG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recG0sothgt3COU4K",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recG1ljJQcVy6CbSl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recG5Bc2ipyC4JwZN",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recGFKDUd8qgz81Zl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recGFNRVl1qBZGwyU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recGGT3pm4I7J2GXy",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recGee5m84dg5FZkc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recGhzQ1AsM0pBO0a",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recH879YiAi6dLCSy",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recH8lrIXfvsjKMv2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recHDth5xRxp73oig",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recHJhX5qXExBhr4w",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recHNRejvl3n0Fr7C",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Statistical Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recHVUd2DkoKfedJZ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recHn7vGOLWx9rnh3",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recI1ls9OXdxatHQn",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIDiDKKrN61Auyr",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIFvejHDfK7ybwT",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIIMmhxoNeJkgye",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIIUynGGpsGEYuo",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIMcQfaQNa6vzsT",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIN1LyuCWtFwrJ4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recINGR1z01Fh1Z3A",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recINSFEYLCyyd08m",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIOlKBsOeEcgkA1",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIj8lR4tuDgrHou",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIlghoOw5VbY4Zh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIm3gjvmPQiEZih",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recJJcOHhFeSaRpl4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recJYLOV2gf7p1Mx2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recJZ3QEfRKjYw9a7",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recJpyGtGIsxulevT",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recJtBNF0wTwJS1eC",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recJtvFAlzbVyKlWf",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recJxK8wQDqG7ESSh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recK3Xnphg6jVxIHv",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recK3b4oZYRiKNVaA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recK9F5aqdaybl8bb",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recKHoKLpcxt8aOjM",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recKQL5BfWxD3yHGE",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recKcjTwONILZqHAX",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recKeCj07mR2qOvCH",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recKm6LNWykGapmCr",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recKtFwQZd4n2RZCk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recKv4hFyNpViUXnL",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recL9MFV5zmdlle5T",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recLAgwx9vbgB5EHk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recLB0EkQ54bYVhnd",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recLFSUuIxZo6jcFr",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recLSALHT675vkEwE",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recLSzwBUS3olCjhl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recLrRirj7iXoB0rU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recM9L6M7a0A5bj47",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recMGSnbWcPCIgYTN",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recMLNCge97pgSDHq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recMicVBcqy1xM1jq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recN4DY9Q5V03glmQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNAiPUKOulQbKVP",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNFJjE5PPTqVJGv",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNGovj5Pv0yxbfx",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNPa63g37t1COiO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNVjLDmy64W9NRQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNfEV6AjS2ZFn5W",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNlydMKDY5MQ4xU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Inorganic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNu3MXkvWUzHZr9",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recNuT2oSnO86bxOx",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recO3hvCWRGiG0odN",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recOEBk1oclk8qChi",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recOKE5XNz2i1eDEm",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recOKwCrRbyEWoYKe",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recOYsaYs6RmtlTDy",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recOj90oKbiyjLcBd",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recOkA2zsy4GSMD9R",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Inorganic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recOvqPKUtyy9ISA1",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recPIzpnuYpB4yvmp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recPL4ZPpVYxgMu57",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recPNRl3rOMGbrVIg",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recPSTGXK3P39yNYT",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recPhX6WPmdYxmHtQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recPyDDO11h9okNQk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recPzW1WqRnPs57D6",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recQ0eDZk1sxnKVqh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recQ8oxSY2aCwFRS8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recQEFX6mtMj6XQvA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Statistical Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recQM36StGVD7wwP2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recQWH5bK8Z9btsrr",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recQiVCk4JA9236Nw",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recQiWOxhkXRz9NVE",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recR15XgGZlVy6kdJ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recR774BQpzwte6oT",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recRTiyaRymerDJ4y",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recRVn0fyFjTbKdq4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recRZjaElf8ft7xTq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recReg13iV2HwJTaA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recRgabRzMaEoBRcM",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recRhwQwHijW0gCLo",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recRnD2tQcPDMDxWY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recRvwJOeOO6WGeLi",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recS48OsU6kVadBPW",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recSBcGLPatKb3Ygu",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recSl0g9xnRRB2e0L",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recTKiWOdpVoUYQ2v",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recTQMrJxdpZhDCBk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Inorganic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recTVnk0jyigx3o9P",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recTns0XOb6qlewR9",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recTq9xGFD0HRvC7n",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recTroLaIR2mji5FF",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recTs7qzfJs6kfLUK",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUAzHaz2w1b1Ih8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUBgVlkKzcRPDdK",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUIKopRfOBy6lOx",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUOePh79cp4T2Bg",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUVWz7kU1KFTc5G",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUZuPWogSLnPBaw",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUc29lMDBEvurYo",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUdj6ZqNvWNlRKq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUkvCduGEdjxHsF",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUu8izzZlaTKwVD",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recV1dB3itJjvXzLx",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recV1nqYQvpII94oC",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recVE8cUNHpHZIAvL",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recVEXvhYxAhELVqB",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recVvpD8miVjmmyfe",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recWPMm91mGDLXONm",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recWSIn23pglAdv4f",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recWSaYTSv3l4D0HY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recWXwn9v4IG9ZrM6",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Condensed Matter Physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recWgLWFncNSime5A",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recWrxK7TzlOf9cSB",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recWxGU8Q4YReJ1tb",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recWzUUYBN0NuXO2k",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recX2lK3byHnClL54",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recX9sU1D7BxJNXyI",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recXfU8eT0BtQtqlE",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recXsYa3i2UhGF5fe",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recXsuOHRBLcyenF2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recXvQ6gWAmyakrpD",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYA3LPsCvF1fTMI",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYCMJWH7IpcdqwE",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYE7Rss564wKABO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYG3SqTUBlu7jvf",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYI852ugl1pFhAv",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYOzCsevNz61Lyn",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYeabrlVQtFhfKL",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYt8xx80OTyDsL0",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZ13cwgDQf9jRd9",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZ7P8XqZ8HMU5OF",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZ8cm5DvTme4AI4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZFq7Xrv9643qdd",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZSGUkn56v9kEp1",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZWeueB7lSPR6wN",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZZpGHxfDeYd0XV",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZbxrocrxh9YENH",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZdZxsN0AxDx0pB",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZqUs2jwJYgDIeh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZqmTknlPHIG2Ud",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZt4x514UQNnsgy",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reca44yABeO2fx7UB",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recaXdGn3FAIkxLGM",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recaeEWE23avuB6do",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recafnH3RRnMBXEb1",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recakFKZioXUuldcd",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recatj4YXzbOaq3Ar",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recb2M22zaD3tL6Qc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recb4cGsC6BJUCU3V",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recb80OwMgNnceA9t",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recbMrWKlgp9uWgUK",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recbS9CXnLFMRA6XY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recbWK7TxyPMNhPIb",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recbjh3mzGhAqPUhl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recc4ENraOoV1KODF",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reccGBrJaZk9DWZxk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reccOKzFNmyqeJ6ry",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reccVBrYdwsB84fGy",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reccVFW11Elovnf8T",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reccc0j9BzteLsAB5",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recclFbsjbaiVVnnV",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reccoJcrp4TJBNe1n",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physical Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reccrAgUClrIVaBYa",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recdJbKDkjUhZi2B2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recdVF1wby5PxfQU6",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recdya6FuYraBU5Rh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rece85GY0YT0kSlPQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:receDA9FwKsxwfPpw",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recePdwdV9KRLqPDx",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:receWdnr3u8wvTfPA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:receYQxnUBvxPcvbQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:receo3UUzRvWCqyfA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recf4iXKY773NYRFw",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recf6ayQmL1SxKbvW",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recfTlTMjZBuOducT",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recfVza57C5sOngtR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recfsHcxGI288m9ZB",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recftca7pyp2TCeAG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recg02EmYPFs5srwA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recgC4GJ8wUemlUQD",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recgCB0HSVt2IslDN",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recgCiCKBPgyhJcE7",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recgI6tUQ7RLJRWGx",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recgM7o1tcc7tP778",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recgXxEgllSGEpELP",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recguj40XQkQq1l7Q",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rech8ob03J69QNAxU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rechKl68Uc6H7vU0N",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rechgQucGlrnt8KRV",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rechtUKxC6G67H7Pr",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rechv0m5noWblKKef",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rechxBmTTAWysQUYs",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rechyhGsrgszzPsdc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reciHTTRFPWrbhWXA",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reciLRvawYgDdCzrg",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reciMW2VYi4jClmxk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reciOUAwJv4qTlXxs",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reciSAlQzqCdMatGS",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recigLZFBov8HBmLt",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recihePFulRgNKsIn",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reciuppdQde4FGX1z",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recixxJmdux0d8LZQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recj7NQlHcKW1rRME",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recjJ54TXc04enRkZ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recjP3AhnRaZ44JIR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recjTmmMZ8Q1uJQJp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recjgMJaMxz4ESDF2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recjqhQe22OY2P2H0",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reck1zKeCssmN82Ga",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reck4G4xxv3YnpbtQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reckDfAxmtIGb9keo",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Condensed Matter Physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reckEnrOPFT9Ru7tW",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reckYqR92oJkqJXkE",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reckbjNKYmpQlU5TY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reckl6PkaEMWM50yZ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reckoUYCML0XkjPZD",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recks5wKHpwzraAyO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reckwNMHJYPkcbXNZ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reckyB637GAnW0uRM",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recl0GPPYEAK1PZax",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recl1UtgTVKishAq4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reclHtd90GlPQJHXg",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reclJjWliRRF378UN",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reclLadsjOEgLcuah",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reclLfdRGRmiI6CO5",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reclPSWuaG47bkpDv",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reclx98uq6gUM42UR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reclyy1tNCYpnp0UW",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recm7S5Gq7FWCgaHZ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recmFa3O6lOkMF9Zf",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recmI7EiLv72PxmYK",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recmP8wLov7D0Npq6",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recmZvZDl0F55xR3r",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recmkvk6EFAmqyMxR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recmwwQJnx7ll7bqL",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recmzeT93BlfOcNzr",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recn3NhOhqAPLda16",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recn7hU0fpZBOb9eo",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recnGEpF1srQpaqWq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recnTTKdBzfuoZ7w7",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recnZI5D9JkOOy1QU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recnawZPumSCLMVgp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recnjViFrqlZNL3fY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recnsAVZoGayGIj3g",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reco8WSc71p8zAv4q",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recoKZlD5PwM9zbk6",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recoOD3zBJsXtLjBv",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recoW8Ztae7Ruxru4",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recoiTJPGUmzAkief",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recooG6bivTUJpDBz",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recoy9ZLBsc7HIRBy",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recoyQGj2M3vLkpbk",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recp4pRVAOeNYM1hc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recp6DecZYavGF0TW",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recp6FiqiYRjKEcXZ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recp7VwqZlO6v7ly8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recp9KlaeChcn7DzX",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recpJmTOXx6T48nDJ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recpki12iG9RUGrz9",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqFDvYKKRmbnoUb",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Electromagnetism and Photonics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqGD3fxPCI59vPQ",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqLRu4BcJvlSANc",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqP4J5FzKIlQyB9",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqTvvfE8ldJbknb",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqcypy0BOtxk1Vr",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqhfI2AdHd6MVew",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqisVCkgd2ojfRy",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqqFgbShO7tyavI",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recr3VHM4zYf6dMFY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recr5Un4bVj4cRnAP",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recr71WEmXEEMzRgq",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recrHBEJJoDTV05JR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recrNbtgTNoabJJi6",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recrTL3i1VEPCfDGy",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Statistical Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recrs0kUo7Ua1xhKO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recs3PLPUEMiqg4P8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recsFK6wqE0dBoy4N",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recsOrgoWMrLoY31T",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recsPlJ0dQUiWr1fh",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recsfV2VlPdl7SLR6",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recsiPyyjXBOPsSMv",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recsibPli53Ona88K",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rect4iLrSfUwkNTno",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rectXfsCM1dj4Kv2c",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rectkWWgfYZ4ZsJIN",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rectlyG9pCAAuWhoB",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recu58vdfXz3rTiJ5",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recuIk9Y5lMFea9vK",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recuYEkVjdVUwA3c0",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recuyeuT5rQ6qDt8F",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recuzuROrJQs1qQvR",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recv7GsQg3f0fvB1f",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recvI8InxQBeMZR0J",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recvZlMbpPz0yLDle",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recvlnu8BuLmXZhSX",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recw4rROcnHKNZhtK",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recw5EQAukB4ep12V",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recwW1A85nfyQpReG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recwlwlcPvXVNPmvl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recwr979t2fqhhZK8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recx6dMdmcp1ftRVY",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recxAsuTcMtvUUa7Y",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recxTy0x7M6T9ikc0",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recxWirvTOyWz2zja",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recxjillUQ4ucEWi2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recxsX66ktJ1Lwt4f",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recyPffUDqC2k7ZZO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recySCwROqoVpo0UG",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recya83GDvr1UYwEp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recyk2HkNvlEyZzXs",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recyl3usDqb7ruXJx",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recypVp2NmPlBKVTp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recyrk6XBVwugG5u8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recywRj5a8EEjj2Ib",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recz3MfYHPRhsEQkW",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reczQ4I0VpENdMtIj",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Genetics",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reczUoM8JsxU6pYxr",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reczjcMtrB1YGS2fO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Optics and Acoustics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reczkBiPPNrNN49Hp",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reczlLY9O5zHKaGL0",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:reczzzihL7btBH7RO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Relativistic Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec0wsMJZgWo7ICJm",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec1BjNQici8oD53a",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec44cTEfuCXCkHVs",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Condensed Matter Physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:rec6DU0HQcUBaVwHD",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recBeOYL2vJeESmQ5",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Molecular Biology",
+      "target_domain": "biology",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recFwRHr3u5YpusE2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Analytical Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recIgdTGiUZLCejXx",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recQSmIQF2OGPfbL8",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recUxj8sVvLYY5cSF",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recXlt6DeL8i1eeTO",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recYbzsr1pnDeSiEi",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recZZTKvQtZ3x8dGl",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recf9kxVBiJc10e3c",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recqsFHvKKo8SGB3S",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recr6XgkQQXYycWDm",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Physics (general)",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recrbsjWWBqkjFmS2",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recreOOuMnQkSzybb",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recuOd6eMiag2hPBU",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Astrophysics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recuXwnZ1Nq5uRiu3",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Organic Chemistry",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recuhnGik8v2nOK3g",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Chemistry (general)",
+      "target_domain": "chemistry",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recvBj7jG98Moe76N",
+      "target_dataset_name": "gpqa",
+      "target_subject": "Quantum Mechanics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "gpqa:train:recwhMjaIdnLkGTgN",
+      "target_dataset_name": "gpqa",
+      "target_subject": "High-energy particle physics",
+      "target_domain": "physics",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    }
+  ]
+}

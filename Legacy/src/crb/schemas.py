@@ -5,7 +5,7 @@ from typing import Any, Literal
 
 
 AnswerType = Literal["mcq", "numeric", "freeform"]
-EvaluationMode = Literal["multi_turn", "single_turn_flattened"]
+EvaluationMode = Literal["multi_turn", "single_turn_flattened", "single_turn"]
 HistoryMode = Literal["self_history", "oracle_history", "wrong_history"]
 DummyType = Literal["same_domain", "cross_domain"]
 
@@ -96,6 +96,7 @@ class RuntimeConfig:
     log_dir: str = "logs"
     manifest_dir: str = "results/manifests"
     summary_csv: str = "results/summary/scoreboard.csv"
+    prediction_pool_root: str | None = None
     resume: bool = True
     skip_completed: bool = True
     save_partial_every: int = 1

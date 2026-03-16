@@ -1,0 +1,19 @@
+{
+  "run_id": "run-20260316T070146Z-85f494eb",
+  "timestamp": "2026-03-16T07:01:46Z",
+  "model_name": "Qwen/Qwen3-1.7B",
+  "model_family": "qwen3",
+  "thinking_mode": "off",
+  "evaluation_mode": "single_turn",
+  "dataset_name": "aime",
+  "split": "train",
+  "total_items": 30,
+  "format_valid_items": 13,
+  "format_invalid_items": 17,
+  "correct_items": 0,
+  "incorrect_items": 13,
+  "pool_correct_items": 0,
+  "pool_incorrect_items": 13,
+  "correct_path": "results/pools/single_turn/qwen3_1p7b/thinking_off/aime/train/correct.jsonl",
+  "incorrect_path": "results/pools/single_turn/qwen3_1p7b/thinking_off/aime/train/incorrect.jsonl"
+}

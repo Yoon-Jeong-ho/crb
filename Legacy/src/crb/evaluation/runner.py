@@ -15,6 +15,7 @@ from crb.datasets import load_items
 from crb.datasets import hf_loaders  # noqa: F401  # register HF loaders
 from crb.engines import create_engine
 from crb.evaluation.scorers import normalize_gold_answer, score_output
+from crb.io.pools import export_single_turn_run_to_prediction_pool
 from crb.io.results import append_jsonl, append_scoreboard, read_jsonl, write_json
 from crb.prompts.templates import (
     build_flattened_prompt,
@@ -141,6 +142,22 @@ def execute_run(config: RunConfig) -> dict:
     }
     output_path = run_dir / f"{run_id}.json"
     write_json(output_path, payload)
+    if config.runtime.prediction_pool_root:
+        if config.evaluation.evaluation_mode == "single_turn":
+            try:
+                export_single_turn_run_to_prediction_pool(
+                    payload=payload,
+                    output_root=config.runtime.prediction_pool_root,
+                    source_result_json_path=output_path.resolve(),
+                )
+            except Exception:  # noqa: BLE001
+                logger.exception("Prediction pool export failed for run %s", run_id)
+        else:
+            logger.warning(
+                "Skipping prediction pool export for %s because evaluation_mode=%s is not single_turn",
+                run_id,
+                config.evaluation.evaluation_mode,
+            )
     append_scoreboard(
         config.runtime.summary_csv,
         {
@@ -312,6 +329,7 @@ def _evaluate_target_item(
         "subject": item.subject,
         "question": item.question,
         "choices": item.choices,
+        "answer_type": item.answer_type,
         "dummy_ids": dummy_ids,
         "dummy_domains": [dummy_index[dummy_id].domain for dummy_id in dummy_ids],
         "dummy_subjects": [dummy_index[dummy_id].subject for dummy_id in dummy_ids],
@@ -355,6 +373,8 @@ def _render_prompt_for_generation(
         if hasattr(engine, "render_chat"):
             return engine.render_chat(messages)
         return "\n\n".join(f"{m['role'].upper()}: {m['content']}" for m in messages)
+    if config.evaluation.evaluation_mode == "single_turn":
+        return render_single_turn_prompt(item=item, prompt_config=config.prompt)
     return build_flattened_prompt(history=history, target_item=item, prompt_config=config.prompt)
 
 
@@ -404,6 +424,7 @@ def _build_runtime_failure(item: NormalizedItem, exc: Exception) -> dict:
         "subject": item.subject,
         "question": item.question,
         "choices": item.choices,
+        "answer_type": item.answer_type,
         "dummy_ids": [],
         "dummy_domains": [],
         "dummy_subjects": [],

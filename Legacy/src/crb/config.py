@@ -73,6 +73,13 @@ def load_run_config(path: str | Path) -> RunConfig:
         raise ConfigError(
             f"evaluation.k={config.evaluation.k} must appear in evaluation.manifest_k_values"
         )
+    if config.evaluation.evaluation_mode == "single_turn":
+        if config.evaluation.k != 0:
+            raise ConfigError("evaluation.k must be 0 for evaluation_mode=single_turn")
+        if any(k_value != 0 for k_value in config.evaluation.manifest_k_values):
+            raise ConfigError(
+                "evaluation.manifest_k_values must contain only 0 for evaluation_mode=single_turn"
+            )
     if config.prompt.target_thinking_mode not in {"default", "think", "no_think"}:
         raise ConfigError(
             "prompt.target_thinking_mode must be one of: default, think, no_think"

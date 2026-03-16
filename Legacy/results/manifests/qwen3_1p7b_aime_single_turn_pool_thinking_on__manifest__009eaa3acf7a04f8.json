@@ -1,0 +1,342 @@
+{
+  "manifest_id": "manifest-2026-03-16T07:06:22Z",
+  "config_hash": "629fbe60b4ef8c43",
+  "seed": 42,
+  "ks": [
+    0
+  ],
+  "target_sources": [
+    {
+      "dataset_name": "aime",
+      "adapter": "aime",
+      "path": "HuggingFaceH4/aime_2024",
+      "subset": null,
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "dummy_sources": [
+    {
+      "dataset_name": "aime",
+      "adapter": "aime",
+      "path": "HuggingFaceH4/aime_2024",
+      "subset": null,
+      "split": "train",
+      "local_path": null,
+      "cache_dir": "data/cache/huggingface",
+      "limit": null,
+      "shuffle": false,
+      "seed": 42,
+      "trust_remote_code": false,
+      "extra_kwargs": {}
+    }
+  ],
+  "entries": [
+    {
+      "target_item_id": "aime:train:60",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:61",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:62",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:63",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:64",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:65",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:66",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:67",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:68",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:69",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:70",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:71",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:72",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:73",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:74",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:75",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:76",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:77",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:78",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:79",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:80",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:81",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:82",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:83",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:84",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:85",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:86",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:87",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:88",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    },
+    {
+      "target_item_id": "aime:train:89",
+      "target_dataset_name": "aime",
+      "target_subject": "aime",
+      "target_domain": "math",
+      "dummy_ids_by_type": {
+        "same_domain": [],
+        "cross_domain": []
+      }
+    }
+  ]
+}

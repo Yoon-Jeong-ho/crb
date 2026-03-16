@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260316T070600Z-9e2b7e78",
+  "timestamp": "2026-03-16T07:06:00Z",
+  "model_name": "mock-engine",
+  "model_family": "mock",
+  "thinking_mode": "off",
+  "evaluation_mode": "single_turn",
+  "dataset_name": "all_datasets",
+  "split": "all",
+  "total_items": 4,
+  "format_valid_items": 4,
+  "format_invalid_items": 0,
+  "correct_items": 1,
+  "incorrect_items": 3
+}
