@@ -181,3 +181,5 @@ results/summary/
 .conda/
 configs/generated/
 Legacy/results/runs/
+Legacy/results/pools/
+Legacy/logs/queue/

@@ -6,6 +6,13 @@
 - `papers/` — 논문별 1개 md 파일
 - 이 `README.md` — 전체 지형도, CRB와의 차이, 강조 포인트, 추가 분석 제안
 
+## Working map (2026-03-16)
+- `directions.md` — current CRB research priorities
+- `related_work_buckets.md` — paper buckets + CRB differentiation points
+- `methodology_extensions.md` — high-value next extensions
+- `papers/` — per-paper notes
+- paired analysis outputs can be summarized separately at the repo root when needed
+
 ## 가장 중요한 논문 묶음
 
 ### 1) 우리가 사용하는 benchmark 자체를 정당화하는 논문
