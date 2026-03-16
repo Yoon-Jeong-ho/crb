@@ -260,6 +260,23 @@ def _evaluate_target_item(
                     domain=dummy_item.domain,
                 )
             )
+    elif config.evaluation.history_mode == "stored_history":
+        for dummy_id in dummy_ids:
+            dummy_item = dummy_index[dummy_id]
+            history_turns.append(
+                HistoryTurn(
+                    item_id=dummy_item.item_id,
+                    question=render_question_block(dummy_item),
+                    choices=dummy_item.choices,
+                    normalized_answer=normalize_gold_answer(dummy_item),
+                    raw_output=dummy_item.metadata.get("source_record", {}).get("source_raw_output"),
+                    answer_source="stored",
+                    parse_status="stored",
+                    dataset_name=dummy_item.dataset_name,
+                    subject=dummy_item.subject,
+                    domain=dummy_item.domain,
+                )
+            )
     elif config.evaluation.history_mode == "wrong_history":
         for dummy_id in dummy_ids:
             dummy_item = dummy_index[dummy_id]

@@ -68,6 +68,10 @@
 - `oracle_history`
   - dummy turn answer를 gold canonical answer로 바로 넣는다.
   - dummy generation step이 없다.
+- `stored_history`
+  - 미리 저장해 둔 single-turn pool JSONL의 `answer` 필드를 그대로 dummy answer로 넣는다.
+  - 즉, live dummy generation 없이도 **모델별 precomputed history** 를 재사용할 수 있다.
+  - 권장 입력은 `Legacy/results/pools/single_turn/<model>/<thinking>/<dataset>/<split>/{correct,incorrect}.jsonl` 이다.
 - `self_history`
   - dummy 1을 생성하고 history에 넣고,
   - 그 상태에서 dummy 2를 생성하고,
@@ -124,7 +128,7 @@
 -
 - 정리하면:
   - primary: accumulated-history mechanism axes
-  - primary(extended): `oracle_history / self_history / wrong_history`
+  - primary(extended): `oracle_history / stored_history / self_history / wrong_history`
   - secondary: reasoning-mode / emission-control axes
 
 ## 2.3 Cross-model context policy (recommended)
@@ -245,6 +249,25 @@
 - manifests: `Legacy/results/manifests/`
 - scoreboard: `Legacy/results/summary/scoreboard.csv`
 - logs: `Legacy/logs/`
+- single-turn prediction pools:
+  - `Legacy/results/pools/single_turn/<model>/<thinking>/<dataset>/<split>/correct.jsonl`
+  - `Legacy/results/pools/single_turn/<model>/<thinking>/<dataset>/<split>/incorrect.jsonl`
+  - paired summary JSON in the same folder
+
+## 5.1 Practical shell entrypoints
+
+- single-turn collection + pool-backed follow-up chain:
+  - `Legacy/scripts/run_qwen3_single_turn_full_chain.sh`
+- chain status:
+  - `Legacy/scripts/show_qwen3_single_turn_chain_status.sh`
+- wait for pool files, then queue stored-history smoke:
+  - `Legacy/scripts/run_qwen3_pool_history_gpqa_smoke_queue.sh`
+
+Operational intent:
+- collect per-model single-turn predictions first
+- keep only format-valid examples
+- store them split into `correct` vs `incorrect`
+- then reuse those stored answers through `history_mode=stored_history`
 
 ## 6. Notes
 
