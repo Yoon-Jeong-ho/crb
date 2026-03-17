@@ -115,10 +115,15 @@ def _matches_mode(target: NormalizedItem, candidate: NormalizedItem, mode: str) 
     same_domain = bool(
         target.domain and candidate.domain and target.domain.strip().lower() == candidate.domain.strip().lower()
     )
+    different_dataset = target.dataset_name != candidate.dataset_name
     if mode == "same_domain":
         if target.subject or candidate.subject or target.domain or candidate.domain:
             return same_subject or same_domain
         return target.dataset_name == candidate.dataset_name
+    if mode == "same_domain_other_dataset":
+        if target.subject or candidate.subject or target.domain or candidate.domain:
+            return different_dataset and (same_subject or same_domain)
+        return False
     if mode == "cross_domain":
         if target.subject or candidate.subject or target.domain or candidate.domain:
             return not (same_subject or same_domain)

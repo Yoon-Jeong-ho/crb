@@ -7,7 +7,7 @@ from typing import Any, Literal
 AnswerType = Literal["mcq", "numeric", "freeform"]
 EvaluationMode = Literal["multi_turn", "single_turn_flattened", "single_turn"]
 HistoryMode = Literal["self_history", "oracle_history", "wrong_history", "stored_history"]
-DummyType = Literal["same_domain", "cross_domain"]
+DummyType = Literal["same_domain", "cross_domain", "same_domain_other_dataset"]
 
 
 @dataclass(slots=True)
