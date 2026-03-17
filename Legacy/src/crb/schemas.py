@@ -32,6 +32,10 @@ class DataSourceConfig:
     subset: str | None = None
     split: str = "test"
     local_path: str | None = None
+    pool_root: str | None = None
+    pool_model_slug: str | None = None
+    pool_thinking_mode: str | None = None
+    pool_label: str | None = None
     cache_dir: str | None = None
     limit: int | None = None
     shuffle: bool = False

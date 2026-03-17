@@ -23,6 +23,7 @@ def manifest_path(config: RunConfig) -> Path:
         {
             "seed": config.experiment.seed,
             "ks": config.evaluation.manifest_k_values,
+            "dummy_type": config.evaluation.dummy_type,
             "target": dataclass_to_dict(config.evaluation.target),
             "dummy_sources": dataclass_to_dict(config.evaluation.dummy_sources),
         },

@@ -36,33 +36,26 @@ def build_or_load_manifest(
         )
         return manifest, path, False
 
+    requested_modes = [config.evaluation.dummy_type]
     max_k = max(config.evaluation.manifest_k_values)
     entries: list[ManifestEntry] = []
     for target in target_items:
-        same_domain = _sample_candidates(
-            target=target,
-            dummy_items=dummy_items,
-            seed=config.experiment.seed,
-            max_k=max_k,
-            mode="same_domain",
-        )
-        cross_domain = _sample_candidates(
-            target=target,
-            dummy_items=dummy_items,
-            seed=config.experiment.seed,
-            max_k=max_k,
-            mode="cross_domain",
-        )
+        dummy_ids_by_type: dict[str, list[str]] = {}
+        for mode in requested_modes:
+            dummy_ids_by_type[mode] = _sample_candidates(
+                target=target,
+                dummy_items=dummy_items,
+                seed=config.experiment.seed,
+                max_k=max_k,
+                mode=mode,
+            )
         entries.append(
             ManifestEntry(
                 target_item_id=target.item_id,
                 target_dataset_name=target.dataset_name,
                 target_subject=target.subject,
                 target_domain=target.domain,
-                dummy_ids_by_type={
-                    "same_domain": same_domain,
-                    "cross_domain": cross_domain,
-                },
+                dummy_ids_by_type=dummy_ids_by_type,
             )
         )
 

@@ -50,7 +50,9 @@ evaluation:
     split: test
     cache_dir: data/cache/huggingface
   dummy_sources:
-    - dataset_name: gpqa_pool_incorrect
-      adapter: jsonl
-      local_path: results/pools/single_turn/qwen3_1p7b/thinking_off/gpqa/train/incorrect.jsonl
+    - dataset_name: gpqa
+      adapter: single_turn_pool
       split: train
+      pool_model_slug: qwen3_1p7b
+      pool_thinking_mode: off
+      pool_label: incorrect

@@ -50,7 +50,9 @@ evaluation:
     split: train
     cache_dir: data/cache/huggingface
   dummy_sources:
-    - dataset_name: gsm8k_pool_correct
-      adapter: jsonl
-      local_path: results/pools/single_turn/qwen3_1p7b/thinking_off/gsm8k/test/correct.jsonl
+    - dataset_name: gsm8k
+      adapter: single_turn_pool
       split: test
+      pool_model_slug: qwen3_1p7b
+      pool_thinking_mode: off
+      pool_label: correct

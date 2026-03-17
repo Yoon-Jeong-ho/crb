@@ -173,5 +173,62 @@ def jsonl_loader(config: DataSourceConfig) -> list[NormalizedItem]:
 registry.register("jsonl", jsonl_loader)
 
 
+def _resolve_single_turn_pool_path(config: DataSourceConfig) -> Path:
+    if config.local_path:
+        return Path(config.local_path)
+    pool_thinking_mode = config.pool_thinking_mode
+    if isinstance(pool_thinking_mode, bool):
+        pool_thinking_mode = "on" if pool_thinking_mode else "off"
+    missing = [
+        field_name
+        for field_name, value in (
+            ("pool_model_slug", config.pool_model_slug),
+            ("pool_thinking_mode", pool_thinking_mode),
+            ("pool_label", config.pool_label),
+        )
+        if not value
+    ]
+    if missing:
+        raise ValueError(
+            f"single_turn_pool adapter requires {', '.join(missing)} when local_path is not set"
+        )
+    root = Path(config.pool_root or "results/pools/single_turn")
+    return root / str(config.pool_model_slug) / f"thinking_{pool_thinking_mode}" / config.dataset_name / config.split / f"{config.pool_label}.jsonl"
+
+
+def single_turn_pool_loader(config: DataSourceConfig) -> list[NormalizedItem]:
+    path = _resolve_single_turn_pool_path(config)
+    items: list[NormalizedItem] = []
+    with path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            record = json.loads(line)
+            choices = record.get("choices")
+            items.append(
+                NormalizedItem(
+                    dataset_name=str(record.get("dataset_name") or config.dataset_name),
+                    split=str(record.get("split") or config.split),
+                    item_id=str(record["item_id"]),
+                    domain=record.get("domain"),
+                    subject=record.get("subject"),
+                    question=str(record["question"]),
+                    choices=choices if isinstance(choices, list) else None,
+                    answer=str(record["answer"]),
+                    answer_type=str(record.get("answer_type") or ("mcq" if choices else "numeric")),  # type: ignore[arg-type]
+                    metadata={
+                        "source_record": record,
+                        "pool_model_slug": config.pool_model_slug,
+                        "pool_thinking_mode": config.pool_thinking_mode,
+                        "pool_label": config.pool_label,
+                    },
+                )
+            )
+    return items
+
+
+registry.register("single_turn_pool", single_turn_pool_loader)
+
+
 def load_items(config: DataSourceConfig) -> list[NormalizedItem]:
     return registry.get(config.adapter)(config)
