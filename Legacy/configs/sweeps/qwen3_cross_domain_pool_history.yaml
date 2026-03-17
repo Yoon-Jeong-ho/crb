@@ -1,0 +1,22 @@
+output_dir: configs/generated/qwen3_cross_domain_pool_history
+
+jobs:
+  - name: gpqa_cross_correct
+    base_config: configs/pool_history/qwen3_1p7b_gpqa_multiturn_stored_cross_correct_base.yaml
+    matrix:
+      evaluation.k: [2, 4, 8, 16]
+
+  - name: gpqa_cross_incorrect
+    base_config: configs/pool_history/qwen3_1p7b_gpqa_multiturn_stored_cross_incorrect_base.yaml
+    matrix:
+      evaluation.k: [2, 4, 8, 16]
+
+  - name: gsm8k_cross_correct
+    base_config: configs/pool_history/qwen3_1p7b_gsm8k_multiturn_stored_cross_correct_base.yaml
+    matrix:
+      evaluation.k: [2, 4, 8, 16]
+
+  - name: gsm8k_cross_incorrect
+    base_config: configs/pool_history/qwen3_1p7b_gsm8k_multiturn_stored_cross_incorrect_base.yaml
+    matrix:
+      evaluation.k: [2, 4, 8, 16]
