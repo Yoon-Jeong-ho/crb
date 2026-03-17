@@ -182,4 +182,5 @@ results/summary/
 configs/generated/
 Legacy/results/runs/
 Legacy/results/pools/
+Legacy/results/manifests/
 Legacy/logs/queue/
