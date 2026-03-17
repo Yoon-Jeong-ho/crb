@@ -184,3 +184,6 @@ Legacy/results/runs/
 Legacy/results/pools/
 Legacy/results/manifests/
 Legacy/logs/queue/
+Legacy/configs/generated/multimodel_single_turn_pools/
+Legacy/configs/generated/multimodel_pool_followups/
+Legacy/configs/generated/qwen3_cross_domain_pool_history/
