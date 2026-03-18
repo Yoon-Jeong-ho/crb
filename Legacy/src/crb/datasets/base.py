@@ -176,7 +176,8 @@ registry.register("jsonl", jsonl_loader)
 def _resolve_single_turn_pool_path(config: DataSourceConfig) -> Path:
     if config.local_path:
         return Path(config.local_path)
-    pool_thinking_mode = config.pool_thinking_mode
+    raw_pool_thinking_mode = config.pool_thinking_mode
+    pool_thinking_mode = raw_pool_thinking_mode
     if isinstance(pool_thinking_mode, bool):
         pool_thinking_mode = "on" if pool_thinking_mode else "off"
     missing = [
@@ -193,7 +194,19 @@ def _resolve_single_turn_pool_path(config: DataSourceConfig) -> Path:
             f"single_turn_pool adapter requires {', '.join(missing)} when local_path is not set"
         )
     root = Path(config.pool_root or "results/pools/single_turn")
-    return root / str(config.pool_model_slug) / f"thinking_{pool_thinking_mode}" / config.dataset_name / config.split / f"{config.pool_label}.jsonl"
+    preferred = root / str(config.pool_model_slug) / f"thinking_{pool_thinking_mode}" / config.dataset_name / config.split / f"{config.pool_label}.jsonl"
+    if preferred.exists():
+        return preferred
+    if raw_pool_thinking_mode is not None:
+        legacy = root / str(config.pool_model_slug) / f"thinking_{raw_pool_thinking_mode}" / config.dataset_name / config.split / f"{config.pool_label}.jsonl"
+        if legacy.exists():
+            return legacy
+    if isinstance(pool_thinking_mode, str) and pool_thinking_mode in {"off", "on"}:
+        legacy_bool = "False" if pool_thinking_mode == "off" else "True"
+        legacy = root / str(config.pool_model_slug) / f"thinking_{legacy_bool}" / config.dataset_name / config.split / f"{config.pool_label}.jsonl"
+        if legacy.exists():
+            return legacy
+    return preferred
 
 
 def single_turn_pool_loader(config: DataSourceConfig) -> list[NormalizedItem]:

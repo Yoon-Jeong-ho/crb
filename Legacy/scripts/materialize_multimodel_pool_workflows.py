@@ -87,12 +87,13 @@ def ensure_dir(path: Path) -> Path:
 
 def build_single_turn_config(model: dict[str, Any], variant: dict[str, Any], dataset_name: str) -> dict[str, Any]:
     dataset = DATASETS[dataset_name]
+    variant_name = normalize_variant_name(variant["name"])
     return {
         "experiment": {
-            "name": f"{model['slug']}_{dataset_name}_single_turn_pool_thinking_{variant['name']}",
+            "name": f"{model['slug']}_{dataset_name}_single_turn_pool_thinking_{variant_name}",
             "seed": 42,
             "num_samples": None,
-            "tags": [model["slug"], dataset_name, "single_turn_pool", f"thinking_{variant['name']}"],
+            "tags": [model["slug"], dataset_name, "single_turn_pool", f"thinking_{variant_name}"],
         },
         "model": {
             "engine": "vllm",
@@ -126,7 +127,7 @@ def build_single_turn_config(model: dict[str, Any], variant: dict[str, Any], dat
             "log_dir": "logs",
             "manifest_dir": "results/manifests",
             "summary_csv": "results/summary/scoreboard.csv",
-            "prediction_pool_root": f"results/pools/single_turn/{model['slug']}/thinking_{variant['name']}",
+            "prediction_pool_root": f"results/pools/single_turn/{model['slug']}/thinking_{variant_name}",
             "resume": True,
             "skip_completed": True,
             "timeout_seconds": 300,
@@ -162,6 +163,7 @@ def build_followup_config(
     k: int,
 ) -> dict[str, Any] | None:
     dataset = DATASETS[target_dataset_name]
+    variant_name = normalize_variant_name(variant["name"])
     if dummy_type == "same_domain":
         source_names = [target_dataset_name]
     elif dummy_type == "same_domain_other_dataset":
@@ -173,12 +175,12 @@ def build_followup_config(
     else:
         raise ValueError(dummy_type)
     sources = [
-        build_pool_source(model["slug"], variant["name"], source_name, DATASETS[source_name]["target"]["split"], pool_label)
+        build_pool_source(model["slug"], variant_name, source_name, DATASETS[source_name]["target"]["split"], pool_label)
         for source_name in source_names
     ]
     config = build_single_turn_config(model, variant, target_dataset_name)
     config["experiment"]["name"] = (
-        f"{model['slug']}_{target_dataset_name}_stored_{dummy_type}_{pool_label}_thinking_{variant['name']}_k{k}"
+        f"{model['slug']}_{target_dataset_name}_stored_{dummy_type}_{pool_label}_thinking_{variant_name}_k{k}"
     )
     config["experiment"]["tags"] = [
         model["slug"],
@@ -186,7 +188,7 @@ def build_followup_config(
         "stored_history",
         dummy_type,
         pool_label,
-        f"thinking_{variant['name']}",
+        f"thinking_{variant_name}",
         f"k{k}",
     ]
     config["runtime"]["prediction_pool_root"] = None

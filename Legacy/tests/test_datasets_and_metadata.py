@@ -85,3 +85,27 @@ def test_single_turn_pool_loader_accepts_boolean_thinking_mode(tmp_path):
     )
     assert len(items) == 1
     assert items[0].item_id == "gsm8k:test:1"
+
+
+def test_single_turn_pool_loader_falls_back_to_legacy_boolean_pool_dir(tmp_path):
+    pool_root = tmp_path / "results" / "pools" / "single_turn"
+    pool_file = pool_root / "qwen25_1p5b" / "thinking_False" / "gpqa" / "train" / "correct.jsonl"
+    pool_file.parent.mkdir(parents=True, exist_ok=True)
+    pool_file.write_text(
+        '{"dataset_name":"gpqa","split":"train","item_id":"gpqa:train:legacy","domain":"science","subject":"biology","question":"Legacy?","choices":["A","B","C","D"],"answer":"B","answer_type":"mcq"}\n',
+        encoding="utf-8",
+    )
+    items = load_items(
+        DataSourceConfig(
+            dataset_name="gpqa",
+            adapter="single_turn_pool",
+            split="train",
+            pool_root=str(pool_root),
+            pool_model_slug="qwen25_1p5b",
+            pool_thinking_mode="off",
+            pool_label="correct",
+        )
+    )
+    assert len(items) == 1
+    assert items[0].item_id == "gpqa:train:legacy"
+    assert items[0].answer == "B"
