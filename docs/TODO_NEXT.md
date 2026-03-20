@@ -1,45 +1,64 @@
 # TODO NEXT
 
-- Date: 2026-03-11
+- Date: 2026-03-20
 
-## Now
+## Immediate freeze
 
-- [x] Refresh README/setup/status docs for `crb-gpu567-continuation-gpus-5`
-- [x] Record that pushed baseline commits are `28e4058` and `02fa431`
-- [x] Separate historical GPU4 evidence from the current GPU567 run policy
-- [x] Log the first true GPU567-cycle result (`run-20260311T060823Z-1947f5cf`)
+- [x] Stop widening the experiment scope until the claim and protocol are explicitly restated.
+- [x] Fix the canonical headline baseline as `single_turn, k=0`.
+- [x] Freeze the interpretation that `stored_history` is an **external contaminated-history** condition, not a drop-in synonym for `self_history`.
+- [x] Freeze the story layout:
+  - main = multimodel stored_history external contamination
+  - supporting = Qwen3 GPQA provenance
+  - appendix = Qwen3 GSM8K thinking-on flattened self-vs-wrong
 
-## Next runs / analysis
+## First priority: analysis + documentation sync
 
-- [x] Inspect the 4 invalid outputs from the GPU5 parserfix smoke
-- [x] Decide whether those failures are better addressed by stricter prompting or decoding, not parser regex
-- [x] GPQA thinking-on parserfix follow-up smoke on **GPU 6 or 7**
-- [x] One allowed multi-GPU check using only `5,6,7` (`run-20260311T061434Z-10e36149` on GPUs `5,6`)
-- [x] Decide whether parserfix is good enough to keep as the active thinking-on path (`not yet`)
-- [x] Run choice constrained GPQA thinking-on on GPUs `5,6` (`run-20260311T091942Z-f3e9f0fa`)
-- [x] Run `/no_think` + prefill GPQA thinking-on on GPUs `5,6` (`run-20260311T092221Z-dfa04164`)
-- [x] Run combined constrained + `/no_think` + prefill GPQA thinking-on on GPUs `5,6` (`run-20260311T092432Z-dac259a0`)
-- [x] Compare all three against parserfix and strictfinal baselines
-- [x] Pick a provisional winner (`/no_think` + prefill)
+- [ ] Refresh `analysis/tables/run_inventory.csv` from the latest scoreboard (`573` rows currently in `Legacy/results/summary/scoreboard.csv`)
+- [ ] Refresh `analysis/tables/summary_table.csv` and `summary_table.md`
+- [ ] Refresh `analysis/error_buckets/error_buckets.csv` and `error_buckets.md`
+- [ ] Refresh `analysis/figures/metric_plot.md`
+- [ ] Mark stale derived outputs as non-authoritative until the refresh is done
 
-## Next decisions
+## Second priority: classify the current evidence
 
-- [ ] Re-run `/no_think` + prefill once more on GPUs `5,6` to check stability
-- [ ] Decide whether combined config stays as fallback or gets retired
-- [ ] Extend the winning control to GSM8K or MMLU
-- [ ] Decide whether README / setup docs should flip the active recommendation from parserfix to `/no_think` + prefill in the next commit
+- [ ] Label each current run family as one of:
+  - `main-claim direct`
+  - `secondary / implementation`
+  - `parked / excluded`
+- [ ] Separate:
+  - canonical baselines
+  - full-sample direct comparisons
+  - 50-item pilot mechanism sweeps
+  - parser / prompting rescue experiments
+  - incomplete partial-only lanes
 
-## Git / reporting hygiene
+## Third priority: resolve the two stranded partial runs
 
-- [x] Stable pushed checkpoint already exists on `origin/main`
-- [x] Batch the current doc refresh with the next meaningful parserfix update
-- [x] Use one short follow-up commit once parserfix direction is clearer
-- [x] Report updated docs + suggested next commit message to the lead
+- [ ] Decide whether to **resume cleanly** or **rerun cleanly**:
+  - `qwen3_1p7b_gsm8k_protocol_kfull_gsm8k_on_canonical_k4`
+  - `qwen3_1p7b_gsm8k_gsm8k_wrong_history_cross_domain_full_k8`
+- [ ] If resume fidelity is uncertain, prefer rerun over trusting partial-only state
+- [ ] If either lane is explicitly dropped from the main story, archive and document that decision rather than leaving it ambiguous
 
-## Do not forget
+## Minimal next runnable set after sync
 
-- [x] Use only `/data_x/aa007878/projects/crb/.conda/envs/crb`
-- [x] Use only GPUs `5,6,7` for this continuation pass
-- [x] For the 2026-03-11 evening follow-up, actually use only GPUs `5,6`
-- [x] Treat GPU4 smoke results as historical carry-over evidence only
-- [x] Do not call parserfix “done” while `format_failure_rate` is still `0.5`
+- [ ] Complete or rerun:
+  - `qwen3 / gsm8k / thinking_on / single_turn_flattened / self_history / cross_domain / k=4`
+- [ ] Complete or rerun:
+  - `qwen3 / gsm8k / thinking_on / single_turn_flattened / wrong_history / cross_domain / k=8`
+- [ ] If a full self-history `k` curve is required for the same slice, add:
+  - `qwen3 / gsm8k / thinking_on / single_turn_flattened / self_history / cross_domain / k=8`
+
+## Explicitly safe to pause
+
+- [ ] New model-family expansion beyond the currently completed multimodel set
+- [ ] New parser/decoding rescue sweeps
+- [ ] New dataset additions
+- [ ] Extra exploratory axes that do not close a main-claim slice
+
+## Operator reminder
+
+- [ ] Ask “does this close a main-claim gap?” before asking “can we run more?”
+- [ ] Do not use stale derived analysis to justify new conclusions
+- [ ] Do not treat `stored_history` as a hidden rename of `self_history`

@@ -10,17 +10,18 @@ Read in this order when resuming work:
 
 1. `README.md` — root navigation
 2. `CRB_EXPERIMENT_SETUP.md` — continuation rules and operating context
-3. `docs/WORKFLOW_ANALYSIS.md` — how research/docs-analysis/tools/raw artifacts fit together
-4. `docs/EXECUTION_STATUS.md` — current verified execution state
-5. `docs/RESULTS_LOG.md` — run-by-run evidence log
-6. `docs/ANALYSIS.md` — current interpretation
-7. `docs/TODO_NEXT.md` — operator decision queue
-8. `research/README.md` — related-work framing
-9. `research/directions.md` — current analysis questions to prioritize
-10. `research/related_work_buckets.md` — literature buckets to cite against
-11. `research/methodology_extensions.md` — follow-up extension ideas
-12. `docs/analysis/README.md` — analysis lane index
-13. `Legacy/README.md` — runnable implementation details
+3. `docs/CLAIM_PROTOCOL_ALIGNMENT_20260320.md` — current claim freeze, baseline, and what counts as main-vs-secondary evidence
+4. `docs/WORKFLOW_ANALYSIS.md` — how research/docs-analysis/tools/raw artifacts fit together
+5. `docs/EXECUTION_STATUS.md` — current verified execution state
+6. `docs/RESULTS_LOG.md` — run-by-run evidence log
+7. `docs/ANALYSIS.md` — current interpretation
+8. `docs/TODO_NEXT.md` — operator decision queue
+9. `research/README.md` — related-work framing
+10. `research/directions.md` — current analysis questions to prioritize
+11. `research/related_work_buckets.md` — literature buckets to cite against
+12. `research/methodology_extensions.md` — follow-up extension ideas
+13. `docs/analysis/README.md` — analysis lane index
+14. `Legacy/README.md` — runnable implementation details
 
 For the benchmark framing itself, see `README_CRB.md`.
 
@@ -59,9 +60,11 @@ For the benchmark framing itself, see `README_CRB.md`.
 
 ## Operator next-step checklist
 
+- [ ] Read `docs/CLAIM_PROTOCOL_ALIGNMENT_20260320.md` before interpreting any new rows.
 - [ ] Use `docs/WORKFLOW_ANALYSIS.md` to map the docs/research/tools/raw-artifact flow before changing anything else.
+- [ ] Refresh stale derived analysis artifacts before drawing new conclusions from `Legacy/results/summary/scoreboard.csv`.
 - [ ] Compare the parserfix, strict-final, choice-only, and `/no_think` + prefill runs using the evidence already logged in `docs/`.
 - [ ] Read `analysis/README.md` plus the companion notes before deciding what summary artifact to build next.
 - [ ] Refresh `analysis/tables/run_inventory.csv`, `analysis/tables/summary_table.csv`, `analysis/error_buckets/error_buckets.csv`, and `analysis/figures/metric_plot.md` before writing new conclusions.
-- [ ] Decide whether the combined constrained + `/no_think` + prefill config should remain a fallback or be retired.
-- [ ] Only after the analysis pass is clean, schedule the next `Legacy/` follow-up run or dataset extension.
+- [ ] Decide whether the two stranded GSM8K partial runs should be completed or cleanly archived.
+- [ ] Only after the analysis pass is clean and the main-claim slice is fixed, schedule the next `Legacy/` follow-up run.

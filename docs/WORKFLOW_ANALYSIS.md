@@ -66,18 +66,19 @@ If you are reading execution evidence, prefer `Legacy/results/` and `Legacy/logs
 
 1. `README.md`
 2. `CRB_EXPERIMENT_SETUP.md`
-3. `docs/WORKFLOW_ANALYSIS.md`
-4. `docs/EXECUTION_STATUS.md`
-5. `docs/RESULTS_LOG.md`
-6. `docs/ANALYSIS.md`
-7. `docs/TODO_NEXT.md`
-8. `research/README.md`
-9. `research/directions.md`
-10. `research/related_work_buckets.md`
-11. `research/methodology_extensions.md`
-12. `docs/analysis/README.md` and the specific analysis note you need
-13. `tools/README.md` and the matching tool script if you need a repeatable summary
-14. matching raw files in `Legacy/results/` and `Legacy/logs/`
+3. `docs/CLAIM_PROTOCOL_ALIGNMENT_20260320.md`
+4. `docs/WORKFLOW_ANALYSIS.md`
+5. `docs/EXECUTION_STATUS.md`
+6. `docs/RESULTS_LOG.md`
+7. `docs/ANALYSIS.md`
+8. `docs/TODO_NEXT.md`
+9. `research/README.md`
+10. `research/directions.md`
+11. `research/related_work_buckets.md`
+12. `research/methodology_extensions.md`
+13. `docs/analysis/README.md` and the specific analysis note you need
+14. `tools/README.md` and the matching tool script if you need a repeatable summary
+15. matching raw files in `Legacy/results/` and `Legacy/logs/`
 
 ## Analysis loop
 
@@ -99,9 +100,12 @@ If you are reading execution evidence, prefer `Legacy/results/` and `Legacy/logs
 
 ## Current high-value operator checklist
 
+- [ ] Read `docs/CLAIM_PROTOCOL_ALIGNMENT_20260320.md` first so baseline/provenance/relation terms are frozen before analysis.
+- [ ] Refresh stale derived analysis artifacts; `scoreboard.csv` is ahead of `analysis/tables/run_inventory.csv`.
+- [ ] Separate main-claim evidence from parser/prompting rescue work before building any new summary.
 - [ ] Compare parserfix vs strict-final vs choice-only vs `/no_think` + prefill using the already logged evidence.
 - [ ] Build a compact summary view from `Legacy/results/summary/scoreboard.csv` plus the matching run JSON files.
 - [ ] Refresh `analysis/tables/run_inventory.csv`, `analysis/tables/summary_table.csv`, and `analysis/error_buckets/error_buckets.csv` before writing new conclusions.
 - [ ] Bucket invalid GPQA thinking-on outputs before changing parsing/prompting logic.
-- [ ] Decide whether the combined constrained + `/no_think` + prefill path stays as a fallback.
-- [ ] Only after the analysis pass is complete, queue the next `Legacy/` rerun or dataset extension.
+- [ ] Decide whether the two stranded GSM8K partial runs should be completed or archived.
+- [ ] Only after the analysis pass is complete, queue the minimum run set that closes a main-claim slice.

@@ -21,6 +21,25 @@
   - one verified GPU5/6 `/no_think` + prefill follow-up,
   - one verified GPU5/6 combined follow-up
 
+## 0.1 Claim / protocol freeze (2026-03-20)
+
+Use `docs/CLAIM_PROTOCOL_ALIGNMENT_20260320.md` as the current claim-first operating clarification.
+
+Key freezes:
+
+- CRB is a **target-only accumulated-history robustness** protocol, not a generic multi-turn quality benchmark.
+- The canonical headline baseline is:
+  - **`single_turn`, `k=0`, no dummy history**
+- Primary axes are now:
+  - structure (`multi_turn` vs `single_turn_flattened`)
+  - provenance (`self`, `oracle`, `wrong`, `stored`)
+  - relation (`same_benchmark`, `same_domain_other_dataset`, `cross_domain`)
+  - history size (`k`)
+- `stored_history` must be interpreted as:
+  - **external contaminated-history robustness**
+  - **not** a full semantic replacement for `self_history`
+- Until docs, scoreboard-derived analysis, and the two stranded partial runs are resolved, do **not** widen scope with new exploratory branches.
+
 ## 1. Goal
 
 - single-turn benchmark를 multi-turn accumulated-history 평가로 바꿨을 때 성능 저하/간섭을 측정한다.
