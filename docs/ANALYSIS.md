@@ -2,6 +2,48 @@
 
 - Date: 2026-03-20
 
+## 2026-03-24 readable snapshot
+
+Current shareable snapshot files now exist at the repo root:
+
+- `RESULT.md`
+- `result_snapshot.csv`
+
+Current artifact counts:
+
+- `Legacy/results/summary/scoreboard.csv`: **579** rows
+- `analysis/tables/run_inventory.csv`: **579** rows
+
+Current interpretation:
+
+1. **Main**
+   - the multimodel external-contamination slice is complete
+   - average delta vs canonical single-turn baseline differs by model family:
+     - `qwen25`: negative on average
+     - `llama32_3b`: mildly negative on average
+     - `mistral7b`: positive on average
+   - so accumulated contaminated-history robustness is clearly model-sensitive
+
+2. **Supporting**
+   - Qwen3 / GPQA provenance slice is complete
+   - several same-domain provenance conditions outperform the single-turn baseline
+   - the strongest current row is `stored_incorrect / k=4`, which sits above the canonical baseline while sharply reducing format failures
+
+3. **Appendix**
+   - Qwen3 / GSM8K / thinking-on / flattened self-vs-wrong is now fully populated, including optional `self / k=8`
+   - the strongest degradation is `self / k=8`
+   - that row sits **-0.3692** below the canonical single-turn baseline, which is the clearest direct evidence that accumulated conversation history can strongly perturb final-turn accuracy
+
+4. **Broad backfill**
+   - after the appendix closure, the only remaining generated gap set was `Legacy/configs/generated/multimodel_single_turn_pools/`
+   - completed from that queue so far:
+     - `llama32_3b / aime / single_turn_pool / off`
+     - `mistral7b / aime / single_turn_pool / off`
+     - `llama32_3b / gpqa / single_turn_pool / off`
+     - `mistral7b / gpqa / single_turn_pool / off`
+     - `qwen25_1p5b / aime / single_turn_pool / off`
+   - GPUs `5,6,7` are still progressing on the remaining backfill lanes
+
 ## Current top-line conclusion
 
 CRB should now be interpreted first as a **protocol-definition problem**, not as an open-ended run-generation problem.
@@ -23,8 +65,8 @@ Between 2026-03-16 and 2026-03-18, the on-disk artifact state expanded to includ
 
 At the same time, the docs and derived analysis outputs did **not** fully keep up:
 
-- `Legacy/results/summary/scoreboard.csv` now has **573** rows,
-- `analysis/tables/run_inventory.csv` still has **308** rows.
+- at that earlier point, `Legacy/results/summary/scoreboard.csv` had moved ahead of the derived tables,
+- that stale-state mismatch has since been repaired.
 
 So the immediate task is not “run more”; it is “restate the claim, baseline, and evidence classes correctly.”
 
@@ -149,7 +191,7 @@ The analysis-refresh phase is now complete.
 
 ### Completed analysis outputs
 
-- `analysis/tables/run_inventory.csv` refreshed to **573** rows
+- `analysis/tables/run_inventory.csv` refreshed to **579** rows
 - `analysis/tables/summary_table.csv` / `.md` refreshed
 - `analysis/error_buckets/error_buckets.csv` / `.md` refreshed
 - `analysis/figures/metric_plot.md` refreshed
@@ -209,3 +251,39 @@ The `self_history / k=4` rerun was finalized from the current clean partial stat
 - main and supporting are ready for figure/table drafting now
 - appendix is now also ready for figure/table drafting
 - appendix optional self-history extension is now also present, so there are no remaining appendix-side rerun gaps
+
+## 2026-03-24 execution extension
+
+After the appendix branch was fully closed, the next broad generated gap set was identified:
+
+- `Legacy/configs/generated/multimodel_single_turn_pools/`
+
+Status at the latest refresh:
+
+- `qwen3_core_paper`: **256 / 256 complete**
+- `multimodel_pool_followups`: **264 / 264 complete**
+- `multimodel_single_turn_pools`: the only remaining generated gap set
+  - total configs: **12**
+  - families covered: `llama32_3b`, `mistral7b`, `qwen25_1p5b`
+  - datasets covered: `aime`, `gpqa`, `gsm8k`, `mmlu`
+
+An unattended queue was launched on GPUs `2,5,6,7` with a 10-second gap between jobs.
+
+Completed from that queue so far:
+
+- `run-20260324T050441Z-a02c523e`
+  - `llama32_3b / aime / single_turn / k=0 / same_domain`
+- `run-20260324T051159Z-3a804857`
+  - `mistral7b / aime / single_turn / k=0 / same_domain`
+- `run-20260324T051316Z-a0f54d2b`
+  - `llama32_3b / gpqa / single_turn / k=0 / same_domain`
+- `run-20260324T051809Z-47f05ae6`
+  - `mistral7b / gpqa / single_turn / k=0 / same_domain`
+- `run-20260324T051905Z-681c31be`
+  - `qwen25_1p5b / aime / single_turn / k=0 / same_domain`
+
+The active queue means the repo is now in a new state:
+
+- the frozen paper slices are already closed,
+- ongoing work is baseline backfill / packaging support,
+- not paper-story redefinition.

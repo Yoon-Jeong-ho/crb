@@ -21,10 +21,10 @@
 ## Artifact snapshot
 
 - `Legacy/results/summary/scoreboard.csv`
-  - current rows: **576**
+  - current rows: **579**
   - git state: modified locally; contains uncommitted appended result rows
 - `analysis/tables/run_inventory.csv`
-  - current rows: **576**
+  - current rows: **579**
   - status: refreshed after appendix closure
 - appendix closure rows now exist:
   1. `run-20260323T143713Z-85b1af5d` — `self_history / k=4`
@@ -58,4 +58,15 @@ The main blocker is now:
 
 1. Main/supporting figure work can now proceed from the refreshed analysis outputs
 2. Appendix figure work can now also proceed from the refreshed analysis outputs
-3. No appendix rerun gap remains; next work is drafting/packaging rather than more runs
+3. A broad baseline backfill queue is now running on GPUs `2,5,6,7` for the only remaining generated gap set:
+   - `Legacy/configs/generated/multimodel_single_turn_pools/*`
+4. Completed from that queue so far:
+   - `run-20260324T050441Z-a02c523e` — `llama32_3b / aime / single_turn_pool / thinking_off`
+   - `run-20260324T051159Z-3a804857` — `mistral7b / aime / single_turn_pool / thinking_off`
+   - `run-20260324T051316Z-a0f54d2b` — `llama32_3b / gpqa / single_turn_pool / thinking_off`
+   - `run-20260324T051809Z-47f05ae6` — `mistral7b / gpqa / single_turn_pool / thinking_off`
+   - `run-20260324T051905Z-681c31be` — `qwen25_1p5b / aime / single_turn_pool / thinking_off`
+5. Still in progress from that queue:
+   - `qwen25_1p5b / gpqa / single_turn_pool / thinking_off`
+   - `llama32_3b / gsm8k / single_turn_pool / thinking_off`
+   - `llama32_3b / mmlu / single_turn_pool / thinking_off`

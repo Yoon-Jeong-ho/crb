@@ -46,6 +46,10 @@
 
 - [x] Optional appendix extension closed:
   - `qwen3 / gsm8k / thinking_on / single_turn_flattened / self_history / cross_domain / k=8`
+- [ ] Finish the running `multimodel_single_turn_pools` backfill queue on GPUs `2,5,6,7`
+  - families: `llama32_3b`, `mistral7b`, `qwen25_1p5b`
+  - datasets: `aime`, `gpqa`, `gsm8k`, `mmlu`
+  - completed so far: `llama32_3b/aime`, `mistral7b/aime`, `llama32_3b/gpqa`, `mistral7b/gpqa`, `qwen25_1p5b/aime`
 
 ## Explicitly safe to pause
 
