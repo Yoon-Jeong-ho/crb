@@ -1,0 +1,27 @@
+experiment_name: mock_fixture_smoke
+models:
+  - key: mock_model
+    engine: mock
+    max_new_tokens: 32
+benchmarks:
+  - key: fixture_mcq
+    local_path: pipeline_tests/fixtures/fixture_mcq.jsonl
+    split: test
+  - key: fixture_numeric
+    local_path: pipeline_tests/fixtures/fixture_numeric.jsonl
+    split: test
+pool_policy:
+  require_full_benchmark: true
+  min_correct: 3
+  min_incorrect: 3
+sweep:
+  k_values: [0, 2, 4]
+  relations: [same_benchmark, cross_domain]
+  provenances: [model_correct, model_incorrect, oracle]
+  sleep_between_runs_seconds: 0
+output:
+  root_dir: results_v2
+  overwrite: true
+  resume: false
+runtime:
+  seed: 13

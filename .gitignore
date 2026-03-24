@@ -177,6 +177,7 @@ logs/
 results/manifests/
 results/runs/
 results/summary/
+results_v2/
 
 .conda/
 configs/generated/

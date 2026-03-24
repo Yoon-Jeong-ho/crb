@@ -34,6 +34,7 @@ crb-eval = "crb.cli.run_eval:main"
 crb-pack = "crb.cli.generate_pack:main"
 crb-batch = "crb.cli.run_batch:main"
 crb-materialize = "crb.cli.materialize_sweep:main"
+crb-v2 = "crb_v2.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -45,4 +46,4 @@ where = ["src"]
 pythonpath = [
   "src"
 ]
-testpaths = ["tests"]
+testpaths = ["tests", "pipeline_tests"]

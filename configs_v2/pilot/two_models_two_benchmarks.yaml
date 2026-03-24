@@ -1,0 +1,27 @@
+experiment_name: pilot_qwen_llama_gsm8k_boolq
+models:
+  - key: qwen25_7b_instruct
+    max_new_tokens: 128
+  - key: llama31_8b_instruct
+    max_new_tokens: 128
+benchmarks:
+  - key: gsm8k
+    split: test
+    limit: 32
+  - key: boolq
+    split: validation
+    limit: 32
+pool_policy:
+  require_full_benchmark: false
+  min_correct: 8
+  min_incorrect: 8
+sweep:
+  k_values: [0, 2, 4]
+  relations: [same_benchmark, same_domain_other_benchmark, cross_domain]
+  provenances: [model_correct, model_incorrect, oracle]
+output:
+  root_dir: results_v2
+  overwrite: false
+  resume: true
+runtime:
+  seed: 42

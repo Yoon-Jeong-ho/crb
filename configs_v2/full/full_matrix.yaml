@@ -1,0 +1,37 @@
+experiment_name: crb_v2_full_matrix
+models:
+  - key: qwen25_7b_instruct
+  - key: llama31_8b_instruct
+  - key: mistral7b_instruct_v03
+  - key: gemma2_9b_it
+  - key: phi4_mini_instruct
+  - key: mistral_small_24b_instruct_2501
+  - key: deepseek_r1_distill_qwen_7b
+  - key: deepseek_r1_distill_llama_8b
+  - key: qwq_32b
+  - key: olmo2_1124_7b_instruct
+benchmarks:
+  - key: gsm8k
+  - key: math500
+  - key: gpqa
+  - key: arc_challenge
+  - key: mmlu_pro
+  - key: mmlu_redux_2
+  - key: hellaswag
+  - key: piqa
+  - key: boolq
+  - key: truthfulqa_mc
+pool_policy:
+  require_full_benchmark: false
+  min_correct: 50
+  min_incorrect: 50
+sweep:
+  k_values: [0, 2, 4, 8, 16, 32]
+  relations: [same_benchmark, same_domain_other_benchmark, cross_domain]
+  provenances: [model_correct, model_incorrect, oracle]
+output:
+  root_dir: results_v2
+  overwrite: false
+  resume: true
+runtime:
+  seed: 42
