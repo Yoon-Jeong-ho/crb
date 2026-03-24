@@ -142,3 +142,70 @@ The next correct move is:
 The next mistake would be:
 
 - widening scope again before the existing evidence is reclassified.
+
+## 2026-03-20 execution update
+
+The analysis-refresh phase is now complete.
+
+### Completed analysis outputs
+
+- `analysis/tables/run_inventory.csv` refreshed to **573** rows
+- `analysis/tables/summary_table.csv` / `.md` refreshed
+- `analysis/error_buckets/error_buckets.csv` / `.md` refreshed
+- `analysis/figures/metric_plot.md` refreshed
+- claim-specific slice tables generated:
+  - `analysis/tables/main_multimodel_external_contamination.csv`
+  - `analysis/tables/supporting_qwen3_gpqa_provenance.csv`
+  - `analysis/tables/appendix_qwen3_gsm8k_self_vs_wrong.csv`
+- figure-readiness memo written:
+  - `analysis/notes/figure_ready_20260320.md`
+
+### Figure readiness verdict
+
+- **Main figure: ready**
+  - multimodel external-contamination slice is fully populated
+  - baseline join passed for all required rows
+- **Supporting figure: ready**
+  - Qwen3 GPQA provenance slice is fully populated
+  - baseline join passed for all required rows
+- **Appendix figure: ready**
+  - required cells were closed on 2026-03-23:
+    - `qwen3 / gsm8k / on / single_turn_flattened / self_history / cross_domain / k=4`
+    - `qwen3 / gsm8k / on / single_turn_flattened / wrong_history / cross_domain / k=8`
+  - optional `self_history / k=8` cell was also closed on 2026-03-24
+
+## 2026-03-23 appendix closure update
+
+The appendix closure work is now complete.
+
+### Runtime fix
+
+The prior blocker was an environment-level CUDA library resolution issue, not CRB logic:
+
+- inherited `LD_LIBRARY_PATH=/usr/local/cuda/lib64:...` overrode the torch wheel's bundled CUDA libraries
+- clean launches had to use:
+  - `env -u LD_LIBRARY_PATH`
+  - `PYTHONNOUSERSITE=1`
+
+### Successful reruns
+
+1. `wrong_history / k=8`
+   - run id: `run-20260323T120127Z-b3c43227`
+   - accuracy: `0.33965125094768767`
+   - format failure rate: `0.02577710386656558`
+2. `self_history / k=4`
+   - run id: `run-20260323T143713Z-85b1af5d`
+   - accuracy: `0.3639120545868082`
+   - format failure rate: `0.07733131159969674`
+3. `self_history / k=8` (optional lane, later closed)
+   - run id: `run-20260324T044142Z-1e65b909`
+   - accuracy: `0.310841546626232`
+   - format failure rate: `0.04169825625473844`
+
+The `self_history / k=4` rerun was finalized from the current clean partial state after the clean run proved healthy; the completion path used only same-config current-session partials plus same-config shard workers on GPUs `0,1,2,5,6,7`, and did **not** reuse archived partials from older hashes.
+
+## Current operational conclusion
+
+- main and supporting are ready for figure/table drafting now
+- appendix is now also ready for figure/table drafting
+- appendix optional self-history extension is now also present, so there are no remaining appendix-side rerun gaps

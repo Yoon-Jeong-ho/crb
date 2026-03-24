@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -32,11 +33,28 @@ def build_rows(dataset_filter: str | None = None) -> list[dict[str, object]]:
     for row in read_scoreboard_rows():
         if dataset_filter and row["dataset"] != dataset_filter:
             continue
-        payload = safe_load_run_payload(LEGACY_ROOT / row["result_json_path"])
-        if payload is None:
+        try:
+            if float(row.get("format_failure_rate", "0") or 0) == 0.0:
+                continue
+        except ValueError:
+            pass
+        result_json_path = LEGACY_ROOT / row["result_json_path"]
+        payload = safe_load_run_payload(result_json_path)
+        if payload is None and not result_json_path.exists():
             counts[(row["dataset"], row["run_id"], "missing_result_json")] += 1
             continue
-        for item in payload.get("per_item_results", []):
+        partial_path = result_json_path.parent / "partial_results.jsonl"
+        if partial_path.exists():
+            with partial_path.open("r", encoding="utf-8") as handle:
+                for line in handle:
+                    if not line.strip():
+                        continue
+                    item = json.loads(line)
+                    if item.get("parse_status") == "parsed":
+                        continue
+                    counts[(row["dataset"], row["run_id"], classify_error(item))] += 1
+            continue
+        for item in (payload or {}).get("per_item_results", []):
             if item.get("parse_status") == "parsed":
                 continue
             counts[(row["dataset"], row["run_id"], classify_error(item))] += 1

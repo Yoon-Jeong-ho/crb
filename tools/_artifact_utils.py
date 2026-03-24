@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -28,6 +29,58 @@ def safe_load_run_payload(path: str | Path) -> dict[str, Any] | None:
     if not target.exists():
         return None
     return json.loads(target.read_text(encoding="utf-8"))
+
+
+def _extract_json_object(text: str, anchor: str) -> dict[str, Any] | None:
+    start = text.find(anchor)
+    if start == -1:
+        return None
+    brace_start = text.find("{", start)
+    if brace_start == -1:
+        return None
+    depth = 0
+    in_string = False
+    escape = False
+    for idx in range(brace_start, len(text)):
+        ch = text[idx]
+        if in_string:
+            if escape:
+                escape = False
+            elif ch == "\\":
+                escape = True
+            elif ch == '"':
+                in_string = False
+            continue
+        if ch == '"':
+            in_string = True
+        elif ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                try:
+                    return json.loads(text[brace_start : idx + 1])
+                except json.JSONDecodeError:
+                    return None
+    return None
+
+
+def load_run_payload_summary(path: str | Path) -> dict[str, Any] | None:
+    target = Path(path)
+    if not target.exists():
+        return None
+    with target.open("r", encoding="utf-8") as handle:
+        text = handle.read(65536)
+    manifest_match = re.search(r'"manifest_path"\s*:\s*"([^"]*)"', text)
+    metrics = _extract_json_object(text, '"metrics"') or {}
+    if not metrics or not manifest_match:
+        text = target.read_text(encoding="utf-8")
+        manifest_match = manifest_match or re.search(r'"manifest_path"\s*:\s*"([^"]*)"', text)
+        metrics = metrics or (_extract_json_object(text, '"metrics"') or {})
+    return {
+        "manifest_path": manifest_match.group(1) if manifest_match else "",
+        "metrics": metrics,
+    }
 
 
 def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:

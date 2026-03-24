@@ -15,20 +15,21 @@
 - [x] Multimodel baseline + `stored_history` follow-up runs now exist on disk
 - [x] Qwen3 full-sample baseline rows exist for `gpqa`, `gsm8k`, `aime`, and `mmlu`
 - [x] Qwen3 full-sample follow-up slices exist for several main protocol conditions
-- [ ] Derived analysis artifacts have **not** been refreshed to match the latest scoreboard
-- [ ] Two claim-relevant partial-only runs still need an explicit keep/complete vs archive decision
+- [x] Derived analysis artifacts have been refreshed to match the latest scoreboard
+- [x] The two claim-relevant appendix reruns are now complete
 
 ## Artifact snapshot
 
 - `Legacy/results/summary/scoreboard.csv`
-  - current rows: **573**
+  - current rows: **576**
   - git state: modified locally; contains uncommitted appended result rows
 - `analysis/tables/run_inventory.csv`
-  - current rows: **308**
-  - status: **stale relative to scoreboard**
-- partial-only run directories: **2**
-  1. `qwen3_1p7b_gsm8k_protocol_kfull_gsm8k_on_canonical_k4`
-  2. `qwen3_1p7b_gsm8k_gsm8k_wrong_history_cross_domain_full_k8`
+  - current rows: **576**
+  - status: refreshed after appendix closure
+- appendix closure rows now exist:
+  1. `run-20260323T143713Z-85b1af5d` — `self_history / k=4`
+  2. `run-20260323T120127Z-b3c43227` — `wrong_history / k=8`
+  3. `run-20260324T044142Z-1e65b909` — `self_history / k=8` (optional appendix extension)
 
 ## Strongest currently usable evidence classes
 
@@ -55,7 +56,6 @@ The main blocker is now:
 
 ## Immediate next actions
 
-1. Refresh derived analysis from the current scoreboard
-2. Classify current runs as main / secondary / parked
-3. Decide whether the two stranded partial runs are keep-and-complete or archive
-4. Only then decide the minimum next run set
+1. Main/supporting figure work can now proceed from the refreshed analysis outputs
+2. Appendix figure work can now also proceed from the refreshed analysis outputs
+3. No appendix rerun gap remains; next work is drafting/packaging rather than more runs

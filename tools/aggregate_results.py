@@ -4,14 +4,14 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from tools._artifact_utils import ANALYSIS_ROOT, LEGACY_ROOT, read_scoreboard_rows, safe_load_run_payload, write_csv
+from tools._artifact_utils import ANALYSIS_ROOT, LEGACY_ROOT, load_run_payload_summary, read_scoreboard_rows, write_csv
 
 
 def build_inventory() -> list[dict[str, object]]:
     rows: list[dict[str, object]] = []
     for row in read_scoreboard_rows():
         result_path = LEGACY_ROOT / row["result_json_path"]
-        payload = safe_load_run_payload(result_path)
+        payload = load_run_payload_summary(result_path)
         metrics = (payload or {}).get("metrics", {})
         rows.append(
             {

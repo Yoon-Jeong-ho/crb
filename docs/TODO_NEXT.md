@@ -14,11 +14,11 @@
 
 ## First priority: analysis + documentation sync
 
-- [ ] Refresh `analysis/tables/run_inventory.csv` from the latest scoreboard (`573` rows currently in `Legacy/results/summary/scoreboard.csv`)
-- [ ] Refresh `analysis/tables/summary_table.csv` and `summary_table.md`
-- [ ] Refresh `analysis/error_buckets/error_buckets.csv` and `error_buckets.md`
-- [ ] Refresh `analysis/figures/metric_plot.md`
-- [ ] Mark stale derived outputs as non-authoritative until the refresh is done
+- [x] Refresh `analysis/tables/run_inventory.csv` from the latest scoreboard (`573` rows currently in `Legacy/results/summary/scoreboard.csv`)
+- [x] Refresh `analysis/tables/summary_table.csv` and `summary_table.md`
+- [x] Refresh `analysis/error_buckets/error_buckets.csv` and `error_buckets.md`
+- [x] Refresh `analysis/figures/metric_plot.md`
+- [x] Generate claim-specific slice tables and a figure-ready memo
 
 ## Second priority: classify the current evidence
 
@@ -35,19 +35,16 @@
 
 ## Third priority: resolve the two stranded partial runs
 
-- [ ] Decide whether to **resume cleanly** or **rerun cleanly**:
-  - `qwen3_1p7b_gsm8k_protocol_kfull_gsm8k_on_canonical_k4`
-  - `qwen3_1p7b_gsm8k_gsm8k_wrong_history_cross_domain_full_k8`
-- [ ] If resume fidelity is uncertain, prefer rerun over trusting partial-only state
-- [ ] If either lane is explicitly dropped from the main story, archive and document that decision rather than leaving it ambiguous
+- [x] Decide whether to **resume cleanly** or **rerun cleanly**
+- [x] Archive the old partial-only run dirs/logs and prefer clean rerun
+- [x] Attempt the two clean appendix reruns
+- [x] Fix the CUDA / torch launch blocker by using `env -u LD_LIBRARY_PATH PYTHONNOUSERSITE=1`
+- [x] Close `self_history / k=4`
+- [x] Close `wrong_history / k=8`
 
 ## Minimal next runnable set after sync
 
-- [ ] Complete or rerun:
-  - `qwen3 / gsm8k / thinking_on / single_turn_flattened / self_history / cross_domain / k=4`
-- [ ] Complete or rerun:
-  - `qwen3 / gsm8k / thinking_on / single_turn_flattened / wrong_history / cross_domain / k=8`
-- [ ] If a full self-history `k` curve is required for the same slice, add:
+- [x] Optional appendix extension closed:
   - `qwen3 / gsm8k / thinking_on / single_turn_flattened / self_history / cross_domain / k=8`
 
 ## Explicitly safe to pause
@@ -62,3 +59,4 @@
 - [ ] Ask “does this close a main-claim gap?” before asking “can we run more?”
 - [ ] Do not use stale derived analysis to justify new conclusions
 - [ ] Do not treat `stored_history` as a hidden rename of `self_history`
+- [x] Treat main/supporting/appendix as figure-ready now; no appendix rerun gap remains
