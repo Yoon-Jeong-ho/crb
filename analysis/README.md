@@ -1,22 +1,33 @@
 # CRB Analysis Workspace
 
-이 폴더는 `Legacy/results/summary/scoreboard.csv` 와 `Legacy/results/runs/**/*.json` 을 읽어,
-루트 레벨에서 재사용 가능한 분석 산출물을 정리하는 곳입니다.
+이 폴더는 현재 **legacy-derived analysis 산출물 중심**이다.
 
-## Layout
-- `methods.md` — 현재 권장 분석 방법과 입력/출력 정의
-- `types.md` — 어떤 분석을 어떤 질문에 쓰는지 정리한 분류표
-- `generated/` — CSV / JSON 집계 결과
-- `plots/` — SVG 시각화 결과
+주요 입력은 아직:
 
-## Default workflow
+- `Legacy/results/summary/scoreboard.csv`
+- `Legacy/results/runs/**/*.json`
+
+이다.
+
+## Current status
+
+- `analysis/`는 기존 논문 story용 legacy artifact 분석에 계속 유효하다.
+- 새 `crb_v2` 실행 결과의 기본 집계는 우선 각 run root의 `aggregate/` 아래에서 읽는 것이 맞다.
+- 즉:
+  - legacy slice analysis → `analysis/`
+  - new v2 run summary → `results_v2/<experiment>__<hash>/aggregate/`
+
+## Default workflow for legacy analysis
+
 1. `python -m tools.aggregate_results`
 2. `python -m tools.build_tables`
 3. `python -m tools.bucket_errors`
 4. `python -m tools.plot_results`
-5. `docs/OPERATOR_NEXT_STEPS.md` 체크리스트로 다음 의사결정 정리
+5. `docs/TODO_NEXT.md` 에 다음 의사결정 반영
 
 ## Ground rules
-- 새 실험은 여기서 돌리지 않습니다.
-- 실행 가능한 평가 코드는 계속 `Legacy/` 아래에 둡니다.
-- results/logs 원본은 계속 `Legacy/results`, `Legacy/logs` 를 source of truth로 사용합니다.
+
+- 새 실험은 여기서 돌리지 않는다.
+- 새 실행 코드는 `src/crb_v2/` + `configs_v2/` 를 사용한다.
+- `Legacy/results` 는 legacy source of truth이다.
+- `results_v2` 는 v2 source of truth이다.

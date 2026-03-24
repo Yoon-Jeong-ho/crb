@@ -1,13 +1,20 @@
 # ANALYSIS
 
-- Date: 2026-03-20
+- Date: 2026-03-24
+
+## Current note
+
+- `src/crb_v2/` is now the canonical new execution surface.
+- Verified v2 smoke outputs live under `results_v2/mock_fixture_smoke__1717ebb2a46d6bc6/`.
+- The GPU 2 real-model pilot is currently the main live runtime task; consult `docs/EXECUTION_STATUS.md` and `docs/RESULTS_LOG.md` for current run status.
+- The legacy analysis snapshot below is still useful for the older paper-slice artifact set, but it does **not** describe the current runtime surface.
 
 ## 2026-03-24 readable snapshot
 
-Current shareable snapshot files now exist at the repo root:
+Archived legacy shareable snapshot files now live here:
 
-- `RESULT.md`
-- `result_snapshot.csv`
+- `docs/legacy/shareable_snapshots/RESULT.md`
+- `docs/legacy/shareable_snapshots/result_snapshot.csv`
 
 Current artifact counts:
 

@@ -37,10 +37,11 @@ For the benchmark framing itself, see `README_CRB.md`.
 | `Legacy/` | Reference-only legacy tree | Preserve old configs/artifacts; do not use it as the primary execution surface for new CRB work. |
 | `src/crb_v2/`, `configs_v2/` | Canonical CRB v2 execution surface | Run the integrated baseline → pool → sweep → aggregate pipeline from here. |
 | `research/` | Research framing | Paper notes, research directions, related-work buckets, and methodology extensions. |
-| `docs/` | Operator-facing docs | Status, result logs, interpretation, next actions, and workflow navigation. |
-| `analysis/` | Derived analysis outputs | Tables, figures, error buckets, notes, and operator-facing summaries derived from `Legacy/` artifacts. |
-| `tools/` | Lightweight analysis scripts | Read-only helpers for aggregating scoreboard rows, building tables, bucketing failures, and plotting trends from `Legacy/` artifacts. |
-| `results/`, `logs/` | Bootstrap leftovers / reference outputs | Do **not** treat these as the authoritative continuation artifact store; current source-of-truth remains `Legacy/results/` and `Legacy/logs/`. |
+| `docs/` | Operator-facing docs | Current execution status, result index, interpretation, next actions, and workflow navigation. |
+| `docs/legacy/` | Archived operator docs | Dated legacy-only continuation notes kept for historical reconstruction. |
+| `analysis/` | Derived analysis outputs | Legacy-scoreboard-oriented tables, figures, error buckets, and notes. |
+| `tools/` | Lightweight analysis scripts | Read-only helpers for aggregating legacy scoreboard rows and related artifacts. |
+| `results_v2/`, `logs/` | Current v2 runtime outputs | Active v2 run roots and helper logs such as the GPU 2 pilot log. |
 | `configs/`, `data/`, `scripts/`, `tests/` | Root bridge paths | Convenience links into `Legacy/`. |
 
 ## Workflow summary
@@ -67,11 +68,10 @@ For the benchmark framing itself, see `README_CRB.md`.
 
 ## Operator next-step checklist
 
-- [ ] Read `docs/CLAIM_PROTOCOL_ALIGNMENT_20260320.md` before interpreting any new rows.
-- [ ] Use `docs/WORKFLOW_ANALYSIS.md` to map the docs/research/tools/raw-artifact flow before changing anything else.
-- [ ] Refresh stale derived analysis artifacts before drawing new conclusions from `Legacy/results/summary/scoreboard.csv`.
-- [ ] Compare the parserfix, strict-final, choice-only, and `/no_think` + prefill runs using the evidence already logged in `docs/`.
-- [ ] Read `analysis/README.md` plus the companion notes before deciding what summary artifact to build next.
-- [ ] Refresh `analysis/tables/run_inventory.csv`, `analysis/tables/summary_table.csv`, `analysis/error_buckets/error_buckets.csv`, and `analysis/figures/metric_plot.md` before writing new conclusions.
-- [ ] Decide whether the two stranded GSM8K partial runs should be completed or cleanly archived.
-- [ ] Only after the analysis pass is clean and the main-claim slice is fixed, schedule the next `Legacy/` follow-up run.
+- [ ] Read `docs/crb_v2/README.md` and `CRB_EXPERIMENT_SETUP.md` before launching anything new.
+- [ ] Check `docs/EXECUTION_STATUS.md` and `docs/TODO_NEXT.md` before changing runtime scope.
+- [ ] Treat `src/crb_v2/` + `configs_v2/` as the default execution surface.
+- [ ] Use `docs/legacy/` only for historical reconstruction, not for current launch policy.
+- [ ] For current pilot progress, inspect `logs/crb_v2_gpu2_pilot_latest.log` and the matching `results_v2/...` run root.
+- [ ] For legacy paper-slice analysis, refresh derived tables before drawing conclusions from `Legacy/results/summary/scoreboard.csv`.
+- [ ] Do not start the full matrix until the GPU 2 pilot closes cleanly.

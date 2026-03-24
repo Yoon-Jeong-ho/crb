@@ -1,111 +1,67 @@
 # Workflow + Analysis Map
 
-This document explains how to navigate the CRB workspace **without launching new experiments**.
+This document explains how to navigate the CRB workspace **without mixing legacy and v2 execution lanes**.
 
 ## What lives where
 
-### `research/`
-Use this folder for:
-- benchmark/background papers
-- CRB claim framing
-- related-work positioning
-- analysis questions worth answering next
-- methodology extension ideas before new runs are scheduled
-
-Useful starting files:
-- `research/README.md`
-- `research/directions.md`
-- `research/related_work_buckets.md`
-- `research/methodology_extensions.md`
-
-### `docs/`
-Use this folder for the operator-facing state of the project:
-- `docs/EXECUTION_STATUS.md` — what has been verified
-- `docs/RESULTS_LOG.md` — run-by-run evidence log
-- `docs/ANALYSIS.md` — current interpretation of the evidence
-- `docs/TODO_NEXT.md` — next decisions / next actions
-- `docs/WORKFLOW_ANALYSIS.md` — this navigation guide
-
-### `analysis/`
-Use this folder for derived outputs from existing artifacts:
-- `analysis/README.md` — analysis lane overview
-- `analysis/tables/` — run inventory and grouped tables
-- `analysis/error_buckets/` — invalid-output/error taxonomy outputs
-- `analysis/figures/` — Mermaid plots and figure-ready summaries
-- `analysis/notes/` — short memos before they are promoted into `docs/`
-
-### `docs/analysis/`
-Use this subfolder for operator-facing analysis notes:
-- `docs/analysis/README.md` — analysis lane overview
-- `docs/analysis/analysis_methods.md` — concrete aggregation/comparison methods
-- `docs/analysis/analysis_types.md` — which analysis package to produce for which goal
-- `docs/analysis/methodology_extensions.md` — follow-up protocol extensions worth considering later
-- `docs/analysis/operator_checklist.md` — concise next-step checklist for the next operator
-
-### `tools/`
-Use this lane for lightweight, read-only summaries over existing `Legacy/` artifacts:
-- `python -m tools.aggregate_results`
-- `python -m tools.build_tables`
-- `python -m tools.bucket_errors`
-- `python -m tools.plot_results`
-- `tools/README.md` — script usage and output conventions
-
-These scripts should read from `Legacy/results/` and `Legacy/logs/`; they should not launch new runs or rewrite raw artifacts.
+### `src/crb_v2/` + `configs_v2/`
+Use this lane for **new CRB execution**:
+- baseline
+- pool building
+- multi-turn k-sweep
+- aggregate summaries
 
 ### `Legacy/`
-`Legacy/` is still the canonical runnable CRB tree:
-- code: `Legacy/src/`
-- configs: `Legacy/configs/`
-- tests: `Legacy/tests/`
-- raw results: `Legacy/results/`
-- raw logs: `Legacy/logs/`
+Use this lane for:
+- historical result comparison
+- legacy parser/scorer behavior reference
+- paper-slice archaeology on old artifacts
 
-If you are reading execution evidence, prefer `Legacy/results/` and `Legacy/logs/` over the root `results/` / `logs/` paths.
+Do not use it as the default launcher for new work.
+
+### `docs/`
+Use this folder for current operator-facing state:
+- `CRB_EXPERIMENT_SETUP.md`
+- `docs/EXECUTION_STATUS.md`
+- `docs/RESULTS_LOG.md`
+- `docs/ANALYSIS.md`
+- `docs/TODO_NEXT.md`
+- `docs/crb_v2/README.md`
+
+### `docs/legacy/`
+Use this folder only when you need dated historical notes that no longer describe the current runtime.
+
+### `analysis/`
+Use this folder for derived outputs from artifact sets.
+Some current files are still legacy-scoreboard oriented, so treat them as legacy analysis until a v2 analysis pass is added.
 
 ## Recommended reading / working order
 
 1. `README.md`
-2. `CRB_EXPERIMENT_SETUP.md`
-3. `docs/CLAIM_PROTOCOL_ALIGNMENT_20260320.md`
-4. `docs/WORKFLOW_ANALYSIS.md`
-5. `docs/EXECUTION_STATUS.md`
+2. `docs/crb_v2/README.md`
+3. `CRB_EXPERIMENT_SETUP.md`
+4. `docs/EXECUTION_STATUS.md`
+5. `docs/TODO_NEXT.md`
 6. `docs/RESULTS_LOG.md`
 7. `docs/ANALYSIS.md`
-8. `docs/TODO_NEXT.md`
-9. `research/README.md`
-10. `research/directions.md`
-11. `research/related_work_buckets.md`
-12. `research/methodology_extensions.md`
-13. `docs/analysis/README.md` and the specific analysis note you need
-14. `tools/README.md` and the matching tool script if you need a repeatable summary
-15. matching raw files in `Legacy/results/` and `Legacy/logs/`
+8. `docs/crb_v2/BENCHMARKS_AND_SCORING.md`
+9. `docs/crb_v2/FAILURE_TAXONOMY.md`
+10. `docs/crb_v2/EXPERIMENT_MATRIX.md`
+11. `analysis/README.md`
+12. `Legacy/README.md` only if you need legacy reference behavior
 
-## Analysis loop
+## Current execution loop
 
-1. Read the current decision state in `docs/`.
-2. Choose the smallest useful analysis package from `docs/analysis/`.
-3. Pull the matching raw evidence from `Legacy/results/` and `Legacy/logs/`.
-4. If the comparison should be repeatable, use the relevant `tools/` module to aggregate the slice instead of hand-copying rows.
-5. Compare runs across the core CRB axes:
-   - `k`
-   - `multi_turn` vs `flattened`
-   - `self_history` vs `oracle_history`
-   - `same_domain` vs `cross_domain`
-   - thinking-on control variants where relevant
-6. Separate:
-   - accuracy changes
-   - format / parse failures
-   - invalid-output patterns
-7. Write the conclusion back into `docs/ANALYSIS.md` or `docs/TODO_NEXT.md`.
+1. run `crb_v2` from config
+2. inspect `results_v2/<experiment>__<hash>/`
+3. verify baseline / pool / sweep / aggregate outputs
+4. update docs with verified conclusions
+5. only then widen runtime scope
 
-## Current high-value operator checklist
+## Current analysis loop
 
-- [ ] Read `docs/CLAIM_PROTOCOL_ALIGNMENT_20260320.md` first so baseline/provenance/relation terms are frozen before analysis.
-- [ ] Refresh stale derived analysis artifacts; `scoreboard.csv` is ahead of `analysis/tables/run_inventory.csv`.
-- [ ] Separate main-claim evidence from parser/prompting rescue work before building any new summary.
-- [ ] Compare parserfix vs strict-final vs choice-only vs `/no_think` + prefill using the already logged evidence.
-- [ ] Build a compact summary view from `Legacy/results/summary/scoreboard.csv` plus the matching run JSON files.
-- [ ] Refresh `analysis/tables/run_inventory.csv`, `analysis/tables/summary_table.csv`, and `analysis/error_buckets/error_buckets.csv` before writing new conclusions.
-- [ ] Bucket invalid GPQA thinking-on outputs before changing parsing/prompting logic.
-- [ ] Decide whether the two stranded GSM8K partial runs should be completed or archived.
-- [ ] Only after the analysis pass is complete, queue the minimum run set that closes a main-claim slice.
+1. separate v2 outputs from legacy outputs
+2. do not merge them casually into one summary unless the comparison is explicit
+3. for legacy scoreboard analysis, continue using `tools/`
+4. for v2 run analysis, prefer the aggregate CSV/MD under `results_v2/.../aggregate/`
+5. write conclusions back into `docs/ANALYSIS.md` or `docs/TODO_NEXT.md`

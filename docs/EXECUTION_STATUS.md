@@ -1,72 +1,71 @@
 # EXECUTION STATUS
 
-- Date: 2026-03-20
-- Status: **claim-first freeze**
-- Active rule: **do not widen experiment scope until docs, derived analysis, and partial-run decisions are synchronized**
+- Date: 2026-03-24
+- Status: **CRB v2 is the canonical execution surface**
 
 ## Current state
 
-- [x] `Legacy/` remains the only authoritative runnable CRB tree
-- [x] The canonical headline baseline is now fixed as:
-  - `single_turn`, `k=0`, no dummy history
-- [x] `stored_history` is now explicitly interpreted as:
-  - **external contaminated-history robustness**
-  - not a hidden rename of `self_history`
-- [x] Multimodel baseline + `stored_history` follow-up runs now exist on disk
-- [x] Qwen3 full-sample baseline rows exist for `gpqa`, `gsm8k`, `aime`, and `mmlu`
-- [x] Qwen3 full-sample follow-up slices exist for several main protocol conditions
-- [x] Derived analysis artifacts have been refreshed to match the latest scoreboard
-- [x] The two claim-relevant appendix reruns are now complete
+- [x] `src/crb_v2/` exists as a standalone integrated pipeline
+- [x] `configs_v2/` exists for smoke / pilot / full matrix execution
+- [x] `pipeline_tests/` exists and passes
+- [x] `docs/crb_v2/` exists and documents benchmark mapping, failure taxonomy, and experiment matrix
+- [x] `Legacy/` remains preserved as reference-only runtime history
+- [x] fixture smoke run completed end-to-end
+- [ ] GPU 2 real-model pilot is still running
+- [ ] full matrix has not been launched yet
 
-## Artifact snapshot
+## Verified commands
 
-- `Legacy/results/summary/scoreboard.csv`
-  - current rows: **579**
-  - git state: modified locally; contains uncommitted appended result rows
-- `analysis/tables/run_inventory.csv`
-  - current rows: **579**
-  - status: refreshed after appendix closure
-- appendix closure rows now exist:
-  1. `run-20260323T143713Z-85b1af5d` — `self_history / k=4`
-  2. `run-20260323T120127Z-b3c43227` — `wrong_history / k=8`
-  3. `run-20260324T044142Z-1e65b909` — `self_history / k=8` (optional appendix extension)
+```bash
+PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m pytest pipeline_tests -q
+PYTHONNOUSERSITE=1 /data_x/aa007878/projects/crb/.conda/envs/crb/bin/python -m crb_v2.cli --config configs_v2/pilot/mock_fixture_smoke.yaml
+```
 
-## Strongest currently usable evidence classes
+## Verified outputs
 
-1. **Canonical single-turn baselines**
-   - `qwen3` off/on across `gpqa`, `gsm8k`, `aime`, `mmlu`
-   - `qwen25`, `llama32_3b`, `mistral7b` off across the same set
-2. **Qwen3 full-sample provenance slices**
-   - `gpqa`: oracle / wrong / stored
-   - `gsm8k`: flattened self / wrong, plus stored off-lane
-   - `mmlu`: oracle
-3. **Multimodel stored-history slices**
-   - baseline + `stored_history` across `gpqa`, `gsm8k`, `aime`, `mmlu`
+Smoke result root:
 
-## What is no longer the main blocker
+- `results_v2/mock_fixture_smoke__1717ebb2a46d6bc6/`
 
-The repo is no longer blocked mainly by:
+Key artifacts:
 
-- “can the pipeline run?”
-- “can Qwen3 produce a final answer at all?”
+- `results_v2/mock_fixture_smoke__1717ebb2a46d6bc6/pipeline_result.json`
+- `results_v2/mock_fixture_smoke__1717ebb2a46d6bc6/aggregate/summary_rows.csv`
+- `results_v2/mock_fixture_smoke__1717ebb2a46d6bc6/aggregate/summary.md`
 
-The main blocker is now:
+## Active pilot
 
-**whether the existing artifact set has been classified and summarized correctly under the frozen CRB claim.**
+- tmux session:
+  - `crb_v2_gpu2_pilot`
+- launcher:
+  - `scripts_v2/run_gpu2_pilot.sh`
+- config:
+  - `configs_v2/pilot/two_models_two_benchmarks.yaml`
+- live log:
+  - `logs/crb_v2_gpu2_pilot_latest.log`
 
-## Immediate next actions
+Current pilot scope:
 
-1. Main/supporting figure work can now proceed from the refreshed analysis outputs
-2. Appendix figure work can now also proceed from the refreshed analysis outputs
-3. A broad baseline backfill queue is now running on GPUs `2,5,6,7` for the only remaining generated gap set:
-   - `Legacy/configs/generated/multimodel_single_turn_pools/*`
-4. Completed from that queue so far:
-   - `run-20260324T050441Z-a02c523e` — `llama32_3b / aime / single_turn_pool / thinking_off`
-   - `run-20260324T051159Z-3a804857` — `mistral7b / aime / single_turn_pool / thinking_off`
-   - `run-20260324T051316Z-a0f54d2b` — `llama32_3b / gpqa / single_turn_pool / thinking_off`
-   - `run-20260324T051809Z-47f05ae6` — `mistral7b / gpqa / single_turn_pool / thinking_off`
-   - `run-20260324T051905Z-681c31be` — `qwen25_1p5b / aime / single_turn_pool / thinking_off`
-5. Still in progress from that queue:
-   - `qwen25_1p5b / gpqa / single_turn_pool / thinking_off`
-   - `llama32_3b / gsm8k / single_turn_pool / thinking_off`
-   - `llama32_3b / mmlu / single_turn_pool / thinking_off`
+- models:
+  - `qwen25_7b_instruct`
+  - `llama31_8b_instruct`
+- benchmarks:
+  - `gsm8k`
+  - `boolq`
+- `k`:
+  - `0, 2, 4`
+
+## Canonical next milestone
+
+The next milestone is not “more legacy backfill.”
+
+It is:
+
+1. finish GPU 2 pilot
+2. verify baseline / pool / sweep / aggregate outputs
+3. fix any pilot-level adapter / pool / truncation issues
+4. then decide whether `configs_v2/full/full_matrix.yaml` is ready to launch
+
+## Archived docs
+
+Older legacy-only continuation notes were moved to `docs/legacy/`.
