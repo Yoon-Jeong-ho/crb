@@ -64,9 +64,9 @@ class PoolPolicyConfig:
 
 @dataclass(slots=True)
 class SweepConfig:
-    k_values: list[int] = field(default_factory=lambda: [0, 2, 4, 8, 16, 32])
+    k_values: list[int] = field(default_factory=lambda: [0, 1, 2, 4, 8, 16, 32])
     relations: list[RelationType] = field(default_factory=lambda: ["same_benchmark", "same_domain_other_benchmark", "cross_domain"])
-    provenances: list[ProvenanceType] = field(default_factory=lambda: ["model_correct", "model_incorrect", "oracle"])
+    provenances: list[ProvenanceType] = field(default_factory=lambda: ["model_correct", "model_incorrect"])
     prompt_style: PromptStyle = "flat"
     system_prompt: str = "You are a precise evaluation assistant. Solve the problem and end with exactly one final answer line."
     final_answer_instruction: str = "End with exactly one final line in the form `Answer: <final_answer>`."

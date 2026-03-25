@@ -26,9 +26,9 @@ pool_policy:
   min_correct: 50
   min_incorrect: 50
 sweep:
-  k_values: [0, 2, 4, 8, 16, 32]
+  k_values: [0, 1, 2, 4, 8, 16, 32]
   relations: [same_benchmark, same_domain_other_benchmark, cross_domain]
-  provenances: [model_correct, model_incorrect, oracle]
+  provenances: [model_correct, model_incorrect]
 output:
   root_dir: results_v2
   overwrite: false

@@ -1,0 +1,11 @@
+benchmark_key,domain,benchmark_type,hf_path,subset,split,status,evidence
+gsm8k,math,numeric_boxed,openai/gsm8k,main,test,ready,adapter load check 2026-03-25 + catalog/adapter present
+math500,math,numeric_boxed,HuggingFaceH4/MATH-500,,test,ready,adapter load check 2026-03-25 + catalog/adapter present
+gpqa,science,multiple_choice,Idavidrein/gpqa,gpqa_main,train,ready,adapter load check 2026-03-25 + subset gpqa_main in src/crb_v2/catalog.py
+arc_challenge,science,multiple_choice,allenai/ai2_arc,ARC-Challenge,test,ready,adapter load check 2026-03-25 + catalog/adapter present
+mmlu_pro,general_knowledge,multiple_choice,TIGER-Lab/MMLU-Pro,,test,ready,adapter load check 2026-03-25 + catalog/adapter present
+mmlu_redux_2,general_knowledge,multiple_choice,edinburgh-dawg/mmlu-redux-2.0,,test,ready,adapter load check 2026-03-25 + recursive subset loader present
+hellaswag,commonsense,completion_choice,Rowan/hellaswag,,validation,ready,adapter load check 2026-03-25 + catalog/adapter present
+piqa,commonsense,multiple_choice,piqa,,validation,ready,adapter load check 2026-03-25 + trust_remote_code enabled in registry
+boolq,factual_reading,yes_no,google/boolq,,validation,ready,adapter load check 2026-03-25 + pilot artifact exists
+truthfulqa_mc,factual_reading,multiple_choice,truthfulqa/truthful_qa,multiple_choice,validation,ready,adapter load check 2026-03-25 + catalog/adapter present

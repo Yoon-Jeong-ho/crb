@@ -1,0 +1,35 @@
+experiment_name: crb_v2_smoke__qwen25_7b_instruct__gsm8k_gpqa
+models:
+- key: qwen25_7b_instruct
+  tensor_parallel_size: 1
+  max_new_tokens: 128
+benchmarks:
+- key: gsm8k
+  split: test
+  limit: 16
+- key: gpqa
+  split: train
+  limit: 16
+pool_policy:
+  require_full_benchmark: false
+  min_correct: 4
+  min_incorrect: 4
+sweep:
+  k_values:
+  - 0
+  - 2
+  - 8
+  relations:
+  - same_benchmark
+  - same_domain_other_benchmark
+  - cross_domain
+  provenances:
+  - model_correct
+  - model_incorrect
+output:
+  root_dir: results_v2
+  overwrite: false
+  resume: true
+runtime:
+  seed: 42
+  timeout_seconds: 180

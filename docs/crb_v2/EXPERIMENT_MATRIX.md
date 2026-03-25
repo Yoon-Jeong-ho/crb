@@ -28,9 +28,10 @@
 
 ## Sweep axes
 
-- `k`: `0, 2, 4, 8, 16, 32`
+- `k`: `0, 1, 2, 4, 8, 16, 32`
 - `relation`: `same_benchmark`, `same_domain_other_benchmark`, `cross_domain`
-- `provenance`: `model_correct`, `model_incorrect`, `oracle`
+- Tier 1 provenance: `model_correct`, `model_incorrect`
+- Tier 2 optional provenance: `oracle`
 
 ## Configs
 

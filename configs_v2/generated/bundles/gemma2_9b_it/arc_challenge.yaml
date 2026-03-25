@@ -1,0 +1,35 @@
+experiment_name: crb_v2_bundle__gemma2_9b_it__arc_challenge
+models:
+- key: gemma2_9b_it
+  tensor_parallel_size: 1
+  max_new_tokens: 128
+benchmarks:
+- key: arc_challenge
+  split: test
+pool_policy:
+  require_full_benchmark: false
+  min_correct: 50
+  min_incorrect: 50
+sweep:
+  k_values:
+  - 0
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+  - 32
+  relations:
+  - same_benchmark
+  - same_domain_other_benchmark
+  - cross_domain
+  provenances:
+  - model_correct
+  - model_incorrect
+output:
+  root_dir: results_v2
+  overwrite: false
+  resume: true
+runtime:
+  seed: 42
+  timeout_seconds: 300

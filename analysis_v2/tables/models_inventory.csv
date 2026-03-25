@@ -1,0 +1,11 @@
+model_key,hf_model_name,family,model_type,size_class,preferred_tp,status,execution_bucket,evidence
+qwen25_7b_instruct,Qwen/Qwen2.5-7B-Instruct,qwen25,instruct,small,1,ready,bulk_ready,results_v2/pilot_qwen_llama_gsm8k_boolq_fix1__37025e5ec2b31c81 + results_v2/crb_v2_full__qwen25_7b_instruct__b212faf67c7cae2a
+llama31_8b_instruct,meta-llama/Llama-3.1-8B-Instruct,llama31,instruct,small,1,ready,bulk_ready,results_v2/pilot_qwen_llama_gsm8k_boolq_fix1__37025e5ec2b31c81 + results_v2/crb_v2_full__llama31_8b_instruct__d79d4f0349d597a0
+mistral7b_instruct_v03,mistralai/Mistral-7B-Instruct-v0.3,mistral7b,instruct,small,1,ready,bulk_ready,results_v2/crb_v2_full__mistral7b_instruct_v03__e6693e0117c31aae
+gemma2_9b_it,google/gemma-2-9b-it,gemma2,instruct,small,1,blocked,retry_blocked,logs/crb_v2_full_gpu6_20260324T140712Z.log + logs/crb_v2_full_gpu4_20260324T140712Z.log
+phi4_mini_instruct,microsoft/Phi-4-mini-instruct,phi4,instruct,small,1,ready,bulk_ready,results_v2/crb_v2_full__phi4_mini_instruct__5849c095fdc7ff30/pipeline_result.json
+mistral_small_24b_instruct_2501,mistralai/Mistral-Small-24B-Instruct-2501,mistral_small,instruct,medium,2,ready,retry_tp2,results_v2/crb_v2_full__mistral_small_24b_instruct_2501__030ab7ccbdac9afc
+deepseek_r1_distill_qwen_7b,deepseek-ai/DeepSeek-R1-Distill-Qwen-7B,deepseek_r1_distill_qwen,reasoning,small,1,ready,bulk_ready,results_v2/crb_v2_full__deepseek_r1_distill_qwen_7b__6c51e3ee9175b54c
+deepseek_r1_distill_llama_8b,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,deepseek_r1_distill_llama,reasoning,small,1,ready,bulk_unverified,src/crb_v2/catalog.py + configs_v2/full/full_matrix.yaml (runtime artifact not yet present)
+qwq_32b,Qwen/QwQ-32B,qwq,reasoning,large,2,ready,retry_tp2,results_v2/crb_v2_full__qwq_32b__0d2c0cd3d77df2f8
+olmo2_1124_7b_instruct,allenai/OLMo-2-1124-7B-Instruct,olmo2,instruct,small,1,ready,bulk_unverified,src/crb_v2/catalog.py + results_v2/crb_v2_full__olmo2_1124_7b_instruct__1bb113a6877ee620/resolved_config.json

@@ -1,0 +1,45 @@
+experiment_name: crb_v2_pilot__qwen25_7b_instruct__4x4
+models:
+- key: qwen25_7b_instruct
+  tensor_parallel_size: 1
+  max_new_tokens: 128
+benchmarks:
+- key: gsm8k
+  split: test
+  limit: 32
+- key: math500
+  split: test
+  limit: 32
+- key: gpqa
+  split: train
+  limit: 32
+- key: arc_challenge
+  split: test
+  limit: 32
+pool_policy:
+  require_full_benchmark: false
+  min_correct: 8
+  min_incorrect: 8
+sweep:
+  k_values:
+  - 0
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+  - 32
+  relations:
+  - same_benchmark
+  - same_domain_other_benchmark
+  - cross_domain
+  provenances:
+  - model_correct
+  - model_incorrect
+output:
+  root_dir: results_v2
+  overwrite: false
+  resume: true
+runtime:
+  seed: 42
+  timeout_seconds: 180
