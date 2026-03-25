@@ -144,3 +144,8 @@ For legacy reference only:
 But it is **not** the default execution surface anymore.
 
 Historical bootstrap / continuation notes were moved under `docs/legacy/`.
+
+
+## Handoff
+
+- `docs/HANDOFF_20260325.md`

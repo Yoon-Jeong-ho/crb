@@ -107,6 +107,27 @@ class MMLUReduxAdapter(HFAdapter):
     benchmark_type = "multiple_choice"
 
     def load_examples(self) -> list[NormalizedExample]:
+        if not self.config.local_path and self.config.subset is None:
+            from datasets import get_dataset_config_names
+
+            items: list[NormalizedExample] = []
+            for subset in get_dataset_config_names(self.config.path or ""):
+                scoped_config = type(self.config)(
+                    key=self.config.key,
+                    split=self.config.split,
+                    path=self.config.path,
+                    subset=subset,
+                    local_path=self.config.local_path,
+                    limit=self.config.limit,
+                    shuffle=self.config.shuffle,
+                    seed=self.config.seed,
+                    trust_remote_code=self.config.trust_remote_code,
+                    cache_dir=self.config.cache_dir,
+                    extra_kwargs=dict(self.config.extra_kwargs),
+                )
+                scoped_adapter = MMLUReduxAdapter(scoped_config)
+                items.extend(scoped_adapter.load_examples())
+            return self._apply_limit(items)
         dataset = self._load_hf_split() if not self.config.local_path else self._load_local_jsonl()
         items: list[NormalizedExample] = []
         for idx, row in enumerate(dataset):

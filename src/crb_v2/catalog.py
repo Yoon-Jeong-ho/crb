@@ -38,7 +38,7 @@ MODEL_SPECS: dict[str, ModelSpec] = {
 BENCHMARK_SPECS: dict[str, BenchmarkSpec] = {
     "gsm8k": BenchmarkSpec("gsm8k", "openai/gsm8k", "main", "test", "math", "numeric_boxed"),
     "math500": BenchmarkSpec("math500", "HuggingFaceH4/MATH-500", None, "test", "math", "numeric_boxed"),
-    "gpqa": BenchmarkSpec("gpqa", "Idavidrein/gpqa", None, "train", "science", "multiple_choice"),
+    "gpqa": BenchmarkSpec("gpqa", "Idavidrein/gpqa", "gpqa_main", "train", "science", "multiple_choice"),
     "arc_challenge": BenchmarkSpec("arc_challenge", "allenai/ai2_arc", "ARC-Challenge", "test", "science", "multiple_choice"),
     "mmlu_pro": BenchmarkSpec("mmlu_pro", "TIGER-Lab/MMLU-Pro", None, "test", "general_knowledge", "multiple_choice"),
     "mmlu_redux_2": BenchmarkSpec("mmlu_redux_2", "edinburgh-dawg/mmlu-redux-2.0", None, "test", "general_knowledge", "multiple_choice"),

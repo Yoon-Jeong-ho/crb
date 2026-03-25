@@ -54,6 +54,8 @@ def resolve_benchmark_config(config: BenchmarkConfig) -> BenchmarkConfig:
         config.subset = spec.subset
     if config.split is None:
         config.split = spec.split
+    if config.key == "piqa":
+        config.trust_remote_code = True
     return config
 
 

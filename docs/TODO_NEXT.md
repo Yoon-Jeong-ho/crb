@@ -40,3 +40,8 @@
 - [ ] do not reopen legacy one-off run orchestration as the main workflow
 - [ ] do not treat parse failures as incorrect dummy candidates
 - [ ] do not launch the full matrix before the pilot closes cleanly
+
+
+## Handoff
+
+- `docs/HANDOFF_20260325.md`

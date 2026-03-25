@@ -1,4 +1,5 @@
 from pathlib import Path
+import csv
 
 from crb_v2.pipeline import run_pipeline
 
@@ -11,6 +12,12 @@ def test_mock_pipeline_runs_end_to_end_and_builds_prefix_consistent_manifests(tm
 
     summary_rows = root / "aggregate" / "summary_rows.csv"
     assert summary_rows.exists()
+    with summary_rows.open(encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    assert len(rows) > 4
+
+    parse_audit = root / "aggregate" / "parse_audit_rows.csv"
+    assert parse_audit.exists()
 
     manifest_k4 = root / "pools" / "mock_model" / "fixture_mcq" / "same_benchmark" / "model_correct.json"
     payload = __import__("json").loads(manifest_k4.read_text(encoding="utf-8"))

@@ -69,3 +69,8 @@ It is:
 ## Archived docs
 
 Older legacy-only continuation notes were moved to `docs/legacy/`.
+
+
+## Handoff
+
+- `docs/HANDOFF_20260325.md`

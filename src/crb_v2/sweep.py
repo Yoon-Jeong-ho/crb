@@ -92,7 +92,7 @@ def run_sweeps_for_model(*, config: PipelineConfig, experiment_root: Path, model
                             max_context_tokens=max_context_tokens,
                             max_new_tokens=model.max_new_tokens,
                             system_prompt=config.sweep.system_prompt,
-                            final_answer_instruction=config.sweep.final_answer_instruction,
+                            final_answer_instruction=_final_answer_instruction(example, config),
                             history_answer_prefix=config.sweep.history_answer_prefix,
                             compaction_policy=config.sweep.compaction_policy,
                         )
@@ -186,7 +186,19 @@ def _request_options(example: NormalizedExample) -> dict:
         return {"structured_choice": [chr(ord("A") + idx) for idx in range(len(example.choices or []))]}
     if example.benchmark_type == "yes_no":
         return {"structured_choice": ["yes", "no"]}
+    if example.benchmark_type == "numeric_boxed":
+        return {"structured_regex": r"Answer:\s*\\boxed\{[-+]?\d+(?:\.\d+)?(?:/\d+)?\}"}
     return {}
+
+
+def _final_answer_instruction(example: NormalizedExample, config: PipelineConfig) -> str:
+    if example.benchmark_type in {"multiple_choice", "completion_choice"}:
+        return "End with exactly one final line in the form `Answer: <LETTER>`."
+    if example.benchmark_type == "yes_no":
+        return "End with exactly one final line in the form `Answer: yes` or `Answer: no`."
+    if example.benchmark_type == "numeric_boxed":
+        return "End with exactly one final line in the form `Answer: \\boxed{<number>}`."
+    return config.sweep.final_answer_instruction
 
 
 
